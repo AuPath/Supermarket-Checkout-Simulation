@@ -22,6 +22,7 @@
 ## Tipologie di agenti
     
     - Clienti
+      
       Ogni cliente è a conoscenza della dimensione del proprio basket.
       Appena entrato nel negozio sa se usare la tipologia di cassa self-scan.
 
@@ -57,3 +58,20 @@
     Se il cliente può migliorare il proprio tempo di attesa 
     in un certo range allora cambia cassa (si considerano solo casse adiacenti). 
     
+## Fase di transazione
+    
+    Definita da:
+    
+    1. Scanning
+       
+       Per cassa self-scan 0, incorporato nella spesa.
+       Per le altre calcolato nella stessa maniera, proporzionale a basket size.
+       
+    2. Payment
+       Uguale per tutti. tempo costante.
+       
+    3. Bagging
+       
+       Nella self-scan incorporato nella spesa.
+       Nella normale 0 in quanto incorporato nello scanning.
+       Nella self service lo fa il cliente, proporzionale alla basket size.
