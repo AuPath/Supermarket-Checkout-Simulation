@@ -1,5 +1,14 @@
 from mesa import Agent
-from CustomerState import CustomerState
+from enums import Enum
+
+
+class CustomerState(Enum):
+    ENTERED = 1
+    SHOPPING = 2
+    CHOOSING_QUEUE = 3
+    QUEUED = 4
+    CASH_DESK = 5
+    EXITING = 6
 
 
 class Customer(Agent):
@@ -12,36 +21,45 @@ class Customer(Agent):
         self.type = 0
 
         self.basket_size = basket_size_target
-        self.self_scan = self_scan
-        self.state = CustomerState.ENTERED
+        self.__self_scan = self_scan
+        self.__state = CustomerState.ENTERED
 
-        self.basket_size_target = 0
+        self.__basket_size_target = 0
         self.target_queue = None
         self.processed_basket = 0
 
-    def step(self):
-        if self.state == CustomerState.ENTERED:
-            # As the customer enters the market, he waits a step and then starts shopping
-            self.state = CustomerState.SHOPPING
+    @property
+    def basket_size_target(self):
+        return self.__basket_size_target
 
-        elif self.state == CustomerState.SHOPPING:
+    def increase_processed_basket(self, processing_speed):
+        if self.processed_basket > self.__basket_size_target:
+            raise Exception("Basket has been already completely processed")
+        self.processed_basket += processing_speed
+
+    def step(self):
+        if self.__state == CustomerState.ENTERED:
+            # As the customer enters the market, he waits a step and then starts shopping
+            self.__state = CustomerState.SHOPPING
+
+        elif self.__state == CustomerState.SHOPPING:
             # Every step the customer puts an element in his basket, when he reaches the target basket size, he starts
             # choosing a queue
             self.shop()
 
-        elif self.state == CustomerState.CHOOSING_QUEUE:
+        elif self.__state == CustomerState.CHOOSING_QUEUE:
             # TODO: define the strategy
             self.choose_queue()
 
-        elif self.state == CustomerState.QUEUED:
+        elif self.__state == CustomerState.QUEUED:
             # TODO: define the strategy to do jockeying
             self.jockey()
 
-        elif self.state == CustomerState.PAYING:
+        elif self.__state == CustomerState.CASH_DESK:
             # TODO: the customer is waiting for some steps and then he exits
             pass
 
-        elif self.state == CustomerState.EXITING:
+        elif self.__state == CustomerState.EXITING:
             # TODO: tell the supermarket to be eliminated
             self.exit()
 
@@ -58,7 +76,7 @@ class Customer(Agent):
         if self.basket_size_target > self.basket_size:
             self.basket_size += 1  # TODO: how many items does the customer put in his basket in a step?
         elif self.basket_size_target == self.basket_size:
-            self.state = CustomerState.CHOOSING_QUEUE
+            self.__state = CustomerState.CHOOSING_QUEUE
 
     def choose_queue(self):
         """The customer chooses following a strategy, only if he has already finished to shop."""
