@@ -75,3 +75,8 @@
        Nella self-scan incorporato nella spesa.
        Nella normale 0 in quanto incorporato nello scanning.
        Nella self service lo fa il cliente, proporzionale alla basket size.
+
+## Cose da mettere nella relazione
+    Andamento simulazione per vari tipi di coda, tipi di scelta della
+    coda, con e senza jockeying.  Note sul tempo di attesa per clienti.
+    
