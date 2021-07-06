@@ -10,7 +10,7 @@ class SuperMarketQueue(ABC):
         return self._queue    
 
     @abstractmethod
-    def enqueue(self, Customer c):
+    def enqueue(self, c:Customer):
         pass
 
     @abstractmethod
