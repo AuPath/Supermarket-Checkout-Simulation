@@ -17,3 +17,7 @@ class SupermarketQueue(ABC):
     @abstractmethod
     def dequeue(self):
         return self.__queue.get()
+
+    @abstractmethod
+    def size(self):
+        return self.__queue.qsize()
