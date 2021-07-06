@@ -1,8 +1,6 @@
 from mesa import Agent
 from enums import Enum
 
-from src.Supermarket import Supermarket
-
 SHOPPING_SPEED = 1
 
 class CustomerState(Enum):
@@ -17,7 +15,7 @@ class CustomerState(Enum):
 class Customer(Agent):
     """This class represents the client agent."""
 
-    def __init__(self, unique_id, model, supermarket, basket_size_target, self_scan, shopping_speed=SHOPPING_SPEED):
+    def __init__(self, unique_id, model, basket_size_target, self_scan, shopping_speed=SHOPPING_SPEED):
         """Constructor, the basket_size_target and the boolean self_scan are assigned by the main class."""
         super().__init__(unique_id, model)
 
@@ -32,8 +30,6 @@ class Customer(Agent):
         self.processed_basket = 0
 
         self.__shopping_speed = shopping_speed
-
-        self.__supermarket : Supermarket = supermarket
 
     @property
     def basket_size_target(self):
@@ -66,10 +62,6 @@ class Customer(Agent):
             # TODO: the customer is waiting for some steps and then he exits
             pass
 
-        elif self.__state == CustomerState.EXITING:
-            # TODO: tell the supermarket to be eliminated
-            self.exit()
-
         else:
             pass
 
@@ -95,6 +87,5 @@ class Customer(Agent):
         wait time. """
         pass
 
-    def exit(self):
-        self.__supermarket.remove_customer(self)
-
+    def get_state(self):
+        return self.__state

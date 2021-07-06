@@ -4,7 +4,7 @@ from mesa import Model
 from mesa.space import SingleGrid
 from mesa.time import RandomActivation
 
-from Customer import Customer
+from Customer import Customer, CustomerState
 from OccupiedCell import OccupiedCell
 from src.cashdesk.CashDesk import CashDesk
 from src.queue.SupermarketQueue import SupermarketQueue
@@ -29,6 +29,11 @@ class Supermarket(Model):
         if self.__counter % 5 == 0:  # TODO: when do we have to create new agents? what is the maximum basket size?
             self.add_customer(
                 Customer(len(self.__customers) + 1, self, random.randint(0, 50), bool(random.getrandbits(1))))
+
+        for customer in self.__customers:
+            if customer.get_state() == CustomerState.EXITING:
+                self.remove_customer()
+
         self.schedule.step()
         self.__counter += 1
 
@@ -87,7 +92,7 @@ class Supermarket(Model):
 
     def add_occupied_cell(self, is_cash_desk):
         cell = OccupiedCell(len(self.get_occupied_cells()) + 1, self, is_cash_desk)
-        self.__customers.add(cell)
+        self.__occupied_cells.add(cell)
         return cell
 
     def get_cash_desks(self):
