@@ -1,10 +1,11 @@
 # classe astratta
 from abc import ABC, abstractmethod, abstractproperty
 from queue import Queue
+from mesa import Agent
 from src.Customer import Customer
 
 
-class SupermarketQueue(ABC):
+class SupermarketQueue(ABC, Agent):
 
     @abstractmethod
     def __init__(self):

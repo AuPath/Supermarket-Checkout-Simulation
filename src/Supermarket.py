@@ -37,21 +37,21 @@ class Supermarket(Model):
         x = self.grid.width - 3
         y = 0
 
-        cell = OccupiedCell(len(self.get_occupied_cells()) + 1, self)
+        cell = OccupiedCell(len(self.get_occupied_cells()) + 1, self, False)
         self.add_occupied_cell(cell)
         self.grid.place_agent(cell, (x, y))
-        cell = OccupiedCell(len(self.get_occupied_cells()) + 1, self)
+        cell = OccupiedCell(len(self.get_occupied_cells()) + 1, self, False)
         self.add_occupied_cell(cell)
         self.grid.place_agent(cell, (x, y + 1))
 
         # Cash desks
         x = 0
-        for queue in self.get_queues():
+        for queue in self.get_cash_desks():
             y = 1
-            cell = OccupiedCell(len(self.get_occupied_cells()) + 1, self)
+            cell = OccupiedCell(len(self.get_occupied_cells()) + 1, self, True)
             self.add_occupied_cell(cell)
             self.grid.place_agent(cell, (x, y))
-            cell = OccupiedCell(len(self.get_occupied_cells()) + 1, self)
+            cell = OccupiedCell(len(self.get_occupied_cells()) + 1, self, True)
             self.add_occupied_cell(cell)
             self.grid.place_agent(cell, (x, y + 1))
 
@@ -90,3 +90,6 @@ class Supermarket(Model):
 
     def add_occupied_cell(self, cell: OccupiedCell):
         self.__customers.add(cell)
+
+    def get_cash_desks(self):
+        return self.__cash_desks
