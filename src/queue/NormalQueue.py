@@ -13,3 +13,6 @@ class NormalQueue(SupermarketQueue):
 
     def dequeue(self):
         return super.dequeue()
+
+    def size(self):
+        return super.size()
