@@ -79,7 +79,7 @@ class Supermarket(Model):
     def get_unique_queues(self):
         return set(self.get_unique_queues())
 
-    def get_adj_queues(self, queue: SupermarketQueue, window_size: int):
+    def get_adj_queues(self, queue: SupermarketQueue):
         pass
 
 
