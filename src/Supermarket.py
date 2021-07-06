@@ -7,16 +7,17 @@ from mesa.time import RandomActivation
 from Customer import Customer
 from OccupiedCell import OccupiedCell
 from src.queue.SupermarketQueue import SupermarketQueue
+from src.cashdesk.CashDesk import CashDesk
 
 ADJ_WINDOW_SIZE = 2
 
 
 class Supermarket(Model):
 
-    def __init__(self, width, height, queues: list[SupermarketQueue], adj_window_size=ADJ_WINDOW_SIZE):
+    def __init__(self, width, height, cash_desks: list[CashDesk], adj_window_size=ADJ_WINDOW_SIZE):
         self.__customers = set()
         self.__occupied_cells = set()
-        self.__queues = queues
+        self.__cash_desks = cash_desks
         self.grid = SingleGrid(width, height, False)
         self.schedule = RandomActivation(self)
         self.__adj_window_size = adj_window_size
@@ -73,10 +74,14 @@ class Supermarket(Model):
         self.__customers.remove(customer)
 
     def get_queues(self):
-        return self.__queues
+        return [cash_desk.get_queue() for cash_desk in self.__cash_desks]
+
+    def get_unique_queues(self):
+        return set(self.get_unique_queues())
 
     def get_adj_queues(self, queue: SupermarketQueue, window_size: int):
         pass
+
 
     def get_valid_queues(self):
         pass
