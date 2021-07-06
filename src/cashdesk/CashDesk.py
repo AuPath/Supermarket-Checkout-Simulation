@@ -1,8 +1,16 @@
+from enum import Enum
+
 from src.queue.SupermarketQueue import SupermarketQueue
 from src.Customer import Customer
 from abc import ABC, abstractmethod
 
 PROCESSING_SPEED = 5
+
+
+class CashDeskState(Enum):
+    GET_NEW_CUSTOMER = 1
+    PROCESSING_CUSTOMER = 2
+    TRANSACTION_COMPLETED = 3
 
 
 class CashDesk(ABC):
@@ -12,16 +20,20 @@ class CashDesk(ABC):
         self.__queue = supermarket_queue
         self.__customer: Customer = None
         self.__processing_speed = processing_speed
+        self.__state = CashDeskState.GET_NEW_CUSTOMER
 
     @property
     def get_queue(self):
         return self.__queue
 
-    def serve_new_customer(self, customer: Customer):
-        self.__customer = customer
+    def serve_new_customer(self):
+        self.__customer = self.__queue.dequeue()
 
     def process_customer(self):
-        self.__customer.increase_processed_basket(self.__processing_speed)
+        self.get_customer().increase_processed_basket(self.__processing_speed)
 
     def complete_transaction(self):
-        pass
+        self.get_customer().complete_transaction()
+
+    def get_customer(self):
+        return self.__customer

@@ -3,6 +3,7 @@ from enums import Enum
 
 SHOPPING_SPEED = 1
 
+
 class CustomerState(Enum):
     ENTERED = 1
     SHOPPING = 2
@@ -62,9 +63,6 @@ class Customer(Agent):
             # TODO: the customer is waiting for some steps and then he exits
             pass
 
-        else:
-            pass
-
     def enter(self):
         """When the customer enters the supermarket, he is assigned two variables: his basket size and if he wants to go
         to the self-scan cash desk. """
@@ -89,3 +87,9 @@ class Customer(Agent):
 
     def get_state(self):
         return self.__state
+
+    def complete_transaction(self):
+        self.__state = CustomerState.EXITING
+
+    def transaction_is_completed(self):
+        return self.__basket_size_target <= self.processed_basket
