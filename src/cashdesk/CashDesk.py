@@ -10,7 +10,7 @@ class CashDesk(ABC):
     @abstractmethod
     def __init__(self, supermarket_queue: SupermarketQueue, processing_speed=PROCESSING_SPEED):
         self.__queue = supermarket_queue
-        self.__customer : Customer = None
+        self.__customer: Customer = None
         self.__processing_speed = processing_speed
 
     @property
@@ -22,7 +22,6 @@ class CashDesk(ABC):
 
     def process_customer(self):
         self.__customer.increase_processed_basket(self.__processing_speed)
-        pass
 
     def complete_transaction(self):
         pass

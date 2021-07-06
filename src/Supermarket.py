@@ -82,7 +82,6 @@ class Supermarket(Model):
     def get_adj_queues(self, queue: SupermarketQueue):
         pass
 
-
     def get_valid_queues(self):
         pass
 
