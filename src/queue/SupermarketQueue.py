@@ -1,13 +1,14 @@
 # classe astratta
 from abc import ABC, abstractmethod, abstractproperty
 from queue import Queue
-from Customer import Customer
+from src.Customer import Customer
 
-class SuperMarketQueue(ABC):
+class SupermarketQueue(ABC):
 
-    @abstractproperty
+    @abstractmethod
+    @property
     def queue(self):
-        return self._queue    
+        return self.__queue    
 
     @abstractmethod
     def enqueue(self, c:Customer):
@@ -16,7 +17,4 @@ class SuperMarketQueue(ABC):
     @abstractmethod
     def dequeue(self):
         pass
-
-    @abstractmethod
-    def first(self):
-        pass
+    
