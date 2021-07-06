@@ -3,6 +3,7 @@ from abc import ABC, abstractmethod, abstractproperty
 from queue import Queue
 from src.Customer import Customer
 
+
 class SupermarketQueue(ABC):
 
     @abstractmethod
@@ -16,4 +17,3 @@ class SupermarketQueue(ABC):
     @abstractmethod
     def dequeue(self):
         return self.__queue.get()
-    
