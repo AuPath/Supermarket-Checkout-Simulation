@@ -25,18 +25,15 @@ class Customer(Agent):
         elif self.state == CustomerState.SHOPPING:
             # Every step the customer puts an element in his basket, when he reaches the target basket size, he starts
             # choosing a queue
-            if self.basket_size_target > self.basket_size:
-                self.basket_size += 1  # TODO: how many items does the customer put in his basket in a step?
-            elif self.basket_size_target == self.basket_size:
-                self.state = CustomerState.CHOOSING_QUEUE
+            self.shop()
 
         elif self.state == CustomerState.CHOOSING_QUEUE:
             # TODO: define the strategy
-            pass
+            self.choose_queue()
 
         elif self.state == CustomerState.QUEUED:
             # TODO: define the strategy to do jockeying
-            pass
+            self.jockey()
 
         elif self.state == CustomerState.PAYING:
             # TODO: the customer is waiting for some steps and then he exits
@@ -44,38 +41,32 @@ class Customer(Agent):
 
         elif self.state == CustomerState.EXITING:
             # TODO: tell the supermarket to be eliminated
-            pass
+            self.exit()
 
         else:
             pass
 
-    def choose_queue(self):
-        """The customer chooses following a strategy, only if he has already finished to shop."""
-        if 0 < self.basket_size == self.basket_size_target and self.basket_size_target > 0:
-            pass
-        else:
-            pass
+    def enter(self):
+        """When the customer enters the supermarket, he is assigned two variables: his basket size and if he wants to go
+        to the self-scan cash desk. """
+        pass
 
     def shop(self):
         """The customer enters the shop and starts shopping, he goes on until he has reached the target basket size."""
-        if self.basket_size_target > 0:
-            pass
-        else:
-            pass
+        if self.basket_size_target > self.basket_size:
+            self.basket_size += 1  # TODO: how many items does the customer put in his basket in a step?
+        elif self.basket_size_target == self.basket_size:
+            self.state = CustomerState.CHOOSING_QUEUE
+
+    def choose_queue(self):
+        """The customer chooses following a strategy, only if he has already finished to shop."""
+        pass
 
     def jockey(self):
         """When the customer is following a queue, he can change the queue if he computes that it has less expected
         wait time. """
-        if self.target_queue is not None:
-            pass
-        else:
-            pass
+        pass
 
     def exit(self):
         """When the customer has finished his payment, he exits the supermarket."""
-        pass
-
-    def enter(self):
-        """When the customer enters the supermarket, he decises his basket size and if he wants to go to the
-        self-scan cash desk. """
         pass
