@@ -13,7 +13,7 @@ ADJ_WINDOW_SIZE = 2
 
 
 class Supermarket(Model):
-
+    """Supermarket model: description here"""
     def __init__(self, width, height, cash_desks: list[CashDesk], adj_window_size=ADJ_WINDOW_SIZE):
         self.__customers = set()
         self.__occupied_cells = set()
@@ -40,15 +40,13 @@ class Supermarket(Model):
     def init_environment(self):
         # Entering zone
         x = self.grid.width - 3
-        y = 0
-        cell = self.add_occupied_cell(False, "v")
-        self.grid.place_agent(cell, (x, y))
-        cell = self.add_occupied_cell(False, "v")
-        self.grid.place_agent(cell, (x, y + 1))
+        for y in range(0, self.grid.height - 3):
+            cell = self.add_occupied_cell(False, "v")
+            self.grid.place_agent(cell, (x, y))
 
         # Shopping zone
         y = self.grid.height - 3
-        for x in range(0, self.grid.width):
+        for x in range(0, self.grid.width - 3):
             cell = self.add_occupied_cell(False, "h")
             self.grid.place_agent(cell, (x, y))
 
