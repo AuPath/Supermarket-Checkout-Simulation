@@ -9,6 +9,8 @@ class Customer(Agent):
         """Constructor, the basket_size_target and the boolean self_scan are assigned by the main class."""
         super().__init__(unique_id, model)
 
+        self.type = 0
+
         self.basket_size = basket_size_target
         self.self_scan = self_scan
         self.state = CustomerState.ENTERED
