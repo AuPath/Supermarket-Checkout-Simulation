@@ -6,15 +6,14 @@ from src.Customer import Customer
 class SupermarketQueue(ABC):
 
     @abstractmethod
-    @property
-    def queue(self):
-        return self.__queue    
+    def __init__(self):
+        self.__queue = Queue()
 
     @abstractmethod
     def enqueue(self, c:Customer):
-        pass
+        self.__queue.put(c)
 
     @abstractmethod
     def dequeue(self):
-        pass
+        return self.__queue.get()
     

@@ -4,15 +4,15 @@ from queue import Queue
 class QueueSelfScan(SuperMarketQueue):
 
     def __init__(self):
-        self.__queue = Queue()
+        super().__init__(self)
         self.__partial_check_queue = Queue()
 
     def queue(self):
         super().queue()
 
     def enqueue(self, c:Customer):
-        self.__queue.put(c)
+        super().enqueue(c)
 
     def dequeue(self):
-        return self.__queue.get()
+        return super().dequeue()
 
