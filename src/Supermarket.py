@@ -37,22 +37,18 @@ class Supermarket(Model):
         x = self.grid.width - 3
         y = 0
 
-        cell = OccupiedCell(len(self.get_occupied_cells()) + 1, self, False)
-        self.add_occupied_cell(cell)
+        cell = self.add_occupied_cell(False)
         self.grid.place_agent(cell, (x, y))
-        cell = OccupiedCell(len(self.get_occupied_cells()) + 1, self, False)
-        self.add_occupied_cell(cell)
+        cell = self.add_occupied_cell(False)
         self.grid.place_agent(cell, (x, y + 1))
 
         # Cash desks
         x = 0
-        for queue in self.get_cash_desks():
+        for cash_desk in self.get_cash_desks():
             y = 1
-            cell = OccupiedCell(len(self.get_occupied_cells()) + 1, self, True)
-            self.add_occupied_cell(cell)
+            cell = self.add_occupied_cell(True)
             self.grid.place_agent(cell, (x, y))
-            cell = OccupiedCell(len(self.get_occupied_cells()) + 1, self, True)
-            self.add_occupied_cell(cell)
+            cell = self.add_occupied_cell(True)
             self.grid.place_agent(cell, (x, y + 1))
 
             x = x + 2
@@ -88,8 +84,10 @@ class Supermarket(Model):
     def get_occupied_cells(self):
         return self.__occupied_cells
 
-    def add_occupied_cell(self, cell: OccupiedCell):
+    def add_occupied_cell(self, is_cash_desk):
+        cell = OccupiedCell(len(self.get_occupied_cells()) + 1, self, is_cash_desk)
         self.__customers.add(cell)
+        return cell
 
     def get_cash_desks(self):
         return self.__cash_desks
