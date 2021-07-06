@@ -6,8 +6,8 @@ from mesa.time import RandomActivation
 
 from Customer import Customer
 from OccupiedCell import OccupiedCell
-from src.queue.SupermarketQueue import SupermarketQueue
 from src.cashdesk.CashDesk import CashDesk
+from src.queue.SupermarketQueue import SupermarketQueue
 
 ADJ_WINDOW_SIZE = 2
 
@@ -56,18 +56,19 @@ class Supermarket(Model):
     def add_customer(self, customer: Customer):
         self.__customers.add(customer)
         self.schedule.add(customer)
-        positioned = False
+        positions = [(self.grid.width - 2, 0), (self.grid.width - 1, 0), (self.grid.width - 2, 1),
+                     (self.grid.width - 1, 1)]
 
-        while not positioned:
-            # Add the agent to a random grid cell
-            x = self.random.randrange(self.grid.width)
-            y = self.random.randrange(self.grid.height)
-            if self.grid.is_cell_empty((x, y)):
-                self.grid.place_agent(customer, (x, y))
-                positioned = True
+        for position in positions:
+            # Add the agent to the entering zone of the market
+            if self.grid.is_cell_empty(position):
+                self.grid.place_agent(customer, position)
+                return
 
     def remove_customer(self, customer: Customer):
         self.__customers.remove(customer)
+        self.schedule.remove(customer)
+        self.grid.remove_agent(customer)
 
     def get_queues(self):
         return [cash_desk.get_queue() for cash_desk in self.__cash_desks]
