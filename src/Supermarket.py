@@ -41,11 +41,16 @@ class Supermarket(Model):
         # Entering zone
         x = self.grid.width - 3
         y = 0
-
-        cell = self.add_occupied_cell(False)
+        cell = self.add_occupied_cell(False, "v")
         self.grid.place_agent(cell, (x, y))
-        cell = self.add_occupied_cell(False)
+        cell = self.add_occupied_cell(False, "v")
         self.grid.place_agent(cell, (x, y + 1))
+
+        # Shopping zone
+        y = self.grid.height - 3
+        for x in range(0, self.grid.width):
+            cell = self.add_occupied_cell(False, "h")
+            self.grid.place_agent(cell, (x, y))
 
         # Cash desks
         x = 0
@@ -90,8 +95,8 @@ class Supermarket(Model):
     def get_occupied_cells(self):
         return self.__occupied_cells
 
-    def add_occupied_cell(self, is_cash_desk):
-        cell = OccupiedCell(len(self.get_occupied_cells()) + 1, self, is_cash_desk)
+    def add_occupied_cell(self, is_cash_desk, direction=""):
+        cell = OccupiedCell(len(self.get_occupied_cells()) + 1, self, is_cash_desk, direction)
         self.__occupied_cells.add(cell)
         return cell
 

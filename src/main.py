@@ -27,12 +27,20 @@ def agent_portrayal(agent):
                          "h": 1,
                          "Layer": 1}
         else:
-            portrayal = {"Shape": "rect",
-                         "Filled": "true",
-                         "Color": "black",
-                         "w": 0.2,
-                         "h": 1,
-                         "Layer": 1}
+            if agent.direction == "v":
+                portrayal = {"Shape": "rect",
+                             "Filled": "true",
+                             "Color": "black",
+                             "w": 0.2,
+                             "h": 1,
+                             "Layer": 1}
+            elif agent.direction == "h":
+                portrayal = {"Shape": "rect",
+                             "Filled": "true",
+                             "Color": "black",
+                             "w": 1,
+                             "h": 0.2,
+                             "Layer": 1}
 
     return portrayal
 
