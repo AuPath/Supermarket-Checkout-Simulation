@@ -40,3 +40,11 @@ class SupermarketQueue(ABC, Agent):
             l.append(self.__queue.get())
 
         return l
+
+    @abstractmethod
+    def total_items(self):
+        bskt_size = 0
+        for c in self.content():
+            bskt_size += c.basket_size
+
+        return bskt_size
