@@ -4,5 +4,5 @@ class QueueChoiceStrategy(ABC):
 
     # Must return a single list
     @abstractmethod
-    def choose_queue(self, queues: List):
+    def choose_queue(self, queues: list):
         pass
