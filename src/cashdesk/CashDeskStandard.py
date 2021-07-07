@@ -1,13 +1,12 @@
-from mesa import Agent
-
 from src.cashdesk.CashDesk import CashDesk
 from src.queue.SupermarketQueue import SupermarketQueue
 
 from src.cashdesk.CashDesk import CashDeskState
 
-class CashDeskStandard(Agent, CashDesk):
-    def __init__(self, supermarket_queue: SupermarketQueue):
-        super().__init__(supermarket_queue)
+
+class CashDeskStandard(CashDesk):
+    def __init__(self, agent_id, model, supermarket_queue: SupermarketQueue):
+        super().__init__(agent_id, model, supermarket_queue)
 
     def step(self):
         if self.__state == CashDeskState.GET_NEW_CUSTOMER:

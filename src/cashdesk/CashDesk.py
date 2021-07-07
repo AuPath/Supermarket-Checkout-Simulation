@@ -1,5 +1,7 @@
 from enum import Enum
 
+from mesa import Agent
+
 from src.queue.SupermarketQueue import SupermarketQueue
 from src.Customer import Customer
 from abc import ABC, abstractmethod
@@ -13,10 +15,12 @@ class CashDeskState(Enum):
     TRANSACTION_COMPLETED = 3
 
 
-class CashDesk(ABC):
+class CashDesk(ABC, Agent):
 
     @abstractmethod
-    def __init__(self, supermarket_queue: SupermarketQueue, processing_speed=PROCESSING_SPEED):
+    def __init__(self, agent_id, model, supermarket_queue: SupermarketQueue, processing_speed=PROCESSING_SPEED):
+        super().__init__(agent_id, model)
+
         self.__queue = supermarket_queue
         self.__customer: Customer = None
         self.__processing_speed = processing_speed
