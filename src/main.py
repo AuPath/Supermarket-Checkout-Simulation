@@ -2,7 +2,6 @@ from mesa.visualization.ModularVisualization import ModularServer
 from mesa.visualization.modules import CanvasGrid
 
 from src.Supermarket import Supermarket
-from src.cashdesk.CashDeskStandard import CashDeskStandard
 from src.queue.NormalQueue import NormalQueue
 
 
@@ -45,17 +44,23 @@ def agent_portrayal(agent):
     return portrayal
 
 
-cash_desks = [CashDeskStandard(NormalQueue()), CashDeskStandard(NormalQueue())]
-width = len(cash_desks) * 2 + 3
+# Cash desks metadata
+cash_desks_metadata = [NormalQueue(), NormalQueue()]
+# Customers metadata
+customers_metadata = [(3, False), (4, False), (5, False)]
 
+width = 2 * 2 + 3
 height = 10
 pixels_width = 500
 pixels_height = 500 / width * height
-grid = CanvasGrid(agent_portrayal, width, height, pixels_width, pixels_height)
+grid = CanvasGrid(agent_portrayal, len(cash_desks_metadata) * 2 + 3,
+                  height, pixels_width, pixels_height)
 
+# Create server
 server = ModularServer(Supermarket,
                        [grid],
                        "Supermarket",
-                       {"width": width, "height": height, "cash_desks": cash_desks})
+                       {"customers_metadata": customers_metadata,
+                        "cash_desks_metadata": cash_desks_metadata})
 server.port = 8521  # The default
 server.launch()

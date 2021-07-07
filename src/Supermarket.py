@@ -7,37 +7,63 @@ from mesa.time import RandomActivation
 from Customer import Customer, CustomerState
 from OccupiedCell import OccupiedCell
 from src.cashdesk.CashDesk import CashDesk
+from src.cashdesk.CashDeskStandard import CashDeskStandard
 from src.queue.SupermarketQueue import SupermarketQueue
 
 ADJ_WINDOW_SIZE = 2
 
+GRID_HEIGHT = 10
+
 
 class Supermarket(Model):
     """Supermarket model: description here"""
-    def __init__(self, width, height, cash_desks: list[CashDesk], adj_window_size=ADJ_WINDOW_SIZE):
+    def __init__(self, customers_metadata, cash_desks_metadata, adj_window_size=ADJ_WINDOW_SIZE):
         self.__customers = set()
         self.__occupied_cells = set()
-        self.__cash_desks = cash_desks
-        self.grid = SingleGrid(width, height, False)
-        self.schedule = RandomActivation(self)
+        self.__cash_desks : list[CashDesk] = []
+        self.grid = None
+        self.__schedule = RandomActivation(self)
         self.__adj_window_size = adj_window_size
-        self.__counter = 0  # TODO: is needed to create agents, is there another way?
+        self.__num_agent = 0
         self.running = True
+        # Create cash desks
+        self.init_cash_desks(cash_desks_metadata)
+        # Init grid
         self.init_environment()
+        # Create customers
+        self.init_customers(customers_metadata)
 
     def step(self):
-        if self.__counter % 5 == 0:  # TODO: when do we have to create new agents? what is the maximum basket size?
-            self.add_customer(
-                Customer(len(self.__customers) + 1, self, random.randint(0, 50), bool(random.getrandbits(1))))
-
         for customer in self.__customers:
             if customer.get_state() == CustomerState.EXITING:
-                self.remove_customer()
+                self.remove_customer(customer)
 
-        self.schedule.step()
-        self.__counter += 1
+        self.__schedule.step()
+
+    def init_customers(self, customers_metadata):
+        for basket_size, self_scan in customers_metadata:
+            customer = Customer(self.__num_agent, self, basket_size, self_scan)
+            self.__num_agent += 1
+            self.add_customer(customer)
+
+    def init_cash_desks(self, cash_desks_metadata):
+        for idx, queue in enumerate(cash_desks_metadata):
+            # TODO: Generalize CashDesk type
+            cash_desk = CashDeskStandard(idx, self, queue)
+            self.add_cash_desk(cash_desk)
 
     def init_environment(self):
+        # Build grid
+        self.init_grid()
+        # Fill grid
+        self.fill_grid()
+
+    def init_grid(self):
+        width = len(self.__cash_desks) * 2 + 3
+        height = GRID_HEIGHT
+        self.grid = SingleGrid(width, height, False)
+
+    def fill_grid(self):
         # Entering zone
         x = self.grid.width - 3
         for y in range(0, self.grid.height - 3):
@@ -61,9 +87,12 @@ class Supermarket(Model):
 
             x = x + 2
 
+    def add_cash_desk(self, cash_desks):
+        self.__cash_desks.append(cash_desks)
+
     def add_customer(self, customer: Customer):
         self.__customers.add(customer)
-        self.schedule.add(customer)
+        self.__schedule.add(customer)
         positions = [(self.grid.width - 2, 0), (self.grid.width - 1, 0), (self.grid.width - 2, 1),
                      (self.grid.width - 1, 1)]
 
@@ -75,7 +104,7 @@ class Supermarket(Model):
 
     def remove_customer(self, customer: Customer):
         self.__customers.remove(customer)
-        self.schedule.remove(customer)
+        self.__schedule.remove(customer)
         self.grid.remove_agent(customer)
 
     def get_queues(self):
