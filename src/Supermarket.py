@@ -1,5 +1,3 @@
-import random
-
 from mesa import Model
 from mesa.space import SingleGrid
 from mesa.time import RandomActivation
@@ -16,8 +14,10 @@ GRID_HEIGHT = 10
 
 
 class Supermarket(Model):
-    """Supermarket model: description here"""
-    def __init__(self, customers_metadata, cash_desks_metadata, adj_window_size=ADJ_WINDOW_SIZE):
+    """SuperMARCO model: description here"""
+
+    def __init__(self, customers_metadata, cash_desks_metadata, entering_area_width, shopping_area_height,
+                 adj_window_size=ADJ_WINDOW_SIZE):
         self.__customers = set()
         self.__occupied_cells = set()
         self.__cash_desks: list[CashDesk] = []
@@ -27,6 +27,8 @@ class Supermarket(Model):
         self.__num_agent = 0
         self.running = True
         self.queues = None
+        self.entering_area_width = entering_area_width
+        self.shopping_area_height = shopping_area_height
         # Create cash desks
         self.init_cash_desks(cash_desks_metadata)
         # Init grid
@@ -36,7 +38,16 @@ class Supermarket(Model):
 
     def step(self):
         for customer in self.__customers:
-            if customer.get_state() == CustomerState.EXITING:
+            if customer.get_state() == CustomerState.SHOPPING:
+                if not self.is_in_shopping_area(customer):
+                    self.grid.remove_agent(customer)
+
+                    position = self.get_shopping_area_position()
+                    if self.grid.is_cell_empty(position):
+                        self.grid.place_agent(customer, position)
+                        return
+
+            if customer.get_state == CustomerState.EXITING:
                 self.remove_customer(customer)
 
         self.__schedule.step()
@@ -66,14 +77,14 @@ class Supermarket(Model):
 
     def fill_grid(self):
         # Entering zone
-        x = self.grid.width - 3
-        for y in range(0, self.grid.height - 3):
+        x = self.grid.width - self.entering_area_width
+        for y in range(0, self.grid.height - self.shopping_area_height):
             cell = self.add_occupied_cell(False, "v")
             self.grid.place_agent(cell, (x, y))
 
         # Shopping zone
-        y = self.grid.height - 3
-        for x in range(0, self.grid.width - 3):
+        y = self.grid.height - self.shopping_area_height
+        for x in range(0, self.grid.width - self.entering_area_width):
             cell = self.add_occupied_cell(False, "h")
             self.grid.place_agent(cell, (x, y))
 
@@ -136,3 +147,12 @@ class Supermarket(Model):
     def get_cash_desks(self):
         return self.__cash_desks
 
+    def is_in_shopping_area(self, customer: Customer):
+        (x, y) = customer.pos
+        if self.grid.height - self.shopping_area_height < y <= self.grid.height:
+            return True
+        return False
+
+    def get_shopping_area_position(self):
+        return self.random.randrange(self.grid.width), self.random.randrange(
+            self.grid.height - self.shopping_area_height, self.grid.height)
