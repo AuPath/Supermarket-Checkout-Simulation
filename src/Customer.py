@@ -51,7 +51,8 @@ class Customer(Agent):
 
         elif self.state == CustomerState.SHOPPING:
             '''
-            Every step the customer puts an element in his basket, when
+            Every step the customer puts an element i
+            n his basket, when
             he reaches the target basket size, he starts choosing a queue
             '''
             if self.basket_size < self.basket_size_target:
