@@ -3,6 +3,7 @@ from mesa.visualization.modules import CanvasGrid
 
 from src.Supermarket import Supermarket
 from src.queue.NormalQueue import NormalQueue
+from src.queuechoicestrategy.QueueChoiceLeastItems import QueueChoiceLeastItems
 
 
 def agent_portrayal(agent):
@@ -47,7 +48,9 @@ def agent_portrayal(agent):
 # Cash desks metadata
 cash_desks_metadata = [NormalQueue(), NormalQueue()]
 # Customers metadata
-customers_metadata = [(3, False), (4, False), (5, False)]
+customers_metadata = [(3, False, QueueChoiceLeastItems()),
+                      (4, False, QueueChoiceLeastItems()),
+                      (5, False, QueueChoiceLeastItems())]
 
 width = 2 * 2 + 3
 height = 10

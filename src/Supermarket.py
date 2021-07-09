@@ -41,8 +41,8 @@ class Supermarket(Model):
         self.__schedule.step()
 
     def init_customers(self, customers_metadata):
-        for basket_size, self_scan in customers_metadata:
-            customer = Customer(self.__num_agent, self, basket_size, self_scan)
+        for basket_size, self_scan, queue_choice_strategy in customers_metadata:
+            customer = Customer(self.__num_agent, self, basket_size, self_scan, queue_choice_strategy)
             self.__num_agent += 1
             self.add_customer(customer)
 
