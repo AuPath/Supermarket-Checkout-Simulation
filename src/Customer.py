@@ -16,7 +16,9 @@ class CustomerState(Enum):
 class Customer(Agent):
     """This class represents the client agent."""
 
-    def __init__(self, agent_id, model, basket_size_target, self_scan, shopping_speed=SHOPPING_SPEED):
+    def __init__(self, agent_id, model,
+                 basket_size_target, self_scan, queue_choice_strategy,
+                 shopping_speed=SHOPPING_SPEED):
         """Constructor, the basket_size_target and the boolean self_scan are assigned by the main class."""
         super().__init__(agent_id, model)
 
@@ -31,6 +33,8 @@ class Customer(Agent):
         self.processed_basket = 0
 
         self.shopping_speed = shopping_speed
+
+        self.queue_choice_strategy = queue_choice_strategy
 
     def basket_size_target(self):
         return self.basket_size_target
@@ -87,6 +91,8 @@ class Customer(Agent):
         The customer chooses following a strategy,
         only if he has already finished to shop.
         """
+        all_queues = self.model.get_queues()
+        self.target_queue = self.queue_choice_strategy.chose_queue()
         pass
 
     def jockey(self):
