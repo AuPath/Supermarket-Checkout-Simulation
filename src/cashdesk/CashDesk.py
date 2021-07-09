@@ -27,11 +27,30 @@ class CashDesk(ABC, Agent):
         self.__state = CashDeskState.GET_NEW_CUSTOMER
 
     @property
-    def get_queue(self):
+    def queue(self):
         return self.__queue
 
+    def step(self):
+        if self.__state == CashDeskState.GET_NEW_CUSTOMER:
+            new_state = self.serve_new_customer()
+            self.__state = new_state
+        elif self.__state == CashDeskState.PROCESSING_CUSTOMER:
+            if not self.__customer.transaction_is_completed():
+                self.process_customer()
+            else:
+                self.__state = CashDeskState.TRANSACTION_COMPLETED
+        elif self.__state == CashDeskState.TRANSACTION_COMPLETED:
+            self.complete_transaction()
+            self.__state = CashDeskState.GET_NEW_CUSTOMER
+
     def serve_new_customer(self):
-        self.__customer = self.__queue.dequeue()
+        if self.queue.size() > 0:
+            self.__customer = self.__queue.dequeue()
+            self.__customer.start_transaction()
+            new_state = CashDeskState.PROCESSING_CUSTOMER
+        else:
+            new_state = CashDeskState.GET_NEW_CUSTOMER
+        return new_state
 
     def process_customer(self):
         self.get_customer().increase_processed_basket(self.__processing_speed)

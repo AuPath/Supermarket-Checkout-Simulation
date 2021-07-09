@@ -22,7 +22,8 @@ class Supermarket(Model):
         self.__occupied_cells = set()
         self.__cash_desks: list[CashDesk] = []
         self.grid = None
-        self.__schedule = RandomActivation(self)
+        self.customer_scheduler = RandomActivation(self)
+        self.cash_desk_scheduler = RandomActivation(self)
         self.__adj_window_size = adj_window_size
         self.__num_agent = 0
         self.running = True
@@ -35,11 +36,15 @@ class Supermarket(Model):
         self.init_customers(customers_metadata)
 
     def step(self):
+        customers_to_remove = set()
         for customer in self.__customers:
             if customer.get_state() == CustomerState.EXITING:
-                self.remove_customer(customer)
+                customers_to_remove.add(customer)
+        for to_remove in customers_to_remove:
+            self.remove_customer(to_remove)
 
-        self.__schedule.step()
+        self.customer_scheduler.step()
+        self.cash_desk_scheduler.step()
 
     def init_customers(self, customers_metadata):
         for basket_size, self_scan, queue_choice_strategy in customers_metadata:
@@ -90,10 +95,11 @@ class Supermarket(Model):
 
     def add_cash_desk(self, cash_desks):
         self.__cash_desks.append(cash_desks)
+        self.cash_desk_scheduler.add(cash_desks)
 
     def add_customer(self, customer: Customer):
         self.__customers.add(customer)
-        self.__schedule.add(customer)
+        self.customer_scheduler.add(customer)
         positions = [(self.grid.width - 2, 0), (self.grid.width - 1, 0), (self.grid.width - 2, 1),
                      (self.grid.width - 1, 1)]
 
@@ -105,7 +111,7 @@ class Supermarket(Model):
 
     def remove_customer(self, customer: Customer):
         self.__customers.remove(customer)
-        self.__schedule.remove(customer)
+        self.customer_scheduler.remove(customer)
         self.grid.remove_agent(customer)
 
     @property

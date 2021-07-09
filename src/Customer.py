@@ -54,11 +54,15 @@ class Customer(Agent):
             Every step the customer puts an element in his basket, when
             he reaches the target basket size, he starts choosing a queue
             '''
-            self.shop()
+            if self.basket_size < self.basket_size_target:
+                self.shop()
+            elif self.basket_size_target == self.basket_size:
+                self.state = CustomerState.CHOOSING_QUEUE
 
         elif self.state == CustomerState.CHOOSING_QUEUE:
             # TODO: define the strategy
             self.choose_queue()
+            self.state = CustomerState.QUEUED
 
         elif self.state == CustomerState.QUEUED:
             # TODO: define the strategy to do jockeying
@@ -80,20 +84,16 @@ class Customer(Agent):
         The customer enters the shop and starts shopping,
         he goes on until he has reached the target basket size.
         """
-        if self.basket_size < self.basket_size_target:
-            # TODO: how many items does the customer put in his basket in a step?
-            self.basket_size += self.shopping_speed
-        elif self.basket_size_target == self.basket_size:
-            self.state = CustomerState.CHOOSING_QUEUE
+        self.basket_size += self.shopping_speed
 
     def choose_queue(self):
         """
         The customer chooses following a strategy,
         only if he has already finished to shop.
         """
-        all_queues = self.model.get_queues()
-        self.target_queue = self.queue_choice_strategy.chose_queue()
-        pass
+        all_queues = self.model.queues
+        self.target_queue = self.queue_choice_strategy.choose_queue(all_queues)
+        self.target_queue.enqueue(self)
 
     def jockey(self):
         """
@@ -105,8 +105,16 @@ class Customer(Agent):
     def get_state(self):
         return self.state
 
+    def state(self):
+        return self.state
+
+    def start_transaction(self):
+        self.state = CustomerState.CASH_DESK
+
     def complete_transaction(self):
         self.state = CustomerState.EXITING
 
     def transaction_is_completed(self):
         return self.basket_size_target <= self.processed_basket
+
+
