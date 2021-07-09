@@ -161,4 +161,4 @@ class Supermarket(Model):
 
     def get_shopping_area_position(self):
         return self.random.randrange(self.grid.width), self.random.randrange(
-            self.grid.height - self.shopping_area_height, self.grid.height)
+            self.grid.height - self.shopping_area_height + 1, self.grid.height)
