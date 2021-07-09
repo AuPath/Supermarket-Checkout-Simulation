@@ -20,12 +20,13 @@ class Supermarket(Model):
     def __init__(self, customers_metadata, cash_desks_metadata, adj_window_size=ADJ_WINDOW_SIZE):
         self.__customers = set()
         self.__occupied_cells = set()
-        self.__cash_desks : list[CashDesk] = []
+        self.__cash_desks: list[CashDesk] = []
         self.grid = None
         self.__schedule = RandomActivation(self)
         self.__adj_window_size = adj_window_size
         self.__num_agent = 0
         self.running = True
+        self.queues = None
         # Create cash desks
         self.init_cash_desks(cash_desks_metadata)
         # Init grid
@@ -107,8 +108,13 @@ class Supermarket(Model):
         self.__schedule.remove(customer)
         self.grid.remove_agent(customer)
 
-    def get_queues(self):
-        return [cash_desk.get_queue() for cash_desk in self.__cash_desks]
+    @property
+    def queues(self):
+        return [cash_desk.queue for cash_desk in self.__cash_desks]
+
+    @queues.setter
+    def queues(self, value):
+        self._queues = value
 
     def get_unique_queues(self):
         return set(self.get_unique_queues())
@@ -129,3 +135,4 @@ class Supermarket(Model):
 
     def get_cash_desks(self):
         return self.__cash_desks
+
