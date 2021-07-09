@@ -84,3 +84,9 @@
 ## Cose random
     
     Break time AKA tempo tra una transazione e l'altra.
+
+## Struttura dell supermercato
+Ogni supermercato saraà composto necessariamente da 3 zone:
+1. **Zona di entrata**: Non cambia mai. Costituita da un rettangolo in alto
+2. **Zona di shopping**: Non cambia mai. Costituita da un rettangolo a destra
+3. **Zonda delle casse**: Questa zona è dinamica. Si può scegliere al momento della costruzione del supermercato come costruirlo. In questa zona è possibile inserire i diversi tipi di cassa e coda in modo tale da simulare diversi tipi di struttura del negozio.
