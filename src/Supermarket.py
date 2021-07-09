@@ -40,18 +40,19 @@ class Supermarket(Model):
         self.init_customers(customers_metadata)
 
     def step(self):
+        customer_to_remove = set()
         for customer in self.__customers:
             if customer.get_state() == CustomerState.SHOPPING:
                 if not self.is_in_shopping_area(customer):
-                    self.grid.remove_customer(customer)
-
                     position = self.get_shopping_area_position()
                     if self.grid.is_cell_empty(position):
-                        self.grid.place_agent(customer, position)
+                        self.grid.move_agent(customer, position)
                         return
 
             if customer.get_state == CustomerState.EXITING:
-                self.remove_customer(customer)
+                customer_to_remove.add(customer)
+        for to_remove in customer_to_remove:
+            self.remove_customer(to_remove)
 
         self.customer_scheduler.step()
         self.cash_desk_scheduler.step()
@@ -160,4 +161,4 @@ class Supermarket(Model):
 
     def get_shopping_area_position(self):
         return self.random.randrange(self.grid.width), self.random.randrange(
-            self.grid.height - self.shopping_area_height, self.grid.height)
+            self.grid.height - self.shopping_area_height + 1, self.grid.height)
