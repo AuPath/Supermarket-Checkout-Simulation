@@ -64,6 +64,8 @@ server = ModularServer(Supermarket,
                        [grid],
                        "Supermarket",
                        {"customers_metadata": customers_metadata,
-                        "cash_desks_metadata": cash_desks_metadata})
+                        "cash_desks_metadata": cash_desks_metadata,
+                        "entering_area_width": 3,
+                        "shopping_area_height": 3})
 server.port = 8521  # The default
 server.launch()
