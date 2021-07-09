@@ -1,6 +1,5 @@
 from abc import ABC, abstractmethod
 
-from mesa import Agent
 
 from src.zones.Zone import Zone
 

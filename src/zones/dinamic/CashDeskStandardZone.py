@@ -1,6 +1,4 @@
-from mesa import Agent
-
-from src.zones.CashDeskZone import CashDeskZone
+from src.zones.dinamic.CashDeskZone import CashDeskZone
 
 
 class CashDeskStandardZone(CashDeskZone):

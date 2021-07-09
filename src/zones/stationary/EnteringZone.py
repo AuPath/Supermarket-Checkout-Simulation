@@ -1,4 +1,4 @@
-from src.zones.StationaryZone import StationaryZone
+from src.zones.stationary.StationaryZone import StationaryZone
 
 
 class ShoppingZone(StationaryZone):
