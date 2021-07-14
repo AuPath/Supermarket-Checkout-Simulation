@@ -8,8 +8,6 @@ from src.zones.Zone import Zone
 class CashDeskZone(Zone):
 
     @abstractmethod
-    def __init__(self, model: Model, dimension: int):
+    def __init__(self, model: Model, cash_desks_number: int):
         super(CashDeskZone, self).__init__(model)
-        self.dimension = dimension
-
-
+        self.cash_desks_number = cash_desks_number

@@ -1,3 +1,5 @@
+import math
+
 from mesa import Model
 from mesa.space import SingleGrid
 from mesa.time import RandomActivation
@@ -6,8 +8,12 @@ from Customer import Customer, CustomerState
 from OccupiedCell import OccupiedCell
 from src.cashdesk.CashDesk import CashDesk
 from src.cashdesk.CashDeskReserved import CashDeskReserved
+from src.cashdesk.CashDeskSelfScan import CashDeskSelfScan
+from src.cashdesk.CashDeskSelfService import CashDeskSelfService
 from src.cashdesk.CashDeskStandard import CashDeskStandard
+from src.queue.NormalQueue import NormalQueue
 from src.queue.SupermarketQueue import SupermarketQueue
+from src.zones.dinamic.CashDeskReservedZone import CashDeskReservedZone
 from src.zones.dinamic.CashDeskSelfScanZone import CashDeskSelfScanZone
 from src.zones.dinamic.CashDeskSelfServiceZone import CashDeskSelfServiceZone
 from src.zones.dinamic.CashDeskStandardZone import CashDeskStandardZone
@@ -22,8 +28,7 @@ GRID_HEIGHT = 10
 class Supermarket(Model):
     """SuperMARCO model: description here"""
 
-    def __init__(self, customers_metadata, cash_desks_metadata, zones_metadata,
-                 adj_window_size=ADJ_WINDOW_SIZE):
+    def __init__(self, customers_metadata, zones_metadata, adj_window_size=ADJ_WINDOW_SIZE):
         self.__customers = set()
         self.__occupied_cells = set()
         self.__cash_desks: list[CashDesk] = []
@@ -42,9 +47,9 @@ class Supermarket(Model):
         self.cash_desk_self_service_zone = None
         self.cash_desk_self_scan_zone = None
         self.cash_desk_reserved_zone = None
-        self.init_zones(zones_metadata)
+        self.init_zones()
         # Create cash desks
-        self.init_cash_desks(cash_desks_metadata)
+        self.init_cash_desks()
         # Init grid
         self.init_environment()
         # Create customers
@@ -70,8 +75,8 @@ class Supermarket(Model):
             self.__num_agent += 1
             self.add_customer(customer)
 
-    def init_zones(self, zones_metadata):
-        for zone_type, dimension in zones_metadata:
+    def init_zones(self):
+        for zone_type, dimension in self.zones_metadata:
             if zone_type == 'ENTERING':
                 self.entering_zone = EnteringZone(self, dimension)
             elif zone_type == 'SHOPPING':
@@ -83,15 +88,31 @@ class Supermarket(Model):
             elif zone_type == 'CASH_DESK_SELF_SCAN':
                 self.cash_desk_self_scan_zone = CashDeskSelfScanZone(self, dimension)
             elif zone_type == 'CASH_DESK_RESERVED':
-                self.cash_desk_reserved_zone = CashDeskReserved(self, dimension)
+                self.cash_desk_reserved_zone = CashDeskReservedZone(self, dimension)
             else:
                 pass
 
-    def init_cash_desks(self, cash_desks_metadata):
-        for idx, queue in enumerate(cash_desks_metadata):
-            # TODO: Generalize CashDesk type
-            cash_desk = CashDeskStandard(idx, self, queue)
-            self.add_cash_desk(cash_desk)
+    def init_cash_desks(self):
+        idx = 1
+        for zone_type, dimension in self.zones_metadata:
+            if zone_type == 'CASH_DESK_STANDARD':
+                cash_desk = CashDeskStandard(idx, self, NormalQueue())
+                self.add_cash_desk(cash_desk)
+                idx += 1
+            elif zone_type == 'CASH_DESK_SELF_SERVICE':
+                cash_desk = CashDeskSelfService(idx, self, NormalQueue())
+                self.add_cash_desk(cash_desk)
+                idx += 1
+            elif zone_type == 'CASH_DESK_SELF_SCAN':
+                cash_desk = CashDeskSelfScan(idx, self, NormalQueue())
+                self.add_cash_desk(cash_desk)
+                idx += 1
+            elif zone_type == 'CASH_DESK_RESERVED':
+                cash_desk = CashDeskReserved(idx, self, NormalQueue())
+                self.add_cash_desk(cash_desk)
+                idx += 1
+            else:
+                pass
 
     def init_environment(self):
         # Build grid
@@ -100,8 +121,8 @@ class Supermarket(Model):
         self.fill_grid()
 
     def init_grid(self):
-        width = len(self.__cash_desks) * 2 + 3
         height = GRID_HEIGHT
+        width = 2 + ((self.cash_desk_self_scan_zone.cash_desks_number - math.ceil((height - self.shopping_zone.dimension - 2) / 2))*2 if self.cash_desk_self_scan_zone is not None else 0) + 3 + (self.cash_desk_self_service_zone.cash_desks_number * 4 if self.cash_desk_self_service_zone is not None else 0) + (self.cash_desk_standard_zone.cash_desks_number * 2 if self.cash_desk_standard_zone is not None else 0) + 1 + self.entering_zone.dimension
         self.grid = SingleGrid(width, height, False)
 
     def fill_grid(self):
@@ -109,17 +130,8 @@ class Supermarket(Model):
         self.entering_zone.build()
         # Shopping zone
         self.shopping_zone.build()
-
-        # Cash desks
-        x = 0
-        for cash_desk in self.get_cash_desks():
-            y = 1
-            cell = self.add_occupied_cell(True)
-            self.grid.place_agent(cell, (x, y))
-            cell = self.add_occupied_cell(True)
-            self.grid.place_agent(cell, (x, y + 1))
-
-            x = x + 2
+        # Self-scan zone
+        self.cash_desk_self_scan_zone.build()
 
     def add_cash_desk(self, cash_desks):
         self.__cash_desks.append(cash_desks)

@@ -1,11 +1,10 @@
+import math
+
 from mesa.visualization.ModularVisualization import ModularServer
 from mesa.visualization.modules import CanvasGrid
 
 from src.Supermarket import Supermarket
-from src.queue.NormalQueue import NormalQueue
 from src.queuechoicestrategy.QueueChoiceLeastItems import QueueChoiceLeastItems
-from src.zones.stationary.EnteringZone import EnteringZone
-from src.zones.stationary.ShoppingZone import ShoppingZone
 
 
 def agent_portrayal(agent):
@@ -48,20 +47,29 @@ def agent_portrayal(agent):
 
 
 # Zones metadata
-zones_metadata = [('ENTERING', 3),
-                  ('SHOPPING', 3)]
-# Cash desks metadata
-cash_desks_metadata = [NormalQueue(), NormalQueue()]
+entering_zone_width = 3
+shopping_zone_height = 3
+number_cash_desk_self_scan = 20
+number_cash_desk = 0
+number_cash_desk_self_service_groups = 0
+zones_metadata = [('ENTERING', entering_zone_width),
+                  ('SHOPPING', shopping_zone_height),
+                  ('CASH_DESK_SELF_SCAN', number_cash_desk_self_scan)]
+
 # Customers metadata
 customers_metadata = [(3, False, QueueChoiceLeastItems()),
                       (4, False, QueueChoiceLeastItems()),
                       (5, False, QueueChoiceLeastItems())]
 
-width = 2 * 2 + 3
 height = 10
+# larghezza self scan sulla sx + numero di self scan sull'orizzontale + 3 spazi + numero di gruppi di 4 casse
+# self-service (ogni gruppo occupa 4 caselle in larghezza) + numero di casse con uno spazio tra una e l'altra
+# + 1 spazio + larghezza della entering zone
+width = 2 + (number_cash_desk_self_scan - math.ceil((height - shopping_zone_height - 1) / 2))*2 + 3 + \
+        number_cash_desk_self_service_groups * 4 + number_cash_desk * 2 + 1 + entering_zone_width
 pixels_width = 500
 pixels_height = 500 / width * height
-grid = CanvasGrid(agent_portrayal, len(cash_desks_metadata) * 2 + 3,
+grid = CanvasGrid(agent_portrayal, width,
                   height, pixels_width, pixels_height)
 
 # Create server
@@ -69,7 +77,6 @@ server = ModularServer(Supermarket,
                        [grid],
                        "Supermarket",
                        {"customers_metadata": customers_metadata,
-                        "cash_desks_metadata": cash_desks_metadata,
                         "zones_metadata": zones_metadata})
 server.port = 8521  # The default
 server.launch()
