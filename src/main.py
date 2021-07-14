@@ -49,13 +49,14 @@ def agent_portrayal(agent):
 # Zones metadata
 entering_zone_width = 3
 shopping_zone_height = 3
-number_cash_desk_self_scan = 20
-number_cash_desk = 30
-number_cash_desk_self_service_groups = 0
+number_cash_desk_self_scan = 6
+number_cash_desk = 10
+number_cash_desk_self_service_groups = 2
 zones_metadata = [('ENTERING', entering_zone_width),
                   ('SHOPPING', shopping_zone_height),
                   ('CASH_DESK_SELF_SCAN', number_cash_desk_self_scan),
-                  ('CASH_DESK_STANDARD', number_cash_desk)]
+                  ('CASH_DESK_STANDARD', number_cash_desk),
+                  ('CASH_DESK_SELF_SERVICE', number_cash_desk_self_service_groups)]
 
 # Customers metadata
 customers_metadata = [(3, False, QueueChoiceLeastItems()),
@@ -67,7 +68,7 @@ height = 10
 # self-service (ogni gruppo occupa 4 caselle in larghezza) + numero di casse con uno spazio tra una e l'altra
 # + 1 spazio + larghezza della entering zone
 width = 2 + (number_cash_desk_self_scan - math.ceil((height - shopping_zone_height - 1) / 2))*2 + 3 + \
-        number_cash_desk_self_service_groups * 4 + number_cash_desk * 2 + 1 + entering_zone_width
+        number_cash_desk_self_service_groups * 5 + number_cash_desk * 2 + 1 + entering_zone_width
 pixels_width = 500
 pixels_height = 500 / width * height
 grid = CanvasGrid(agent_portrayal, width,
