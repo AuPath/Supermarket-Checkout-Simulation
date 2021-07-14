@@ -5,7 +5,7 @@ from mesa.space import SingleGrid
 from mesa.time import RandomActivation
 
 from Customer import Customer, CustomerState
-from OccupiedCell import OccupiedCell
+from OccupiedCell import OccupiedCell, CashDeskType
 from src.cashdesk.CashDesk import CashDesk
 from src.cashdesk.CashDeskReserved import CashDeskReserved
 from src.cashdesk.CashDeskSelfScan import CashDeskSelfScan
@@ -122,7 +122,10 @@ class Supermarket(Model):
 
     def init_grid(self):
         height = GRID_HEIGHT
-        width = 2 + ((self.cash_desk_self_scan_zone.cash_desks_number - math.ceil((height - self.shopping_zone.dimension - 2) / 2))*2 if self.cash_desk_self_scan_zone is not None else 0) + 1 + (2 + self.cash_desk_self_service_zone.cash_desks_number * 5 if self.cash_desk_self_service_zone is not None else 0) + (self.cash_desk_standard_zone.cash_desks_number * 2 if self.cash_desk_standard_zone is not None else 0) + 1 + self.entering_zone.dimension
+        width = 2 + ((self.cash_desk_self_scan_zone.cash_desks_number - math.ceil((
+                                                                                          height - self.shopping_zone.dimension - 2) / 2)) * 2 if self.cash_desk_self_scan_zone is not None else 0) + 1 + (
+                    2 + self.cash_desk_self_service_zone.cash_desks_number * 5 if self.cash_desk_self_service_zone is not None else 0) + (
+                    self.cash_desk_standard_zone.cash_desks_number * 2 if self.cash_desk_standard_zone is not None else 0) + 1 + self.entering_zone.dimension
         self.grid = SingleGrid(width, height, False)
 
     def fill_grid(self):
@@ -178,8 +181,8 @@ class Supermarket(Model):
     def get_occupied_cells(self):
         return self.__occupied_cells
 
-    def add_occupied_cell(self, is_cash_desk, direction=""):
-        cell = OccupiedCell(len(self.get_occupied_cells()) + 1, self, is_cash_desk, direction)
+    def add_occupied_cell(self, direction="", cash_desk_type=CashDeskType.NONE):
+        cell = OccupiedCell(len(self.get_occupied_cells()) + 1, self, direction, cash_desk_type)
         self.__occupied_cells.add(cell)
         return cell
 

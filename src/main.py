@@ -3,8 +3,17 @@ import math
 from mesa.visualization.ModularVisualization import ModularServer
 from mesa.visualization.modules import CanvasGrid
 
+from src.OccupiedCell import CashDeskType
 from src.Supermarket import Supermarket
 from src.queuechoicestrategy.QueueChoiceLeastItems import QueueChoiceLeastItems
+
+# colors
+RED = "#eb3461"
+BLUE = "#3493eb"
+GREEN = "#77eb34"
+ORANGE = "#eba234"
+GREY = "#a1a3a0"
+BLACK = "#000000"
 
 
 def agent_portrayal(agent):
@@ -17,31 +26,35 @@ def agent_portrayal(agent):
         portrayal = {"Shape": "circle",
                      "Filled": "true",
                      "r": 0.5,
-                     "Color": "grey",
+                     "Color": GREY,
                      "Layer": 1}
     elif agent.type == 1:
-        if agent.is_cashdesk:
+        portrayal = {"Shape": "rect",
+                     "Filled": "true",
+                     "w": 1,
+                     "h": 1,
+                     "Layer": 1}
+        if agent.cash_desk_type == CashDeskType.STANDARD:
+            portrayal["Color"] = BLUE
+        elif agent.cash_desk_type == CashDeskType.SELF_SERVICE:
+            portrayal["Color"] = GREEN
+        elif agent.cash_desk_type == CashDeskType.SELF_SCAN:
+            portrayal["Color"] = RED
+        elif agent.cash_desk_type == CashDeskType.RESERVED:
+            portrayal["Color"] = ORANGE
+        elif agent.cash_desk_type == CashDeskType.NONE:
             portrayal = {"Shape": "rect",
                          "Filled": "true",
-                         "Color": "red",
-                         "w": 1,
-                         "h": 1,
+                         "Color": BLACK,
                          "Layer": 1}
-        else:
             if agent.direction == "v":
-                portrayal = {"Shape": "rect",
-                             "Filled": "true",
-                             "Color": "black",
-                             "w": 0.2,
-                             "h": 1,
-                             "Layer": 1}
+                portrayal["w"] = 0.2
+                portrayal["h"] = 1
             elif agent.direction == "h":
-                portrayal = {"Shape": "rect",
-                             "Filled": "true",
-                             "Color": "black",
-                             "w": 1,
-                             "h": 0.2,
-                             "Layer": 1}
+                portrayal["w"] = 1
+                portrayal["h"] = 0.2
+        else:
+            pass
 
     return portrayal
 
@@ -67,7 +80,7 @@ height = 10
 # larghezza self scan sulla sx + numero di self scan sull'orizzontale + 3 spazi + numero di gruppi di 4 casse
 # self-service (ogni gruppo occupa 4 caselle in larghezza) + numero di casse con uno spazio tra una e l'altra
 # + 1 spazio + larghezza della entering zone
-width = 2 + (number_cash_desk_self_scan - math.ceil((height - shopping_zone_height - 1) / 2))*2 + 3 + \
+width = 2 + (number_cash_desk_self_scan - math.ceil((height - shopping_zone_height - 1) / 2)) * 2 + 3 + \
         number_cash_desk_self_service_groups * 5 + number_cash_desk * 2 + 1 + entering_zone_width
 pixels_width = 500
 pixels_height = 500 / width * height

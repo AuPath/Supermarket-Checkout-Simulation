@@ -11,5 +11,5 @@ class EnteringZone(StationaryZone):
     def build(self):
         x = self.model.grid.width - self.dimension
         for y in range(0, self.model.grid.height - self.model.shopping_zone.dimension):
-            cell = self.model.add_occupied_cell(False, "v")
+            cell = self.model.add_occupied_cell("v")
             self.model.grid.place_agent(cell, (x, y))

@@ -2,6 +2,7 @@ import math
 
 from mesa import Model
 
+from src.OccupiedCell import CashDeskType
 from src.zones.dinamic.CashDeskZone import CashDeskZone
 
 
@@ -18,10 +19,13 @@ class CashDeskSelfServiceZone(CashDeskZone):
             x += (self.model.cash_desk_standard_zone.cash_desks_number if self.model.cash_desk_standard_zone is not None else 0)*2 + 1
             y = 0
             for cash_desk in range(self.cash_desks_number):
-                cell = self.model.add_occupied_cell(True)
+                cell = self.model.add_occupied_cell("", CashDeskType.SELF_SERVICE)
                 self.model.grid.place_agent(cell, (x, y))
+                cell = self.model.add_occupied_cell("", CashDeskType.SELF_SERVICE)
                 self.model.grid.place_agent(cell, (x, y + 2))
+                cell = self.model.add_occupied_cell("", CashDeskType.SELF_SERVICE)
                 self.model.grid.place_agent(cell, (x + 2, y))
+                cell = self.model.add_occupied_cell("", CashDeskType.SELF_SERVICE)
                 self.model.grid.place_agent(cell, (x + 2, y + 2))
                 x += 5
 
