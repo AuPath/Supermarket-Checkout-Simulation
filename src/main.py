@@ -62,7 +62,7 @@ def agent_portrayal(agent):
 # Zones metadata
 entering_zone_width = 3
 shopping_zone_height = 3
-number_cash_desk_self_scan = 6
+number_cash_desk_self_scan = 12
 number_cash_desk = 10
 number_cash_desk_self_service_groups = 2
 zones_metadata = [('ENTERING', entering_zone_width),
@@ -76,12 +76,13 @@ customers_metadata = [(3, False, QueueChoiceLeastItems()),
                       (4, False, QueueChoiceLeastItems()),
                       (5, False, QueueChoiceLeastItems())]
 
-height = 10
-# larghezza self scan sulla sx + numero di self scan sull'orizzontale + 3 spazi + numero di gruppi di 4 casse
-# self-service (ogni gruppo occupa 4 caselle in larghezza) + numero di casse con uno spazio tra una e l'altra
-# + 1 spazio + larghezza della entering zone
-width = 2 + (number_cash_desk_self_scan - math.ceil((height - shopping_zone_height - 1) / 2)) * 2 + 3 + \
-        number_cash_desk_self_service_groups * 5 + number_cash_desk * 2 + 1 + entering_zone_width
+height = 20
+# larghezza self scan sulla sx (2) + 1 spazio + numero self_scan meno quelle sulla sx (ognuna occupa 2) + barriera (1) +
+# 1 spazio + numero casse standard (ognuna occupa 2) + 2 spazi + numero gruppi casse self (ognuna occupa 4) +
+# barriera (1) + larghezza entering zone
+number_self_scan_left = max(0, (number_cash_desk_self_scan - math.ceil((height - shopping_zone_height - 1) / 2)))
+width = 2 + 1 + number_self_scan_left * 2 + 1 + number_cash_desk * 2 + 2 + \
+        number_cash_desk_self_service_groups * 4 + entering_zone_width
 pixels_width = 500
 pixels_height = 500 / width * height
 grid = CanvasGrid(agent_portrayal, width,
