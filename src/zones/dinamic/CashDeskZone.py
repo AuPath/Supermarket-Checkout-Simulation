@@ -1,13 +1,15 @@
-from abc import ABC, abstractmethod
+from abc import abstractmethod
 
+from mesa import Model
 
 from src.zones.Zone import Zone
 
 
-class CashDeskZone(ABC, Zone):
+class CashDeskZone(Zone):
 
     @abstractmethod
-    def __init__(self, dimension):
+    def __init__(self, model: Model, dimension: int):
+        super(CashDeskZone, self).__init__(model)
         self.dimension = dimension
 
 

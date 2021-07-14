@@ -1,11 +1,15 @@
+from mesa import Model
+
 from src.zones.stationary.StationaryZone import StationaryZone
 
 
-class ShoppingZone(StationaryZone):
+class EnteringZone(StationaryZone):
 
-    def __init__(self, dimension):
-        super.__init__(dimension)
-        pass
+    def __init__(self, model: Model, dimension: int):
+        super(EnteringZone, self).__init__(model, dimension)
 
     def build(self):
-        pass
+        x = self.model.grid.width - self.dimension
+        for y in range(0, self.model.grid.height - self.model.shopping_zone.dimension):
+            cell = self.model.add_occupied_cell(False, "v")
+            self.model.grid.place_agent(cell, (x, y))

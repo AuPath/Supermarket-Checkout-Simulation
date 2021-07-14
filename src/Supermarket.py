@@ -1,5 +1,3 @@
-import random
-
 from mesa import Model
 from mesa.space import SingleGrid
 from mesa.time import RandomActivation
@@ -7,8 +5,14 @@ from mesa.time import RandomActivation
 from Customer import Customer, CustomerState
 from OccupiedCell import OccupiedCell
 from src.cashdesk.CashDesk import CashDesk
+from src.cashdesk.CashDeskReserved import CashDeskReserved
 from src.cashdesk.CashDeskStandard import CashDeskStandard
 from src.queue.SupermarketQueue import SupermarketQueue
+from src.zones.dinamic.CashDeskSelfScanZone import CashDeskSelfScanZone
+from src.zones.dinamic.CashDeskSelfServiceZone import CashDeskSelfServiceZone
+from src.zones.dinamic.CashDeskStandardZone import CashDeskStandardZone
+from src.zones.stationary.EnteringZone import EnteringZone
+from src.zones.stationary.ShoppingZone import ShoppingZone
 
 ADJ_WINDOW_SIZE = 2
 
@@ -18,7 +22,7 @@ GRID_HEIGHT = 10
 class Supermarket(Model):
     """SuperMARCO model: description here"""
 
-    def __init__(self, customers_metadata, cash_desks_metadata, entering_area_width, shopping_area_height,
+    def __init__(self, customers_metadata, cash_desks_metadata, zones_metadata,
                  adj_window_size=ADJ_WINDOW_SIZE):
         self.__customers = set()
         self.__occupied_cells = set()
@@ -30,8 +34,15 @@ class Supermarket(Model):
         self.__num_agent = 0
         self.running = True
         self.queues = None
-        self.entering_area_width = entering_area_width
-        self.shopping_area_height = shopping_area_height
+        self.zones_metadata = zones_metadata
+        # Create zones
+        self.entering_zone = None
+        self.shopping_zone = None
+        self.cash_desk_standard_zone = None
+        self.cash_desk_self_service_zone = None
+        self.cash_desk_self_scan_zone = None
+        self.cash_desk_reserved_zone = None
+        self.init_zones(zones_metadata)
         # Create cash desks
         self.init_cash_desks(cash_desks_metadata)
         # Init grid
@@ -43,12 +54,8 @@ class Supermarket(Model):
         customer_to_remove = set()
         for customer in self.__customers:
             if customer.get_state() == CustomerState.SHOPPING:
-                if not self.is_in_shopping_area(customer):
-                    position = self.get_shopping_area_position()
-                    if self.grid.is_cell_empty(position):
-                        self.grid.move_agent(customer, position)
-                        return
-
+                if not self.shopping_zone.is_agent_in_zone(customer):
+                    self.shopping_zone.move_to_first_available(customer)
             if customer.get_state == CustomerState.EXITING:
                 customer_to_remove.add(customer)
         for to_remove in customer_to_remove:
@@ -62,6 +69,23 @@ class Supermarket(Model):
             customer = Customer(self.__num_agent, self, basket_size, self_scan, queue_choice_strategy)
             self.__num_agent += 1
             self.add_customer(customer)
+
+    def init_zones(self, zones_metadata):
+        for zone_type, dimension in zones_metadata:
+            if zone_type == 'ENTERING':
+                self.entering_zone = EnteringZone(self, dimension)
+            elif zone_type == 'SHOPPING':
+                self.shopping_zone = ShoppingZone(self, dimension)
+            elif zone_type == 'CASH_DESK_STANDARD':
+                self.cash_desk_standard_zone = CashDeskStandardZone(self, dimension)
+            elif zone_type == 'CASH_DESK_SELF_SERVICE':
+                self.cash_desk_self_service_zone = CashDeskSelfServiceZone(self, dimension)
+            elif zone_type == 'CASH_DESK_SELF_SCAN':
+                self.cash_desk_self_scan_zone = CashDeskSelfScanZone(self, dimension)
+            elif zone_type == 'CASH_DESK_RESERVED':
+                self.cash_desk_reserved_zone = CashDeskReserved(self, dimension)
+            else:
+                pass
 
     def init_cash_desks(self, cash_desks_metadata):
         for idx, queue in enumerate(cash_desks_metadata):
@@ -82,16 +106,9 @@ class Supermarket(Model):
 
     def fill_grid(self):
         # Entering zone
-        x = self.grid.width - self.entering_area_width
-        for y in range(0, self.grid.height - self.shopping_area_height):
-            cell = self.add_occupied_cell(False, "v")
-            self.grid.place_agent(cell, (x, y))
-
+        self.entering_zone.build()
         # Shopping zone
-        y = self.grid.height - self.shopping_area_height
-        for x in range(0, self.grid.width - self.entering_area_width):
-            cell = self.add_occupied_cell(False, "h")
-            self.grid.place_agent(cell, (x, y))
+        self.shopping_zone.build()
 
         # Cash desks
         x = 0
@@ -152,13 +169,3 @@ class Supermarket(Model):
 
     def get_cash_desks(self):
         return self.__cash_desks
-
-    def is_in_shopping_area(self, customer: Customer):
-        (x, y) = customer.pos
-        if self.grid.height - self.shopping_area_height < y <= self.grid.height:
-            return True
-        return False
-
-    def get_shopping_area_position(self):
-        return self.random.randrange(self.grid.width), self.random.randrange(
-            self.grid.height - self.shopping_area_height + 1, self.grid.height)

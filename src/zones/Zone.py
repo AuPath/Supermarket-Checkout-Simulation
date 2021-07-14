@@ -7,7 +7,7 @@ class Zone(ABC):
 
     @abstractmethod
     def __init__(self, model: Model):
-        pass
+        self.model = model
 
     def build(self):
         pass

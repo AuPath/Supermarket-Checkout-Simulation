@@ -1,7 +1,7 @@
 from src.zones.dinamic.CashDeskZone import CashDeskZone
 
 
-class CashDeskReservedZone(CashDeskZone):
+class CashDeskSelfServiceZone(CashDeskZone):
 
     def __init__(self, dimension):
         self.dimension = dimension

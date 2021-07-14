@@ -4,6 +4,8 @@ from mesa.visualization.modules import CanvasGrid
 from src.Supermarket import Supermarket
 from src.queue.NormalQueue import NormalQueue
 from src.queuechoicestrategy.QueueChoiceLeastItems import QueueChoiceLeastItems
+from src.zones.stationary.EnteringZone import EnteringZone
+from src.zones.stationary.ShoppingZone import ShoppingZone
 
 
 def agent_portrayal(agent):
@@ -45,6 +47,9 @@ def agent_portrayal(agent):
     return portrayal
 
 
+# Zones metadata
+zones_metadata = [('ENTERING', 3),
+                  ('SHOPPING', 3)]
 # Cash desks metadata
 cash_desks_metadata = [NormalQueue(), NormalQueue()]
 # Customers metadata
@@ -65,7 +70,6 @@ server = ModularServer(Supermarket,
                        "Supermarket",
                        {"customers_metadata": customers_metadata,
                         "cash_desks_metadata": cash_desks_metadata,
-                        "entering_area_width": 3,
-                        "shopping_area_height": 3})
+                        "zones_metadata": zones_metadata})
 server.port = 8521  # The default
 server.launch()
