@@ -58,7 +58,7 @@ class Supermarket(Model):
     def step(self):
         customer_to_remove = set()
         for customer in self.__customers:
-            if customer.get_state() == CustomerState.SHOPPING:
+            if customer.get_state() == CustomerState.ENTERED:
                 if not self.shopping_zone.is_agent_in_zone(customer):
                     self.shopping_zone.move_to_first_available(customer)
             if customer.get_state == CustomerState.EXITING:
