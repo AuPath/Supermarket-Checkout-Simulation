@@ -29,3 +29,7 @@ class CashDeskSelfScanZone(CashDeskZone):
                 self.model.grid.place_agent(cell, (x, y))
                 x += 2
                 cash_desks -= 1
+
+            for y in range(0, self.model.grid.height - self.model.shopping_zone.dimension):
+                cell = self.model.add_occupied_cell(False, "v")
+                self.model.grid.place_agent(cell, (x, y))

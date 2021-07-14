@@ -122,7 +122,7 @@ class Supermarket(Model):
 
     def init_grid(self):
         height = GRID_HEIGHT
-        width = 2 + ((self.cash_desk_self_scan_zone.cash_desks_number - math.ceil((height - self.shopping_zone.dimension - 2) / 2))*2 if self.cash_desk_self_scan_zone is not None else 0) + 3 + (self.cash_desk_self_service_zone.cash_desks_number * 4 if self.cash_desk_self_service_zone is not None else 0) + (self.cash_desk_standard_zone.cash_desks_number * 2 if self.cash_desk_standard_zone is not None else 0) + 1 + self.entering_zone.dimension
+        width = 2 + ((self.cash_desk_self_scan_zone.cash_desks_number - math.ceil((height - self.shopping_zone.dimension - 2) / 2))*2 if self.cash_desk_self_scan_zone is not None else 0) + 1 + (2 + self.cash_desk_self_service_zone.cash_desks_number * 4 if self.cash_desk_self_service_zone is not None else 0) + (self.cash_desk_standard_zone.cash_desks_number * 2 if self.cash_desk_standard_zone is not None else 0) + 1 + self.entering_zone.dimension
         self.grid = SingleGrid(width, height, False)
 
     def fill_grid(self):
@@ -132,6 +132,8 @@ class Supermarket(Model):
         self.shopping_zone.build()
         # Self-scan zone
         self.cash_desk_self_scan_zone.build()
+        # Cash-desk standard zone
+        self.cash_desk_standard_zone.build()
 
     def add_cash_desk(self, cash_desks):
         self.__cash_desks.append(cash_desks)

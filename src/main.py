@@ -50,11 +50,12 @@ def agent_portrayal(agent):
 entering_zone_width = 3
 shopping_zone_height = 3
 number_cash_desk_self_scan = 20
-number_cash_desk = 0
+number_cash_desk = 30
 number_cash_desk_self_service_groups = 0
 zones_metadata = [('ENTERING', entering_zone_width),
                   ('SHOPPING', shopping_zone_height),
-                  ('CASH_DESK_SELF_SCAN', number_cash_desk_self_scan)]
+                  ('CASH_DESK_SELF_SCAN', number_cash_desk_self_scan),
+                  ('CASH_DESK_STANDARD', number_cash_desk)]
 
 # Customers metadata
 customers_metadata = [(3, False, QueueChoiceLeastItems()),
