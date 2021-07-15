@@ -1,5 +1,5 @@
-from mesa import Agent
 from enums import Enum
+from mesa import Agent
 
 SHOPPING_SPEED = 1
 
@@ -101,6 +101,7 @@ class Customer(Agent):
         all_queues = self.model.queues
         self.target_queue = self.queue_choice_strategy.choose_queue(all_queues)
         self.target_queue.enqueue(self)
+        self.model.cash_desk_standard_zone.move_to_queue(self)
 
     def jockey(self):
         """
@@ -123,5 +124,3 @@ class Customer(Agent):
 
     def transaction_is_completed(self):
         return self.basket_size_target <= self.processed_basket
-
-

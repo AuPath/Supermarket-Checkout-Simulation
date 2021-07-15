@@ -86,21 +86,29 @@ class Supermarket(Model):
         idx = 1
         for zone_type, dimension in self.zones_metadata:
             if zone_type == 'CASH_DESK_STANDARD':
-                cash_desk = CashDeskStandard(idx, self, NormalQueue())
-                self.add_cash_desk(cash_desk)
-                idx += 1
+                for i in range(dimension):
+                    cash_desk = CashDeskStandard(idx, self, NormalQueue())
+                    self.cash_desk_standard_zone.cash_desks.append(cash_desk)
+                    self.add_cash_desk(cash_desk)
+                    idx += 1
             elif zone_type == 'CASH_DESK_SELF_SERVICE':
-                cash_desk = CashDeskSelfService(idx, self, NormalQueue())
-                self.add_cash_desk(cash_desk)
-                idx += 1
+                for i in range(dimension):
+                    cash_desk = CashDeskSelfService(idx, self, NormalQueue())
+                    self.cash_desk_self_service_zone.cash_desks.append(cash_desk)
+                    self.add_cash_desk(cash_desk)
+                    idx += 1
             elif zone_type == 'CASH_DESK_SELF_SCAN':
-                cash_desk = CashDeskSelfScan(idx, self, NormalQueue())
-                self.add_cash_desk(cash_desk)
-                idx += 1
+                for i in range(dimension):
+                    cash_desk = CashDeskSelfScan(idx, self, NormalQueue())
+                    self.cash_desk_self_scan_zone.cash_desks.append(cash_desk)
+                    self.add_cash_desk(cash_desk)
+                    idx += 1
             elif zone_type == 'CASH_DESK_RESERVED':
-                cash_desk = CashDeskReserved(idx, self, NormalQueue())
-                self.add_cash_desk(cash_desk)
-                idx += 1
+                for i in range(dimension):
+                    cash_desk = CashDeskReserved(idx, self, NormalQueue())
+                    self.cash_desk_reserved_zone.cash_desks.append(cash_desk)
+                    self.add_cash_desk(cash_desk)
+                    idx += 1
             else:
                 pass
 
