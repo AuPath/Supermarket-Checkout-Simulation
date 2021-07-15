@@ -1,3 +1,4 @@
+import logging
 from abc import ABC, abstractmethod
 from enum import Enum
 
@@ -33,13 +34,20 @@ class CashDesk(ABC, Agent):
 
     def step(self):
         if self.__state == CashDeskState.GET_NEW_CUSTOMER:
+            logging.info("Cash desk " + type(self).__name__ + " " + str(self.unique_id) + " searching for new customer")
             new_state = self.serve_new_customer()
             self.__state = new_state
         elif self.__state == CashDeskState.PROCESSING_CUSTOMER:
+            logging.info("Cash desk " + type(self).__name__ + " " + str(self.unique_id) + " processing customer " + str(
+                self.__customer.unique_id))
             if not self.__customer.transaction_is_completed():
                 self.process_customer()
             else:
+                logging.info(
+                    "Cash desk " + type(self).__name__ + " " + str(self.unique_id) + " completing the transaction")
                 self.__state = CashDeskState.TRANSACTION_COMPLETED
+                self.complete_transaction()
+                self.__state = CashDeskState.GET_NEW_CUSTOMER
         elif self.__state == CashDeskState.TRANSACTION_COMPLETED:
             self.complete_transaction()
             self.__state = CashDeskState.GET_NEW_CUSTOMER

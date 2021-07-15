@@ -1,3 +1,5 @@
+import logging
+
 from enums import Enum
 from mesa import Agent
 
@@ -45,9 +47,11 @@ class Customer(Agent):
         self.processed_basket += processing_speed
 
     def step(self):
+        logging.info("Customer " + str(self.unique_id) + " step")
         if self.state == CustomerState.ENTERED:
             # As the customer enters the market, he waits a step and then starts shopping, moving in the shopping zone
             self.state = CustomerState.SHOPPING
+            logging.info("Customer " + str(self.unique_id) + " moves to shopping zone")
             if not self.model.shopping_zone.is_agent_in_zone(self):
                 self.model.shopping_zone.move_to_first_available(self)
 
@@ -64,20 +68,20 @@ class Customer(Agent):
 
         elif self.state == CustomerState.CHOOSING_QUEUE:
             # TODO: define the strategy
-            self.choose_queue()
+            logging.info("Customer " + str(self.unique_id) + " choosing queue")
             self.state = CustomerState.QUEUED
+            self.choose_queue()
 
         elif self.state == CustomerState.QUEUED:
-            # TODO: define the strategy to do jockeying
-            self.jockey()
+            if self.target_queue.content().index(self) > 0:
+                # TODO: define the strategy to do jockeying
+                self.jockey()
 
-        elif self.state == CustomerState.CASH_DESK:
-            # TODO: the customer is waiting for some steps and then he exits
-            pass
+                logging.info("Customer " + str(self.unique_id) + "advancing")
+                (x, y) = self.pos
+                if self.model.grid.is_cell_empty(x, y - 1):
+                    self.model.cash_desk_standard_zone.advance(self)
 
-        elif self.state == CustomerState.EXITING:
-            # The customer removes itself from the supermarket
-            self.model.remove_customer(self)
 
     def enter(self):
         """
@@ -101,6 +105,8 @@ class Customer(Agent):
         all_queues = self.model.queues
         self.target_queue = self.queue_choice_strategy.choose_queue(all_queues)
         self.target_queue.enqueue(self)
+        # TODO: distinguere per tipo di cassa, per ora ci sono solo quelle normali
+        logging.info("Customer " + str(self.unique_id) + " moving to queue")
         self.model.cash_desk_standard_zone.move_to_queue(self)
 
     def jockey(self):
@@ -118,9 +124,14 @@ class Customer(Agent):
 
     def start_transaction(self):
         self.state = CustomerState.CASH_DESK
+        # TODO: distinguere per tipo di cassa, per ora ci sono solo quelle normali
+        logging.info("Customer " + str(self.unique_id) + " moving beside the cash desk")
+        self.model.cash_desk_standard_zone.move_beside(self)
 
     def complete_transaction(self):
         self.state = CustomerState.EXITING
+        logging.info("Customer " + str(self.unique_id) + " exiting")
+        self.model.remove_customer(self)
 
     def transaction_is_completed(self):
         return self.basket_size_target <= self.processed_basket

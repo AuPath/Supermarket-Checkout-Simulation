@@ -26,5 +26,15 @@ class CashDeskStandardZone(CashDeskZone):
     def move_to_queue(self, customer: Customer):
         if customer.target_queue in self.queues:
             (x, y) = self.get_cash_desk(customer.target_queue).pos
-            y = 2 + customer.target_queue.size()
+            y = 1 + customer.target_queue.size()
             self.model.grid.move_agent(customer, (x, y))
+
+    def move_beside(self, customer: Customer):
+        if customer.target_queue in self.queues:
+            (x, y) = self.get_cash_desk(customer.target_queue).pos
+            x -= 1
+            self.model.grid.move_agent(customer, (x, y))
+
+    def advance(self, customer: Customer):
+        (x, y) = customer.pos
+        self.model.grid.move_agent(customer, (x + 1, y))

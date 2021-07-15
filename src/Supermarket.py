@@ -1,3 +1,4 @@
+import logging
 import math
 
 from mesa import Model
@@ -56,16 +57,19 @@ class Supermarket(Model):
         self.init_customers(customers_metadata)
 
     def step(self):
+        logging.info("Step")
         self.customer_scheduler.step()
         self.cash_desk_scheduler.step()
 
     def init_customers(self, customers_metadata):
+        logging.info("Init customers")
         for basket_size, self_scan, queue_choice_strategy in customers_metadata:
             customer = Customer(self.__num_agent, self, basket_size, self_scan, queue_choice_strategy)
             self.__num_agent += 1
             self.add_customer(customer)
 
     def init_zones(self):
+        logging.info("Init zones")
         for zone_type, dimension in self.zones_metadata:
             if zone_type == 'ENTERING':
                 self.entering_zone = EnteringZone(self, dimension)
@@ -83,6 +87,7 @@ class Supermarket(Model):
                 pass
 
     def init_cash_desks(self):
+        logging.info("Init cash desks")
         idx = 1
         for zone_type, dimension in self.zones_metadata:
             if zone_type == 'CASH_DESK_STANDARD':
@@ -126,18 +131,21 @@ class Supermarket(Model):
                 pass
 
     def init_environment(self):
+        logging.info("Init environment")
         # Build grid
         self.init_grid()
         # Fill grid
         self.fill_grid()
 
     def init_grid(self):
+        logging.info("Init grid")
         height = GRID_HEIGHT
         number_self_scan_left = max(0, self.cash_desk_self_scan_zone.cash_desks_number - math.ceil((height - self.shopping_zone.dimension - 1) / 2)) if self.cash_desk_self_scan_zone is not None else 0
         width = 2 + 1 + number_self_scan_left * 2 + 1 + 1 + (self.cash_desk_standard_zone.cash_desks_number * 2 if self.cash_desk_standard_zone is not None else 0) + 1 + (self.cash_desk_self_service_zone.cash_desks_number * 4 if self.cash_desk_self_service_zone is not None else 0) + self.entering_zone.dimension
         self.grid = SingleGrid(width, height, False)
 
     def fill_grid(self):
+        logging.info("Fill grid")
         # Entering zone
         self.entering_zone.build()
         # Shopping zone

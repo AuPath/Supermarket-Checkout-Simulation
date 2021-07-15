@@ -1,3 +1,4 @@
+import logging
 import math
 
 from mesa.visualization.ModularVisualization import ModularServer
@@ -7,6 +8,8 @@ from src.Customer import CustomerState
 from src.Supermarket import Supermarket
 from src.queuechoicestrategy.QueueChoiceLeastItems import QueueChoiceLeastItems
 
+from datetime import datetime
+
 # colors
 RED = "#eb3461"
 BLUE = "#3493eb"
@@ -14,6 +17,16 @@ GREEN = "#77eb34"
 ORANGE = "#eba234"
 GREY = "#a1a3a0"
 BLACK = "#000000"
+
+filename = '../log/log' + str(datetime.now().strftime("%d-%m-%Y")) + '.log'
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    handlers=[
+        logging.FileHandler(filename),
+        logging.StreamHandler()
+    ]
+)
 
 
 def agent_portrayal(agent):
@@ -69,7 +82,7 @@ def agent_portrayal(agent):
 entering_zone_width = 3
 shopping_zone_height = 3
 number_cash_desk_self_scan = 10
-number_cash_desk = 2
+number_cash_desk = 1
 number_cash_desk_self_service_groups = 0
 zones_metadata = [('ENTERING', entering_zone_width),
                   ('SHOPPING', shopping_zone_height),
@@ -100,5 +113,5 @@ server = ModularServer(Supermarket,
                        "Supermarket",
                        {"customers_metadata": customers_metadata,
                         "zones_metadata": zones_metadata})
-server.port = 8521  # The default
+server.port = 8522  # The default
 server.launch()
