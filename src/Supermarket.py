@@ -56,16 +56,6 @@ class Supermarket(Model):
         self.init_customers(customers_metadata)
 
     def step(self):
-        customer_to_remove = set()
-        for customer in self.__customers:
-            if customer.get_state() == CustomerState.ENTERED:
-                if not self.shopping_zone.is_agent_in_zone(customer):
-                    self.shopping_zone.move_to_first_available(customer)
-            if customer.get_state == CustomerState.EXITING:
-                customer_to_remove.add(customer)
-        for to_remove in customer_to_remove:
-            self.remove_customer(to_remove)
-
         self.customer_scheduler.step()
         self.cash_desk_scheduler.step()
 
@@ -123,7 +113,7 @@ class Supermarket(Model):
     def init_grid(self):
         height = GRID_HEIGHT
         number_self_scan_left = max(0, self.cash_desk_self_scan_zone.cash_desks_number - math.ceil((height - self.shopping_zone.dimension - 1) / 2)) if self.cash_desk_self_scan_zone is not None else 0
-        width = 2 + 1 + number_self_scan_left * 2 + 1 + 1 + (self.cash_desk_standard_zone.cash_desks_number * 2 if self.cash_desk_standard_zone is not None else 0) + 1 + (self.cash_desk_self_service_zone.cash_desks_number * 4 if self.cash_desk_self_service_zone is not None else 0) + self.entering_zone.dimension
+        width = 2 + 1 + number_self_scan_left * 2 + 1 + (self.cash_desk_standard_zone.cash_desks_number * 2 if self.cash_desk_standard_zone is not None else 0) + 1 + (self.cash_desk_self_service_zone.cash_desks_number * 4 if self.cash_desk_self_service_zone is not None else 0) + self.entering_zone.dimension
         self.grid = SingleGrid(width, height, False)
 
     def fill_grid(self):

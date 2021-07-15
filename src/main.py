@@ -90,7 +90,7 @@ height = 20
 # 1 spazio + numero casse standard (ognuna occupa 2) + 2 spazi + numero gruppi casse self (ognuna occupa 4) +
 # barriera (1) + larghezza entering zone
 number_self_scan_left = max(0, (number_cash_desk_self_scan - math.ceil((height - shopping_zone_height - 1) / 2)))
-width = 2 + 1 + number_self_scan_left * 2 + 1 + number_cash_desk * 2 + 2 + \
+width = 2 + 1 + number_self_scan_left * 2 + 1 + number_cash_desk * 2 + 1 + \
         number_cash_desk_self_service_groups * 4 + entering_zone_width
 pixels_width = 500
 pixels_height = 500 / width * height

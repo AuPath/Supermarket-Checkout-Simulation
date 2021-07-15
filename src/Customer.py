@@ -46,8 +46,10 @@ class Customer(Agent):
 
     def step(self):
         if self.state == CustomerState.ENTERED:
-            # As the customer enters the market, he waits a step and then starts shopping
+            # As the customer enters the market, he waits a step and then starts shopping, moving in the shopping zone
             self.state = CustomerState.SHOPPING
+            if not self.model.shopping_zone.is_agent_in_zone(self):
+                self.model.shopping_zone.move_to_first_available(self)
 
         elif self.state == CustomerState.SHOPPING:
             '''
@@ -72,6 +74,10 @@ class Customer(Agent):
         elif self.state == CustomerState.CASH_DESK:
             # TODO: the customer is waiting for some steps and then he exits
             pass
+
+        elif self.state == CustomerState.EXITING:
+            # The customer removes itself from the supermarket
+            self.model.remove_customer(self)
 
     def enter(self):
         """
