@@ -4,8 +4,8 @@ from mesa import Model
 from mesa.space import SingleGrid
 from mesa.time import RandomActivation
 
-from Customer import Customer, CustomerState
-from OccupiedCell import OccupiedCell, CashDeskType
+from Customer import Customer
+from OccupiedCell import OccupiedCell
 from src.cashdesk.CashDesk import CashDesk
 from src.cashdesk.CashDeskReserved import CashDeskReserved
 from src.cashdesk.CashDeskSelfScan import CashDeskSelfScan
@@ -93,7 +93,20 @@ class Supermarket(Model):
                     idx += 1
             elif zone_type == 'CASH_DESK_SELF_SERVICE':
                 for i in range(dimension):
-                    cash_desk = CashDeskSelfService(idx, self, NormalQueue())
+                    normal_queue = NormalQueue()
+                    cash_desk = CashDeskSelfService(idx, self, normal_queue)
+                    self.cash_desk_self_service_zone.cash_desks.append(cash_desk)
+                    self.add_cash_desk(cash_desk)
+                    idx += 1
+                    cash_desk = CashDeskSelfService(idx, self, normal_queue)
+                    self.cash_desk_self_service_zone.cash_desks.append(cash_desk)
+                    self.add_cash_desk(cash_desk)
+                    idx += 1
+                    cash_desk = CashDeskSelfService(idx, self, normal_queue)
+                    self.cash_desk_self_service_zone.cash_desks.append(cash_desk)
+                    self.add_cash_desk(cash_desk)
+                    idx += 1
+                    cash_desk = CashDeskSelfService(idx, self, normal_queue)
                     self.cash_desk_self_service_zone.cash_desks.append(cash_desk)
                     self.add_cash_desk(cash_desk)
                     idx += 1
@@ -121,7 +134,7 @@ class Supermarket(Model):
     def init_grid(self):
         height = GRID_HEIGHT
         number_self_scan_left = max(0, self.cash_desk_self_scan_zone.cash_desks_number - math.ceil((height - self.shopping_zone.dimension - 1) / 2)) if self.cash_desk_self_scan_zone is not None else 0
-        width = 2 + 1 + number_self_scan_left * 2 + 1 + (self.cash_desk_standard_zone.cash_desks_number * 2 if self.cash_desk_standard_zone is not None else 0) + 1 + (self.cash_desk_self_service_zone.cash_desks_number * 4 if self.cash_desk_self_service_zone is not None else 0) + self.entering_zone.dimension
+        width = 2 + 1 + number_self_scan_left * 2 + 1 + 1 + (self.cash_desk_standard_zone.cash_desks_number * 2 if self.cash_desk_standard_zone is not None else 0) + 1 + (self.cash_desk_self_service_zone.cash_desks_number * 4 if self.cash_desk_self_service_zone is not None else 0) + self.entering_zone.dimension
         self.grid = SingleGrid(width, height, False)
 
     def fill_grid(self):
@@ -177,8 +190,8 @@ class Supermarket(Model):
     def get_occupied_cells(self):
         return self.__occupied_cells
 
-    def add_occupied_cell(self, direction="", cash_desk_type=CashDeskType.NONE):
-        cell = OccupiedCell(len(self.get_occupied_cells()) + 1, self, direction, cash_desk_type)
+    def add_occupied_cell(self, direction):
+        cell = OccupiedCell(len(self.get_occupied_cells()) + 1, self, direction)
         self.__occupied_cells.add(cell)
         return cell
 

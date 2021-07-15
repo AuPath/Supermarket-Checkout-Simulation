@@ -4,7 +4,6 @@ from mesa.visualization.ModularVisualization import ModularServer
 from mesa.visualization.modules import CanvasGrid
 
 from src.Customer import CustomerState
-from src.OccupiedCell import CashDeskType
 from src.Supermarket import Supermarket
 from src.queuechoicestrategy.QueueChoiceLeastItems import QueueChoiceLeastItems
 
@@ -40,30 +39,28 @@ def agent_portrayal(agent):
     elif agent.type == 1:
         portrayal = {"Shape": "rect",
                      "Filled": "true",
+                     "Color": BLACK,
+                     "Layer": 1}
+        if agent.direction == "v":
+            portrayal["w"] = 0.2
+            portrayal["h"] = 1
+        elif agent.direction == "h":
+            portrayal["w"] = 1
+            portrayal["h"] = 0.2
+    elif agent.type == 2:
+        portrayal = {"Shape": "rect",
+                     "Filled": "true",
                      "w": 1,
                      "h": 1,
                      "Layer": 1}
-        if agent.cash_desk_type == CashDeskType.STANDARD:
+        if type(agent).__name__ == "CashDeskStandard":
             portrayal["Color"] = BLUE
-        elif agent.cash_desk_type == CashDeskType.SELF_SERVICE:
+        elif type(agent).__name__ == "CashDeskSelfService":
             portrayal["Color"] = GREEN
-        elif agent.cash_desk_type == CashDeskType.SELF_SCAN:
+        elif type(agent).__name__ == "CashDeskSelfScan":
             portrayal["Color"] = RED
-        elif agent.cash_desk_type == CashDeskType.RESERVED:
+        elif type(agent).__name__ == "CashDeskReserved":
             portrayal["Color"] = ORANGE
-        elif agent.cash_desk_type == CashDeskType.NONE:
-            portrayal = {"Shape": "rect",
-                         "Filled": "true",
-                         "Color": BLACK,
-                         "Layer": 1}
-            if agent.direction == "v":
-                portrayal["w"] = 0.2
-                portrayal["h"] = 1
-            elif agent.direction == "h":
-                portrayal["w"] = 1
-                portrayal["h"] = 0.2
-        else:
-            pass
 
     return portrayal
 
@@ -72,7 +69,7 @@ def agent_portrayal(agent):
 entering_zone_width = 3
 shopping_zone_height = 3
 number_cash_desk_self_scan = 10
-number_cash_desk = 5
+number_cash_desk = 2
 number_cash_desk_self_service_groups = 0
 zones_metadata = [('ENTERING', entering_zone_width),
                   ('SHOPPING', shopping_zone_height),
@@ -90,7 +87,7 @@ height = 20
 # 1 spazio + numero casse standard (ognuna occupa 2) + 2 spazi + numero gruppi casse self (ognuna occupa 4) +
 # barriera (1) + larghezza entering zone
 number_self_scan_left = max(0, (number_cash_desk_self_scan - math.ceil((height - shopping_zone_height - 1) / 2)))
-width = 2 + 1 + number_self_scan_left * 2 + 1 + number_cash_desk * 2 + 1 + \
+width = 2 + 1 + number_self_scan_left * 2 + 1 + 1 + number_cash_desk * 2 + 1 + \
         number_cash_desk_self_service_groups * 4 + entering_zone_width
 pixels_width = 500
 pixels_height = 500 / width * height

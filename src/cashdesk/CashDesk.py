@@ -1,10 +1,10 @@
+from abc import ABC, abstractmethod
 from enum import Enum
 
 from mesa import Agent
 
-from src.queue.SupermarketQueue import SupermarketQueue
 from src.Customer import Customer
-from abc import ABC, abstractmethod
+from src.queue.SupermarketQueue import SupermarketQueue
 
 PROCESSING_SPEED = 5
 
@@ -21,6 +21,7 @@ class CashDesk(ABC, Agent):
     def __init__(self, agent_id, model, supermarket_queue: SupermarketQueue, processing_speed=PROCESSING_SPEED):
         super().__init__(agent_id, model)
 
+        self.type = 2
         self.__queue = supermarket_queue
         self.__customer: Customer = None
         self.__processing_speed = processing_speed

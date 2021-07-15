@@ -1,6 +1,5 @@
 from mesa import Model
 
-from src.OccupiedCell import CashDeskType
 from src.zones.dinamic.CashDeskZone import CashDeskZone
 
 
@@ -16,20 +15,18 @@ class CashDeskSelfScanZone(CashDeskZone):
             # Delimiting the space
             x = 0
             y = self.model.grid.height - self.model.shopping_zone.dimension - 2
-            cash_desks = self.cash_desks_number
-            while y > 0 and cash_desks > 0:
-                cell = self.model.add_occupied_cell("", CashDeskType.SELF_SCAN)
-                self.model.grid.place_agent(cell, (x, y))
-                y -= 2
-                cash_desks -= 1
-
-            x = 2
-            y = 0
-            while cash_desks > 0:
-                cell = self.model.add_occupied_cell("", CashDeskType.SELF_SCAN)
-                self.model.grid.place_agent(cell, (x, y))
-                x += 2
-                cash_desks -= 1
+            vertical = True
+            for cash_desk in self.cash_desks:
+                if vertical:
+                    self.model.grid.place_agent(cash_desk, (x, y))
+                    y -= 2
+                    if y <= 0:
+                        vertical = False
+                        y = 0
+                        x = 2
+                else:
+                    self.model.grid.place_agent(cash_desk, (x, y))
+                    x += 2
 
             for y in range(0, self.model.grid.height - self.model.shopping_zone.dimension):
                 cell = self.model.add_occupied_cell("v")
