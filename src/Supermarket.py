@@ -4,8 +4,8 @@ from mesa import Model
 from mesa.space import SingleGrid
 from mesa.time import RandomActivation
 
-from Customer import Customer, CustomerState
-from OccupiedCell import OccupiedCell, CashDeskType
+from src.Customer import Customer, CustomerState
+from src.OccupiedCell import OccupiedCell, CashDeskType
 from src.cashdesk.CashDesk import CashDesk
 from src.cashdesk.CashDeskReserved import CashDeskReserved
 from src.cashdesk.CashDeskSelfScan import CashDeskSelfScan
