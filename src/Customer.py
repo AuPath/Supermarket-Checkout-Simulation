@@ -100,7 +100,7 @@ class Customer(Agent):
         if not self.self_scan:
             self.target_queue = self.queue_choice_strategy.choose_queue(self.model.get_cash_desks())
         else:
-            # TODO: da testare
+            # TODO: da implementarne il movimento
             self.target_queue = self.model.get_self_scan_queue()
         self.target_queue.enqueue(self)
         # TODO: distinguere per tipo di cassa, per ora ci sono solo quelle normali

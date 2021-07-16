@@ -167,6 +167,7 @@ class Supermarket(Model):
         self.customer_scheduler.add(customer)
 
         # Add the agent to the entering zone of the market
+        # TODO: find_empty ma solo nella entering zone
         self.grid.place_agent(customer, self.grid.find_empty())
         return
 
