@@ -57,6 +57,10 @@ class CashDesk(ABC, Agent):
             self.__customer = self.__queue.dequeue()
             self.__customer.start_transaction()
             new_state = CashDeskState.PROCESSING_CUSTOMER
+
+            # make every customer advance
+            for customer in self.__queue.content():
+                customer.advance()
         else:
             new_state = CashDeskState.GET_NEW_CUSTOMER
         return new_state

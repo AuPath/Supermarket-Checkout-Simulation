@@ -11,6 +11,8 @@ from src.queuechoicestrategy.QueueChoiceLeastItems import QueueChoiceLeastItems
 from datetime import datetime
 
 # colors
+from src.queuechoicestrategy.QueueChoiceLeastPeople import QueueChoiceLeastPeople
+
 RED = "#eb3461"
 BLUE = "#3493eb"
 GREEN = "#77eb34"
@@ -91,9 +93,9 @@ zones_metadata = [('ENTERING', entering_zone_width),
                   ('CASH_DESK_SELF_SERVICE', number_cash_desk_self_service_groups)]
 
 # Customers metadata
-customers_metadata = [(3, False, QueueChoiceLeastItems()),
-                      (4, False, QueueChoiceLeastItems()),
-                      (5, False, QueueChoiceLeastItems())]
+customers_metadata = [(3, False, QueueChoiceLeastPeople()),
+                      (4, False, QueueChoiceLeastPeople()),
+                      (5, False, QueueChoiceLeastPeople())]
 
 height = 20
 # larghezza self scan sulla sx (2) + 1 spazio + numero self_scan meno quelle sulla sx (ognuna occupa 2) + barriera (1) +

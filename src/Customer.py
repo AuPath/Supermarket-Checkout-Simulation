@@ -42,6 +42,7 @@ class Customer(Agent):
         return self.basket_size_target
 
     def increase_processed_basket(self, processing_speed):
+        logging.info("Customer " + str(self.unique_id) + " processing basket")
         if self.processed_basket > self.basket_size_target:
             raise Exception("Basket has been already completely processed")
         self.processed_basket += processing_speed
@@ -73,14 +74,8 @@ class Customer(Agent):
             self.choose_queue()
 
         elif self.state == CustomerState.QUEUED:
-            if self.target_queue.content().index(self) > 0:
-                # TODO: define the strategy to do jockeying
-                self.jockey()
-
-                logging.info("Customer " + str(self.unique_id) + "advancing")
-                (x, y) = self.pos
-                if self.model.grid.is_cell_empty(x, y - 1):
-                    self.model.cash_desk_standard_zone.advance(self)
+            # TODO: define the strategy to do jockeying
+            self.jockey()
 
 
     def enter(self):
@@ -139,3 +134,7 @@ class Customer(Agent):
 
     def transaction_is_completed(self):
         return self.basket_size_target <= self.processed_basket
+
+    def advance(self):
+        # TODO: distinguere per tipo di cassa, per ora ci sono solo quelle normali
+        self.model.cash_desk_standard_zone.advance(self)
