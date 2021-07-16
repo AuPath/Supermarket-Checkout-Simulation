@@ -165,14 +165,10 @@ class Supermarket(Model):
     def add_customer(self, customer: Customer):
         self.__customers.add(customer)
         self.customer_scheduler.add(customer)
-        positions = [(self.grid.width - 2, 0), (self.grid.width - 1, 0), (self.grid.width - 2, 1),
-                     (self.grid.width - 1, 1)]
 
-        for position in positions:
-            # Add the agent to the entering zone of the market
-            if self.grid.is_cell_empty(position):
-                self.grid.place_agent(customer, position)
-                return
+        # Add the agent to the entering zone of the market
+        self.grid.place_agent(customer, self.grid.find_empty())
+        return
 
     def remove_customer(self, customer: Customer):
         self.__customers.remove(customer)

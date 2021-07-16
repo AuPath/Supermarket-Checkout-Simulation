@@ -97,9 +97,8 @@ class Customer(Agent):
         The customer chooses following a strategy,
         only if he has already finished to shop.
         """
-        all_queues = self.model.queues
         if not self.self_scan:
-            self.target_queue = self.queue_choice_strategy.choose_queue(all_queues, self.self_scan)
+            self.target_queue = self.queue_choice_strategy.choose_queue(self.model.get_cash_desks())
         else:
             # TODO: da testare
             self.target_queue = self.model.get_self_scan_queue()

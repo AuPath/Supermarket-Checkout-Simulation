@@ -1,7 +1,8 @@
+import math
+
+from src.Customer import Customer
 from src.cashdesk.CashDesk import CashDesk
 from src.queue.SupermarketQueue import SupermarketQueue
-from src.Customer import Customer
-import math
 
 
 class CashDeskStandard(CashDesk):
@@ -14,7 +15,7 @@ class CashDeskStandard(CashDesk):
         b = 2.1219
         return math.exp(a * math.log(c.basket_size) + b)
 
-    def break_time(self, c: Customer): # Todo non la calcola cosi, la lascio cosí perché almeno si puó testare
+    def break_time(self, c: Customer):  # TODO: non la calcola cosi, la lascio cosí perché almeno si puó testare
         a = 0.2251
         b = 3.5167
         return math.exp(a * math.log(c.basket_size) + b)
