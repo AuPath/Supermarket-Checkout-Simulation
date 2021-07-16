@@ -37,4 +37,4 @@ class CashDeskStandardZone(CashDeskZone):
 
     def advance(self, customer: Customer):
         (x, y) = customer.pos
-        self.model.grid.move_agent(customer, (x + 1, y))
+        self.model.grid.move_agent(customer, (x, y - 1))
