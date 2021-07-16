@@ -1,3 +1,4 @@
+from src.Customer import Customer
 from src.cashdesk.CashDesk import CashDesk
 from src.queue.SupermarketQueue import SupermarketQueue
 
@@ -10,3 +11,9 @@ class CashDeskSelfService(CashDesk):
         self.b_transaction = 3.1223
         self.a_break = 0.2251
         self.b_break = 3.5167
+
+    def move_beside(self, customer: Customer):
+        self.model.cash_desk_self_service_zone.move_beside(customer, self)
+
+    def advance(self, customer: Customer):
+        self.model.cash_desk_self_service_zone.advance(customer)

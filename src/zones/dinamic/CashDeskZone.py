@@ -3,6 +3,7 @@ from abc import abstractmethod
 from mesa import Model
 
 from src.Customer import Customer
+from src.cashdesk.CashDesk import CashDesk
 from src.zones.Zone import Zone
 
 
@@ -14,19 +15,15 @@ class CashDeskZone(Zone):
         self.cash_desks_number = cash_desks_number
         self.cash_desks = []
 
-    def move_to_queue(self, customer: Customer):
+    def move_to_queue(self, customer: Customer, cash_desk: CashDesk):
         pass
 
-    def move_beside(self, customer: Customer):
+    def move_beside(self, customer: Customer, cash_desk: CashDesk):
         pass
 
     def advance(self, customer: Customer):
-        pass
-
-    def get_cash_desk(self, queue):
-        for cash_desk in self.cash_desks:
-            if cash_desk.queue == queue:
-                return cash_desk
+        (x, y) = customer.pos
+        self.model.grid.move_agent(customer, (x, y - 1))
 
     @property
     def queues(self):

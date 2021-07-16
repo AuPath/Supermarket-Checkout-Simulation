@@ -77,7 +77,6 @@ class Customer(Agent):
             # TODO: define the strategy to do jockeying
             self.jockey()
 
-
     def enter(self):
         """
         When the customer enters the supermarket, he is assigned two variables:
@@ -98,14 +97,18 @@ class Customer(Agent):
         only if he has already finished to shop.
         """
         if not self.self_scan:
-            self.target_queue = self.queue_choice_strategy.choose_queue(self.model.get_cash_desks())
+            self.target_queue = self.queue_choice_strategy.choose_queue(self.model.get_cash_desks(True))
         else:
-            # TODO: da implementarne il movimento
             self.target_queue = self.model.get_self_scan_queue()
         self.target_queue.enqueue(self)
         # TODO: distinguere per tipo di cassa, per ora ci sono solo quelle normali
         logging.info("Customer " + str(self.unique_id) + " moving to queue")
-        self.model.cash_desk_standard_zone.move_to_queue(self)
+        self.move_to_queue()
+
+    def get_cash_desk(self, queue):
+        for cash_desk in self.model.get_cash_desks():
+            if cash_desk.queue == queue:
+                return cash_desk
 
     def jockey(self):
         """
@@ -122,9 +125,7 @@ class Customer(Agent):
 
     def start_transaction(self):
         self.state = CustomerState.CASH_DESK
-        # TODO: distinguere per tipo di cassa, per ora ci sono solo quelle normali
         logging.info("Customer " + str(self.unique_id) + " moving beside the cash desk")
-        self.model.cash_desk_standard_zone.move_beside(self)
 
     def complete_transaction(self):
         self.state = CustomerState.EXITING
@@ -137,3 +138,14 @@ class Customer(Agent):
     def advance(self):
         # TODO: distinguere per tipo di cassa, per ora ci sono solo quelle normali
         self.model.cash_desk_standard_zone.advance(self)
+
+    def move_to_queue(self):
+        if self.self_scan:
+            # va alla self-scan
+            pass
+        else:
+            cash_desk = self.get_cash_desk(self.target_queue)
+            if type(cash_desk).__name__ == 'CashDeskStandard':
+                self.model.cash_desk_standard_zone.move_to_queue(self, cash_desk)
+            elif type(cash_desk).__name__ == 'CashDeskSelfService':
+                self.model.cash_desk_self_service_zone.move_to_queue(self, cash_desk)

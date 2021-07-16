@@ -1,5 +1,7 @@
+from src.Customer import Customer
 from src.cashdesk.CashDesk import CashDesk
 from src.queue.SupermarketQueue import SupermarketQueue
+
 
 class CashDeskStandard(CashDesk):
 
@@ -10,3 +12,8 @@ class CashDeskStandard(CashDesk):
         self.a_break = 0.2251
         self.b_break = 3.5167
 
+    def move_beside(self, customer: Customer):
+        self.model.cash_desk_standard_zone.move_beside(customer, self)
+
+    def advance(self, customer: Customer):
+        self.model.cash_desk_standard_zone.advance(customer)

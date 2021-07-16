@@ -9,7 +9,7 @@ import math
 from src.Customer import Customer
 from src.queue.SupermarketQueue import SupermarketQueue
 
-PROCESSING_SPEED = 5
+PROCESSING_SPEED = 2
 
 
 class CashDeskState(Enum):
@@ -67,11 +67,12 @@ class CashDesk(ABC, Agent):
         if self.queue.size() > 0:
             self.__customer = self.__queue.dequeue()
             self.__customer.start_transaction()
+            self.move_beside(self.__customer)
             new_state = CashDeskState.PROCESSING_CUSTOMER
 
             # make every customer advance
             for customer in self.__queue.content():
-                customer.advance()
+                self.advance(customer)
         else:
             new_state = CashDeskState.GET_NEW_CUSTOMER
         return new_state
@@ -99,3 +100,9 @@ class CashDesk(ABC, Agent):
         for c in self.queue.content():
             total += self.service_time(c)
         return total
+
+    def move_beside(self, customer: Customer):
+        pass
+
+    def advance(self, customer: Customer):
+        pass

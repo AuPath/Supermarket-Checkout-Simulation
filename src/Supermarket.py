@@ -1,5 +1,4 @@
 import logging
-import math
 import random
 
 from mesa import Model
@@ -142,11 +141,13 @@ class Supermarket(Model):
     def init_grid(self):
         logging.info("Init grid")
         height = GRID_HEIGHT
-        number_self_scan_left = max(0, self.cash_desk_self_scan_zone.cash_desks_number - math.ceil(
-            (height - self.shopping_zone.dimension - 1) / 2)) if self.cash_desk_self_scan_zone is not None else 0
-        width = 2 + 1 + number_self_scan_left * 2 + 1 + 1 + (
-            self.cash_desk_standard_zone.cash_desks_number * 2 if self.cash_desk_standard_zone is not None else 0) + 1 + (
-                    self.cash_desk_self_service_zone.cash_desks_number * 4 if self.cash_desk_self_service_zone is not None else 0) + self.entering_zone.dimension
+        width = (
+                    self.cash_desk_self_scan_zone.cash_desks_number * 2 if self.cash_desk_self_scan_zone is not None else 0) \
+                + 3 + (
+                    self.cash_desk_standard_zone.cash_desks_number * 2 if self.cash_desk_standard_zone is not None else 0) \
+                + 1 + (
+                    self.cash_desk_self_service_zone.cash_desks_number * 4 if self.cash_desk_self_service_zone is not None else 0) \
+                + 1 + self.entering_zone.dimension
         self.grid = SingleGrid(width, height, False)
 
     def fill_grid(self):
@@ -182,8 +183,7 @@ class Supermarket(Model):
             if empty[0] > self.grid.width - self.entering_zone.dimension \
                     and empty[1] < self.grid.height - self.shopping_zone.dimension:
                 filtered_empties.append(empty)
-        return filtered_empties[random.randint(0, len(filtered_empties))]
-
+        return filtered_empties[random.randint(0, len(filtered_empties) - 1)]
 
     def remove_customer(self, customer: Customer):
         self.__customers.remove(customer)
@@ -221,5 +221,12 @@ class Supermarket(Model):
         self.__occupied_cells.add(cell)
         return cell
 
-    def get_cash_desks(self):
-        return self.__cash_desks
+    def get_cash_desks(self, exclude_self_scan=False):
+        if not exclude_self_scan:
+            return self.__cash_desks
+        else:
+            filtered_cash_desk = []
+            for cash_desk in self.__cash_desks:
+                if not type(cash_desk).__name__ == "CashDeskSelfScan":
+                    filtered_cash_desk.append(cash_desk)
+            return filtered_cash_desk

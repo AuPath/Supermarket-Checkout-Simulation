@@ -1,5 +1,7 @@
 from mesa import Model
 
+from src.Customer import Customer
+from src.cashdesk.CashDesk import CashDesk
 from src.zones.dinamic.CashDeskZone import CashDeskZone
 
 
@@ -12,22 +14,16 @@ class CashDeskSelfScanZone(CashDeskZone):
         if self.cash_desks_number == 0:
             pass
         else:
-            # Delimiting the space
-            x = 0
-            y = self.model.grid.height - self.model.shopping_zone.dimension - 2
-            vertical = True
+            x = 1
+            y = 0
             for cash_desk in self.cash_desks:
-                if vertical:
-                    self.model.grid.place_agent(cash_desk, (x, y))
-                    y -= 2
-                    if y <= 0:
-                        vertical = False
-                        y = 0
-                        x = 2
-                else:
-                    self.model.grid.place_agent(cash_desk, (x, y))
-                    x += 2
+                self.model.grid.place_agent(cash_desk, (x, y))
+                x += 2
 
             for y in range(0, self.model.grid.height - self.model.shopping_zone.dimension):
                 cell = self.model.add_occupied_cell("v")
                 self.model.grid.place_agent(cell, (x, y))
+
+    def move_to_queue(self, customer: Customer, cash_desk: CashDesk):
+        pass
+
