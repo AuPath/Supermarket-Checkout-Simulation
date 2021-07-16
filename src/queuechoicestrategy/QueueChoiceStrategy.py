@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+
 class QueueChoiceStrategy(ABC):
 
     # Must return a single queue
