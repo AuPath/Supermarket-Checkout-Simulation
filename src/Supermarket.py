@@ -1,5 +1,6 @@
 import logging
 import math
+import random
 
 from mesa import Model
 from mesa.space import SingleGrid
@@ -141,8 +142,11 @@ class Supermarket(Model):
     def init_grid(self):
         logging.info("Init grid")
         height = GRID_HEIGHT
-        number_self_scan_left = max(0, self.cash_desk_self_scan_zone.cash_desks_number - math.ceil((height - self.shopping_zone.dimension - 1) / 2)) if self.cash_desk_self_scan_zone is not None else 0
-        width = 2 + 1 + number_self_scan_left * 2 + 1 + 1 + (self.cash_desk_standard_zone.cash_desks_number * 2 if self.cash_desk_standard_zone is not None else 0) + 1 + (self.cash_desk_self_service_zone.cash_desks_number * 4 if self.cash_desk_self_service_zone is not None else 0) + self.entering_zone.dimension
+        number_self_scan_left = max(0, self.cash_desk_self_scan_zone.cash_desks_number - math.ceil(
+            (height - self.shopping_zone.dimension - 1) / 2)) if self.cash_desk_self_scan_zone is not None else 0
+        width = 2 + 1 + number_self_scan_left * 2 + 1 + 1 + (
+            self.cash_desk_standard_zone.cash_desks_number * 2 if self.cash_desk_standard_zone is not None else 0) + 1 + (
+                    self.cash_desk_self_service_zone.cash_desks_number * 4 if self.cash_desk_self_service_zone is not None else 0) + self.entering_zone.dimension
         self.grid = SingleGrid(width, height, False)
 
     def fill_grid(self):
@@ -167,9 +171,19 @@ class Supermarket(Model):
         self.customer_scheduler.add(customer)
 
         # Add the agent to the entering zone of the market
-        # TODO: find_empty ma solo nella entering zone
-        self.grid.place_agent(customer, self.grid.find_empty())
+        position = self.find_empty_entering_cell()
+        self.grid.place_agent(customer, position)
         return
+
+    def find_empty_entering_cell(self):
+        empties = self.grid.empties
+        filtered_empties = []
+        for empty in empties:
+            if empty[0] > self.grid.width - self.entering_zone.dimension \
+                    and empty[1] < self.grid.height - self.shopping_zone.dimension:
+                filtered_empties.append(empty)
+        return filtered_empties[random.randint(0, len(filtered_empties))]
+
 
     def remove_customer(self, customer: Customer):
         self.__customers.remove(customer)

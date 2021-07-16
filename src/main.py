@@ -81,7 +81,7 @@ def agent_portrayal(agent):
 
 
 # Zones metadata
-entering_zone_width = 100
+entering_zone_width = 6
 shopping_zone_height = 3
 number_cash_desk_self_scan = 0
 number_cash_desk = 1
@@ -94,7 +94,7 @@ zones_metadata = [('ENTERING', entering_zone_width),
 
 # Customers metadata
 customers_metadata = []
-for i in range(14):
+for i in range(7):
     customers_metadata.append((i % 7, False, QueueChoiceLeastPeople()))
 
 height = 20
