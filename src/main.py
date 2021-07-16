@@ -92,6 +92,8 @@ zones_metadata = [('ENTERING', entering_zone_width),
 customers_metadata = []
 for i in range(15):
     customers_metadata.append((5 + i, True, QueueChoiceLeastPeople()))
+for i in range(15):
+    customers_metadata.append((5 + i, False, QueueChoiceLeastPeople()))
 
 height = 20
 # numero casse self-scan (ognuna occupa 2) + 1 spazio + barriera (1) + 1 spazio +
