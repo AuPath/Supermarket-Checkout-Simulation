@@ -116,8 +116,9 @@ class Supermarket(Model):
                     self.add_cash_desk(cash_desk)
                     idx += 1
             elif zone_type == 'CASH_DESK_SELF_SCAN':
+                normal_queue = NormalQueue()
                 for i in range(dimension):
-                    cash_desk = CashDeskSelfScan(idx, self, NormalQueue())
+                    cash_desk = CashDeskSelfScan(idx, self, normal_queue)
                     self.cash_desk_self_scan_zone.cash_desks.append(cash_desk)
                     self.add_cash_desk(cash_desk)
                     idx += 1
@@ -185,6 +186,12 @@ class Supermarket(Model):
     @queues.setter
     def queues(self, value):
         self._queues = value
+
+    def get_self_scan_queue(self):
+        if self.cash_desk_self_scan_zone.cash_desks is not None and len(self.cash_desk_self_scan_zone.cash_desks) > 0:
+            return self.cash_desk_self_scan_zone.cash_desks[0].queue
+        else:
+            return None
 
     def get_unique_queues(self):
         return set(self.get_unique_queues())

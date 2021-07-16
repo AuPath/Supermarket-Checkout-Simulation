@@ -103,7 +103,11 @@ class Customer(Agent):
         only if he has already finished to shop.
         """
         all_queues = self.model.queues
-        self.target_queue = self.queue_choice_strategy.choose_queue(all_queues)
+        if not self.self_scan:
+            self.target_queue = self.queue_choice_strategy.choose_queue(all_queues, self.self_scan)
+        else:
+            # TODO: da testare
+            self.target_queue = self.model.get_self_scan_queue()
         self.target_queue.enqueue(self)
         # TODO: distinguere per tipo di cassa, per ora ci sono solo quelle normali
         logging.info("Customer " + str(self.unique_id) + " moving to queue")

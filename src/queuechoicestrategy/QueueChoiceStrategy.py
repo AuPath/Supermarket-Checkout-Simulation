@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 from src.cashdesk import CashDesk
 
 
+
 class QueueChoiceStrategy(ABC):
 
     # Must return a single queue

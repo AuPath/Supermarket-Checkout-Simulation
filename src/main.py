@@ -81,7 +81,7 @@ def agent_portrayal(agent):
 # Zones metadata
 entering_zone_width = 3
 shopping_zone_height = 3
-number_cash_desk_self_scan = 10
+number_cash_desk_self_scan = 0
 number_cash_desk = 1
 number_cash_desk_self_service_groups = 0
 zones_metadata = [('ENTERING', entering_zone_width),
