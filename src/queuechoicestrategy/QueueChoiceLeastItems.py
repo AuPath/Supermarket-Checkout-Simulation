@@ -8,7 +8,7 @@ class QueueChoiceLeastItems(QueueChoiceStrategy):
 
     # Returns shortest/smalles queue from queues, the comparison is made on the
     # basis of the size() function of the queues
-    def choose_queue(self, queues: list):
+    def choose_queue(self, queues: list, self_scan: bool):
         min = math.inf
         chosen_queue = None
 
