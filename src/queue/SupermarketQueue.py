@@ -1,7 +1,8 @@
-# classe astratta
-from abc import ABC, abstractmethod, abstractproperty
+from abc import ABC, abstractmethod
 from queue import Queue
+
 from mesa import Agent
+
 from src.Customer import Customer
 
 
@@ -25,19 +26,19 @@ class SupermarketQueue(ABC, Agent):
         for x in self.content():
             if x == c:
                 return True
-        return False    
+        return False
 
     def content(self):
+        new_queue = Queue()
+
         l = []
-
         while self.__queue.qsize() > 0:
-            l.append(self.__queue.get())
+            element = self.__queue.get()
+            new_queue.put(element)
+            l.append(element)
 
+        self.__queue = new_queue
         return l
 
     def total_items(self):
-        bskt_size = 0
-        for c in self.content():
-            bskt_size += c.basket_size
-
-        return bskt_size
+        return sum([1 for _ in self.content()])
