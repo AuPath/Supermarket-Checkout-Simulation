@@ -88,7 +88,7 @@ class CashDesk(ABC, Agent):
     def transaction_time(self, c: Customer):
         return math.exp(self.a_transaction * math.log(c.basket_size) + self.b_transaction)
 
-    def break_time(self, c: Customer): # Todo non la calcola cosi, la lascio cosí perché almeno si puó testare
+    def break_time(self, c: Customer): # Todo non la calcola cosi nel caso di cassa Standard, la lascio cosí perché almeno si puó testare
         return math.exp(self.a_break * math.log(c.basket_size) + self.b_break)
 
     def service_time(self, c: Customer):
