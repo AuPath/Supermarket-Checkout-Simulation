@@ -41,4 +41,4 @@ class SupermarketQueue(ABC, Agent):
         return l
 
     def total_items(self):
-        return sum([1 for _ in self.content()])
+        return sum([c.basket_size for c in self.content()])
