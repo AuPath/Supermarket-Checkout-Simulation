@@ -45,7 +45,6 @@ class CashDesk(ABC, Agent):
 
     def step(self):
         if self.__state == CashDeskState.GET_NEW_CUSTOMER:
-            logging.info("Cash desk " + type(self).__name__ + " " + str(self.unique_id) + " searching for new customer")
             new_state = self.serve_new_customer()
             self.__state = new_state
         elif self.__state == CashDeskState.PROCESSING_CUSTOMER:

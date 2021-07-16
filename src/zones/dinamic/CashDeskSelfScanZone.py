@@ -25,5 +25,14 @@ class CashDeskSelfScanZone(CashDeskZone):
                 self.model.grid.place_agent(cell, (x, y))
 
     def move_to_queue(self, customer: Customer, cash_desk: CashDesk):
-        pass
+        if customer.target_queue in self.queues:
+            (x, y) = cash_desk.pos
+            y = 2 + customer.target_queue.size()
+            self.model.grid.move_agent(customer, (x, y))
+
+    def move_beside(self, customer: Customer, cash_desk: CashDesk):
+        if customer.target_queue in self.queues:
+            (x, y) = cash_desk.pos
+            y += 1
+            self.model.grid.move_agent(customer, (x, y))
 

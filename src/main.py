@@ -79,8 +79,8 @@ def agent_portrayal(agent):
 # Zones metadata
 entering_zone_width = 6
 shopping_zone_height = 3
-number_cash_desk_self_scan = 5
-number_cash_desk = 0
+number_cash_desk_self_scan = 2
+number_cash_desk = 1
 number_cash_desk_self_service_groups = 1
 zones_metadata = [('ENTERING', entering_zone_width),
                   ('SHOPPING', shopping_zone_height),
@@ -90,8 +90,8 @@ zones_metadata = [('ENTERING', entering_zone_width),
 
 # Customers metadata
 customers_metadata = []
-for i in range(9):
-    customers_metadata.append((5 + i, False, QueueChoiceLeastPeople()))
+for i in range(15):
+    customers_metadata.append((5 + i, True, QueueChoiceLeastPeople()))
 
 height = 20
 # numero casse self-scan (ognuna occupa 2) + 1 spazio + barriera (1) + 1 spazio +
@@ -110,5 +110,5 @@ server = ModularServer(Supermarket,
                        "Supermarket",
                        {"customers_metadata": customers_metadata,
                         "zones_metadata": zones_metadata})
-server.port = 8522  # The default
+server.port = 8521  # The default
 server.launch()

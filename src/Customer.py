@@ -68,7 +68,6 @@ class Customer(Agent):
                 self.state = CustomerState.CHOOSING_QUEUE
 
         elif self.state == CustomerState.CHOOSING_QUEUE:
-            # TODO: define the strategy
             logging.info("Customer " + str(self.unique_id) + " choosing queue")
             self.state = CustomerState.QUEUED
             self.choose_queue()
@@ -101,7 +100,6 @@ class Customer(Agent):
         else:
             self.target_queue = self.model.get_self_scan_queue()
         self.target_queue.enqueue(self)
-        # TODO: distinguere per tipo di cassa, per ora ci sono solo quelle normali
         logging.info("Customer " + str(self.unique_id) + " moving to queue")
         self.move_to_queue()
 
@@ -136,15 +134,13 @@ class Customer(Agent):
         return self.basket_size_target <= self.processed_basket
 
     def advance(self):
-        # TODO: distinguere per tipo di cassa, per ora ci sono solo quelle normali
         self.model.cash_desk_standard_zone.advance(self)
 
     def move_to_queue(self):
+        cash_desk = self.get_cash_desk(self.target_queue)
         if self.self_scan:
-            # va alla self-scan
-            pass
+            self.model.cash_desk_self_scan_zone.move_to_queue(self, cash_desk)
         else:
-            cash_desk = self.get_cash_desk(self.target_queue)
             if type(cash_desk).__name__ == 'CashDeskStandard':
                 self.model.cash_desk_standard_zone.move_to_queue(self, cash_desk)
             elif type(cash_desk).__name__ == 'CashDeskSelfService':
