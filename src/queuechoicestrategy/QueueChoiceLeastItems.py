@@ -1,21 +1,16 @@
 from operator import methodcaller
-import math
-
 from src.queuechoicestrategy.QueueChoiceStrategy import QueueChoiceStrategy
 
 
 class QueueChoiceLeastItems(QueueChoiceStrategy):
 
-    # Returns shortest/smalles queue from queues, the comparison is made on the
+    # Returns shortest/smallest queue from queues, the comparison is made on the
     # basis of the size() function of the queues
-    def choose_queue(self, queues: list):
-        min = math.inf
-        chosen_queue = None
+    def choose_queue(self, cash_desks):
 
-        # Find queue with least items
-        for q in queues:
-            if q.total_items() < min:
-                chosen_queue = q
-            
-        return chosen_queue
+        queues = []
+        for c in cash_desks:
+            queues.append(c.queue)
+
+        return min(queues, key=methodcaller('total_items'))
 

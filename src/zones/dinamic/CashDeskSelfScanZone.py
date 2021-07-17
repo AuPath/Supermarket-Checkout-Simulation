@@ -1,5 +1,7 @@
 from mesa import Model
 
+from src.Customer import Customer
+from src.cashdesk.CashDesk import CashDesk
 from src.zones.dinamic.CashDeskZone import CashDeskZone
 
 
@@ -12,20 +14,25 @@ class CashDeskSelfScanZone(CashDeskZone):
         if self.cash_desks_number == 0:
             pass
         else:
-            # Delimiting the space
-            x = 0
-            y = self.model.grid.height - self.model.shopping_zone.dimension - 2
-            cash_desks = self.cash_desks_number
-            while y > 0 and cash_desks > 0:
-                cell = self.model.add_occupied_cell(True)
-                self.model.grid.place_agent(cell, (x, y))
-                y -= 2
-                cash_desks -= 1
-
-            x = 2
+            x = 1
             y = 0
-            while cash_desks > 0:
-                cell = self.model.add_occupied_cell(True)
-                self.model.grid.place_agent(cell, (x, y))
+            for cash_desk in self.cash_desks:
+                self.model.grid.place_agent(cash_desk, (x, y))
                 x += 2
-                cash_desks -= 1
+
+            for y in range(0, self.model.grid.height - self.model.shopping_zone.dimension):
+                cell = self.model.add_occupied_cell("v")
+                self.model.grid.place_agent(cell, (x, y))
+
+    def move_to_queue(self, customer: Customer, cash_desk: CashDesk):
+        if customer.target_queue in self.queues:
+            (x, y) = cash_desk.pos
+            y = 2 + customer.target_queue.size()
+            self.model.grid.move_agent(customer, (x, y))
+
+    def move_beside(self, customer: Customer, cash_desk: CashDesk):
+        if customer.target_queue in self.queues:
+            (x, y) = cash_desk.pos
+            y += 1
+            self.model.grid.move_agent(customer, (x, y))
+
