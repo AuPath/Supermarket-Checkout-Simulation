@@ -129,7 +129,9 @@ class Customer(Agent):
         When the customer is following a queue, he can change
         the queue if he computes that it has less expected wait time.
         """
-        pass
+
+        chosen_queue = self.queue_jockeying_strategy.switch_queue(self.model.get_adj_queues(self.target_queue))
+        return chosen_queue
 
     def get_state(self):
         return self.state
