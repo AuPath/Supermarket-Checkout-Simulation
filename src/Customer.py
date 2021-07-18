@@ -2,7 +2,7 @@ import logging
 
 from enums import Enum
 from mesa import Agent
-from src.states.State import State
+from src.states.customerstates.CustomerState import CustomerState
 
 SHOPPING_SPEED = 1
 
@@ -139,7 +139,7 @@ class Customer(Agent):
     def state(self):
         return self.state
 
-    def state_change(self, new_state: State):
+    def state_change(self, new_state: CustomerState):
         self.state = new_state
 
     def start_transaction(self):
