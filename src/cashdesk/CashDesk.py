@@ -63,10 +63,11 @@ class CashDesk(ABC, Agent):
             self.complete_transaction()
             self.__state = CashDeskState.GET_NEW_CUSTOMER
 
-    def serve_new_customer(self):
+    def serve_new_customer(self): # todo non serve piú
         if self.queue.size() > 0:
             self.__customer = self.__queue.dequeue()
             self.__customer.start_transaction()
+
             self.move_beside(self.__customer)
             new_state = CashDeskState.PROCESSING_CUSTOMER
 

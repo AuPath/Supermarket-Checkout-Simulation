@@ -142,11 +142,11 @@ class Customer(Agent):
     def state_change(self, new_state: CustomerState):
         self.state = new_state
 
-    def start_transaction(self):
+    def start_transaction(self): # todo fatto si puo togliere
         self.state = CustomerState.CASH_DESK
         logging.info("Customer " + str(self.unique_id) + " moving beside the cash desk")
 
-    def complete_transaction(self):
+    def complete_transaction(self): # todo si puó togliere
         self.state = CustomerState.EXITING
         logging.info("Customer " + str(self.unique_id) + " exiting")
         self.exit_store(self)
