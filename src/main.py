@@ -5,9 +5,10 @@ from mesa.visualization.ModularVisualization import ModularServer
 from mesa.visualization.modules import CanvasGrid
 
 from src.Supermarket import Supermarket
-# colors
+
 from src.queuechoicestrategy.QueueChoiceLeastPeople import QueueChoiceLeastPeople
 
+# colors
 RED = "#eb3461"
 BLUE = "#3493eb"
 GREEN = "#77eb34"
