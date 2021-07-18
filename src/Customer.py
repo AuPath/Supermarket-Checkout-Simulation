@@ -21,6 +21,7 @@ class Customer(Agent):
 
     def __init__(self, agent_id, model,
                  basket_size_target, self_scan, queue_choice_strategy,
+                 queue_jockeying_strategy,
                  shopping_speed=SHOPPING_SPEED):
         """Constructor, the basket_size_target and the boolean self_scan are assigned by the main class."""
         super().__init__(agent_id, model)
@@ -38,6 +39,7 @@ class Customer(Agent):
         self.shopping_speed = shopping_speed
 
         self.queue_choice_strategy = queue_choice_strategy
+        self.queue_jockeying_strategy = queue_jockeying_strategy
 
     def basket_size_target(self):
         return self.basket_size_target
