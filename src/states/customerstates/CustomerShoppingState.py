@@ -1,9 +1,9 @@
-from src.states.customerstates import CustomerState
+from src.states.State import State
 from src.states.customerstates.CustomerChoosingQueueState import CustomerChoosingQueueState
 import logging
 
 
-class CustomerShoppingState(CustomerState):
+class CustomerShoppingState(State):
 
     def action(self):
 

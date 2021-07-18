@@ -1,10 +1,15 @@
-from src.states.cashdeskstates.CashDeskState import CashDeskState
-from src.states.cashdeskstates.CashDeskNewCustomerState import CashDeskNewCustomerState
+from src.states.State import State
+
 from src.states.customerstates.CustomerExitingState import CustomerExitingState
 import logging
 
+import typing
 
-class CashDeskTransactionCompletedState(CashDeskState):
+if typing.TYPE_CHECKING: # Serve altrimenti ho import circolare
+    from src.states.cashdeskstates.CashDeskNewCustomerState import CashDeskNewCustomerState
+
+
+class CashDeskTransactionCompletedState(State):
 
     def action(self):
         logging.info("Cash desk " + type(self.context).__name__ + " " + str(self.context.unique_id) +

@@ -6,7 +6,7 @@ from mesa import Agent
 from src.Customer import Customer
 from src.queue.SupermarketQueue import SupermarketQueue
 from src.states.cashdeskstates.CashDeskNewCustomerState import CashDeskNewCustomerState
-from src.states.cashdeskstates.CashDeskState import CashDeskState
+from src.states.State import State
 
 PROCESSING_SPEED = 2
 
@@ -54,7 +54,7 @@ class CashDesk(ABC, Agent):
     def is_transaction_complete(self):
         return self.customer.basket_size == 0
 
-    def state_change(self, new_state: CashDeskState):
+    def state_change(self, new_state: State):
         self.__state = new_state
 
     def transaction_time(self, c: Customer):
@@ -72,6 +72,7 @@ class CashDesk(ABC, Agent):
             total += self.service_time(c)
         return total
 
+    # todo rinomina in move_customer_besides_cashdesk, il customer come parametro non dovrebbe essere necessario in quanto lavora solo sul customer al cashdesk
     def move_beside(self, customer: Customer):
         pass
 

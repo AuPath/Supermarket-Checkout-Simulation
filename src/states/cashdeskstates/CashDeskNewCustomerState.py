@@ -1,10 +1,10 @@
-from src.states.cashdeskstates.CashDeskState import CashDeskState
+from src.states.State import State
 from src.states.cashdeskstates.CashDeskProcessingState import CashDeskProcessingState
 from src.states.customerstates.CustomerAtCashDeskState import CustomerAtCashDeskState
 import logging
 
 
-class CashDeskNewCustomerState(CashDeskState):
+class CashDeskNewCustomerState(State):
 
     def action(self):
         if self.context.queue.size() > 0:

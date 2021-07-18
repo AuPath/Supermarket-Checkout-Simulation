@@ -1,5 +1,4 @@
 from abc import ABC, abstractmethod
-from src.Customer import Customer
 
 
 class State(ABC):

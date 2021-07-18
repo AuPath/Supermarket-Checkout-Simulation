@@ -1,5 +1,6 @@
 from mesa import Agent
-from src.states.customerstates.CustomerState import CustomerState
+
+from src.states.State import State
 from src.states.customerstates.CustomerEnteredState import CustomerEnteredState
 
 SHOPPING_SPEED = 1
@@ -81,7 +82,7 @@ class Customer(Agent):
     def state(self):
         return self.state
 
-    def state_change(self, new_state: CustomerState):
+    def state_change(self, new_state: State):
         self.state = new_state
 
     def exit_store(self):

@@ -1,8 +1,8 @@
-from src.states.customerstates import CustomerState
+from src.states.State import State
 import logging
 
 
-class CustomerQueuedState(CustomerState):
+class CustomerQueuedState(State):
 
     def action(self):
         logging.info("Customer " + str(self.context.unique_id) + " is queued")

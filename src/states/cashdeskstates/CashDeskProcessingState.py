@@ -1,9 +1,9 @@
-from src.states.cashdeskstates.CashDeskState import CashDeskState
+from src.states.State import State
 from src.states.cashdeskstates.CashDeskTransactionCompletedState import CashDeskTransactionCompletedState
 import logging
 
 
-class CashDeskProcessingState(CashDeskState):
+class CashDeskProcessingState(State):
 
     def action(self):
         logging.info("Cash desk " + type(self).__name__ + " " + str(self.context.unique_id) +
