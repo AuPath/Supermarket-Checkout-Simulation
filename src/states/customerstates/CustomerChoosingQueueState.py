@@ -1,9 +1,9 @@
-from src.states.State import State
+from src.states.customerstates import CustomerState
 from src.states.customerstates.CustomerQueuedState import CustomerQueuedState
 import logging
 
 
-class CustomerChoosingQueueState(State):
+class CustomerChoosingQueueState(CustomerState):
 
     def action(self):
         logging.info("Customer " + str(self.context.unique_id) + " choosing queue")

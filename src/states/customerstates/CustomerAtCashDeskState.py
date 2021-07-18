@@ -1,7 +1,8 @@
-from src.states.State import State
+from src.states.customerstates import CustomerState
+import logging
 
 
-class CustomerAtCashDeskState(State):
+class CustomerAtCashDeskState(CustomerState):
 
     def action(self):
-        pass
+        logging.info("Customer " + str(self.context.unique_id) + " moving beside the cash desk")
