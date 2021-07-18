@@ -33,6 +33,8 @@ class Customer(Agent):
         self.state = CustomerState.ENTERED
 
         self.basket_size_target = basket_size_target
+
+        # todo Magari target_queue ha piú senso chiamarlo current_queue
         self.target_queue = None
         self.processed_basket = 0
 

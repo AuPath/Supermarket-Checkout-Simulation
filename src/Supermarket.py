@@ -208,10 +208,10 @@ class Supermarket(Model):
         return set(self.get_unique_queues())
 
     def get_adj_queues(self, queue: SupermarketQueue):
-        pass
+        pass # todo
 
     def get_valid_queues(self):
-        pass
+        pass # todo
 
     def get_occupied_cells(self):
         return self.__occupied_cells
