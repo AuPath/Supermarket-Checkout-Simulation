@@ -97,6 +97,10 @@ class Customer(Agent):
     def is_done_shopping(self):
         return self.basket_size == self.basket_size_target
 
+    def move_to_shopping_zone(self):
+        if not self.model.shopping_zone.is_agent_in_zone(self):
+            self.model.shopping_zone.move_to_first_available(self)
+
     def choose_queue(self):
         """
         The customer chooses following a strategy,

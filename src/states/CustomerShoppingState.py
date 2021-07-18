@@ -1,11 +1,15 @@
 from src.states.State import State
 from src.states.CustomerChoosingQueueState import CustomerChoosingQueueState
+import logging
 
 
 class CustomerShoppingState(State):
 
     def action(self):
-        if self.context.basket_size < self.context.basket_size_target:
-            self.context.shop()
-        elif self.context.basket_size_target == self.context.basket_size:
+
+        logging.info("Customer " + str(self.unique_id) + " moves to shopping zone")
+
+        self.context.shop()
+
+        if self.context.is_done_shopping():
             self.context.state_change(self, CustomerChoosingQueueState(self.context))
