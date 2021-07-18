@@ -50,7 +50,7 @@ class CashDesk(ABC, Agent):
         elif self.__state == CashDeskState.PROCESSING_CUSTOMER:
             logging.info("Cash desk " + type(self).__name__ + " " + str(self.unique_id) + " processing customer " + str(
                 self.__customer.unique_id))
-            if not self.__customer.transaction_is_completed():
+            if not self.__customer.is_transaction_completed():
                 self.process_customer()
             else:
                 logging.info(

@@ -130,7 +130,7 @@ class Customer(Agent):
         logging.info("Customer " + str(self.unique_id) + " exiting")
         self.model.remove_customer(self)
 
-    def transaction_is_completed(self):
+    def is_transaction_completed(self):
         return self.basket_size_target <= self.processed_basket
 
     def advance(self):
