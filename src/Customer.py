@@ -1,19 +1,8 @@
-import logging
-
-from enums import Enum
 from mesa import Agent
 from src.states.customerstates.CustomerState import CustomerState
+from src.states.customerstates.CustomerEnteredState import CustomerEnteredState
 
 SHOPPING_SPEED = 1
-
-
-class CustomerState(Enum):
-    ENTERED = 1
-    SHOPPING = 2
-    CHOOSING_QUEUE = 3
-    QUEUED = 4
-    CASH_DESK = 5
-    EXITING = 6
 
 
 class Customer(Agent):
@@ -30,13 +19,12 @@ class Customer(Agent):
 
         self.basket_size = 0
         self.self_scan = self_scan
-        self.state = CustomerState.ENTERED
+        self.state = CustomerEnteredState(self)
 
         self.basket_size_target = basket_size_target
 
         # todo Magari target_queue ha piú senso chiamarlo current_queue
         self.target_queue = None
-        self.processed_basket = 0
 
         self.shopping_speed = shopping_speed
 
@@ -46,47 +34,8 @@ class Customer(Agent):
     def basket_size_target(self):
         return self.basket_size_target
 
-    def increase_processed_basket(self, processing_speed):
-        logging.info("Customer " + str(self.unique_id) + " processing basket")
-        if self.processed_basket > self.basket_size_target:
-            raise Exception("Basket has been already completely processed")
-        self.processed_basket += processing_speed
-
     def step(self):
-        logging.info("Customer " + str(self.unique_id) + " step")
-        if self.state == CustomerState.ENTERED:
-            # As the customer enters the market, he waits a step and then starts shopping, moving in the shopping zone
-            self.state = CustomerState.SHOPPING
-            logging.info("Customer " + str(self.unique_id) + " moves to shopping zone")
-            if not self.model.shopping_zone.is_agent_in_zone(self):
-                self.model.shopping_zone.move_to_first_available(self)
-
-        elif self.state == CustomerState.SHOPPING:
-            '''
-            Every step the customer puts an element i
-            n his basket, when
-            he reaches the target basket size, he starts choosing a queue
-            '''
-            if self.basket_size < self.basket_size_target:
-                self.shop()
-            elif self.basket_size_target == self.basket_size:
-                self.state = CustomerState.CHOOSING_QUEUE
-
-        elif self.state == CustomerState.CHOOSING_QUEUE:
-            logging.info("Customer " + str(self.unique_id) + " choosing queue")
-            self.state = CustomerState.QUEUED
-            self.choose_queue()
-
-        elif self.state == CustomerState.QUEUED:
-            # TODO: define the strategy to do jockeying
-            self.jockey()
-
-    def enter(self):
-        """
-        When the customer enters the supermarket, he is assigned two variables:
-        his basket size and if he wants to go to the self-scan cash desk.
-        """
-        pass
+        self.state.action()
 
     def shop(self):
         """
@@ -108,16 +57,12 @@ class Customer(Agent):
 
     def choose_queue(self):
         """
-        The customer chooses following a strategy,
-        only if he has already finished to shop.
+        The customer chooses a queue based on the the chosen Strategy.
         """
         if not self.self_scan:
             return self.queue_choice_strategy.choose_queue(self.model.get_cash_desks(True))
         else:
             return self.model.get_self_scan_queue()
-        self.target_queue.enqueue(self)
-        logging.info("Customer " + str(self.unique_id) + " moving to queue")
-        self.move_to_queue()
 
     def get_cash_desk(self, queue):
         for cash_desk in self.model.get_cash_desks():
@@ -133,23 +78,11 @@ class Customer(Agent):
         chosen_queue = self.queue_jockeying_strategy.switch_queue(self.model.get_adj_queues(self.target_queue))
         return chosen_queue
 
-    def get_state(self):
-        return self.state
-
     def state(self):
         return self.state
 
     def state_change(self, new_state: CustomerState):
         self.state = new_state
-
-    def start_transaction(self): # todo fatto si puo togliere
-        self.state = CustomerState.CASH_DESK
-        logging.info("Customer " + str(self.unique_id) + " moving beside the cash desk")
-
-    def complete_transaction(self): # todo si puó togliere
-        self.state = CustomerState.EXITING
-        logging.info("Customer " + str(self.unique_id) + " exiting")
-        self.exit_store(self)
 
     def exit_store(self):
         self.model.remove_customer(self)
