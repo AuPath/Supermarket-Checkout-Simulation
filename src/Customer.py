@@ -154,9 +154,6 @@ class Customer(Agent):
     def exit_store(self):
         self.model.remove_customer(self)
 
-    def is_transaction_completed(self):
-        return self.basket_size_target <= self.processed_basket
-
     def advance(self):
         self.model.cash_desk_standard_zone.advance(self)
 

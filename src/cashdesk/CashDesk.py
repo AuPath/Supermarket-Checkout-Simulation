@@ -8,6 +8,7 @@ import math
 
 from src.Customer import Customer
 from src.queue.SupermarketQueue import SupermarketQueue
+from src.states.cashdeskstates.CashDeskState import CashDeskState
 
 PROCESSING_SPEED = 2
 
@@ -105,8 +106,18 @@ class CashDesk(ABC, Agent):
             total += self.service_time(c)
         return total
 
+    def is_transaction_complete(self):
+        return self.customer.basket_size == 0
+
     def move_beside(self, customer: Customer):
         pass
 
     def advance(self, customer: Customer):
         pass
+
+    def state_change(self, new_state: CashDeskState):
+        self.__state = new_state
+
+    @customer.setter
+    def customer(self, value: Customer):
+        self.__customer = value
