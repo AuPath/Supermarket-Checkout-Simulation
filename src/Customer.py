@@ -128,6 +128,9 @@ class Customer(Agent):
     def complete_transaction(self):
         self.state = CustomerState.EXITING
         logging.info("Customer " + str(self.unique_id) + " exiting")
+        self.exit_store(self)
+
+    def exit_store(self):
         self.model.remove_customer(self)
 
     def is_transaction_completed(self):
