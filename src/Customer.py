@@ -108,9 +108,9 @@ class Customer(Agent):
         only if he has already finished to shop.
         """
         if not self.self_scan:
-            self.target_queue = self.queue_choice_strategy.choose_queue(self.model.get_cash_desks(True))
+            return self.queue_choice_strategy.choose_queue(self.model.get_cash_desks(True))
         else:
-            self.target_queue = self.model.get_self_scan_queue()
+            return self.model.get_self_scan_queue()
         self.target_queue.enqueue(self)
         logging.info("Customer " + str(self.unique_id) + " moving to queue")
         self.move_to_queue()
