@@ -77,9 +77,14 @@ class CashDesk(ABC, Agent):
         return new_state
 
     def process_customer(self):
-        self.get_customer().increase_processed_basket(self.__processing_speed)
+        c = self.get_customer()
 
-    def complete_transaction(self):
+        if c.basket_size - self.__processing_speed <= 0:
+            c.basket_size = 0
+        else:
+            c.basket_size -= self.__processing_speed
+
+    def complete_transaction(self): # todo non serve piú
         self.get_customer().complete_transaction()
 
     def get_customer(self):
