@@ -1,5 +1,5 @@
 from src.states.State import State
-from src.states.CustomerStates.CustomerChoosingQueueState import CustomerChoosingQueueState
+from src.states.customerstates.CustomerChoosingQueueState import CustomerChoosingQueueState
 import logging
 
 
@@ -14,3 +14,4 @@ class CustomerShoppingState(State):
 
         if self.context.is_done_shopping():
             self.context.state_change(CustomerChoosingQueueState(self.context))
+

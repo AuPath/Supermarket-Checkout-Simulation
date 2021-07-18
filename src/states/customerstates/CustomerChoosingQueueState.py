@@ -1,5 +1,5 @@
 from src.states.State import State
-from src.states.CustomerStates.CustomerQueuedState import CustomerQueuedState
+from src.states.customerstates.CustomerQueuedState import CustomerQueuedState
 import logging
 
 
