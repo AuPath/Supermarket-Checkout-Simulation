@@ -20,7 +20,6 @@ class CashDeskStandard(CashDesk):
     def advance(self, customer: Customer):
         self.model.cash_desk_standard_zone.advance(customer)
 
-
     # Il calcolo del breaktime nel caso di cassa Standard non dipende da
     # basket size. Nel paper non dice come lo calcola.
     # Andando a vedere nel codice netlogo lo calcola con una distribuzione gamma
