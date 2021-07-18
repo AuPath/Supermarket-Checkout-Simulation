@@ -4,7 +4,6 @@ from datetime import datetime
 from mesa.visualization.ModularVisualization import ModularServer
 from mesa.visualization.modules import CanvasGrid
 
-from src.Customer import CustomerState
 from src.Supermarket import Supermarket
 # colors
 from src.queuechoicestrategy.QueueChoiceLeastPeople import QueueChoiceLeastPeople
@@ -37,15 +36,16 @@ def agent_portrayal(agent):
         portrayal = {"scale": 1,
                      "r": 0.5,
                      "Layer": 1}
-        if agent.state == CustomerState.ENTERED:
+        # Todo questa cose con le stringhe magiche va cambiata per forza
+        if type(agent.state).__name__ == "CustomerEnteredState":
             portrayal["Shape"] = "images/eCircle.png"
-        elif agent.state == CustomerState.SHOPPING:
+        elif type(agent.state).__name__ == "CustomerShoppingState":
             portrayal["Shape"] = "images/sCircle.png"
-        elif agent.state == CustomerState.CHOOSING_QUEUE:
+        elif type(agent.state).__name__ == "CustomerChoosingQueueState":
             portrayal["Shape"] = "images/cCircle.png"
-        elif agent.state == CustomerState.QUEUED:
+        elif type(agent.state).__name__ == "CustomerQueuedState":
             portrayal["Shape"] = "images/qCircle.png"
-        elif agent.state == CustomerState.CASH_DESK:
+        elif type(agent.state).__name__ == "CustomerAtCashDeskState":
             portrayal["Shape"] = "images/pCircle.png"
     elif agent.type == 1:
         portrayal = {"Shape": "rect",
