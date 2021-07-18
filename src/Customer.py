@@ -88,7 +88,14 @@ class Customer(Agent):
         The customer enters the shop and starts shopping,
         he goes on until he has reached the target basket size.
         """
-        self.basket_size += self.shopping_speed
+
+        if self.basket_size + self.shopping_speed >= self.basket_size_target:
+            self.basket_size = self.basket_size_target
+        else:
+            self.basket_size += self.shopping_speed
+
+    def is_done_shopping(self):
+        return self.basket_size == self.basket_size_target
 
     def choose_queue(self):
         """
