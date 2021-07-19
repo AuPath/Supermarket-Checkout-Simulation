@@ -5,7 +5,7 @@ from mesa import Agent
 
 from src.Customer import Customer
 from src.queue.SupermarketQueue import SupermarketQueue
-from src.states.cashdeskstates.CashDeskNewCustomerState import CashDeskNewCustomerState
+from src.states.cashdeskstates.CashDeckStates import *
 from src.states.State import State
 
 PROCESSING_SPEED = 2
