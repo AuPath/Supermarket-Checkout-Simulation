@@ -91,6 +91,9 @@ class Customer(Agent):
     def advance(self):
         self.model.cash_desk_standard_zone.advance(self)
 
+    def leave_queue(self):
+        self.target_queue.remove_element(self)
+
     def move_to_queue(self):
         cash_desk = self.get_cash_desk(self.target_queue)
         if self.self_scan:
