@@ -1,6 +1,5 @@
 from src.states.State import State
 from src.states.customerstates.CustomerAtCashDeskState import CustomerAtCashDeskState
-from src.states.customerstates.CustomerExitingState import CustomerExitingState
 import logging
 
 
