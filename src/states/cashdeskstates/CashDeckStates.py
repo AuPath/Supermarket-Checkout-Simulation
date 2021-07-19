@@ -11,26 +11,33 @@ class CashDeskNewCustomerState(State):
 
             # Prendo il cliente e gli cambio lo stato
             self.context.customer = self.context.queue.dequeue()
+
+            logging.info("Cash desk " + type(self.context).__name__ + " " + str(self.context.unique_id) +
+                         " has acquired customer " + str(self.context.customer.unique_id))
+
             self.context.customer.state_change(CustomerAtCashDeskState(self.context.customer))
 
             self.context.move_beside()
 
             self.context.state_change(CashDeskProcessingState(self.context))
 
-            for customer in self.context.queue.content():
-                self.context.advance(customer)
+            if self.context.queue.size() > 0:
+                for customer in self.context.queue.content():
+                    self.context.advance(customer)
 
 
 class CashDeskProcessingState(State):
 
     def action(self):
-        logging.info("Cash desk " + type(self).__name__ + " " + str(self.context.unique_id) +
+        logging.info("Cash desk " + type(self.context).__name__ + " " + str(self.context.unique_id) +
                      " processing customer " + str(self.context.customer.unique_id))
 
         self.context.process_customer()
 
         if self.context.is_transaction_complete():
-            self.context.customer.state_change(CustomerExitingState(self.context.customer))
+            # self.context.customer.state_change(CustomerExitingState(self.context.customer))
+            self.context.customer.exit_store()
+            logging.info("Customer uscito")
             self.context.state_change(CashDeskTransactionCompletedState(self.context))
 
 
