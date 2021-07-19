@@ -57,7 +57,7 @@ class Supermarket(Model):
         self.init_customers(customers_metadata)
 
     def step(self):
-        logging.info("Step")
+        # logging.info("Step")
         self.customer_scheduler.step()
         self.cash_desk_scheduler.step()
 

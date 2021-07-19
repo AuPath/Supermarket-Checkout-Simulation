@@ -7,5 +7,6 @@ import logging
 class CustomerEnteredState(State):
 
     def action(self):
-        logging.info("Customer " + str(self.context.unique_id) + " step")
+        logging.info("Customer " + str(self.context.unique_id) + " is IN THE STORE")
+        logging.info("Customer " + str(self.context.unique_id) + " is moving to the shopping zone")
         self.context.state_change(CustomerShoppingState(self.context))

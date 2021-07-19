@@ -7,7 +7,7 @@ class CustomerShoppingState(State):
 
     def action(self):
 
-        logging.info("Customer " + str(self.context.unique_id) + " moves to shopping zone")
+        logging.info("Customer " + str(self.context.unique_id) + " is in the SHOPPING ZONE")
         self.context.move_to_shopping_zone()
 
         self.context.shop()

@@ -35,8 +35,9 @@ class CashDeskProcessingState(State):
         self.context.process_customer()
 
         if self.context.is_transaction_complete():
-            # self.context.customer.state_change(CustomerExitingState(self.context.customer))
+
             self.context.customer.exit_store()
+
             logging.info("Customer uscito")
             self.context.state_change(CashDeskTransactionCompletedState(self.context))
 
@@ -48,6 +49,4 @@ class CashDeskTransactionCompletedState(State):
                      " completing the transaction")
 
         # terminato un cliente riprendo ad accettarne di nuovi
-        # TODO: durante l'esecuzione ricevo l'errore name 'CashDeskNewCustomerState' is not defined
-        # ha a che fare con l'import sopra, come sistemare?
         self.context.state_change(CashDeskNewCustomerState(self.context))
