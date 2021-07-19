@@ -15,10 +15,10 @@ class CashDeskNewCustomerState(State):
 
             self.context.move_beside()
 
+            self.context.state_change(CashDeskProcessingState(self.context))
+
             for customer in self.context.queue.content():
                 self.context.advance(customer)
-
-            self.context.state_change(CashDeskProcessingState(self.context))
 
 
 class CashDeskProcessingState(State):
@@ -30,6 +30,7 @@ class CashDeskProcessingState(State):
         self.context.process_customer()
 
         if self.context.is_transaction_complete():
+            self.context.customer.state_change(CustomerExitingState(self.context.customer))
             self.context.state_change(CashDeskTransactionCompletedState(self.context))
 
 
@@ -38,8 +39,6 @@ class CashDeskTransactionCompletedState(State):
     def action(self):
         logging.info("Cash desk " + type(self.context).__name__ + " " + str(self.context.unique_id) +
                      " completing the transaction")
-
-        self.context.customer.state_change(CustomerExitingState(self.context.customer))
 
         # terminato un cliente riprendo ad accettarne di nuovi
         # TODO: durante l'esecuzione ricevo l'errore name 'CashDeskNewCustomerState' is not defined
