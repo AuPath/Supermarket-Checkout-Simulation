@@ -63,8 +63,9 @@ class Supermarket(Model):
 
     def init_customers(self, customers_metadata):
         logging.info("Init customers")
-        for basket_size, self_scan, queue_choice_strategy in customers_metadata:
-            customer = Customer(self.__num_agent, self, basket_size, self_scan, queue_choice_strategy)
+        for basket_size, self_scan, queue_choice_strategy, queue_jockey_strategy in customers_metadata:
+            customer = Customer(self.__num_agent, self, basket_size, self_scan, queue_choice_strategy,
+                                queue_jockey_strategy)
             self.__num_agent += 1
             self.add_customer(customer)
 
@@ -205,13 +206,46 @@ class Supermarket(Model):
             return None
 
     def get_unique_queues(self):
-        return set(self.get_unique_queues())
+        return set(self.queues)
 
+    # returns the adjacent queues to the given queue
     def get_adj_queues(self, queue: SupermarketQueue):
-        pass # todo implementazione adj_queues
+        # list of queues in the right order
+        ordered_queues = []
+        if self.cash_desk_standard_zone is not None and self.cash_desk_standard_zone.cash_desks_number > 0:
+            for cash_desk in self.cash_desk_standard_zone.cash_desks:
+                # already ordered
+                if cash_desk.queue not in ordered_queues:
+                    ordered_queues.append(cash_desk.queue)
+        if self.cash_desk_self_service_zone is not None and self.cash_desk_self_service_zone.cash_desks_number > 0:
+            for cash_desk in self.cash_desk_self_service_zone.cash_desks:
+                # already ordered
+                if cash_desk.queue not in ordered_queues:
+                    ordered_queues.append(cash_desk.queue)
+
+        chosen_queue_index = ordered_queues.index(queue)
+        adjacent_queues = [queue]
+        neg_delta = ADJ_WINDOW_SIZE
+        pos_delta = ADJ_WINDOW_SIZE
+        if chosen_queue_index < ADJ_WINDOW_SIZE:
+            neg_delta = chosen_queue_index
+        if len(ordered_queues) - chosen_queue_index < ADJ_WINDOW_SIZE:
+            pos_delta = chosen_queue_index
+
+        for i in range(1, neg_delta):
+            adjacent_queues.append(ordered_queues[chosen_queue_index - i])
+        for i in range(1, pos_delta):
+            adjacent_queues.append(ordered_queues[chosen_queue_index + i])
+
+        return adjacent_queues
+
+    def get_cash_desk_by_id(self, unique_id):
+        for cash_desk in self.get_cash_desks():
+            if cash_desk.unique_id == unique_id:
+                return cash_desk
 
     def get_valid_queues(self):
-        pass # todo non so a cosa serve questo
+        pass  # todo non so a cosa serve questo
 
     def get_occupied_cells(self):
         return self.__occupied_cells

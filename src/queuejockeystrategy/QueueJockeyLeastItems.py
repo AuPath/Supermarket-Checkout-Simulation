@@ -1,5 +1,5 @@
 from operator import methodcaller
-from src.queuejockeystrategy import QueueJockeyStrategy
+from src.queuejockeystrategy.QueueJockeyStrategy import QueueJockeyStrategy
 
 
 class QueueJockeyLeastItems(QueueJockeyStrategy):

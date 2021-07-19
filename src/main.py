@@ -5,8 +5,8 @@ from mesa.visualization.ModularVisualization import ModularServer
 from mesa.visualization.modules import CanvasGrid
 
 from src.Supermarket import Supermarket
-
 from src.queuechoicestrategy.QueueChoiceLeastPeople import QueueChoiceLeastPeople
+from src.queuejockeystrategy.QueueJockeyLeastPeople import QueueJockeyLeastPeople
 
 # colors
 RED = "#eb3461"
@@ -92,9 +92,9 @@ zones_metadata = [('ENTERING', entering_zone_width),
 # Customers metadata
 customers_metadata = []
 for i in range(15):
-    customers_metadata.append((5 + i, True, QueueChoiceLeastPeople()))
+    customers_metadata.append((5 + i, True, QueueChoiceLeastPeople(), QueueJockeyLeastPeople()))
 for i in range(15):
-    customers_metadata.append((5 + i, False, QueueChoiceLeastPeople()))
+    customers_metadata.append((5 + i, False, QueueChoiceLeastPeople(), QueueJockeyLeastPeople()))
 
 height = 20
 # numero casse self-scan (ognuna occupa 2) + 1 spazio + barriera (1) + 1 spazio +

@@ -13,7 +13,7 @@ class CashDeskNewCustomerState(State):
             self.context.customer = self.context.queue.dequeue()
             self.context.customer.state_change(CustomerAtCashDeskState(self.context.customer))
 
-            self.context.move_beside(self.context.customer)
+            self.context.move_beside()
 
             for customer in self.context.queue.content():
                 self.context.advance(customer)

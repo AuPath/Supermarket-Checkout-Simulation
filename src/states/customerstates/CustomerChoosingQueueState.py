@@ -9,7 +9,7 @@ class CustomerChoosingQueueState(State):
         logging.info("Customer " + str(self.context.unique_id) + " choosing queue")
 
         self.context.target_queue = self.context.choose_queue()
-        self.context.target_queue.enqueue(self)
+        self.context.target_queue.enqueue(self.context)
 
         logging.info("Customer " + str(self.context.unique_id) + " moving to queue")
         self.context.move_to_queue()

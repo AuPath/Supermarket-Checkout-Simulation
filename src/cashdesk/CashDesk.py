@@ -73,7 +73,7 @@ class CashDesk(ABC, Agent):
         return total
 
     # todo rinomina in move_customer_besides_cashdesk, il customer come parametro non dovrebbe essere necessario in quanto lavora solo sul customer al cashdesk
-    def move_beside(self, customer: Customer):
+    def move_beside(self):
         pass
 
     def advance(self, customer: Customer): # todo forse advance é un qualcosa di riservato per Mesa

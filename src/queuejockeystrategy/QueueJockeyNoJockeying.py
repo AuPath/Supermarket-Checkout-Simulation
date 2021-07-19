@@ -1,4 +1,4 @@
-from src.queuejockeystrategy import QueueJockeyStrategy
+from src.queuejockeystrategy.QueueJockeyLeastPeople import QueueJockeyStrategy
 
 # Idealmente dovrebbe ritornare la stessa coda nella quale si trova il Customer
 # senza passare alla strategy il customer non posso peró fare questo controllo
