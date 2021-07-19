@@ -6,6 +6,11 @@ from mesa.visualization.modules import CanvasGrid
 
 from src.Supermarket import Supermarket
 from src.queuechoicestrategy.QueueChoiceLeastPeople import QueueChoiceLeastPeople
+from src.queuechoicestrategy.QueueChoiceLeastItems import QueueChoiceLeastItems
+from src.queuechoicestrategy.QueueChoiceLeastWaitingTimeServiceImplied import QueueChoiceLeastWaitingTimeServiceImplied
+from src.queuechoicestrategy.QueueChoiceLeastWaitingPowerImplied import QueueChoiceLeastWaitingPowerImplied
+
+from src.queuejockeystrategy.QueueJockeyNoJockeying import QueueJockeyNoJockeying
 from src.queuejockeystrategy.QueueJockeyLeastPeople import QueueJockeyLeastPeople
 
 # colors
@@ -81,7 +86,7 @@ def agent_portrayal(agent):
 entering_zone_width = 6
 shopping_zone_height = 3
 number_cash_desk_self_scan = 0
-number_cash_desk = 2
+number_cash_desk = 4
 number_cash_desk_self_service_groups = 0
 zones_metadata = [('ENTERING', entering_zone_width),
                   ('SHOPPING', shopping_zone_height),
@@ -90,11 +95,14 @@ zones_metadata = [('ENTERING', entering_zone_width),
                   ('CASH_DESK_SELF_SERVICE', number_cash_desk_self_service_groups)]
 
 # Customers metadata
+queue_choice_strategy = QueueChoiceLeastPeople()
+queue_jockeying_strategy = QueueJockeyNoJockeying
+
 customers_metadata = []
 #for i in range(15):
-#    customers_metadata.append((5 + i, True, QueueChoiceLeastPeople(), QueueJockeyLeastPeople()))
+#    customers_metadata.append((5 + i, True, queue_choice_strategy, queue_jockeying_strategy()))
 for i in range(15):
-    customers_metadata.append((5 + i, False, QueueChoiceLeastPeople(), QueueJockeyLeastPeople()))
+    customers_metadata.append((5 + i, False, queue_choice_strategy, queue_jockeying_strategy()))
 
 height = 20
 # numero casse self-scan (ognuna occupa 2) + 1 spazio + barriera (1) + 1 spazio +
