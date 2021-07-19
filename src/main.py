@@ -46,7 +46,10 @@ def agent_portrayal(agent):
         if type(agent.state).__name__ == "CustomerEnteredState":
             portrayal["Shape"] = "images/eCircle.png"
         elif type(agent.state).__name__ == "CustomerShoppingState":
-            portrayal["Shape"] = "images/sCircle.png"
+            if not agent.self_scan:
+                portrayal["Shape"] = "images/sCircleCyan.png"
+            else:
+                portrayal["Shape"] = "images/sCircleGrey.png"
         elif type(agent.state).__name__ == "CustomerChoosingQueueState":
             portrayal["Shape"] = "images/cCircle.png"
         elif type(agent.state).__name__ == "CustomerQueuedState":

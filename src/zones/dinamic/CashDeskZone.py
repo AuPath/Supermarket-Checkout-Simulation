@@ -1,3 +1,4 @@
+import logging
 from abc import abstractmethod
 
 from mesa import Model
@@ -22,6 +23,7 @@ class CashDeskZone(Zone):
         pass
 
     def advance(self, customer: Customer):
+        logging.info("Customer " + str(customer.unique_id) + " advancing")
         (x, y) = customer.pos
         self.model.grid.move_agent(customer, (x, y - 1))
 
