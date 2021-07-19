@@ -15,3 +15,4 @@ class CustomerQueuedState(State):
             if chosen_queue is not None and chosen_queue != self.context.target_queue:
                 self.context.target_queue = chosen_queue
                 self.context.target_queue.enqueue(self.context)
+                self.context.move_to_queue()
