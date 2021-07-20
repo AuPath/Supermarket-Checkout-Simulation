@@ -12,6 +12,7 @@ from src.queuechoicestrategy.QueueChoiceLeastWaitingPowerImplied import QueueCho
 
 from src.queuejockeystrategy.QueueJockeyNoJockeying import QueueJockeyNoJockeying
 from src.queuejockeystrategy.QueueJockeyLeastPeople import QueueJockeyLeastPeople
+from src.queuejockeystrategy.QueueJockeyLeastItems import QueueJockeyLeastItems
 
 # colors
 RED = "#eb3461"
