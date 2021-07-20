@@ -72,6 +72,12 @@ class CashDesk(ABC, Agent):
             total += self.service_time(c)
         return total
 
+    def queue_size(self):
+        if self.customer is not None:
+            return self.queue.size() + 1
+        else:
+            return self.queue.size()
+
     # todo rinomina in move_customer_besides_cashdesk, il customer come parametro non dovrebbe essere necessario in quanto lavora solo sul customer al cashdesk
     def move_beside(self):
         pass
