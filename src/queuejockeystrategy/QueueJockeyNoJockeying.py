@@ -8,5 +8,5 @@ from src.queuejockeystrategy.QueueJockeyLeastPeople import QueueJockeyStrategy
 
 class QueueJockeyNoJockeying(QueueJockeyStrategy):
 
-    def switch_queue(self, queues):
+    def switch_queue(self, cash_desks):
         return None
