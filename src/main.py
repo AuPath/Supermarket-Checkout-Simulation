@@ -106,8 +106,9 @@ def generate_customers_metadata(n_customers):
     # TODO: Cancellare questa riga!!!!
     basket_size_values = [20 + i for i in range(n_customers)]
 
+    self_scan = False
     for basket_size in basket_size_values:
-        self_scan = False
+        self_scan = not self_scan
         new_tuple = (basket_size, self_scan, queue_choice_strategy, queue_jockeying_strategy)
         customers_metadata.append(new_tuple)
     return customers_metadata
@@ -116,9 +117,9 @@ def generate_customers_metadata(n_customers):
 # Zones metadata
 entering_zone_width = 6
 shopping_zone_height = 3
-number_cash_desk_self_scan = 0
-number_cash_desk = 2
-number_cash_desk_self_service_groups = 0
+number_cash_desk_self_scan = 3
+number_cash_desk = 3
+number_cash_desk_self_service_groups = 1
 zones_metadata = [('ENTERING', entering_zone_width),
                   ('SHOPPING', shopping_zone_height),
                   ('CASH_DESK_SELF_SCAN', number_cash_desk_self_scan),
@@ -130,7 +131,7 @@ zones_metadata = [('ENTERING', entering_zone_width),
 queue_choice_strategy = QueueChoiceLeastPeople()
 queue_jockeying_strategy = QueueJockeyLeastPeople()
 
-N_CUSTOMERS = 5
+N_CUSTOMERS = 25
 customers_metadata = generate_customers_metadata(N_CUSTOMERS)
 
 height = 20
