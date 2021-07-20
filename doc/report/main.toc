@@ -1,0 +1,9 @@
+\babel@toc {italian}{}
+\babel@toc {italian}{}
+\contentsline {section}{\numberline {1}Introduzione}{2}{section.1}%
+\contentsline {section}{\numberline {2}Stato dell'arte}{2}{section.2}%
+\contentsline {section}{\numberline {3}Descrizione del modello}{3}{section.3}%
+\contentsline {section}{\numberline {4}Implementazione dei comportamenti e delle strategia}{4}{section.4}%
+\contentsline {section}{\numberline {5}Simulazione}{5}{section.5}%
+\contentsline {section}{\numberline {6}Analisi dei risultati}{5}{section.6}%
+\contentsline {section}{\numberline {7}Conclusioni}{6}{section.7}%

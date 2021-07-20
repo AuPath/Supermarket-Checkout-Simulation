@@ -1,0 +1,1406 @@
+2021-07-20 14:33:13,013 [INFO] Init zones
+2021-07-20 14:33:13,014 [INFO] Init cash desks
+2021-07-20 14:33:13,014 [INFO] Init environment
+2021-07-20 14:33:13,014 [INFO] Init grid
+2021-07-20 14:33:13,015 [INFO] Fill grid
+2021-07-20 14:33:13,015 [INFO] Init customers
+2021-07-20 14:33:14,105 [INFO] 200 GET / (127.0.0.1) 5.80ms
+2021-07-20 14:33:24,162 [INFO] 101 GET /ws (127.0.0.1) 1.00ms
+2021-07-20 14:33:24,542 [INFO] Init zones
+2021-07-20 14:33:24,542 [INFO] Init cash desks
+2021-07-20 14:33:24,543 [INFO] Init environment
+2021-07-20 14:33:24,543 [INFO] Init grid
+2021-07-20 14:33:24,543 [INFO] Fill grid
+2021-07-20 14:33:24,545 [INFO] Init customers
+2021-07-20 14:33:24,986 [INFO] 304 GET /local/images/eCircle.png (127.0.0.1) 423.33ms
+2021-07-20 14:33:25,045 [WARNING] 404 GET /favicon.ico (127.0.0.1) 7.31ms
+2021-07-20 14:33:26,549 [INFO] Customer 8 is IN THE STORE
+2021-07-20 14:33:26,550 [INFO] Customer 8 is moving to the shopping zone
+2021-07-20 14:33:26,550 [INFO] Customer 2 is IN THE STORE
+2021-07-20 14:33:26,550 [INFO] Customer 2 is moving to the shopping zone
+2021-07-20 14:33:26,550 [INFO] Customer 0 is IN THE STORE
+2021-07-20 14:33:26,550 [INFO] Customer 0 is moving to the shopping zone
+2021-07-20 14:33:26,550 [INFO] Customer 13 is IN THE STORE
+2021-07-20 14:33:26,550 [INFO] Customer 13 is moving to the shopping zone
+2021-07-20 14:33:26,551 [INFO] Customer 5 is IN THE STORE
+2021-07-20 14:33:26,551 [INFO] Customer 5 is moving to the shopping zone
+2021-07-20 14:33:26,551 [INFO] Customer 12 is IN THE STORE
+2021-07-20 14:33:26,551 [INFO] Customer 12 is moving to the shopping zone
+2021-07-20 14:33:26,551 [INFO] Customer 7 is IN THE STORE
+2021-07-20 14:33:26,551 [INFO] Customer 7 is moving to the shopping zone
+2021-07-20 14:33:26,551 [INFO] Customer 14 is IN THE STORE
+2021-07-20 14:33:26,551 [INFO] Customer 14 is moving to the shopping zone
+2021-07-20 14:33:26,551 [INFO] Customer 3 is IN THE STORE
+2021-07-20 14:33:26,551 [INFO] Customer 3 is moving to the shopping zone
+2021-07-20 14:33:26,551 [INFO] Customer 1 is IN THE STORE
+2021-07-20 14:33:26,551 [INFO] Customer 1 is moving to the shopping zone
+2021-07-20 14:33:26,551 [INFO] Customer 11 is IN THE STORE
+2021-07-20 14:33:26,551 [INFO] Customer 11 is moving to the shopping zone
+2021-07-20 14:33:26,551 [INFO] Customer 9 is IN THE STORE
+2021-07-20 14:33:26,551 [INFO] Customer 9 is moving to the shopping zone
+2021-07-20 14:33:26,551 [INFO] Customer 4 is IN THE STORE
+2021-07-20 14:33:26,551 [INFO] Customer 4 is moving to the shopping zone
+2021-07-20 14:33:26,551 [INFO] Customer 10 is IN THE STORE
+2021-07-20 14:33:26,551 [INFO] Customer 10 is moving to the shopping zone
+2021-07-20 14:33:26,551 [INFO] Customer 6 is IN THE STORE
+2021-07-20 14:33:26,551 [INFO] Customer 6 is moving to the shopping zone
+2021-07-20 14:33:26,589 [INFO] 304 GET /local/images/sCircleCyan.png (127.0.0.1) 2.36ms
+2021-07-20 14:33:26,949 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:33:26,949 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:33:26,949 [INFO] Customer 2 is in the SHOPPING ZONE
+2021-07-20 14:33:26,949 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:33:26,949 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:33:26,949 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:33:26,949 [INFO] Customer 3 is in the SHOPPING ZONE
+2021-07-20 14:33:26,949 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:33:26,949 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:33:26,949 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:33:26,949 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:33:26,949 [INFO] Customer 0 is in the SHOPPING ZONE
+2021-07-20 14:33:26,949 [INFO] Customer 1 is in the SHOPPING ZONE
+2021-07-20 14:33:26,949 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:33:26,949 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:33:27,298 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:33:27,298 [INFO] Customer 2 is in the SHOPPING ZONE
+2021-07-20 14:33:27,299 [INFO] Customer 1 is in the SHOPPING ZONE
+2021-07-20 14:33:27,299 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:33:27,299 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:33:27,299 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:33:27,300 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:33:27,301 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:33:27,301 [INFO] Customer 0 is in the SHOPPING ZONE
+2021-07-20 14:33:27,301 [INFO] Customer 3 is in the SHOPPING ZONE
+2021-07-20 14:33:27,302 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:33:27,302 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:33:27,302 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:33:27,302 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:33:27,302 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:33:27,662 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:33:27,664 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:33:27,665 [INFO] Customer 3 is in the SHOPPING ZONE
+2021-07-20 14:33:27,665 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:33:27,665 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:33:27,665 [INFO] Customer 1 is in the SHOPPING ZONE
+2021-07-20 14:33:27,665 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:33:27,665 [INFO] Customer 0 is in the SHOPPING ZONE
+2021-07-20 14:33:27,665 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:33:27,665 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:33:27,665 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:33:27,665 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:33:27,665 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:33:27,665 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:33:27,665 [INFO] Customer 2 is in the SHOPPING ZONE
+2021-07-20 14:33:28,016 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:33:28,016 [INFO] Customer 2 is in the SHOPPING ZONE
+2021-07-20 14:33:28,017 [INFO] Customer 1 is in the SHOPPING ZONE
+2021-07-20 14:33:28,017 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:33:28,017 [INFO] Customer 0 is in the SHOPPING ZONE
+2021-07-20 14:33:28,017 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:33:28,017 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:33:28,017 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:33:28,017 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:33:28,017 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:33:28,017 [INFO] Customer 3 is in the SHOPPING ZONE
+2021-07-20 14:33:28,017 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:33:28,020 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:33:28,020 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:33:28,020 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:33:28,377 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:33:28,377 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:33:28,377 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:33:28,377 [INFO] Customer 3 is in the SHOPPING ZONE
+2021-07-20 14:33:28,377 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:33:28,377 [INFO] Customer 2 is in the SHOPPING ZONE
+2021-07-20 14:33:28,377 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:33:28,377 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:33:28,377 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:33:28,377 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:33:28,377 [INFO] Customer 0 is in the SHOPPING ZONE
+2021-07-20 14:33:28,377 [INFO] Customer 1 is in the SHOPPING ZONE
+2021-07-20 14:33:28,377 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:33:28,377 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:33:28,377 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:33:28,398 [INFO] 304 GET /local/images/cCircle.png (127.0.0.1) 3.32ms
+2021-07-20 14:33:28,720 [INFO] Customer 1 is in the SHOPPING ZONE
+2021-07-20 14:33:28,721 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:33:28,722 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:33:28,722 [INFO] Customer 0 choosing queue
+2021-07-20 14:33:28,722 [INFO] Customer 0 moving to a queue
+2021-07-20 14:33:28,722 [INFO] Customer 2 is in the SHOPPING ZONE
+2021-07-20 14:33:28,722 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:33:28,722 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:33:28,722 [INFO] Customer 3 is in the SHOPPING ZONE
+2021-07-20 14:33:28,722 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:33:28,722 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:33:28,722 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:33:28,722 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:33:28,722 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:33:28,722 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:33:28,722 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:33:28,722 [INFO] Cash desk CashDeskStandard 1 has acquired customer 0
+2021-07-20 14:33:28,742 [INFO] 304 GET /local/images/pCircle.png (127.0.0.1) 4.19ms
+2021-07-20 14:33:29,077 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:33:29,077 [INFO] Customer 2 is in the SHOPPING ZONE
+2021-07-20 14:33:29,078 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:33:29,078 [INFO] Customer 0 moving beside the cash desk
+2021-07-20 14:33:29,078 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:33:29,078 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:33:29,078 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:33:29,079 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:33:29,079 [INFO] Customer 3 is in the SHOPPING ZONE
+2021-07-20 14:33:29,079 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:33:29,079 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:33:29,079 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:33:29,080 [INFO] Customer 1 choosing queue
+2021-07-20 14:33:29,081 [INFO] Customer 1 moving to a queue
+2021-07-20 14:33:29,081 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:33:29,081 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:33:29,081 [INFO] Cash desk CashDeskStandard 1 processing customer 0
+2021-07-20 14:33:29,095 [INFO] 304 GET /local/images/qCircle.png (127.0.0.1) 2.66ms
+2021-07-20 14:33:29,463 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:33:29,463 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:33:29,464 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:33:29,464 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:33:29,464 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:33:29,464 [INFO] Customer 1 is in a QUEUE
+2021-07-20 14:33:29,465 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:33:29,465 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:33:29,465 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:33:29,465 [INFO] Customer 2 choosing queue
+2021-07-20 14:33:29,465 [INFO] Customer 2 moving to a queue
+2021-07-20 14:33:29,465 [INFO] Customer 3 is in the SHOPPING ZONE
+2021-07-20 14:33:29,465 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:33:29,465 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:33:29,465 [INFO] Customer 0 moving beside the cash desk
+2021-07-20 14:33:29,465 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:33:29,465 [INFO] Cash desk CashDeskStandard 2 has acquired customer 2
+2021-07-20 14:33:29,465 [INFO] Cash desk CashDeskStandard 1 processing customer 0
+2021-07-20 14:33:29,813 [INFO] Customer 2 moving beside the cash desk
+2021-07-20 14:33:29,813 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:33:29,813 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:33:29,813 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:33:29,813 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:33:29,813 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:33:29,813 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:33:29,813 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:33:29,813 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:33:29,813 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:33:29,813 [INFO] Customer 3 choosing queue
+2021-07-20 14:33:29,813 [INFO] Customer 3 moving to a queue
+2021-07-20 14:33:29,813 [INFO] Customer 1 is in a QUEUE
+2021-07-20 14:33:29,817 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:33:29,817 [INFO] Customer 0 moving beside the cash desk
+2021-07-20 14:33:29,817 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:33:29,817 [INFO] Cash desk CashDeskStandard 2 processing customer 2
+2021-07-20 14:33:29,818 [INFO] Cash desk CashDeskStandard 1 processing customer 0
+2021-07-20 14:33:29,818 [INFO] Customer uscito
+2021-07-20 14:33:30,174 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:33:30,174 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:33:30,176 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:33:30,176 [INFO] Customer 2 moving beside the cash desk
+2021-07-20 14:33:30,177 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:33:30,177 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:33:30,178 [INFO] Customer 4 choosing queue
+2021-07-20 14:33:30,179 [INFO] Customer 4 moving to a queue
+2021-07-20 14:33:30,179 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:33:30,180 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:33:30,180 [INFO] Customer 3 is in a QUEUE
+2021-07-20 14:33:30,180 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:33:30,182 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:33:30,182 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:33:30,182 [INFO] Customer 1 is in a QUEUE
+2021-07-20 14:33:30,183 [INFO] Cash desk CashDeskStandard 1 completing the transaction
+2021-07-20 14:33:30,183 [INFO] Cash desk CashDeskStandard 3 has acquired customer 4
+2021-07-20 14:33:30,183 [INFO] Cash desk CashDeskStandard 2 processing customer 2
+2021-07-20 14:33:30,541 [INFO] Customer 1 is in a QUEUE
+2021-07-20 14:33:30,541 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:33:30,541 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:33:30,541 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:33:30,541 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:33:30,541 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:33:30,541 [INFO] Customer 5 choosing queue
+2021-07-20 14:33:30,541 [INFO] Customer 5 moving to a queue
+2021-07-20 14:33:30,541 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:33:30,547 [INFO] Customer 3 is in a QUEUE
+2021-07-20 14:33:30,548 [INFO] Customer 2 moving beside the cash desk
+2021-07-20 14:33:30,548 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:33:30,548 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:33:30,549 [INFO] Customer 4 moving beside the cash desk
+2021-07-20 14:33:30,549 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:33:30,549 [INFO] Cash desk CashDeskStandard 3 processing customer 4
+2021-07-20 14:33:30,550 [INFO] Cash desk CashDeskStandard 2 processing customer 2
+2021-07-20 14:33:30,550 [INFO] Cash desk CashDeskStandard 1 has acquired customer 1
+2021-07-20 14:33:30,964 [INFO] Customer 2 moving beside the cash desk
+2021-07-20 14:33:30,964 [INFO] Customer 4 moving beside the cash desk
+2021-07-20 14:33:30,966 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:33:30,966 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:33:30,966 [INFO] Customer 6 choosing queue
+2021-07-20 14:33:30,966 [INFO] Customer 6 moving to a queue
+2021-07-20 14:33:30,966 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:33:30,966 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:33:30,966 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:33:30,966 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:33:30,966 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:33:30,966 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:33:30,968 [INFO] Customer 1 moving beside the cash desk
+2021-07-20 14:33:30,968 [INFO] Customer 5 is in a QUEUE
+2021-07-20 14:33:30,968 [INFO] Customer 3 is in a QUEUE
+2021-07-20 14:33:30,968 [INFO] Cash desk CashDeskStandard 3 processing customer 4
+2021-07-20 14:33:30,968 [INFO] Cash desk CashDeskStandard 1 processing customer 1
+2021-07-20 14:33:30,968 [INFO] Cash desk CashDeskStandard 2 processing customer 2
+2021-07-20 14:33:30,968 [INFO] Customer uscito
+2021-07-20 14:33:31,312 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:33:31,312 [INFO] Customer 6 is in a QUEUE
+2021-07-20 14:33:31,312 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:33:31,312 [INFO] Customer 3 is in a QUEUE
+2021-07-20 14:33:31,312 [INFO] Customer 4 moving beside the cash desk
+2021-07-20 14:33:31,312 [INFO] Customer 5 is in a QUEUE
+2021-07-20 14:33:31,312 [INFO] Customer 1 moving beside the cash desk
+2021-07-20 14:33:31,312 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:33:31,312 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:33:31,312 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:33:31,312 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:33:31,312 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:33:31,312 [INFO] Customer 7 choosing queue
+2021-07-20 14:33:31,312 [INFO] Customer 7 moving to a queue
+2021-07-20 14:33:31,321 [INFO] Cash desk CashDeskStandard 4 has acquired customer 7
+2021-07-20 14:33:31,321 [INFO] Cash desk CashDeskStandard 1 processing customer 1
+2021-07-20 14:33:31,322 [INFO] Cash desk CashDeskStandard 2 completing the transaction
+2021-07-20 14:33:31,322 [INFO] Cash desk CashDeskStandard 3 processing customer 4
+2021-07-20 14:33:31,669 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:33:31,669 [INFO] Customer 8 choosing queue
+2021-07-20 14:33:31,670 [INFO] Customer 8 moving to a queue
+2021-07-20 14:33:31,670 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:33:31,671 [INFO] Customer 7 moving beside the cash desk
+2021-07-20 14:33:31,671 [INFO] Customer 1 moving beside the cash desk
+2021-07-20 14:33:31,671 [INFO] Customer 4 moving beside the cash desk
+2021-07-20 14:33:31,672 [INFO] Customer 5 is in a QUEUE
+2021-07-20 14:33:31,672 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:33:31,672 [INFO] Customer 6 is in a QUEUE
+2021-07-20 14:33:31,672 [INFO] Customer 3 is in a QUEUE
+2021-07-20 14:33:31,672 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:33:31,673 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:33:31,673 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:33:31,673 [INFO] Cash desk CashDeskStandard 3 processing customer 4
+2021-07-20 14:33:31,673 [INFO] Cash desk CashDeskStandard 4 processing customer 7
+2021-07-20 14:33:31,673 [INFO] Cash desk CashDeskStandard 2 has acquired customer 3
+2021-07-20 14:33:31,674 [INFO] Cash desk CashDeskStandard 1 processing customer 1
+2021-07-20 14:33:31,674 [INFO] Customer uscito
+2021-07-20 14:33:32,023 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:33:32,023 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:33:32,023 [INFO] Customer 9 choosing queue
+2021-07-20 14:33:32,024 [INFO] Customer 9 moving to a queue
+2021-07-20 14:33:32,024 [INFO] Customer 6 is in a QUEUE
+2021-07-20 14:33:32,024 [INFO] Customer 4 moving beside the cash desk
+2021-07-20 14:33:32,024 [INFO] Customer 8 is in a QUEUE
+2021-07-20 14:33:32,024 [ERROR] Uncaught exception GET /ws (127.0.0.1)
+HTTPServerRequest(protocol='http', host='127.0.0.1:8521', method='GET', uri='/ws', version='HTTP/1.1', remote_ip='127.0.0.1')
+Traceback (most recent call last):
+  File "C:\Users\lucre\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\tornado\websocket.py", line 647, in _run_callback
+    result = callback(*args, **kwargs)
+  File "C:\Users\lucre\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\mesa\visualization\ModularVisualization.py", line 207, in on_message
+    self.application.model.step()
+  File "C:\Users\lucre\PycharmProjects\Supermarket-Checkout-Simulation\src\Supermarket.py", line 61, in step
+    self.customer_scheduler.step()
+  File "C:\Users\lucre\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\mesa\time.py", line 127, in step
+    agent.step()
+  File "C:\Users\lucre\PycharmProjects\Supermarket-Checkout-Simulation\src\Customer.py", line 39, in step
+    self.state.action()
+  File "C:\Users\lucre\PycharmProjects\Supermarket-Checkout-Simulation\src\states\customerstates\CustomerQueuedState.py", line 12, in action
+    chosen_queue = self.context.jockey()
+  File "C:\Users\lucre\PycharmProjects\Supermarket-Checkout-Simulation\src\Customer.py", line 79, in jockey
+    chosen_queue = self.queue_jockeying_strategy.switch_queue(self.model.get_adj_queues(self.target_queue))
+  File "C:\Users\lucre\PycharmProjects\Supermarket-Checkout-Simulation\src\Supermarket.py", line 239, in get_adj_queues
+    adjacent_queues.append(ordered_queues[chosen_queue_index + i])
+IndexError: list index out of range
+2021-07-20 14:44:08,762 [INFO] Init zones
+2021-07-20 14:44:08,762 [INFO] Init cash desks
+2021-07-20 14:44:08,762 [INFO] Init environment
+2021-07-20 14:44:08,763 [INFO] Init grid
+2021-07-20 14:44:08,763 [INFO] Fill grid
+2021-07-20 14:44:08,763 [INFO] Init customers
+2021-07-20 14:44:09,232 [INFO] 304 GET / (127.0.0.1) 4.03ms
+2021-07-20 14:44:09,489 [INFO] 101 GET /ws (127.0.0.1) 1.00ms
+2021-07-20 14:44:09,629 [INFO] Init zones
+2021-07-20 14:44:09,629 [INFO] Init cash desks
+2021-07-20 14:44:09,630 [INFO] Init environment
+2021-07-20 14:44:09,630 [INFO] Init grid
+2021-07-20 14:44:09,630 [INFO] Fill grid
+2021-07-20 14:44:09,630 [INFO] Init customers
+2021-07-20 14:46:37,370 [INFO] Customer 1 is IN THE STORE
+2021-07-20 14:46:37,371 [INFO] Customer 1 is moving to the shopping zone
+2021-07-20 14:46:37,371 [INFO] Customer 14 is IN THE STORE
+2021-07-20 14:46:37,371 [INFO] Customer 14 is moving to the shopping zone
+2021-07-20 14:46:37,371 [INFO] Customer 6 is IN THE STORE
+2021-07-20 14:46:37,371 [INFO] Customer 6 is moving to the shopping zone
+2021-07-20 14:46:37,371 [INFO] Customer 8 is IN THE STORE
+2021-07-20 14:46:37,371 [INFO] Customer 8 is moving to the shopping zone
+2021-07-20 14:46:37,371 [INFO] Customer 4 is IN THE STORE
+2021-07-20 14:46:37,371 [INFO] Customer 4 is moving to the shopping zone
+2021-07-20 14:46:37,371 [INFO] Customer 3 is IN THE STORE
+2021-07-20 14:46:37,371 [INFO] Customer 3 is moving to the shopping zone
+2021-07-20 14:46:37,371 [INFO] Customer 5 is IN THE STORE
+2021-07-20 14:46:37,371 [INFO] Customer 5 is moving to the shopping zone
+2021-07-20 14:46:37,371 [INFO] Customer 10 is IN THE STORE
+2021-07-20 14:46:37,371 [INFO] Customer 10 is moving to the shopping zone
+2021-07-20 14:46:37,371 [INFO] Customer 13 is IN THE STORE
+2021-07-20 14:46:37,371 [INFO] Customer 13 is moving to the shopping zone
+2021-07-20 14:46:37,371 [INFO] Customer 9 is IN THE STORE
+2021-07-20 14:46:37,371 [INFO] Customer 9 is moving to the shopping zone
+2021-07-20 14:46:37,371 [INFO] Customer 7 is IN THE STORE
+2021-07-20 14:46:37,371 [INFO] Customer 7 is moving to the shopping zone
+2021-07-20 14:46:37,371 [INFO] Customer 12 is IN THE STORE
+2021-07-20 14:46:37,371 [INFO] Customer 12 is moving to the shopping zone
+2021-07-20 14:46:37,371 [INFO] Customer 0 is IN THE STORE
+2021-07-20 14:46:37,371 [INFO] Customer 0 is moving to the shopping zone
+2021-07-20 14:46:37,371 [INFO] Customer 11 is IN THE STORE
+2021-07-20 14:46:37,371 [INFO] Customer 11 is moving to the shopping zone
+2021-07-20 14:46:37,371 [INFO] Customer 2 is IN THE STORE
+2021-07-20 14:46:37,371 [INFO] Customer 2 is moving to the shopping zone
+2021-07-20 14:46:37,732 [INFO] Customer 1 is in the SHOPPING ZONE
+2021-07-20 14:46:37,732 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:46:37,732 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:46:37,732 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:46:37,732 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:46:37,732 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:46:37,732 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:46:37,732 [INFO] Customer 3 is in the SHOPPING ZONE
+2021-07-20 14:46:37,732 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:46:37,732 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:46:37,732 [INFO] Customer 0 is in the SHOPPING ZONE
+2021-07-20 14:46:37,732 [INFO] Customer 2 is in the SHOPPING ZONE
+2021-07-20 14:46:37,732 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:46:37,732 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:46:37,732 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:46:38,146 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:46:38,148 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:46:38,148 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:46:38,148 [INFO] Customer 2 is in the SHOPPING ZONE
+2021-07-20 14:46:38,148 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:46:38,148 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:46:38,148 [INFO] Customer 0 is in the SHOPPING ZONE
+2021-07-20 14:46:38,148 [INFO] Customer 1 is in the SHOPPING ZONE
+2021-07-20 14:46:38,149 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:46:38,149 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:46:38,149 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:46:38,149 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:46:38,149 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:46:38,149 [INFO] Customer 3 is in the SHOPPING ZONE
+2021-07-20 14:46:38,149 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:46:38,493 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:46:38,493 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:46:38,493 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:46:38,493 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:46:38,493 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:46:38,493 [INFO] Customer 0 is in the SHOPPING ZONE
+2021-07-20 14:46:38,493 [INFO] Customer 2 is in the SHOPPING ZONE
+2021-07-20 14:46:38,493 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:46:38,493 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:46:38,493 [INFO] Customer 1 is in the SHOPPING ZONE
+2021-07-20 14:46:38,493 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:46:38,493 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:46:38,493 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:46:38,493 [INFO] Customer 3 is in the SHOPPING ZONE
+2021-07-20 14:46:38,493 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:46:38,865 [INFO] Customer 2 is in the SHOPPING ZONE
+2021-07-20 14:46:38,865 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:46:38,865 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:46:38,865 [INFO] Customer 1 is in the SHOPPING ZONE
+2021-07-20 14:46:38,865 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:46:38,865 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:46:38,865 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:46:38,865 [INFO] Customer 3 is in the SHOPPING ZONE
+2021-07-20 14:46:38,865 [INFO] Customer 0 is in the SHOPPING ZONE
+2021-07-20 14:46:38,865 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:46:38,865 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:46:38,865 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:46:38,865 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:46:38,865 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:46:38,865 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:46:39,236 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:46:39,236 [INFO] Customer 1 is in the SHOPPING ZONE
+2021-07-20 14:46:39,236 [INFO] Customer 0 is in the SHOPPING ZONE
+2021-07-20 14:46:39,236 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:46:39,236 [INFO] Customer 3 is in the SHOPPING ZONE
+2021-07-20 14:46:39,236 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:46:39,236 [INFO] Customer 2 is in the SHOPPING ZONE
+2021-07-20 14:46:39,236 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:46:39,236 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:46:39,236 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:46:39,236 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:46:39,236 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:46:39,236 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:46:39,236 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:46:39,236 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:46:39,638 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:46:39,638 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:46:39,638 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:46:39,638 [INFO] Customer 1 is in the SHOPPING ZONE
+2021-07-20 14:46:39,638 [INFO] Customer 2 is in the SHOPPING ZONE
+2021-07-20 14:46:39,638 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:46:39,638 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:46:39,638 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:46:39,638 [INFO] Customer 3 is in the SHOPPING ZONE
+2021-07-20 14:46:39,638 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:46:39,638 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:46:39,638 [INFO] Customer 0 choosing queue
+2021-07-20 14:46:39,638 [INFO] Customer 0 moving to a queue
+2021-07-20 14:46:39,638 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:46:39,638 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:46:39,638 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:46:39,638 [INFO] Cash desk CashDeskStandard 1 has acquired customer 0
+2021-07-20 14:46:39,999 [INFO] Customer 0 moving beside the cash desk
+2021-07-20 14:46:39,999 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:46:39,999 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:46:39,999 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:46:39,999 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:46:39,999 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:46:39,999 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:46:39,999 [INFO] Customer 2 is in the SHOPPING ZONE
+2021-07-20 14:46:39,999 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:46:39,999 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:46:39,999 [INFO] Customer 3 is in the SHOPPING ZONE
+2021-07-20 14:46:39,999 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:46:39,999 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:46:39,999 [INFO] Customer 1 choosing queue
+2021-07-20 14:46:40,006 [INFO] Customer 1 moving to a queue
+2021-07-20 14:46:40,006 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:46:40,007 [INFO] Cash desk CashDeskStandard 1 processing customer 0
+2021-07-20 14:46:40,356 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:46:40,356 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:46:40,356 [INFO] Customer 1 is in a QUEUE
+2021-07-20 14:46:40,356 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:46:40,356 [INFO] Customer 2 choosing queue
+2021-07-20 14:46:40,356 [INFO] Customer 2 moving to a queue
+2021-07-20 14:46:40,356 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:46:40,356 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:46:40,356 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:46:40,356 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:46:40,356 [INFO] Customer 3 is in the SHOPPING ZONE
+2021-07-20 14:46:40,356 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:46:40,356 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:46:40,356 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:46:40,364 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:46:40,364 [INFO] Customer 0 moving beside the cash desk
+2021-07-20 14:46:40,365 [INFO] Cash desk CashDeskStandard 1 processing customer 0
+2021-07-20 14:46:40,365 [INFO] Cash desk CashDeskStandard 2 has acquired customer 2
+2021-07-20 14:46:40,710 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:46:40,710 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:46:40,710 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:46:40,711 [INFO] Customer 3 choosing queue
+2021-07-20 14:46:40,711 [INFO] Customer 3 moving to a queue
+2021-07-20 14:46:40,712 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:46:40,712 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:46:40,712 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:46:40,713 [INFO] Customer 0 moving beside the cash desk
+2021-07-20 14:46:40,713 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:46:40,713 [INFO] Customer 2 moving beside the cash desk
+2021-07-20 14:46:40,713 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:46:40,713 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:46:40,715 [INFO] Customer 1 is in a QUEUE
+2021-07-20 14:46:40,715 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:46:40,715 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:46:40,715 [INFO] Cash desk CashDeskStandard 2 processing customer 2
+2021-07-20 14:46:40,715 [INFO] Cash desk CashDeskStandard 1 processing customer 0
+2021-07-20 14:46:40,716 [INFO] Customer uscito
+2021-07-20 14:46:41,065 [INFO] Customer 2 moving beside the cash desk
+2021-07-20 14:46:41,065 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:46:41,066 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:46:41,066 [INFO] Customer 4 choosing queue
+2021-07-20 14:46:41,066 [INFO] Customer 4 moving to a queue
+2021-07-20 14:46:41,066 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:46:41,066 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:46:41,066 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:46:41,066 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:46:41,066 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:46:41,066 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:46:41,066 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:46:41,066 [INFO] Customer 1 is in a QUEUE
+2021-07-20 14:46:41,066 [INFO] Customer 3 is in a QUEUE
+2021-07-20 14:46:41,066 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:46:41,072 [INFO] Cash desk CashDeskStandard 1 completing the transaction
+2021-07-20 14:46:41,072 [INFO] Cash desk CashDeskStandard 3 has acquired customer 4
+2021-07-20 14:46:41,072 [INFO] Cash desk CashDeskStandard 2 processing customer 2
+2021-07-20 14:46:41,418 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:46:41,418 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:46:41,418 [INFO] Customer 4 moving beside the cash desk
+2021-07-20 14:46:41,419 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:46:41,419 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:46:41,419 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:46:41,419 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:46:41,419 [INFO] Customer 1 is in a QUEUE
+2021-07-20 14:46:41,419 [INFO] Customer 5 choosing queue
+2021-07-20 14:46:41,419 [INFO] Customer 5 moving to a queue
+2021-07-20 14:46:41,419 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:46:41,419 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:46:41,422 [INFO] Customer 2 moving beside the cash desk
+2021-07-20 14:46:41,422 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:46:41,422 [INFO] Customer 3 is in a QUEUE
+2021-07-20 14:46:41,422 [INFO] Cash desk CashDeskStandard 1 has acquired customer 1
+2021-07-20 14:46:41,423 [INFO] Cash desk CashDeskStandard 2 processing customer 2
+2021-07-20 14:46:41,423 [INFO] Cash desk CashDeskStandard 3 processing customer 4
+2021-07-20 14:46:41,766 [INFO] Customer 1 moving beside the cash desk
+2021-07-20 14:46:41,767 [INFO] Customer 4 moving beside the cash desk
+2021-07-20 14:46:41,768 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:46:41,768 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:46:41,768 [INFO] Customer 5 is in a QUEUE
+2021-07-20 14:46:41,768 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:46:41,768 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:46:41,768 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:46:41,768 [INFO] Customer 2 moving beside the cash desk
+2021-07-20 14:46:41,768 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:46:41,768 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:46:41,768 [INFO] Customer 3 is in a QUEUE
+2021-07-20 14:46:41,772 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:46:41,772 [INFO] Customer 6 choosing queue
+2021-07-20 14:46:41,772 [INFO] Customer 6 moving to a queue
+2021-07-20 14:46:41,773 [INFO] Cash desk CashDeskStandard 1 processing customer 1
+2021-07-20 14:46:41,773 [INFO] Cash desk CashDeskStandard 2 processing customer 2
+2021-07-20 14:46:41,773 [INFO] Customer uscito
+2021-07-20 14:46:41,773 [INFO] Cash desk CashDeskStandard 3 processing customer 4
+2021-07-20 14:46:42,148 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:46:42,148 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:46:42,148 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:46:42,148 [INFO] Customer 3 is in a QUEUE
+2021-07-20 14:46:42,148 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:46:42,148 [INFO] Customer 6 is in a QUEUE
+2021-07-20 14:46:42,148 [INFO] Customer 7 choosing queue
+2021-07-20 14:46:42,148 [INFO] Customer 7 moving to a queue
+2021-07-20 14:46:42,148 [INFO] Customer 5 is in a QUEUE
+2021-07-20 14:46:42,148 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:46:42,148 [INFO] Customer 1 moving beside the cash desk
+2021-07-20 14:46:42,148 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:46:42,148 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:46:42,148 [INFO] Customer 4 moving beside the cash desk
+2021-07-20 14:46:42,148 [INFO] Cash desk CashDeskStandard 2 completing the transaction
+2021-07-20 14:46:42,148 [INFO] Cash desk CashDeskStandard 3 processing customer 4
+2021-07-20 14:46:42,148 [INFO] Cash desk CashDeskStandard 4 has acquired customer 7
+2021-07-20 14:46:42,148 [INFO] Cash desk CashDeskStandard 1 processing customer 1
+2021-07-20 14:46:42,501 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:46:42,502 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:46:42,502 [INFO] Customer 4 moving beside the cash desk
+2021-07-20 14:46:42,502 [INFO] Customer 8 choosing queue
+2021-07-20 14:46:42,502 [INFO] Customer 8 moving to a queue
+2021-07-20 14:46:42,502 [INFO] Customer 3 is in a QUEUE
+2021-07-20 14:46:42,502 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:46:42,502 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:46:42,502 [INFO] Customer 6 is in a QUEUE
+2021-07-20 14:46:42,502 [INFO] Customer 7 moving beside the cash desk
+2021-07-20 14:46:42,507 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:46:42,507 [INFO] Customer 5 is in a QUEUE
+2021-07-20 14:46:42,507 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:46:42,507 [INFO] Customer 1 moving beside the cash desk
+2021-07-20 14:46:42,507 [INFO] Cash desk CashDeskStandard 1 processing customer 1
+2021-07-20 14:46:42,507 [INFO] Customer uscito
+2021-07-20 14:46:42,507 [INFO] Cash desk CashDeskStandard 3 processing customer 4
+2021-07-20 14:46:42,507 [INFO] Cash desk CashDeskStandard 2 has acquired customer 3
+2021-07-20 14:46:42,507 [INFO] Cash desk CashDeskStandard 4 processing customer 7
+2021-07-20 14:46:42,871 [INFO] Customer 7 moving beside the cash desk
+2021-07-20 14:46:42,871 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:46:42,871 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:46:42,871 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:46:42,871 [INFO] Customer 4 moving beside the cash desk
+2021-07-20 14:46:42,871 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:46:42,871 [INFO] Customer 5 is in a QUEUE
+2021-07-20 14:46:42,871 [INFO] Customer 6 is in a QUEUE
+2021-07-20 14:46:42,871 [INFO] Customer 9 choosing queue
+2021-07-20 14:46:42,871 [INFO] Customer 9 moving to a queue
+2021-07-20 14:46:42,871 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:46:42,871 [INFO] Customer 3 moving beside the cash desk
+2021-07-20 14:46:42,877 [INFO] Customer 8 is in a QUEUE
+2021-07-20 14:46:42,877 [INFO] Cash desk CashDeskStandard 2 processing customer 3
+2021-07-20 14:46:42,877 [INFO] Cash desk CashDeskStandard 3 processing customer 4
+2021-07-20 14:46:42,878 [INFO] Customer uscito
+2021-07-20 14:46:42,878 [INFO] Cash desk CashDeskStandard 1 completing the transaction
+2021-07-20 14:46:42,878 [INFO] Cash desk CashDeskStandard 4 processing customer 7
+2021-07-20 14:46:43,224 [INFO] Customer 10 choosing queue
+2021-07-20 14:46:43,225 [INFO] Customer 10 moving to a queue
+2021-07-20 14:46:43,225 [INFO] Customer 8 is in a QUEUE
+2021-07-20 14:46:43,225 [INFO] Customer 7 moving beside the cash desk
+2021-07-20 14:46:43,225 [INFO] Customer 5 is in a QUEUE
+2021-07-20 14:46:43,225 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:46:43,225 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:46:43,225 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:46:43,225 [INFO] Customer 3 moving beside the cash desk
+2021-07-20 14:46:43,225 [INFO] Customer 9 is in a QUEUE
+2021-07-20 14:46:43,230 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:46:43,230 [INFO] Customer 6 is in a QUEUE
+2021-07-20 14:46:43,231 [INFO] Cash desk CashDeskStandard 2 processing customer 3
+2021-07-20 14:46:43,231 [INFO] Cash desk CashDeskStandard 3 completing the transaction
+2021-07-20 14:46:43,232 [INFO] Cash desk CashDeskStandard 4 processing customer 7
+2021-07-20 14:46:43,232 [INFO] Cash desk CashDeskStandard 1 has acquired customer 6
+2021-07-20 14:46:43,232 [INFO] Customer 10 advancing
+2021-07-20 14:46:43,650 [INFO] Customer 3 moving beside the cash desk
+2021-07-20 14:46:43,650 [INFO] Customer 5 is in a QUEUE
+2021-07-20 14:46:43,650 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:46:43,650 [INFO] Customer 10 is in a QUEUE
+2021-07-20 14:46:43,650 [INFO] Customer 9 is in a QUEUE
+2021-07-20 14:46:43,650 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:46:43,650 [INFO] Customer 11 choosing queue
+2021-07-20 14:46:43,650 [INFO] Customer 11 moving to a queue
+2021-07-20 14:46:43,650 [INFO] Customer 7 moving beside the cash desk
+2021-07-20 14:46:43,650 [INFO] Customer 6 moving beside the cash desk
+2021-07-20 14:46:43,650 [INFO] Customer 8 is in a QUEUE
+2021-07-20 14:46:43,650 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:46:43,650 [INFO] Cash desk CashDeskStandard 4 processing customer 7
+2021-07-20 14:46:43,650 [INFO] Cash desk CashDeskStandard 2 processing customer 3
+2021-07-20 14:46:43,650 [INFO] Cash desk CashDeskStandard 3 has acquired customer 5
+2021-07-20 14:46:43,650 [INFO] Cash desk CashDeskStandard 1 processing customer 6
+2021-07-20 14:46:44,011 [INFO] Customer 3 moving beside the cash desk
+2021-07-20 14:46:44,011 [INFO] Customer 6 moving beside the cash desk
+2021-07-20 14:46:44,012 [INFO] Customer 12 choosing queue
+2021-07-20 14:46:44,012 [INFO] Customer 12 moving to a queue
+2021-07-20 14:46:44,012 [INFO] Customer 7 moving beside the cash desk
+2021-07-20 14:46:44,012 [INFO] Customer 5 moving beside the cash desk
+2021-07-20 14:46:44,012 [INFO] Customer 8 is in a QUEUE
+2021-07-20 14:46:44,012 [INFO] Customer 11 is in a QUEUE
+2021-07-20 14:46:44,012 [INFO] Customer 10 is in a QUEUE
+2021-07-20 14:46:44,012 [INFO] Customer 9 is in a QUEUE
+2021-07-20 14:46:44,012 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:46:44,012 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:46:44,017 [INFO] Cash desk CashDeskStandard 1 processing customer 6
+2021-07-20 14:46:44,017 [INFO] Cash desk CashDeskStandard 2 processing customer 3
+2021-07-20 14:46:44,017 [INFO] Customer uscito
+2021-07-20 14:46:44,018 [INFO] Cash desk CashDeskStandard 4 processing customer 7
+2021-07-20 14:46:44,018 [INFO] Cash desk CashDeskStandard 3 processing customer 5
+2021-07-20 14:46:44,374 [INFO] Customer 13 choosing queue
+2021-07-20 14:46:44,374 [INFO] Customer 13 moving to a queue
+2021-07-20 14:46:44,374 [INFO] Customer 8 is in a QUEUE
+2021-07-20 14:46:44,374 [INFO] Customer 5 moving beside the cash desk
+2021-07-20 14:46:44,374 [INFO] Customer 9 is in a QUEUE
+2021-07-20 14:46:44,374 [INFO] Customer 11 is in a QUEUE
+2021-07-20 14:46:44,374 [INFO] Customer 12 is in a QUEUE
+2021-07-20 14:46:44,374 [INFO] Customer 7 moving beside the cash desk
+2021-07-20 14:46:44,374 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:46:44,374 [INFO] Customer 6 moving beside the cash desk
+2021-07-20 14:46:44,380 [INFO] Customer 10 is in a QUEUE
+2021-07-20 14:46:44,380 [INFO] Cash desk CashDeskStandard 3 processing customer 5
+2021-07-20 14:46:44,380 [INFO] Cash desk CashDeskStandard 4 processing customer 7
+2021-07-20 14:46:44,381 [INFO] Customer uscito
+2021-07-20 14:46:44,381 [INFO] Cash desk CashDeskStandard 1 processing customer 6
+2021-07-20 14:46:44,381 [INFO] Cash desk CashDeskStandard 2 completing the transaction
+2021-07-20 14:46:44,724 [INFO] Customer 8 is in a QUEUE
+2021-07-20 14:46:44,724 [INFO] Customer 12 is in a QUEUE
+2021-07-20 14:46:44,724 [INFO] Customer 14 choosing queue
+2021-07-20 14:46:44,724 [INFO] Customer 14 moving to a queue
+2021-07-20 14:46:44,724 [INFO] Customer 11 is in a QUEUE
+2021-07-20 14:46:44,724 [INFO] Customer 10 is in a QUEUE
+2021-07-20 14:46:44,724 [INFO] Customer 9 is in a QUEUE
+2021-07-20 14:46:44,724 [INFO] Customer 13 is in a QUEUE
+2021-07-20 14:46:44,724 [INFO] Customer 5 moving beside the cash desk
+2021-07-20 14:46:44,724 [INFO] Customer 6 moving beside the cash desk
+2021-07-20 14:46:44,724 [INFO] Cash desk CashDeskStandard 1 processing customer 6
+2021-07-20 14:46:44,724 [INFO] Cash desk CashDeskStandard 2 has acquired customer 9
+2021-07-20 14:46:44,724 [INFO] Customer 13 advancing
+2021-07-20 14:46:44,724 [INFO] Cash desk CashDeskStandard 4 completing the transaction
+2021-07-20 14:46:44,724 [INFO] Cash desk CashDeskStandard 3 processing customer 5
+2021-07-20 14:46:45,126 [INFO] Customer 13 is in a QUEUE
+2021-07-20 14:46:45,126 [INFO] Customer 12 is in a QUEUE
+2021-07-20 14:46:45,126 [INFO] Customer 9 moving beside the cash desk
+2021-07-20 14:46:45,126 [INFO] Customer 10 is in a QUEUE
+2021-07-20 14:46:45,126 [INFO] Customer 11 is in a QUEUE
+2021-07-20 14:46:45,126 [INFO] Customer 5 moving beside the cash desk
+2021-07-20 14:46:45,126 [INFO] Customer 14 is in a QUEUE
+2021-07-20 14:46:45,126 [INFO] Customer 8 is in a QUEUE
+2021-07-20 14:46:45,126 [INFO] Customer 6 moving beside the cash desk
+2021-07-20 14:46:45,126 [INFO] Cash desk CashDeskStandard 1 processing customer 6
+2021-07-20 14:46:45,126 [INFO] Cash desk CashDeskStandard 4 has acquired customer 8
+2021-07-20 14:46:45,126 [INFO] Cash desk CashDeskStandard 2 processing customer 9
+2021-07-20 14:46:45,126 [INFO] Cash desk CashDeskStandard 3 processing customer 5
+2021-07-20 14:46:45,472 [INFO] Customer 14 is in a QUEUE
+2021-07-20 14:46:45,472 [INFO] Customer 11 is in a QUEUE
+2021-07-20 14:46:45,474 [INFO] Customer 9 moving beside the cash desk
+2021-07-20 14:46:45,475 [INFO] Customer 13 is in a QUEUE
+2021-07-20 14:46:45,475 [INFO] Customer 6 moving beside the cash desk
+2021-07-20 14:46:45,476 [INFO] Customer 5 moving beside the cash desk
+2021-07-20 14:46:45,476 [INFO] Customer 8 moving beside the cash desk
+2021-07-20 14:46:45,477 [INFO] Customer 12 is in a QUEUE
+2021-07-20 14:46:45,477 [INFO] Customer 10 is in a QUEUE
+2021-07-20 14:46:45,477 [INFO] Cash desk CashDeskStandard 1 processing customer 6
+2021-07-20 14:46:45,477 [INFO] Customer uscito
+2021-07-20 14:46:45,477 [INFO] Cash desk CashDeskStandard 3 processing customer 5
+2021-07-20 14:46:45,480 [INFO] Customer uscito
+2021-07-20 14:46:45,480 [INFO] Cash desk CashDeskStandard 4 processing customer 8
+2021-07-20 14:46:45,480 [INFO] Cash desk CashDeskStandard 2 processing customer 9
+2021-07-20 14:46:45,827 [INFO] Customer 12 is in a QUEUE
+2021-07-20 14:46:45,827 [INFO] Customer 10 is in a QUEUE
+2021-07-20 14:46:45,827 [INFO] Customer 13 is in a QUEUE
+2021-07-20 14:46:45,827 [INFO] Customer 14 is in a QUEUE
+2021-07-20 14:46:45,827 [INFO] Customer 9 moving beside the cash desk
+2021-07-20 14:46:45,827 [INFO] Customer 11 is in a QUEUE
+2021-07-20 14:46:45,827 [INFO] Customer 8 moving beside the cash desk
+2021-07-20 14:46:45,827 [INFO] Cash desk CashDeskStandard 1 completing the transaction
+2021-07-20 14:46:45,827 [INFO] Cash desk CashDeskStandard 3 completing the transaction
+2021-07-20 14:46:45,827 [INFO] Cash desk CashDeskStandard 2 processing customer 9
+2021-07-20 14:46:45,832 [INFO] Cash desk CashDeskStandard 4 processing customer 8
+2021-07-20 14:46:46,175 [INFO] Customer 9 moving beside the cash desk
+2021-07-20 14:46:46,175 [INFO] Customer 14 is in a QUEUE
+2021-07-20 14:46:46,176 [INFO] Customer 8 moving beside the cash desk
+2021-07-20 14:46:46,176 [INFO] Customer 13 is in a QUEUE
+2021-07-20 14:46:46,176 [INFO] Customer 12 is in a QUEUE
+2021-07-20 14:46:46,176 [INFO] Customer 11 is in a QUEUE
+2021-07-20 14:46:46,177 [INFO] Customer 10 is in a QUEUE
+2021-07-20 14:46:46,177 [INFO] Cash desk CashDeskStandard 1 has acquired customer 10
+2021-07-20 14:46:46,177 [INFO] Customer 11 advancing
+2021-07-20 14:46:46,177 [INFO] Cash desk CashDeskStandard 4 processing customer 8
+2021-07-20 14:46:46,178 [INFO] Cash desk CashDeskStandard 3 has acquired customer 12
+2021-07-20 14:46:46,178 [INFO] Customer 14 advancing
+2021-07-20 14:46:46,178 [INFO] Cash desk CashDeskStandard 2 processing customer 9
+2021-07-20 14:46:46,532 [INFO] Customer 9 moving beside the cash desk
+2021-07-20 14:46:46,532 [INFO] Customer 12 moving beside the cash desk
+2021-07-20 14:46:46,532 [INFO] Customer 13 is in a QUEUE
+2021-07-20 14:46:46,532 [INFO] Customer 8 moving beside the cash desk
+2021-07-20 14:46:46,532 [INFO] Customer 10 moving beside the cash desk
+2021-07-20 14:46:46,532 [INFO] Customer 14 is in a QUEUE
+2021-07-20 14:46:46,532 [INFO] Customer 11 is in a QUEUE
+2021-07-20 14:46:46,532 [INFO] Cash desk CashDeskStandard 2 processing customer 9
+2021-07-20 14:46:46,532 [INFO] Cash desk CashDeskStandard 3 processing customer 12
+2021-07-20 14:46:46,532 [INFO] Cash desk CashDeskStandard 1 processing customer 10
+2021-07-20 14:46:46,532 [INFO] Cash desk CashDeskStandard 4 processing customer 8
+2021-07-20 14:46:46,890 [INFO] Customer 12 moving beside the cash desk
+2021-07-20 14:46:46,891 [INFO] Customer 10 moving beside the cash desk
+2021-07-20 14:46:46,891 [INFO] Customer 8 moving beside the cash desk
+2021-07-20 14:46:46,891 [INFO] Customer 9 moving beside the cash desk
+2021-07-20 14:46:46,891 [INFO] Customer 14 is in a QUEUE
+2021-07-20 14:46:46,891 [INFO] Customer 13 is in a QUEUE
+2021-07-20 14:46:46,891 [INFO] Customer 11 is in a QUEUE
+2021-07-20 14:46:46,891 [INFO] Cash desk CashDeskStandard 4 processing customer 8
+2021-07-20 14:46:46,891 [INFO] Cash desk CashDeskStandard 2 processing customer 9
+2021-07-20 14:46:46,891 [INFO] Cash desk CashDeskStandard 3 processing customer 12
+2021-07-20 14:46:46,891 [INFO] Cash desk CashDeskStandard 1 processing customer 10
+2021-07-20 14:46:47,249 [INFO] Customer 11 is in a QUEUE
+2021-07-20 14:46:47,249 [INFO] Customer 14 is in a QUEUE
+2021-07-20 14:46:47,249 [INFO] Customer 8 moving beside the cash desk
+2021-07-20 14:46:47,249 [INFO] Customer 9 moving beside the cash desk
+2021-07-20 14:46:47,249 [INFO] Customer 13 is in a QUEUE
+2021-07-20 14:46:47,249 [INFO] Customer 10 moving beside the cash desk
+2021-07-20 14:46:47,249 [INFO] Customer 12 moving beside the cash desk
+2021-07-20 14:46:47,249 [INFO] Cash desk CashDeskStandard 3 processing customer 12
+2021-07-20 14:46:47,249 [INFO] Cash desk CashDeskStandard 4 processing customer 8
+2021-07-20 14:46:47,249 [INFO] Cash desk CashDeskStandard 2 processing customer 9
+2021-07-20 14:46:47,249 [INFO] Customer uscito
+2021-07-20 14:46:47,249 [INFO] Cash desk CashDeskStandard 1 processing customer 10
+2021-07-20 14:46:47,657 [INFO] Customer 10 moving beside the cash desk
+2021-07-20 14:46:47,657 [INFO] Customer 14 is in a QUEUE
+2021-07-20 14:46:47,657 [INFO] Customer 8 moving beside the cash desk
+2021-07-20 14:46:47,658 [INFO] Customer 13 is in a QUEUE
+2021-07-20 14:46:47,658 [INFO] Customer 12 moving beside the cash desk
+2021-07-20 14:46:47,658 [INFO] Customer 11 is in a QUEUE
+2021-07-20 14:46:47,658 [INFO] Cash desk CashDeskStandard 4 processing customer 8
+2021-07-20 14:46:47,658 [INFO] Customer uscito
+2021-07-20 14:46:47,658 [INFO] Cash desk CashDeskStandard 2 completing the transaction
+2021-07-20 14:46:47,658 [INFO] Cash desk CashDeskStandard 3 processing customer 12
+2021-07-20 14:46:47,658 [INFO] Cash desk CashDeskStandard 1 processing customer 10
+2021-07-20 14:46:48,000 [INFO] Customer 10 moving beside the cash desk
+2021-07-20 14:46:48,000 [INFO] Customer 13 is in a QUEUE
+2021-07-20 14:46:48,000 [INFO] Customer 14 is in a QUEUE
+2021-07-20 14:46:48,000 [INFO] Customer 12 moving beside the cash desk
+2021-07-20 14:46:48,000 [INFO] Customer 11 is in a QUEUE
+2021-07-20 14:46:48,000 [INFO] Cash desk CashDeskStandard 1 processing customer 10
+2021-07-20 14:46:48,000 [INFO] Cash desk CashDeskStandard 4 completing the transaction
+2021-07-20 14:46:48,000 [INFO] Cash desk CashDeskStandard 2 has acquired customer 13
+2021-07-20 14:46:48,000 [INFO] Cash desk CashDeskStandard 3 processing customer 12
+2021-07-20 14:46:48,358 [INFO] Customer 11 is in a QUEUE
+2021-07-20 14:46:48,358 [INFO] Customer 10 moving beside the cash desk
+2021-07-20 14:46:48,359 [INFO] Customer 12 moving beside the cash desk
+2021-07-20 14:46:48,359 [INFO] Customer 13 moving beside the cash desk
+2021-07-20 14:46:48,359 [INFO] Customer 14 is in a QUEUE
+2021-07-20 14:46:48,359 [INFO] Cash desk CashDeskStandard 2 processing customer 13
+2021-07-20 14:46:48,359 [INFO] Cash desk CashDeskStandard 3 processing customer 12
+2021-07-20 14:46:48,359 [INFO] Cash desk CashDeskStandard 1 processing customer 10
+2021-07-20 14:46:48,719 [INFO] Customer 14 is in a QUEUE
+2021-07-20 14:46:48,719 [INFO] Customer 13 moving beside the cash desk
+2021-07-20 14:46:48,719 [INFO] Customer 12 moving beside the cash desk
+2021-07-20 14:46:48,719 [INFO] Customer 11 is in a QUEUE
+2021-07-20 14:46:48,719 [INFO] Customer 10 moving beside the cash desk
+2021-07-20 14:46:48,719 [INFO] Cash desk CashDeskStandard 1 processing customer 10
+2021-07-20 14:46:48,719 [INFO] Cash desk CashDeskStandard 2 processing customer 13
+2021-07-20 14:46:48,719 [INFO] Cash desk CashDeskStandard 3 processing customer 12
+2021-07-20 14:46:49,119 [INFO] Customer 11 is in a QUEUE
+2021-07-20 14:46:49,119 [INFO] Customer 13 moving beside the cash desk
+2021-07-20 14:46:49,119 [INFO] Customer 14 is in a QUEUE
+2021-07-20 14:46:49,119 [INFO] Customer 12 moving beside the cash desk
+2021-07-20 14:46:49,119 [INFO] Customer 10 moving beside the cash desk
+2021-07-20 14:46:49,119 [INFO] Cash desk CashDeskStandard 1 processing customer 10
+2021-07-20 14:46:49,119 [INFO] Customer uscito
+2021-07-20 14:46:49,119 [INFO] Cash desk CashDeskStandard 3 processing customer 12
+2021-07-20 14:46:49,119 [INFO] Cash desk CashDeskStandard 2 processing customer 13
+2021-07-20 14:46:49,475 [INFO] Customer 14 is in a QUEUE
+2021-07-20 14:46:49,475 [INFO] Customer 13 moving beside the cash desk
+2021-07-20 14:46:49,476 [INFO] Customer 11 is in a QUEUE
+2021-07-20 14:46:49,476 [INFO] Customer 12 moving beside the cash desk
+2021-07-20 14:46:49,476 [INFO] Cash desk CashDeskStandard 2 processing customer 13
+2021-07-20 14:46:49,476 [INFO] Cash desk CashDeskStandard 3 processing customer 12
+2021-07-20 14:46:49,476 [INFO] Customer uscito
+2021-07-20 14:46:49,476 [INFO] Cash desk CashDeskStandard 1 completing the transaction
+2021-07-20 14:46:49,840 [INFO] Customer 11 is in a QUEUE
+2021-07-20 14:46:49,840 [INFO] Customer 14 is in a QUEUE
+2021-07-20 14:46:49,840 [INFO] Customer 13 moving beside the cash desk
+2021-07-20 14:46:49,840 [INFO] Cash desk CashDeskStandard 2 processing customer 13
+2021-07-20 14:46:49,840 [INFO] Cash desk CashDeskStandard 1 has acquired customer 11
+2021-07-20 14:46:49,840 [INFO] Cash desk CashDeskStandard 3 completing the transaction
+2021-07-20 14:46:50,180 [INFO] Customer 11 moving beside the cash desk
+2021-07-20 14:46:50,180 [INFO] Customer 13 moving beside the cash desk
+2021-07-20 14:46:50,180 [INFO] Customer 14 is in a QUEUE
+2021-07-20 14:46:50,180 [INFO] Cash desk CashDeskStandard 2 processing customer 13
+2021-07-20 14:46:50,180 [INFO] Cash desk CashDeskStandard 1 processing customer 11
+2021-07-20 14:46:50,180 [INFO] Cash desk CashDeskStandard 3 has acquired customer 14
+2021-07-20 14:46:50,523 [INFO] Customer 11 moving beside the cash desk
+2021-07-20 14:46:50,524 [INFO] Customer 13 moving beside the cash desk
+2021-07-20 14:46:50,524 [INFO] Customer 14 moving beside the cash desk
+2021-07-20 14:46:50,524 [INFO] Cash desk CashDeskStandard 2 processing customer 13
+2021-07-20 14:46:50,524 [INFO] Cash desk CashDeskStandard 1 processing customer 11
+2021-07-20 14:46:50,524 [INFO] Cash desk CashDeskStandard 3 processing customer 14
+2021-07-20 14:46:50,870 [INFO] Customer 14 moving beside the cash desk
+2021-07-20 14:46:50,870 [INFO] Customer 11 moving beside the cash desk
+2021-07-20 14:46:50,870 [INFO] Customer 13 moving beside the cash desk
+2021-07-20 14:46:50,870 [INFO] Cash desk CashDeskStandard 2 processing customer 13
+2021-07-20 14:46:50,870 [INFO] Cash desk CashDeskStandard 3 processing customer 14
+2021-07-20 14:46:50,870 [INFO] Cash desk CashDeskStandard 1 processing customer 11
+2021-07-20 14:46:51,228 [INFO] Customer 11 moving beside the cash desk
+2021-07-20 14:46:51,228 [INFO] Customer 13 moving beside the cash desk
+2021-07-20 14:46:51,228 [INFO] Customer 14 moving beside the cash desk
+2021-07-20 14:46:51,228 [INFO] Cash desk CashDeskStandard 2 processing customer 13
+2021-07-20 14:46:51,228 [INFO] Customer uscito
+2021-07-20 14:46:51,228 [INFO] Cash desk CashDeskStandard 1 processing customer 11
+2021-07-20 14:46:51,228 [INFO] Cash desk CashDeskStandard 3 processing customer 14
+2021-07-20 14:46:51,645 [INFO] Customer 11 moving beside the cash desk
+2021-07-20 14:46:51,645 [INFO] Customer 14 moving beside the cash desk
+2021-07-20 14:46:51,645 [INFO] Cash desk CashDeskStandard 3 processing customer 14
+2021-07-20 14:46:51,645 [INFO] Cash desk CashDeskStandard 2 completing the transaction
+2021-07-20 14:46:51,645 [INFO] Cash desk CashDeskStandard 1 processing customer 11
+2021-07-20 14:46:51,994 [INFO] Customer 11 moving beside the cash desk
+2021-07-20 14:46:51,994 [INFO] Customer 14 moving beside the cash desk
+2021-07-20 14:46:51,994 [INFO] Cash desk CashDeskStandard 3 processing customer 14
+2021-07-20 14:46:51,994 [INFO] Cash desk CashDeskStandard 1 processing customer 11
+2021-07-20 14:46:52,352 [INFO] Customer 14 moving beside the cash desk
+2021-07-20 14:46:52,352 [INFO] Customer 11 moving beside the cash desk
+2021-07-20 14:46:52,352 [INFO] Cash desk CashDeskStandard 3 processing customer 14
+2021-07-20 14:46:52,352 [INFO] Cash desk CashDeskStandard 1 processing customer 11
+2021-07-20 14:46:52,706 [INFO] Customer 14 moving beside the cash desk
+2021-07-20 14:46:52,706 [INFO] Customer 11 moving beside the cash desk
+2021-07-20 14:46:52,706 [INFO] Cash desk CashDeskStandard 3 processing customer 14
+2021-07-20 14:46:52,706 [INFO] Cash desk CashDeskStandard 1 processing customer 11
+2021-07-20 14:46:52,706 [INFO] Customer uscito
+2021-07-20 14:46:53,054 [INFO] Customer 14 moving beside the cash desk
+2021-07-20 14:46:53,054 [INFO] Cash desk CashDeskStandard 3 processing customer 14
+2021-07-20 14:46:53,054 [INFO] Cash desk CashDeskStandard 1 completing the transaction
+2021-07-20 14:46:53,410 [INFO] Customer 14 moving beside the cash desk
+2021-07-20 14:46:53,410 [INFO] Cash desk CashDeskStandard 3 processing customer 14
+2021-07-20 14:46:53,770 [INFO] Customer 14 moving beside the cash desk
+2021-07-20 14:46:53,770 [INFO] Cash desk CashDeskStandard 3 processing customer 14
+2021-07-20 14:46:53,770 [INFO] Customer uscito
+2021-07-20 14:46:54,131 [INFO] Cash desk CashDeskStandard 3 completing the transaction
+2021-07-20 14:52:47,189 [INFO] Init zones
+2021-07-20 14:52:47,189 [INFO] Init cash desks
+2021-07-20 14:52:47,189 [INFO] Init environment
+2021-07-20 14:52:47,189 [INFO] Init grid
+2021-07-20 14:52:47,189 [INFO] Fill grid
+2021-07-20 14:52:47,189 [INFO] Init customers
+2021-07-20 14:52:47,713 [INFO] 200 GET / (127.0.0.1) 4.66ms
+2021-07-20 14:52:47,975 [INFO] 101 GET /ws (127.0.0.1) 0.00ms
+2021-07-20 14:52:48,133 [INFO] Init zones
+2021-07-20 14:52:48,133 [INFO] Init cash desks
+2021-07-20 14:52:48,133 [INFO] Init environment
+2021-07-20 14:52:48,134 [INFO] Init grid
+2021-07-20 14:52:48,134 [INFO] Fill grid
+2021-07-20 14:52:48,135 [INFO] Init customers
+2021-07-20 14:52:52,722 [INFO] Init zones
+2021-07-20 14:52:52,723 [INFO] Init cash desks
+2021-07-20 14:52:52,724 [INFO] Init environment
+2021-07-20 14:52:52,724 [INFO] Init grid
+2021-07-20 14:52:52,725 [INFO] Fill grid
+2021-07-20 14:52:52,725 [INFO] Init customers
+2021-07-20 14:52:54,321 [INFO] 200 GET / (127.0.0.1) 13.38ms
+2021-07-20 14:52:56,534 [INFO] 101 GET /ws (127.0.0.1) 2.08ms
+2021-07-20 14:52:56,692 [INFO] Init zones
+2021-07-20 14:52:56,692 [INFO] Init cash desks
+2021-07-20 14:52:56,693 [INFO] Init environment
+2021-07-20 14:52:56,693 [INFO] Init grid
+2021-07-20 14:52:56,694 [INFO] Fill grid
+2021-07-20 14:52:56,694 [INFO] Init customers
+2021-07-20 14:52:56,829 [WARNING] 404 GET /favicon.ico (127.0.0.1) 7.73ms
+2021-07-20 14:52:58,264 [INFO] Customer 11 is IN THE STORE
+2021-07-20 14:52:58,265 [INFO] Customer 11 is moving to the shopping zone
+2021-07-20 14:52:58,266 [INFO] Customer 5 is IN THE STORE
+2021-07-20 14:52:58,267 [INFO] Customer 5 is moving to the shopping zone
+2021-07-20 14:52:58,267 [INFO] Customer 4 is IN THE STORE
+2021-07-20 14:52:58,268 [INFO] Customer 4 is moving to the shopping zone
+2021-07-20 14:52:58,269 [INFO] Customer 10 is IN THE STORE
+2021-07-20 14:52:58,269 [INFO] Customer 10 is moving to the shopping zone
+2021-07-20 14:52:58,271 [INFO] Customer 6 is IN THE STORE
+2021-07-20 14:52:58,271 [INFO] Customer 6 is moving to the shopping zone
+2021-07-20 14:52:58,272 [INFO] Customer 14 is IN THE STORE
+2021-07-20 14:52:58,273 [INFO] Customer 14 is moving to the shopping zone
+2021-07-20 14:52:58,274 [INFO] Customer 12 is IN THE STORE
+2021-07-20 14:52:58,274 [INFO] Customer 12 is moving to the shopping zone
+2021-07-20 14:52:58,275 [INFO] Customer 3 is IN THE STORE
+2021-07-20 14:52:58,275 [INFO] Customer 3 is moving to the shopping zone
+2021-07-20 14:52:58,276 [INFO] Customer 7 is IN THE STORE
+2021-07-20 14:52:58,276 [INFO] Customer 7 is moving to the shopping zone
+2021-07-20 14:52:58,277 [INFO] Customer 0 is IN THE STORE
+2021-07-20 14:52:58,277 [INFO] Customer 0 is moving to the shopping zone
+2021-07-20 14:52:58,279 [INFO] Customer 9 is IN THE STORE
+2021-07-20 14:52:58,279 [INFO] Customer 9 is moving to the shopping zone
+2021-07-20 14:52:58,280 [INFO] Customer 8 is IN THE STORE
+2021-07-20 14:52:58,280 [INFO] Customer 8 is moving to the shopping zone
+2021-07-20 14:52:58,281 [INFO] Customer 13 is IN THE STORE
+2021-07-20 14:52:58,281 [INFO] Customer 13 is moving to the shopping zone
+2021-07-20 14:52:58,282 [INFO] Customer 2 is IN THE STORE
+2021-07-20 14:52:58,283 [INFO] Customer 2 is moving to the shopping zone
+2021-07-20 14:52:58,283 [INFO] Customer 1 is IN THE STORE
+2021-07-20 14:52:58,284 [INFO] Customer 1 is moving to the shopping zone
+2021-07-20 14:52:58,710 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:52:58,710 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:52:58,710 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:52:58,710 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:52:58,710 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:52:58,710 [INFO] Customer 0 is in the SHOPPING ZONE
+2021-07-20 14:52:58,710 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:52:58,710 [INFO] Customer 2 is in the SHOPPING ZONE
+2021-07-20 14:52:58,710 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:52:58,710 [INFO] Customer 3 is in the SHOPPING ZONE
+2021-07-20 14:52:58,710 [INFO] Customer 1 is in the SHOPPING ZONE
+2021-07-20 14:52:58,710 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:52:58,710 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:52:58,710 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:52:58,710 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:52:59,149 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:52:59,149 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:52:59,149 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:52:59,149 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:52:59,149 [INFO] Customer 1 is in the SHOPPING ZONE
+2021-07-20 14:52:59,149 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:52:59,150 [INFO] Customer 3 is in the SHOPPING ZONE
+2021-07-20 14:52:59,150 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:52:59,150 [INFO] Customer 0 is in the SHOPPING ZONE
+2021-07-20 14:52:59,151 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:52:59,151 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:52:59,151 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:52:59,151 [INFO] Customer 2 is in the SHOPPING ZONE
+2021-07-20 14:52:59,151 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:52:59,151 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:53:00,231 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:53:00,233 [INFO] Customer 3 is in the SHOPPING ZONE
+2021-07-20 14:53:00,233 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:53:00,233 [INFO] Customer 1 is in the SHOPPING ZONE
+2021-07-20 14:53:00,234 [INFO] Customer 2 is in the SHOPPING ZONE
+2021-07-20 14:53:00,234 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:53:00,234 [INFO] Customer 0 is in the SHOPPING ZONE
+2021-07-20 14:53:00,235 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:53:00,235 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:53:00,235 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:53:00,236 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:53:00,236 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:53:00,236 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:53:00,236 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:53:00,238 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:53:01,223 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:53:01,224 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:53:01,224 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:53:01,224 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:53:01,225 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:53:01,225 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:53:01,225 [INFO] Customer 2 is in the SHOPPING ZONE
+2021-07-20 14:53:01,226 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:53:01,226 [INFO] Customer 1 is in the SHOPPING ZONE
+2021-07-20 14:53:01,226 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:53:01,227 [INFO] Customer 0 is in the SHOPPING ZONE
+2021-07-20 14:53:01,227 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:53:01,228 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:53:01,228 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:53:01,228 [INFO] Customer 3 is in the SHOPPING ZONE
+2021-07-20 14:53:02,209 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:53:02,210 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:53:02,210 [INFO] Customer 2 is in the SHOPPING ZONE
+2021-07-20 14:53:02,210 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:53:02,211 [INFO] Customer 1 is in the SHOPPING ZONE
+2021-07-20 14:53:02,211 [INFO] Customer 0 is in the SHOPPING ZONE
+2021-07-20 14:53:02,212 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:53:02,212 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:53:02,213 [INFO] Customer 3 is in the SHOPPING ZONE
+2021-07-20 14:53:02,213 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:53:02,213 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:53:02,214 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:53:02,214 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:53:02,214 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:53:02,215 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:53:03,202 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:53:03,202 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:53:03,218 [INFO] Customer 1 is in the SHOPPING ZONE
+2021-07-20 14:53:03,218 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:53:03,219 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:53:03,219 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:53:03,219 [INFO] Customer 0 choosing queue
+2021-07-20 14:53:03,220 [INFO] Customer 0 moving to a queue
+2021-07-20 14:53:03,221 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:53:03,221 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:53:03,221 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:53:03,221 [INFO] Customer 3 is in the SHOPPING ZONE
+2021-07-20 14:53:03,221 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:53:03,222 [INFO] Customer 2 is in the SHOPPING ZONE
+2021-07-20 14:53:03,223 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:53:03,223 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:53:03,224 [INFO] Cash desk CashDeskStandard 1 has acquired customer 0
+2021-07-20 14:53:04,177 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:53:04,177 [INFO] Customer 0 moving beside the cash desk
+2021-07-20 14:53:04,177 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:53:04,177 [INFO] Customer 2 is in the SHOPPING ZONE
+2021-07-20 14:53:04,178 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:53:04,178 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:53:04,178 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:53:04,178 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:53:04,178 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:53:04,179 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:53:04,179 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:53:04,179 [INFO] Customer 3 is in the SHOPPING ZONE
+2021-07-20 14:53:04,179 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:53:04,179 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:53:04,179 [INFO] Customer 1 choosing queue
+2021-07-20 14:53:04,179 [INFO] Customer 1 moving to a queue
+2021-07-20 14:53:04,179 [INFO] Cash desk CashDeskStandard 1 processing customer 0
+2021-07-20 14:53:05,175 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:53:05,175 [INFO] Customer 1 is in a QUEUE
+2021-07-20 14:54:48,085 [INFO] Init zones
+2021-07-20 14:54:48,085 [INFO] Init cash desks
+2021-07-20 14:54:48,094 [INFO] Init environment
+2021-07-20 14:54:48,094 [INFO] Init grid
+2021-07-20 14:54:48,094 [INFO] Fill grid
+2021-07-20 14:54:48,096 [INFO] Init customers
+2021-07-20 14:54:48,622 [INFO] 200 GET / (127.0.0.1) 15.30ms
+2021-07-20 14:54:48,883 [INFO] 101 GET /ws (127.0.0.1) 2.09ms
+2021-07-20 14:54:49,056 [INFO] Init zones
+2021-07-20 14:54:49,056 [INFO] Init cash desks
+2021-07-20 14:54:49,056 [INFO] Init environment
+2021-07-20 14:54:49,057 [INFO] Init grid
+2021-07-20 14:54:49,057 [INFO] Fill grid
+2021-07-20 14:54:49,058 [INFO] Init customers
+2021-07-20 14:54:52,278 [INFO] Customer 11 is IN THE STORE
+2021-07-20 14:54:52,278 [INFO] Customer 11 is moving to the shopping zone
+2021-07-20 14:54:52,278 [INFO] Customer 7 is IN THE STORE
+2021-07-20 14:54:52,279 [INFO] Customer 7 is moving to the shopping zone
+2021-07-20 14:54:52,279 [INFO] Customer 6 is IN THE STORE
+2021-07-20 14:54:52,279 [INFO] Customer 6 is moving to the shopping zone
+2021-07-20 14:54:52,279 [INFO] Customer 12 is IN THE STORE
+2021-07-20 14:54:52,280 [INFO] Customer 12 is moving to the shopping zone
+2021-07-20 14:54:52,280 [INFO] Customer 9 is IN THE STORE
+2021-07-20 14:54:52,280 [INFO] Customer 9 is moving to the shopping zone
+2021-07-20 14:54:52,281 [INFO] Customer 2 is IN THE STORE
+2021-07-20 14:54:52,281 [INFO] Customer 2 is moving to the shopping zone
+2021-07-20 14:54:52,281 [INFO] Customer 8 is IN THE STORE
+2021-07-20 14:54:52,281 [INFO] Customer 8 is moving to the shopping zone
+2021-07-20 14:54:52,282 [INFO] Customer 0 is IN THE STORE
+2021-07-20 14:54:52,283 [INFO] Customer 0 is moving to the shopping zone
+2021-07-20 14:54:52,283 [INFO] Customer 5 is IN THE STORE
+2021-07-20 14:54:52,283 [INFO] Customer 5 is moving to the shopping zone
+2021-07-20 14:54:52,284 [INFO] Customer 13 is IN THE STORE
+2021-07-20 14:54:52,284 [INFO] Customer 13 is moving to the shopping zone
+2021-07-20 14:54:52,284 [INFO] Customer 10 is IN THE STORE
+2021-07-20 14:54:52,284 [INFO] Customer 10 is moving to the shopping zone
+2021-07-20 14:54:52,284 [INFO] Customer 1 is IN THE STORE
+2021-07-20 14:54:52,284 [INFO] Customer 1 is moving to the shopping zone
+2021-07-20 14:54:52,285 [INFO] Customer 4 is IN THE STORE
+2021-07-20 14:54:52,285 [INFO] Customer 4 is moving to the shopping zone
+2021-07-20 14:54:52,285 [INFO] Customer 14 is IN THE STORE
+2021-07-20 14:54:52,286 [INFO] Customer 14 is moving to the shopping zone
+2021-07-20 14:54:52,286 [INFO] Customer 3 is IN THE STORE
+2021-07-20 14:54:52,286 [INFO] Customer 3 is moving to the shopping zone
+2021-07-20 14:54:52,635 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:54:52,636 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:54:52,637 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:54:52,637 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:54:52,637 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:54:52,637 [INFO] Customer 2 is in the SHOPPING ZONE
+2021-07-20 14:54:52,639 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:54:52,640 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:54:52,640 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:54:52,641 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:54:52,642 [INFO] Customer 0 is in the SHOPPING ZONE
+2021-07-20 14:54:52,642 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:54:52,642 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:54:52,643 [INFO] Customer 1 is in the SHOPPING ZONE
+2021-07-20 14:54:52,644 [INFO] Customer 3 is in the SHOPPING ZONE
+2021-07-20 14:54:53,075 [INFO] Customer 0 is in the SHOPPING ZONE
+2021-07-20 14:54:53,076 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:54:53,076 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:54:53,077 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:54:53,077 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:54:53,077 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:54:53,077 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:54:53,078 [INFO] Customer 2 is in the SHOPPING ZONE
+2021-07-20 14:54:53,078 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:54:53,078 [INFO] Customer 3 is in the SHOPPING ZONE
+2021-07-20 14:54:53,078 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:54:53,079 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:54:53,080 [INFO] Customer 1 is in the SHOPPING ZONE
+2021-07-20 14:54:53,080 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:54:53,080 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:54:53,422 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:54:53,423 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:54:53,423 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:54:53,423 [INFO] Customer 0 is in the SHOPPING ZONE
+2021-07-20 14:54:53,423 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:54:53,424 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:54:53,424 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:54:53,424 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:54:53,424 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:54:53,424 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:54:53,424 [INFO] Customer 1 is in the SHOPPING ZONE
+2021-07-20 14:54:53,426 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:54:53,426 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:54:53,426 [INFO] Customer 3 is in the SHOPPING ZONE
+2021-07-20 14:54:53,426 [INFO] Customer 2 is in the SHOPPING ZONE
+2021-07-20 14:54:53,773 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:54:53,773 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:54:53,773 [INFO] Customer 2 is in the SHOPPING ZONE
+2021-07-20 14:54:53,773 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:54:53,773 [INFO] Customer 1 is in the SHOPPING ZONE
+2021-07-20 14:54:53,773 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:54:53,773 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:54:53,773 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:54:53,779 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:54:53,779 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:54:53,780 [INFO] Customer 3 is in the SHOPPING ZONE
+2021-07-20 14:54:53,780 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:54:53,782 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:54:53,782 [INFO] Customer 0 is in the SHOPPING ZONE
+2021-07-20 14:54:53,782 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:54:54,135 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:54:54,135 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:54:54,136 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:54:54,136 [INFO] Customer 3 is in the SHOPPING ZONE
+2021-07-20 14:54:54,136 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:54:54,136 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:54:54,136 [INFO] Customer 2 is in the SHOPPING ZONE
+2021-07-20 14:54:54,136 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:54:54,136 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:54:54,136 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:54:54,136 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:54:54,136 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:54:54,136 [INFO] Customer 0 is in the SHOPPING ZONE
+2021-07-20 14:54:54,136 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:54:54,136 [INFO] Customer 1 is in the SHOPPING ZONE
+2021-07-20 14:54:54,593 [INFO] Customer 2 is in the SHOPPING ZONE
+2021-07-20 14:54:54,593 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:54:54,593 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:54:54,593 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:54:54,593 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:54:54,593 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:54:54,593 [INFO] Customer 1 is in the SHOPPING ZONE
+2021-07-20 14:54:54,599 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:54:54,600 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:54:54,600 [INFO] Customer 0 choosing queue
+2021-07-20 14:54:54,601 [INFO] Customer 0 moving to a queue
+2021-07-20 14:54:54,601 [INFO] Customer 3 is in the SHOPPING ZONE
+2021-07-20 14:54:54,602 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:54:54,602 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:54:54,602 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:54:54,602 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:54:54,602 [INFO] Cash desk CashDeskStandard 1 has acquired customer 0
+2021-07-20 14:54:54,954 [INFO] Customer 0 moving beside the cash desk
+2021-07-20 14:54:54,954 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:54:54,954 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:54:54,954 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:54:54,954 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:54:54,954 [INFO] Customer 1 choosing queue
+2021-07-20 14:54:54,954 [INFO] Customer 1 moving to a queue
+2021-07-20 14:54:54,954 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:54:54,954 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:54:54,954 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:54:54,954 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:54:54,954 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:54:54,954 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:54:54,954 [INFO] Customer 2 is in the SHOPPING ZONE
+2021-07-20 14:54:54,970 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:54:54,970 [INFO] Customer 3 is in the SHOPPING ZONE
+2021-07-20 14:54:54,973 [INFO] Cash desk CashDeskStandard 1 processing customer 0
+2021-07-20 14:54:55,337 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:54:55,338 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:54:55,338 [INFO] Customer 0 moving beside the cash desk
+2021-07-20 14:54:55,338 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:54:55,338 [INFO] Customer 1 is in a QUEUE
+2021-07-20 14:55:36,687 [INFO] Init zones
+2021-07-20 14:55:36,687 [INFO] Init cash desks
+2021-07-20 14:55:36,688 [INFO] Init environment
+2021-07-20 14:55:36,688 [INFO] Init grid
+2021-07-20 14:55:36,689 [INFO] Fill grid
+2021-07-20 14:55:36,690 [INFO] Init customers
+2021-07-20 14:55:37,231 [INFO] 200 GET / (127.0.0.1) 12.33ms
+2021-07-20 14:55:37,472 [INFO] 101 GET /ws (127.0.0.1) 1.00ms
+2021-07-20 14:55:37,626 [INFO] Init zones
+2021-07-20 14:55:37,626 [INFO] Init cash desks
+2021-07-20 14:55:37,626 [INFO] Init environment
+2021-07-20 14:55:37,626 [INFO] Init grid
+2021-07-20 14:55:37,627 [INFO] Fill grid
+2021-07-20 14:55:37,628 [INFO] Init customers
+2021-07-20 14:55:38,478 [INFO] Customer 6 is IN THE STORE
+2021-07-20 14:55:38,478 [INFO] Customer 6 is moving to the shopping zone
+2021-07-20 14:55:38,478 [INFO] Customer 0 is IN THE STORE
+2021-07-20 14:55:38,479 [INFO] Customer 0 is moving to the shopping zone
+2021-07-20 14:55:38,479 [INFO] Customer 13 is IN THE STORE
+2021-07-20 14:55:38,479 [INFO] Customer 13 is moving to the shopping zone
+2021-07-20 14:55:38,479 [INFO] Customer 8 is IN THE STORE
+2021-07-20 14:55:38,480 [INFO] Customer 8 is moving to the shopping zone
+2021-07-20 14:55:38,480 [INFO] Customer 12 is IN THE STORE
+2021-07-20 14:55:38,480 [INFO] Customer 12 is moving to the shopping zone
+2021-07-20 14:55:38,481 [INFO] Customer 10 is IN THE STORE
+2021-07-20 14:55:38,481 [INFO] Customer 10 is moving to the shopping zone
+2021-07-20 14:55:38,481 [INFO] Customer 7 is IN THE STORE
+2021-07-20 14:55:38,481 [INFO] Customer 7 is moving to the shopping zone
+2021-07-20 14:55:38,482 [INFO] Customer 4 is IN THE STORE
+2021-07-20 14:55:38,482 [INFO] Customer 4 is moving to the shopping zone
+2021-07-20 14:55:38,482 [INFO] Customer 14 is IN THE STORE
+2021-07-20 14:55:38,483 [INFO] Customer 14 is moving to the shopping zone
+2021-07-20 14:55:38,483 [INFO] Customer 2 is IN THE STORE
+2021-07-20 14:55:38,483 [INFO] Customer 2 is moving to the shopping zone
+2021-07-20 14:55:38,484 [INFO] Customer 1 is IN THE STORE
+2021-07-20 14:55:38,484 [INFO] Customer 1 is moving to the shopping zone
+2021-07-20 14:55:38,484 [INFO] Customer 3 is IN THE STORE
+2021-07-20 14:55:38,485 [INFO] Customer 3 is moving to the shopping zone
+2021-07-20 14:55:38,485 [INFO] Customer 5 is IN THE STORE
+2021-07-20 14:55:38,486 [INFO] Customer 5 is moving to the shopping zone
+2021-07-20 14:55:38,486 [INFO] Customer 11 is IN THE STORE
+2021-07-20 14:55:38,487 [INFO] Customer 11 is moving to the shopping zone
+2021-07-20 14:55:38,487 [INFO] Customer 9 is IN THE STORE
+2021-07-20 14:55:38,487 [INFO] Customer 9 is moving to the shopping zone
+2021-07-20 14:55:38,837 [INFO] Customer 2 is in the SHOPPING ZONE
+2021-07-20 14:55:38,838 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:55:38,839 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:55:38,839 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:55:38,839 [INFO] Customer 3 is in the SHOPPING ZONE
+2021-07-20 14:55:38,839 [INFO] Customer 0 is in the SHOPPING ZONE
+2021-07-20 14:55:38,842 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:55:38,843 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:55:38,843 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:55:38,845 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:55:38,845 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:55:38,846 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:55:38,847 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:55:38,847 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:55:38,847 [INFO] Customer 1 is in the SHOPPING ZONE
+2021-07-20 14:55:39,211 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:55:39,212 [INFO] Customer 0 is in the SHOPPING ZONE
+2021-07-20 14:55:39,213 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:55:39,213 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:55:39,214 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:55:39,215 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:55:39,215 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:55:39,216 [INFO] Customer 3 is in the SHOPPING ZONE
+2021-07-20 14:55:39,216 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:55:39,217 [INFO] Customer 1 is in the SHOPPING ZONE
+2021-07-20 14:55:39,218 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:55:39,219 [INFO] Customer 2 is in the SHOPPING ZONE
+2021-07-20 14:55:39,220 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:55:39,220 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:55:39,221 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:55:39,616 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:55:39,616 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:55:39,617 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:55:39,617 [INFO] Customer 1 is in the SHOPPING ZONE
+2021-07-20 14:55:39,617 [INFO] Customer 2 is in the SHOPPING ZONE
+2021-07-20 14:55:39,617 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:55:39,617 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:55:39,618 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:55:39,618 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:55:39,618 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:55:39,618 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:55:39,618 [INFO] Customer 3 is in the SHOPPING ZONE
+2021-07-20 14:55:39,618 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:55:39,619 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:55:39,619 [INFO] Customer 0 is in the SHOPPING ZONE
+2021-07-20 14:55:39,970 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:55:39,971 [INFO] Customer 3 is in the SHOPPING ZONE
+2021-07-20 14:55:39,972 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:55:39,973 [INFO] Customer 2 is in the SHOPPING ZONE
+2021-07-20 14:55:39,975 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:55:39,976 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:55:39,977 [INFO] Customer 1 is in the SHOPPING ZONE
+2021-07-20 14:55:39,978 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:55:39,979 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:55:39,979 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:55:39,980 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:55:39,981 [INFO] Customer 0 is in the SHOPPING ZONE
+2021-07-20 14:55:39,982 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:55:39,983 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:55:39,985 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:55:40,339 [INFO] Customer 0 is in the SHOPPING ZONE
+2021-07-20 14:55:40,339 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:55:40,341 [INFO] Customer 2 is in the SHOPPING ZONE
+2021-07-20 14:55:40,342 [INFO] Customer 3 is in the SHOPPING ZONE
+2021-07-20 14:55:40,343 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:55:40,344 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:55:40,346 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:55:40,347 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:55:40,348 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:55:40,348 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:55:40,349 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:55:40,351 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:55:40,352 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:55:40,354 [INFO] Customer 1 is in the SHOPPING ZONE
+2021-07-20 14:55:40,354 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:55:40,728 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:55:40,729 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:55:40,730 [INFO] Customer 1 is in the SHOPPING ZONE
+2021-07-20 14:55:40,731 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:55:40,732 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:55:40,733 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:55:40,734 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:55:40,735 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:55:40,736 [INFO] Customer 0 choosing queue
+2021-07-20 14:55:40,737 [INFO] Customer 0 moving to a queue
+2021-07-20 14:55:40,739 [INFO] Customer 2 is in the SHOPPING ZONE
+2021-07-20 14:55:40,739 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:55:40,739 [INFO] Customer 3 is in the SHOPPING ZONE
+2021-07-20 14:55:40,740 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:55:40,741 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:55:40,742 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:55:40,743 [INFO] Cash desk CashDeskStandard 1 has acquired customer 0
+2021-07-20 14:55:41,210 [INFO] Customer 4 is in the SHOPPING ZONE
+2021-07-20 14:55:41,211 [INFO] Customer 5 is in the SHOPPING ZONE
+2021-07-20 14:55:41,211 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:55:41,211 [INFO] Customer 2 is in the SHOPPING ZONE
+2021-07-20 14:55:41,211 [INFO] Customer 3 is in the SHOPPING ZONE
+2021-07-20 14:55:41,212 [INFO] Customer 7 is in the SHOPPING ZONE
+2021-07-20 14:55:41,212 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:55:41,212 [INFO] Customer 13 is in the SHOPPING ZONE
+2021-07-20 14:55:41,213 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:55:41,213 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:55:41,214 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:55:41,215 [INFO] Customer 6 is in the SHOPPING ZONE
+2021-07-20 14:55:41,215 [INFO] Customer 12 is in the SHOPPING ZONE
+2021-07-20 14:55:41,215 [INFO] Customer 1 choosing queue
+2021-07-20 14:55:41,216 [INFO] Customer 1 moving to a queue
+2021-07-20 14:55:41,216 [INFO] Customer 0 moving beside the cash desk
+2021-07-20 14:55:41,216 [INFO] Cash desk CashDeskStandard 1 processing customer 0
+2021-07-20 14:55:41,698 [INFO] Customer 14 is in the SHOPPING ZONE
+2021-07-20 14:55:41,700 [INFO] Customer 10 is in the SHOPPING ZONE
+2021-07-20 14:55:41,700 [INFO] Customer 0 moving beside the cash desk
+2021-07-20 14:55:41,701 [INFO] Customer 11 is in the SHOPPING ZONE
+2021-07-20 14:55:41,701 [INFO] Customer 9 is in the SHOPPING ZONE
+2021-07-20 14:55:41,702 [INFO] Customer 8 is in the SHOPPING ZONE
+2021-07-20 14:55:41,702 [INFO] Customer 3 is in the SHOPPING ZONE
+2021-07-20 14:55:41,703 [INFO] Customer 1 is in a QUEUE
+2021-07-20 15:07:14,285 [INFO] Init zones
+2021-07-20 15:07:14,285 [INFO] Init cash desks
+2021-07-20 15:07:22,416 [INFO] Init zones
+2021-07-20 15:07:22,416 [INFO] Init cash desks
+2021-07-20 15:11:08,719 [INFO] Init zones
+2021-07-20 15:11:08,719 [INFO] Init cash desks
+2021-07-20 15:12:58,858 [INFO] Init zones
+2021-07-20 15:12:58,858 [INFO] Init cash desks
+2021-07-20 15:14:49,011 [INFO] Init zones
+2021-07-20 15:14:49,011 [INFO] Init cash desks
+2021-07-20 15:14:57,453 [INFO] Init zones
+2021-07-20 15:14:57,453 [INFO] Init cash desks
+2021-07-20 15:14:57,453 [INFO] Init environment
+2021-07-20 15:14:57,453 [INFO] Init grid
+2021-07-20 15:14:57,453 [INFO] Fill grid
+2021-07-20 15:14:57,453 [INFO] Init customers
+2021-07-20 15:14:57,955 [INFO] 200 GET / (127.0.0.1) 4.56ms
+2021-07-20 15:15:08,049 [INFO] 101 GET /ws (127.0.0.1) 0.99ms
+2021-07-20 15:15:08,444 [INFO] Init zones
+2021-07-20 15:15:08,444 [INFO] Init cash desks
+2021-07-20 15:15:08,445 [INFO] Init environment
+2021-07-20 15:15:08,445 [INFO] Init grid
+2021-07-20 15:15:08,448 [INFO] Fill grid
+2021-07-20 15:15:08,448 [INFO] Init customers

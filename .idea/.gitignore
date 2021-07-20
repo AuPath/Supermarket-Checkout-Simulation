@@ -1,0 +1,20 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+doc/presentation/slides.aux
+doc/presentation/slides.log
+doc/presentation/slides.nav
+doc/presentation/slides.out
+doc/presentation/slides.snm
+doc/presentation/slides.synctex.gz
+doc/presentation/slides.toc
+doc/report/main.aux
+doc/report/main.log
+doc/report/main.out
+doc/report/main.synctex.gz
+doc/report/main.toc

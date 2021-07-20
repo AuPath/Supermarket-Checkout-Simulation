@@ -1,0 +1,2197 @@
+2021-07-19 15:21:04,935 [INFO] Init zones
+2021-07-19 15:21:04,936 [INFO] Init cash desks
+2021-07-19 15:21:04,937 [INFO] Init environment
+2021-07-19 15:21:04,937 [INFO] Init grid
+2021-07-19 15:21:04,937 [INFO] Fill grid
+2021-07-19 15:21:04,938 [INFO] Init customers
+2021-07-19 15:21:05,561 [INFO] 200 GET / (127.0.0.1) 13.49ms
+2021-07-19 15:21:08,953 [INFO] 101 GET /ws (127.0.0.1) 3.00ms
+2021-07-19 15:21:09,102 [INFO] Init zones
+2021-07-19 15:21:09,102 [INFO] Init cash desks
+2021-07-19 15:21:09,102 [INFO] Init environment
+2021-07-19 15:21:09,103 [INFO] Init grid
+2021-07-19 15:21:09,103 [INFO] Fill grid
+2021-07-19 15:21:09,106 [INFO] Init customers
+2021-07-19 15:21:11,957 [INFO] Step
+2021-07-19 15:21:11,958 [INFO] Customer 13 step
+2021-07-19 15:21:11,958 [INFO] Customer 8 step
+2021-07-19 15:21:11,958 [INFO] Customer 10 step
+2021-07-19 15:21:11,958 [INFO] Customer 9 step
+2021-07-19 15:21:11,958 [INFO] Customer 25 step
+2021-07-19 15:21:11,959 [INFO] Customer 4 step
+2021-07-19 15:21:11,959 [INFO] Customer 20 step
+2021-07-19 15:21:11,959 [INFO] Customer 18 step
+2021-07-19 15:21:11,959 [INFO] Customer 24 step
+2021-07-19 15:21:11,959 [INFO] Customer 15 step
+2021-07-19 15:21:11,959 [INFO] Customer 29 step
+2021-07-19 15:21:11,960 [INFO] Customer 11 step
+2021-07-19 15:21:11,960 [INFO] Customer 7 step
+2021-07-19 15:21:11,960 [INFO] Customer 28 step
+2021-07-19 15:21:11,960 [INFO] Customer 14 step
+2021-07-19 15:21:11,960 [INFO] Customer 2 step
+2021-07-19 15:21:11,960 [INFO] Customer 22 step
+2021-07-19 15:21:11,961 [INFO] Customer 26 step
+2021-07-19 15:21:11,961 [INFO] Customer 27 step
+2021-07-19 15:21:11,961 [INFO] Customer 23 step
+2021-07-19 15:21:11,961 [INFO] Customer 19 step
+2021-07-19 15:21:11,961 [INFO] Customer 12 step
+2021-07-19 15:21:11,961 [INFO] Customer 1 step
+2021-07-19 15:21:11,962 [INFO] Customer 3 step
+2021-07-19 15:21:11,962 [INFO] Customer 5 step
+2021-07-19 15:21:11,962 [INFO] Customer 21 step
+2021-07-19 15:21:11,962 [INFO] Customer 17 step
+2021-07-19 15:21:11,962 [INFO] Customer 0 step
+2021-07-19 15:21:11,962 [INFO] Customer 16 step
+2021-07-19 15:21:11,963 [INFO] Customer 6 step
+2021-07-19 15:21:12,499 [INFO] 304 GET /local/images/sCircleCyan.png (127.0.0.1) 524.92ms
+2021-07-19 15:21:12,547 [INFO] Step
+2021-07-19 15:21:12,547 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:21:12,547 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:21:12,547 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:21:12,548 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:21:12,548 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:21:12,548 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:21:12,548 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:21:12,549 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:21:12,549 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:21:12,549 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:21:12,549 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:21:12,549 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:21:12,550 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:21:12,550 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:21:12,550 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:21:12,550 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:21:12,550 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:21:12,551 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:21:12,551 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:21:12,551 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:21:12,551 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:21:12,551 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:21:12,552 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:21:12,552 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:21:12,552 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:21:12,552 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:21:12,553 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:21:12,553 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:21:12,553 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:21:12,554 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:21:12,996 [INFO] Step
+2021-07-19 15:21:12,996 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:21:12,996 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:21:12,996 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:21:12,996 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:21:12,996 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:21:12,996 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:21:12,997 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:21:12,997 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:21:12,997 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:21:12,997 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:21:12,997 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:21:12,998 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:21:12,998 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:21:12,998 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:21:12,998 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:21:12,998 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:21:12,999 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:21:12,999 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:21:12,999 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:21:12,999 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:21:12,999 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:21:12,999 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:21:13,000 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:21:13,000 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:21:13,000 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:21:13,000 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:21:13,000 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:21:13,001 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:21:13,001 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:21:13,001 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:21:13,349 [INFO] Step
+2021-07-19 15:21:13,350 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:21:13,351 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:21:13,352 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:21:13,353 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:21:13,354 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:21:13,356 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:21:13,356 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:21:13,357 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:21:13,358 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:21:13,359 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:21:13,359 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:21:13,360 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:21:13,361 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:21:13,361 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:21:13,363 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:21:13,364 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:21:13,364 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:21:13,365 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:21:13,366 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:21:13,366 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:21:13,367 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:21:13,368 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:21:13,368 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:21:13,369 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:21:13,370 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:21:13,371 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:21:13,371 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:21:13,372 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:21:13,373 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:21:13,373 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:21:13,734 [INFO] Step
+2021-07-19 15:21:13,735 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:21:13,736 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:21:13,736 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:21:13,737 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:21:13,737 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:21:13,738 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:21:13,739 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:21:13,739 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:21:13,740 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:21:13,740 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:21:13,740 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:21:13,741 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:21:13,741 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:21:13,742 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:21:13,742 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:21:13,742 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:21:13,743 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:21:13,743 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:21:13,744 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:21:13,744 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:21:13,744 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:21:13,745 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:21:13,745 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:21:13,745 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:21:13,746 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:21:13,746 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:21:13,747 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:21:13,747 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:21:13,748 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:21:13,748 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:21:14,106 [INFO] Step
+2021-07-19 15:21:14,108 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:21:14,109 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:21:14,109 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:21:14,112 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:21:14,113 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:21:14,114 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:21:14,114 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:21:14,115 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:21:14,117 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:21:14,118 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:21:14,119 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:21:14,120 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:21:14,121 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:21:14,123 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:21:14,124 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:21:14,124 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:21:14,126 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:21:14,127 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:21:14,128 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:21:14,129 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:21:14,130 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:21:14,131 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:21:14,132 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:21:14,133 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:21:14,133 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:21:14,134 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:21:14,134 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:21:14,135 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:21:14,135 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:21:14,136 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:21:14,492 [INFO] Step
+2021-07-19 15:21:14,493 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:21:14,494 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:21:14,495 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:21:14,496 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:21:14,496 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:21:14,497 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:21:14,497 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:21:14,498 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:21:14,498 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:21:14,499 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:21:14,499 [INFO] Customer 15 choosing queue
+2021-07-19 15:21:14,500 [INFO] Customer 15 moving to queue
+2021-07-19 15:21:14,501 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:21:14,501 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:21:14,502 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:21:14,502 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:21:14,503 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:21:14,503 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:21:14,504 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:21:14,505 [INFO] Customer 0 choosing queue
+2021-07-19 15:21:14,505 [INFO] Customer 0 moving to queue
+2021-07-19 15:21:14,506 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:21:14,506 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:21:14,507 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:21:14,507 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:21:14,508 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:21:14,508 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:21:14,509 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:21:14,509 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:21:14,510 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:21:14,510 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:21:14,511 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:21:14,948 [INFO] Step
+2021-07-19 15:21:14,948 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:21:14,948 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:21:14,948 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:21:14,949 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:21:14,949 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:21:14,949 [INFO] Customer 15 moving beside the cash desk
+2021-07-19 15:21:14,949 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:21:14,949 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:21:14,950 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:21:14,950 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:21:14,950 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:21:14,950 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:21:14,950 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:21:14,951 [INFO] Customer 16 choosing queue
+2021-07-19 15:21:14,951 [INFO] Customer 16 moving to queue
+2021-07-19 15:21:14,951 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:21:14,951 [INFO] Customer 1 choosing queue
+2021-07-19 15:21:14,951 [INFO] Customer 1 moving to queue
+2021-07-19 15:21:14,952 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:21:14,952 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:21:14,952 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:21:14,952 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:21:14,952 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:21:14,953 [INFO] Customer 0 moving beside the cash desk
+2021-07-19 15:21:14,953 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:21:14,953 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:21:14,953 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:21:14,953 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:21:14,953 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:21:14,954 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:21:14,954 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:21:14,954 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:21:14,954 [INFO] Cash desk CashDeskProcessingState 1 processing customer 0
+2021-07-19 15:21:14,954 [INFO] Cash desk CashDeskProcessingState 3 processing customer 15
+2021-07-19 15:21:15,300 [INFO] Step
+2021-07-19 15:21:15,301 [INFO] Customer 0 moving beside the cash desk
+2021-07-19 15:21:15,302 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:21:15,303 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:21:15,303 [INFO] Customer 17 choosing queue
+2021-07-19 15:21:15,305 [INFO] Customer 17 moving to queue
+2021-07-19 15:21:25,475 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:21:25,477 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:21:25,478 [INFO] Customer 15 moving beside the cash desk
+2021-07-19 15:21:25,479 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:21:25,480 [INFO] Customer 2 choosing queue
+2021-07-19 15:21:25,481 [INFO] Customer 2 moving to queue
+2021-07-19 15:21:25,482 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:21:25,483 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:21:25,484 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:21:25,484 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:21:25,485 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:21:25,486 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:21:25,487 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:21:25,488 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:21:25,488 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:21:25,489 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:21:25,491 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:21:25,492 [INFO] Customer 16 is queued
+2021-07-19 15:21:25,493 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:21:25,494 [INFO] Customer 1 moving beside the cash desk
+2021-07-19 15:21:25,495 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:21:25,496 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:21:25,496 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:21:25,497 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:21:25,498 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:21:25,499 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:21:25,500 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:21:25,501 [INFO] Cash desk CashDeskProcessingState 1 processing customer 0
+2021-07-19 15:21:25,502 [INFO] Cash desk CashDeskProcessingState 2 processing customer 1
+2021-07-19 15:21:25,503 [INFO] Cash desk CashDeskProcessingState 3 processing customer 15
+2021-07-19 15:21:25,946 [INFO] Step
+2021-07-19 15:21:25,947 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:21:25,947 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:21:25,947 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:21:25,947 [INFO] Customer 2 is queued
+2021-07-19 15:21:25,947 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:21:25,948 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:21:25,948 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:21:25,948 [INFO] Customer 16 is queued
+2021-07-19 15:21:29,668 [INFO] Customer 18 choosing queue
+2021-07-19 15:21:29,671 [INFO] Customer 18 moving to queue
+2021-07-19 15:21:29,672 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:21:29,673 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:21:29,674 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:21:29,675 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:21:29,676 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:21:29,676 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:21:29,677 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:21:29,677 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:21:29,679 [INFO] Customer 3 choosing queue
+2021-07-19 15:21:29,680 [INFO] Customer 3 moving to queue
+2021-07-19 15:21:29,681 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:21:29,682 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:21:29,683 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:21:29,683 [INFO] Customer 17 moving beside the cash desk
+2021-07-19 15:21:29,683 [INFO] Customer 1 moving beside the cash desk
+2021-07-19 15:21:29,685 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:21:29,685 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:21:29,687 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:21:29,688 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:21:29,688 [INFO] Customer 15 moving beside the cash desk
+2021-07-19 15:21:29,689 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:21:29,689 [INFO] Customer 0 moving beside the cash desk
+2021-07-19 15:21:29,690 [INFO] Cash desk CashDeskProcessingState 3 processing customer 15
+2021-07-19 15:21:29,692 [INFO] Cash desk CashDeskProcessingState 5 processing customer 17
+2021-07-19 15:21:29,692 [INFO] Cash desk CashDeskProcessingState 2 processing customer 1
+2021-07-19 15:21:29,692 [INFO] Cash desk CashDeskProcessingState 1 processing customer 0
+2021-07-19 15:21:30,043 [INFO] Step
+2021-07-19 15:21:30,045 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:21:30,046 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:21:30,048 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:21:30,049 [INFO] Customer 0 moving beside the cash desk
+2021-07-19 15:21:30,050 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:21:30,051 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:21:30,052 [INFO] Customer 19 choosing queue
+2021-07-19 15:21:30,053 [INFO] Customer 19 moving to queue
+2021-07-19 15:21:34,663 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:21:34,665 [INFO] Customer 15 moving beside the cash desk
+2021-07-19 15:21:34,666 [INFO] Customer 18 is queued
+2021-07-19 15:21:39,042 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:21:39,043 [INFO] Customer 4 choosing queue
+2021-07-19 15:21:39,043 [INFO] Customer 4 moving to queue
+2021-07-19 15:21:39,043 [INFO] Customer 17 moving beside the cash desk
+2021-07-19 15:21:39,044 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:21:39,044 [INFO] Customer 3 is queued
+2021-07-19 15:21:39,045 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:21:39,045 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:21:39,045 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:21:39,045 [INFO] Customer 2 is queued
+2021-07-19 15:21:39,045 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:21:39,045 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:21:39,046 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:21:39,046 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:21:39,046 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:21:39,047 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:21:39,047 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:21:39,047 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:21:39,047 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:21:39,047 [INFO] Customer 16 moving beside the cash desk
+2021-07-19 15:21:39,047 [INFO] Customer 1 moving beside the cash desk
+2021-07-19 15:21:39,048 [INFO] Cash desk CashDeskStandard 3 completing the transaction
+2021-07-19 15:21:39,048 [INFO] Cash desk CashDeskProcessingState 5 processing customer 17
+2021-07-19 15:21:39,048 [INFO] Cash desk CashDeskSelfScan 1 completing the transaction
+2021-07-19 15:21:39,048 [INFO] Cash desk CashDeskProcessingState 2 processing customer 1
+2021-07-19 15:21:39,049 [INFO] Customer 18 advancing
+2021-07-19 15:21:50,853 [INFO] Cash desk CashDeskProcessingState 7 processing customer 16
+2021-07-19 15:21:50,936 [WARNING] 404 GET /local/undefined (127.0.0.1) 3.97ms
+2021-07-19 15:21:51,228 [INFO] Step
+2021-07-19 15:21:51,230 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:21:51,231 [INFO] Customer 16 moving beside the cash desk
+2021-07-19 15:21:51,233 [INFO] Customer 17 moving beside the cash desk
+2021-07-19 15:21:51,234 [INFO] Customer 15 exiting
+2021-07-19 15:21:51,236 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:21:51,238 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:21:51,239 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:21:51,241 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:21:51,242 [INFO] Customer 1 moving beside the cash desk
+2021-07-19 15:21:51,243 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:21:51,244 [INFO] Customer 20 choosing queue
+2021-07-19 15:21:51,246 [INFO] Customer 20 moving to queue
+2021-07-19 15:21:53,859 [INFO] Customer 0 exiting
+2021-07-19 15:21:53,860 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:21:53,861 [INFO] Customer 4 is queued
+2021-07-19 15:21:53,861 [INFO] Customer 19 moving beside the cash desk
+2021-07-19 15:21:53,862 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:21:53,862 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:21:53,862 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:21:53,863 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:21:53,863 [INFO] Customer 18 moving beside the cash desk
+2021-07-19 15:21:53,864 [INFO] Customer 3 is queued
+2021-07-19 15:21:53,864 [INFO] Customer 2 is queued
+2021-07-19 15:21:53,864 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:21:53,864 [INFO] Customer 5 choosing queue
+2021-07-19 15:21:53,865 [INFO] Customer 5 moving to queue
+2021-07-19 15:21:53,865 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:21:53,865 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:21:53,866 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:21:53,867 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:21:53,867 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:21:53,867 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:21:53,867 [INFO] Customer 18 advancing
+2021-07-19 15:21:53,868 [ERROR] Uncaught exception GET /ws (127.0.0.1)
+HTTPServerRequest(protocol='http', host='127.0.0.1:8521', method='GET', uri='/ws', version='HTTP/1.1', remote_ip='127.0.0.1')
+Traceback (most recent call last):
+  File "C:\Users\lucre\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\tornado\websocket.py", line 647, in _run_callback
+    result = callback(*args, **kwargs)
+  File "C:\Users\lucre\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\mesa\visualization\ModularVisualization.py", line 207, in on_message
+    self.application.model.step()
+  File "C:\Users\lucre\PycharmProjects\Supermarket-Checkout-Simulation\src\Supermarket.py", line 62, in step
+    self.cash_desk_scheduler.step()
+  File "C:\Users\lucre\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\mesa\time.py", line 127, in step
+    agent.step()
+  File "C:\Users\lucre\PycharmProjects\Supermarket-Checkout-Simulation\src\cashdesk\CashDesk.py", line 44, in step
+    self.__state.action()
+  File "C:\Users\lucre\PycharmProjects\Supermarket-Checkout-Simulation\src\states\cashdeskstates\CashDeskStates.py", line 19, in action
+    self.context.advance(customer)
+  File "C:\Users\lucre\PycharmProjects\Supermarket-Checkout-Simulation\src\cashdesk\CashDeskStandard.py", line 21, in advance
+    self.model.cash_desk_standard_zone.advance(customer)
+  File "C:\Users\lucre\PycharmProjects\Supermarket-Checkout-Simulation\src\zones\dinamic\CashDeskZone.py", line 28, in advance
+    self.model.grid.move_agent(customer, (x, y - 1))
+  File "C:\Users\lucre\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\mesa\space.py", line 415, in move_agent
+    self._place_agent(pos, agent)
+  File "C:\Users\lucre\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\mesa\space.py", line 522, in _place_agent
+    raise Exception("Cell not empty")
+Exception: Cell not empty
+2021-07-19 15:22:36,362 [INFO] Init zones
+2021-07-19 15:22:36,362 [INFO] Init cash desks
+2021-07-19 15:22:36,363 [INFO] Init environment
+2021-07-19 15:22:36,363 [INFO] Init grid
+2021-07-19 15:22:36,363 [INFO] Fill grid
+2021-07-19 15:22:36,365 [INFO] Init customers
+2021-07-19 15:22:37,101 [INFO] 304 GET / (127.0.0.1) 9.82ms
+2021-07-19 15:22:37,422 [INFO] 101 GET /ws (127.0.0.1) 3.01ms
+2021-07-19 15:22:37,537 [INFO] Init zones
+2021-07-19 15:22:37,537 [INFO] Init cash desks
+2021-07-19 15:22:37,537 [INFO] Init environment
+2021-07-19 15:22:37,538 [INFO] Init grid
+2021-07-19 15:22:37,539 [INFO] Fill grid
+2021-07-19 15:22:37,540 [INFO] Init customers
+2021-07-19 15:22:39,905 [INFO] Step
+2021-07-19 15:22:39,905 [INFO] Customer 3 step
+2021-07-19 15:22:39,905 [INFO] Customer 19 step
+2021-07-19 15:22:39,905 [INFO] Customer 5 step
+2021-07-19 15:22:39,906 [INFO] Customer 2 step
+2021-07-19 15:22:39,906 [INFO] Customer 14 step
+2021-07-19 15:22:39,906 [INFO] Customer 4 step
+2021-07-19 15:22:39,906 [INFO] Customer 20 step
+2021-07-19 15:22:39,906 [INFO] Customer 18 step
+2021-07-19 15:22:39,907 [INFO] Customer 22 step
+2021-07-19 15:22:39,907 [INFO] Customer 9 step
+2021-07-19 15:22:39,907 [INFO] Customer 15 step
+2021-07-19 15:22:39,907 [INFO] Customer 11 step
+2021-07-19 15:22:39,908 [INFO] Customer 28 step
+2021-07-19 15:22:39,908 [INFO] Customer 0 step
+2021-07-19 15:22:39,908 [INFO] Customer 26 step
+2021-07-19 15:22:39,908 [INFO] Customer 21 step
+2021-07-19 15:22:39,908 [INFO] Customer 7 step
+2021-07-19 15:22:39,909 [INFO] Customer 17 step
+2021-07-19 15:22:39,909 [INFO] Customer 1 step
+2021-07-19 15:22:39,909 [INFO] Customer 25 step
+2021-07-19 15:22:39,909 [INFO] Customer 27 step
+2021-07-19 15:22:39,909 [INFO] Customer 29 step
+2021-07-19 15:22:39,910 [INFO] Customer 10 step
+2021-07-19 15:22:39,910 [INFO] Customer 8 step
+2021-07-19 15:22:39,910 [INFO] Customer 24 step
+2021-07-19 15:22:39,910 [INFO] Customer 12 step
+2021-07-19 15:22:39,910 [INFO] Customer 6 step
+2021-07-19 15:22:39,911 [INFO] Customer 13 step
+2021-07-19 15:22:39,911 [INFO] Customer 23 step
+2021-07-19 15:22:39,912 [INFO] Customer 16 step
+2021-07-19 15:22:40,501 [INFO] 304 GET /local/images/sCircleCyan.png (127.0.0.1) 575.76ms
+2021-07-19 15:22:40,561 [INFO] Step
+2021-07-19 15:22:40,561 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:22:40,561 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:22:40,561 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:22:40,561 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:22:40,561 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:22:40,561 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:22:40,561 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:22:40,562 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:22:40,563 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:22:40,563 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:22:40,563 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:22:40,563 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:22:40,563 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:22:40,563 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:22:40,564 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:22:40,564 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:22:40,564 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:22:40,564 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:22:40,564 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:22:40,565 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:22:40,565 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:22:40,565 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:22:40,565 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:22:40,566 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:22:40,566 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:22:40,566 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:22:40,567 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:22:40,567 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:22:40,567 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:22:40,569 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:22:40,937 [INFO] Step
+2021-07-19 15:22:40,937 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:22:40,938 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:22:40,938 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:22:40,938 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:22:40,939 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:22:40,939 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:22:40,939 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:22:40,939 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:22:40,940 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:22:40,940 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:22:40,940 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:22:40,941 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:22:40,941 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:22:40,941 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:22:40,942 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:22:40,942 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:22:40,942 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:22:40,943 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:22:40,943 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:22:40,943 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:22:40,943 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:22:40,944 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:22:40,944 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:22:40,944 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:22:40,945 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:22:40,945 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:22:40,945 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:22:40,945 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:22:40,946 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:22:40,946 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:22:41,305 [INFO] Step
+2021-07-19 15:22:41,308 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:22:41,310 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:22:41,311 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:22:41,312 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:22:41,314 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:22:41,315 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:22:41,316 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:22:41,318 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:22:41,319 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:22:41,321 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:22:41,324 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:22:41,325 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:22:41,326 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:22:41,327 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:22:41,327 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:22:41,328 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:22:41,329 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:22:41,329 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:22:41,330 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:22:41,330 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:22:41,331 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:22:41,331 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:22:41,333 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:22:41,334 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:22:41,335 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:22:41,335 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:22:41,336 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:22:41,336 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:22:41,337 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:22:41,337 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:22:41,695 [INFO] Step
+2021-07-19 15:22:41,698 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:22:41,700 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:22:41,702 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:22:41,703 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:22:41,705 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:22:41,706 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:22:41,708 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:22:41,709 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:22:41,710 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:22:41,711 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:22:41,712 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:22:41,713 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:22:41,714 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:22:41,715 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:22:41,716 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:22:41,717 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:22:41,718 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:22:41,718 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:22:41,719 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:22:41,720 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:22:41,721 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:22:41,721 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:22:41,722 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:22:41,722 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:22:41,723 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:22:41,724 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:22:41,724 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:22:41,725 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:22:41,725 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:22:41,726 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:22:42,083 [INFO] Step
+2021-07-19 15:22:42,084 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:22:42,086 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:22:42,087 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:22:42,089 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:22:42,091 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:22:42,092 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:22:42,093 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:22:42,094 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:22:42,097 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:22:42,098 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:22:42,099 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:22:42,100 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:22:42,101 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:22:42,102 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:22:42,103 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:22:42,105 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:22:42,106 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:22:42,107 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:22:42,108 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:22:42,110 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:22:42,111 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:22:42,112 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:22:42,113 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:22:42,113 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:22:42,114 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:22:42,115 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:22:42,115 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:22:42,116 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:22:42,116 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:22:42,117 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:22:42,474 [INFO] Step
+2021-07-19 15:22:42,474 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:22:42,476 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:22:42,477 [INFO] Customer 15 choosing queue
+2021-07-19 15:22:42,479 [INFO] Customer 15 moving to queue
+2021-07-19 15:22:42,480 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:22:42,481 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:22:42,482 [INFO] Customer 0 choosing queue
+2021-07-19 15:22:42,485 [INFO] Customer 0 moving to queue
+2021-07-19 15:22:42,485 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:22:42,487 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:22:42,488 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:22:42,489 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:22:42,492 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:22:42,492 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:22:42,493 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:22:42,494 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:22:42,495 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:22:42,496 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:22:42,497 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:22:42,498 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:22:42,499 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:22:42,499 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:22:42,500 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:22:42,501 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:22:42,502 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:22:42,502 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:22:42,503 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:22:42,504 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:22:42,504 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:22:42,505 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:22:42,505 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:22:42,506 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:22:42,933 [INFO] Step
+2021-07-19 15:22:42,934 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:22:42,934 [INFO] Customer 15 moving beside the cash desk
+2021-07-19 15:22:42,934 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:22:42,934 [INFO] Customer 16 choosing queue
+2021-07-19 15:22:42,935 [INFO] Customer 16 moving to queue
+2021-07-19 15:22:42,935 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:22:42,935 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:22:42,935 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:22:42,935 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:22:42,935 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:22:42,936 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:22:42,936 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:22:42,936 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:22:42,936 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:22:42,937 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:22:42,937 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:22:42,937 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:22:42,938 [INFO] Customer 0 moving beside the cash desk
+2021-07-19 15:22:42,938 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:22:42,938 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:22:42,938 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:22:42,938 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:22:42,938 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:22:42,938 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:22:42,939 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:22:42,939 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:22:42,939 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:22:42,939 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:22:42,939 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:22:42,940 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:22:42,940 [INFO] Customer 1 choosing queue
+2021-07-19 15:22:42,940 [INFO] Customer 1 moving to queue
+2021-07-19 15:22:42,940 [INFO] Cash desk CashDeskProcessingState 2 processing customer 0
+2021-07-19 15:22:42,940 [INFO] Cash desk CashDeskProcessingState 3 processing customer 15
+2021-07-19 15:22:43,284 [INFO] Step
+2021-07-19 15:22:43,285 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:22:43,287 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:22:43,289 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:22:43,291 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:22:43,293 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:22:43,293 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:22:43,294 [INFO] Customer 1 moving beside the cash desk
+2021-07-19 15:22:43,295 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:22:43,298 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:22:43,299 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:22:43,300 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:22:43,301 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:22:43,303 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:22:43,304 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:22:43,306 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:22:43,306 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:22:43,307 [INFO] Customer 0 moving beside the cash desk
+2021-07-19 15:22:43,308 [INFO] Customer 17 choosing queue
+2021-07-19 15:22:43,308 [INFO] Customer 17 moving to queue
+2021-07-19 15:22:43,309 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:22:43,310 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:22:43,310 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:22:43,311 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:22:43,311 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:22:43,312 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:22:43,313 [INFO] Customer 2 choosing queue
+2021-07-19 15:22:43,313 [INFO] Customer 2 moving to queue
+2021-07-19 15:22:43,314 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:22:43,314 [INFO] Customer 16 is queued
+2021-07-19 15:22:43,315 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:22:43,315 [INFO] Customer 15 moving beside the cash desk
+2021-07-19 15:22:43,316 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:22:43,316 [INFO] Cash desk CashDeskProcessingState 2 processing customer 0
+2021-07-19 15:22:43,317 [INFO] Cash desk CashDeskProcessingState 1 processing customer 1
+2021-07-19 15:22:43,317 [INFO] Cash desk CashDeskProcessingState 3 processing customer 15
+2021-07-19 15:22:43,678 [INFO] Step
+2021-07-19 15:22:43,681 [INFO] Customer 1 moving beside the cash desk
+2021-07-19 15:22:43,682 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:22:43,683 [INFO] Customer 16 is queued
+2021-07-19 15:22:43,685 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:22:43,687 [INFO] Customer 0 moving beside the cash desk
+2021-07-19 15:22:43,688 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:22:43,689 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:22:43,692 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:22:43,694 [INFO] Customer 2 is queued
+2021-07-19 15:22:43,695 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:22:43,697 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:22:43,697 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:22:43,699 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:22:43,700 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:22:43,701 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:22:43,702 [INFO] Customer 18 choosing queue
+2021-07-19 15:22:43,704 [INFO] Customer 18 moving to queue
+2021-07-19 15:22:43,706 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:22:43,707 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:22:43,707 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:22:43,708 [INFO] Customer 17 moving beside the cash desk
+2021-07-19 15:22:43,709 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:22:43,709 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:22:43,710 [INFO] Customer 3 choosing queue
+2021-07-19 15:22:43,711 [INFO] Customer 3 moving to queue
+2021-07-19 15:22:43,712 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:22:43,712 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:22:43,713 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:22:43,714 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:22:43,714 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:22:43,715 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:22:43,716 [INFO] Customer 15 moving beside the cash desk
+2021-07-19 15:22:43,716 [INFO] Cash desk CashDeskProcessingState 3 processing customer 15
+2021-07-19 15:22:43,717 [INFO] Cash desk CashDeskProcessingState 5 processing customer 17
+2021-07-19 15:22:43,718 [INFO] Cash desk CashDeskProcessingState 1 processing customer 1
+2021-07-19 15:22:43,719 [INFO] Cash desk CashDeskProcessingState 2 processing customer 0
+2021-07-19 15:22:44,085 [INFO] Step
+2021-07-19 15:22:44,087 [INFO] Customer 0 moving beside the cash desk
+2021-07-19 15:22:44,089 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:22:44,091 [INFO] Customer 3 is queued
+2021-07-19 15:22:44,094 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:22:44,096 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:22:44,097 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:22:44,099 [INFO] Customer 15 moving beside the cash desk
+2021-07-19 15:22:44,100 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:22:44,101 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:22:44,102 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:22:44,103 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:22:44,104 [INFO] Customer 4 choosing queue
+2021-07-19 15:22:44,105 [INFO] Customer 4 moving to queue
+2021-07-19 15:22:44,106 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:22:44,107 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:22:44,108 [INFO] Customer 19 choosing queue
+2021-07-19 15:22:44,108 [INFO] Customer 19 moving to queue
+2021-07-19 15:22:44,109 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:22:44,110 [INFO] Customer 1 moving beside the cash desk
+2021-07-19 15:22:44,111 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:22:44,111 [INFO] Customer 16 moving beside the cash desk
+2021-07-19 15:22:44,111 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:22:44,112 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:22:44,112 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:22:44,113 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:22:44,113 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:22:44,114 [INFO] Customer 17 moving beside the cash desk
+2021-07-19 15:22:44,114 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:22:44,115 [INFO] Customer 2 is queued
+2021-07-19 15:22:44,115 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:22:44,116 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:22:44,116 [INFO] Customer 18 is queued
+2021-07-19 15:22:44,116 [INFO] Cash desk CashDeskSelfScan 2 completing the transaction
+2021-07-19 15:22:44,117 [INFO] Cash desk CashDeskStandard 3 completing the transaction
+2021-07-19 15:22:44,117 [INFO] Cash desk CashDeskProcessingState 6 processing customer 16
+2021-07-19 15:22:44,118 [INFO] Customer 18 advancing
+2021-07-19 15:23:20,326 [INFO] Cash desk CashDeskProcessingState 1 processing customer 1
+2021-07-19 15:23:20,329 [INFO] Cash desk CashDeskProcessingState 5 processing customer 17
+2021-07-19 15:23:20,427 [WARNING] 404 GET /local/undefined (127.0.0.1) 2.00ms
+2021-07-19 15:23:20,703 [INFO] Step
+2021-07-19 15:23:20,706 [INFO] Customer 0 exiting
+2021-07-19 15:23:20,708 [INFO] Customer 5 choosing queue
+2021-07-19 15:23:20,710 [INFO] Customer 5 moving to queue
+2021-07-19 15:23:20,711 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:23:20,713 [INFO] Customer 16 moving beside the cash desk
+2021-07-19 15:23:20,714 [INFO] Customer 3 is queued
+2021-07-19 15:23:20,716 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:23:20,718 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:23:20,719 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:23:20,721 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:23:20,722 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:23:20,723 [INFO] Customer 18 moving beside the cash desk
+2021-07-19 15:23:20,724 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:23:20,725 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:23:20,727 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:23:20,728 [INFO] Customer 15 exiting
+2021-07-19 15:23:20,729 [INFO] Customer 2 is queued
+2021-07-19 15:23:20,730 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:23:20,731 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:23:20,731 [INFO] Customer 20 choosing queue
+2021-07-19 15:23:20,732 [INFO] Customer 20 moving to queue
+2021-07-19 15:23:20,733 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:23:20,733 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:23:20,734 [INFO] Customer 17 moving beside the cash desk
+2021-07-19 15:23:20,734 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:23:20,735 [INFO] Customer 4 is queued
+2021-07-19 15:23:20,736 [INFO] Customer 1 moving beside the cash desk
+2021-07-19 15:23:20,736 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:23:20,736 [INFO] Customer 19 moving beside the cash desk
+2021-07-19 15:23:20,737 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:23:20,737 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:23:20,738 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:23:20,738 [INFO] Cash desk CashDeskProcessingState 5 processing customer 17
+2021-07-19 15:23:20,739 [INFO] Cash desk CashDeskProcessingState 4 processing customer 19
+2021-07-19 15:23:20,739 [INFO] Cash desk CashDeskSelfScan 1 completing the transaction
+2021-07-19 15:23:20,740 [INFO] Customer 3 advancing
+2021-07-19 15:23:20,740 [INFO] Customer 4 advancing
+2021-07-19 15:23:20,741 [INFO] Customer 5 advancing
+2021-07-19 15:23:20,741 [INFO] Cash desk CashDeskProcessingState 7 processing customer 18
+2021-07-19 15:23:20,742 [INFO] Customer 18 advancing
+2021-07-19 15:23:20,742 [ERROR] Uncaught exception GET /ws (127.0.0.1)
+HTTPServerRequest(protocol='http', host='127.0.0.1:8521', method='GET', uri='/ws', version='HTTP/1.1', remote_ip='127.0.0.1')
+Traceback (most recent call last):
+  File "C:\Users\lucre\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\tornado\websocket.py", line 647, in _run_callback
+    result = callback(*args, **kwargs)
+  File "C:\Users\lucre\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\mesa\visualization\ModularVisualization.py", line 207, in on_message
+    self.application.model.step()
+  File "C:\Users\lucre\PycharmProjects\Supermarket-Checkout-Simulation\src\Supermarket.py", line 62, in step
+    self.cash_desk_scheduler.step()
+  File "C:\Users\lucre\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\mesa\time.py", line 127, in step
+    agent.step()
+  File "C:\Users\lucre\PycharmProjects\Supermarket-Checkout-Simulation\src\cashdesk\CashDesk.py", line 44, in step
+    self.__state.action()
+  File "C:\Users\lucre\PycharmProjects\Supermarket-Checkout-Simulation\src\states\cashdeskstates\CashDeskStates.py", line 19, in action
+    self.context.advance(customer)
+  File "C:\Users\lucre\PycharmProjects\Supermarket-Checkout-Simulation\src\cashdesk\CashDeskStandard.py", line 21, in advance
+    self.model.cash_desk_standard_zone.advance(customer)
+  File "C:\Users\lucre\PycharmProjects\Supermarket-Checkout-Simulation\src\zones\dinamic\CashDeskZone.py", line 28, in advance
+    self.model.grid.move_agent(customer, (x, y - 1))
+  File "C:\Users\lucre\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\mesa\space.py", line 415, in move_agent
+    self._place_agent(pos, agent)
+  File "C:\Users\lucre\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\mesa\space.py", line 522, in _place_agent
+    raise Exception("Cell not empty")
+Exception: Cell not empty
+2021-07-19 15:28:55,164 [INFO] Init zones
+2021-07-19 15:28:55,164 [INFO] Init cash desks
+2021-07-19 15:28:55,164 [INFO] Init environment
+2021-07-19 15:28:55,164 [INFO] Init grid
+2021-07-19 15:28:55,164 [INFO] Fill grid
+2021-07-19 15:28:55,164 [INFO] Init customers
+2021-07-19 15:28:59,611 [INFO] 200 GET / (127.0.0.1) 4.09ms
+2021-07-19 15:29:00,494 [INFO] 101 GET /ws (127.0.0.1) 1.34ms
+2021-07-19 15:29:00,774 [INFO] Init zones
+2021-07-19 15:29:00,774 [INFO] Init cash desks
+2021-07-19 15:29:00,774 [INFO] Init environment
+2021-07-19 15:29:00,776 [INFO] Init grid
+2021-07-19 15:29:00,776 [INFO] Fill grid
+2021-07-19 15:29:00,776 [INFO] Init customers
+2021-07-19 15:29:00,943 [WARNING] 404 GET /favicon.ico (127.0.0.1) 3.15ms
+2021-07-19 15:29:02,592 [INFO] Step
+2021-07-19 15:29:02,592 [INFO] Customer 28 step
+2021-07-19 15:29:02,592 [INFO] Customer 27 step
+2021-07-19 15:29:02,592 [INFO] Customer 6 step
+2021-07-19 15:29:02,593 [INFO] Customer 26 step
+2021-07-19 15:29:02,593 [INFO] Customer 1 step
+2021-07-19 15:29:02,593 [INFO] Customer 4 step
+2021-07-19 15:29:02,593 [INFO] Customer 12 step
+2021-07-19 15:29:02,593 [INFO] Customer 10 step
+2021-07-19 15:29:02,593 [INFO] Customer 11 step
+2021-07-19 15:29:02,593 [INFO] Customer 2 step
+2021-07-19 15:29:02,593 [INFO] Customer 8 step
+2021-07-19 15:29:02,593 [INFO] Customer 23 step
+2021-07-19 15:29:02,593 [INFO] Customer 13 step
+2021-07-19 15:29:02,593 [INFO] Customer 14 step
+2021-07-19 15:29:02,593 [INFO] Customer 22 step
+2021-07-19 15:29:02,593 [INFO] Customer 17 step
+2021-07-19 15:29:02,593 [INFO] Customer 20 step
+2021-07-19 15:29:02,593 [INFO] Customer 5 step
+2021-07-19 15:29:02,593 [INFO] Customer 29 step
+2021-07-19 15:29:02,593 [INFO] Customer 24 step
+2021-07-19 15:29:02,593 [INFO] Customer 18 step
+2021-07-19 15:29:02,593 [INFO] Customer 7 step
+2021-07-19 15:29:02,593 [INFO] Customer 21 step
+2021-07-19 15:29:02,593 [INFO] Customer 25 step
+2021-07-19 15:29:02,593 [INFO] Customer 9 step
+2021-07-19 15:29:02,593 [INFO] Customer 15 step
+2021-07-19 15:29:02,593 [INFO] Customer 16 step
+2021-07-19 15:29:02,595 [INFO] Customer 0 step
+2021-07-19 15:29:02,595 [INFO] Customer 19 step
+2021-07-19 15:29:02,595 [INFO] Customer 3 step
+2021-07-19 15:29:03,128 [INFO] 304 GET /local/images/sCircleCyan.png (127.0.0.1) 507.05ms
+2021-07-19 15:29:03,147 [INFO] Step
+2021-07-19 15:29:03,147 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:29:03,148 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:29:03,148 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:29:03,148 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:29:03,148 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:29:03,148 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:29:03,148 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:29:03,148 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:29:03,148 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:29:03,148 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:29:03,148 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:29:03,148 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:29:03,148 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:29:03,148 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:29:03,148 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:29:03,148 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:29:03,148 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:29:03,148 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:29:03,148 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:29:03,148 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:29:03,148 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:29:03,148 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:29:03,148 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:29:03,148 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:29:03,148 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:29:03,148 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:29:03,148 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:29:03,148 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:29:03,148 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:29:03,148 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:29:03,500 [INFO] Step
+2021-07-19 15:29:03,500 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:29:03,501 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:29:03,502 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:29:03,502 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:29:03,503 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:29:03,504 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:29:03,504 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:29:03,504 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:29:03,504 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:29:03,504 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:29:03,506 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:29:03,506 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:29:03,506 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:29:03,507 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:29:03,507 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:29:03,507 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:29:03,508 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:29:03,509 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:29:03,509 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:29:03,509 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:29:03,510 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:29:03,510 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:29:03,510 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:29:03,510 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:29:03,511 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:29:03,511 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:29:03,512 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:29:03,512 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:29:03,512 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:29:03,513 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:29:03,881 [INFO] Step
+2021-07-19 15:29:03,882 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:29:03,882 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:29:03,883 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:29:03,883 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:29:03,884 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:29:03,884 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:29:03,884 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:29:03,885 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:29:03,885 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:29:03,885 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:29:03,886 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:29:03,887 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:29:03,887 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:29:03,888 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:29:03,889 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:29:03,889 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:29:03,890 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:29:03,890 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:29:03,891 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:29:03,891 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:29:03,892 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:29:03,892 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:29:03,892 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:29:03,893 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:29:03,893 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:29:03,893 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:29:03,893 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:29:03,893 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:29:03,893 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:29:03,893 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:29:04,260 [INFO] Step
+2021-07-19 15:29:04,261 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:29:04,261 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:29:04,263 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:29:04,263 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:29:04,263 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:29:04,264 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:29:04,265 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:29:04,265 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:29:04,266 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:29:04,266 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:29:04,267 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:29:04,267 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:29:04,268 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:29:04,268 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:29:04,269 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:29:04,269 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:29:04,269 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:29:04,270 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:29:04,271 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:29:04,271 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:29:04,272 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:29:04,272 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:29:04,273 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:29:04,273 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:29:04,274 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:29:04,275 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:29:04,275 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:29:04,276 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:29:04,276 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:29:04,277 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:29:04,641 [INFO] Step
+2021-07-19 15:29:04,642 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:29:04,642 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:29:04,642 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:29:04,643 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:29:04,643 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:29:04,643 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:29:04,644 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:29:04,644 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:29:04,644 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:29:04,645 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:29:04,645 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:29:04,645 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:29:04,646 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:29:04,646 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:29:04,646 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:29:04,647 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:29:04,647 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:29:04,647 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:29:04,648 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:29:04,648 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:29:04,648 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:29:04,649 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:29:04,649 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:29:04,649 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:29:04,650 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:29:04,650 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:29:04,651 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:29:04,651 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:29:04,651 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:29:04,652 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:29:05,004 [INFO] Step
+2021-07-19 15:29:05,004 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:29:05,005 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:29:05,005 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:29:05,006 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:29:05,006 [INFO] Customer 0 choosing queue
+2021-07-19 15:29:05,006 [ERROR] Uncaught exception GET /ws (127.0.0.1)
+HTTPServerRequest(protocol='http', host='127.0.0.1:8521', method='GET', uri='/ws', version='HTTP/1.1', remote_ip='127.0.0.1')
+Traceback (most recent call last):
+  File "C:\Users\lucre\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\tornado\websocket.py", line 647, in _run_callback
+    result = callback(*args, **kwargs)
+  File "C:\Users\lucre\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\mesa\visualization\ModularVisualization.py", line 207, in on_message
+    self.application.model.step()
+  File "C:\Users\lucre\PycharmProjects\Supermarket-Checkout-Simulation\src\Supermarket.py", line 61, in step
+    self.customer_scheduler.step()
+  File "C:\Users\lucre\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\mesa\time.py", line 127, in step
+    agent.step()
+  File "C:\Users\lucre\PycharmProjects\Supermarket-Checkout-Simulation\src\Customer.py", line 39, in step
+    self.state.action()
+  File "C:\Users\lucre\PycharmProjects\Supermarket-Checkout-Simulation\src\states\customerstates\CustomerChoosingQueueState.py", line 12, in action
+    self.context.target_queue.enqueue(self.context)
+AttributeError: 'NoneType' object has no attribute 'enqueue'
+2021-07-19 15:30:59,746 [INFO] Init zones
+2021-07-19 15:30:59,746 [INFO] Init cash desks
+2021-07-19 15:30:59,760 [INFO] Init environment
+2021-07-19 15:30:59,760 [INFO] Init grid
+2021-07-19 15:30:59,761 [INFO] Fill grid
+2021-07-19 15:30:59,762 [INFO] Init customers
+2021-07-19 15:31:00,431 [INFO] 200 GET / (127.0.0.1) 12.03ms
+2021-07-19 15:31:00,767 [INFO] 101 GET /ws (127.0.0.1) 0.00ms
+2021-07-19 15:31:00,909 [INFO] Init zones
+2021-07-19 15:31:00,910 [INFO] Init cash desks
+2021-07-19 15:31:00,910 [INFO] Init environment
+2021-07-19 15:31:00,911 [INFO] Init grid
+2021-07-19 15:31:00,911 [INFO] Fill grid
+2021-07-19 15:31:00,912 [INFO] Init customers
+2021-07-19 15:31:05,049 [INFO] Step
+2021-07-19 15:31:05,049 [INFO] Customer 29 step
+2021-07-19 15:31:05,049 [INFO] Customer 23 step
+2021-07-19 15:31:05,054 [INFO] Customer 11 step
+2021-07-19 15:31:05,055 [INFO] Customer 10 step
+2021-07-19 15:31:05,057 [INFO] Customer 2 step
+2021-07-19 15:31:05,058 [INFO] Customer 24 step
+2021-07-19 15:31:05,059 [INFO] Customer 0 step
+2021-07-19 15:31:05,060 [INFO] Customer 28 step
+2021-07-19 15:31:05,063 [INFO] Customer 15 step
+2021-07-19 15:31:05,064 [INFO] Customer 20 step
+2021-07-19 15:31:05,066 [INFO] Customer 12 step
+2021-07-19 15:31:05,067 [INFO] Customer 1 step
+2021-07-19 15:31:05,067 [INFO] Customer 4 step
+2021-07-19 15:31:05,070 [INFO] Customer 6 step
+2021-07-19 15:31:05,071 [INFO] Customer 14 step
+2021-07-19 15:31:05,072 [INFO] Customer 8 step
+2021-07-19 15:31:05,072 [INFO] Customer 22 step
+2021-07-19 15:31:05,073 [INFO] Customer 17 step
+2021-07-19 15:31:05,075 [INFO] Customer 25 step
+2021-07-19 15:31:05,076 [INFO] Customer 19 step
+2021-07-19 15:31:05,077 [INFO] Customer 9 step
+2021-07-19 15:31:05,079 [INFO] Customer 5 step
+2021-07-19 15:31:05,082 [INFO] Customer 13 step
+2021-07-19 15:31:05,084 [INFO] Customer 27 step
+2021-07-19 15:31:05,084 [INFO] Customer 26 step
+2021-07-19 15:31:05,085 [INFO] Customer 7 step
+2021-07-19 15:31:05,086 [INFO] Customer 18 step
+2021-07-19 15:31:05,087 [INFO] Customer 21 step
+2021-07-19 15:31:05,087 [INFO] Customer 16 step
+2021-07-19 15:31:05,087 [INFO] Customer 3 step
+2021-07-19 15:31:05,437 [INFO] Step
+2021-07-19 15:31:05,437 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:31:05,441 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:31:05,442 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:31:05,442 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:31:05,446 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:31:05,448 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:31:05,450 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:31:05,451 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:31:05,451 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:31:05,451 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:31:05,451 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:31:05,451 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:31:05,451 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:31:05,451 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:31:05,458 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:31:05,458 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:31:05,459 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:31:05,459 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:31:05,459 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:31:05,459 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:31:05,459 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:31:05,459 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:31:05,459 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:31:05,464 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:31:05,465 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:31:05,465 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:31:05,466 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:31:05,467 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:31:05,467 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:31:05,467 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:31:05,830 [INFO] Step
+2021-07-19 15:31:05,831 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:31:05,832 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:31:05,833 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:31:05,833 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:31:05,834 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:31:05,834 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:31:05,836 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:31:05,836 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:31:05,837 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:31:05,837 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:31:05,838 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:31:05,838 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:31:05,838 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:31:05,838 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:31:05,838 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:31:05,838 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:31:05,841 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:31:05,841 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:31:05,842 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:31:05,842 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:31:05,842 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:31:05,842 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:31:05,842 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:31:05,842 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:31:05,846 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:31:05,847 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:31:05,848 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:31:05,848 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:31:05,849 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:31:05,850 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:31:06,332 [INFO] Step
+2021-07-19 15:31:06,332 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:31:06,332 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:31:06,332 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:31:06,332 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:31:06,332 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:31:06,332 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:31:06,332 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:31:06,332 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:31:06,332 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:31:06,332 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:31:06,332 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:31:06,332 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:31:06,332 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:31:06,332 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:31:06,332 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:31:06,332 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:31:06,332 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:31:06,332 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:31:06,332 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:31:06,332 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:31:06,332 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:31:06,348 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:31:06,348 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:31:06,349 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:31:06,349 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:31:06,349 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:31:06,349 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:31:06,349 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:31:06,349 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:31:06,349 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:31:06,817 [INFO] Step
+2021-07-19 15:31:06,817 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:31:06,817 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:31:06,817 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:31:06,817 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:31:06,832 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:31:06,833 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:31:06,834 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:31:06,834 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:31:06,835 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:31:06,835 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:31:06,835 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:31:06,835 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:31:06,835 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:31:06,835 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:31:06,835 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:31:06,835 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:31:06,835 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:31:06,835 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:31:06,835 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:31:06,835 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:31:06,835 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:31:06,835 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:31:06,835 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:31:06,835 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:31:06,835 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:31:06,835 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:31:06,835 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:31:06,835 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:31:06,835 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:31:06,835 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:31:07,524 [INFO] Step
+2021-07-19 15:31:07,525 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:31:07,527 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:31:07,530 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:31:07,531 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:31:07,533 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:31:07,533 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:31:07,534 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:31:07,536 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:31:07,537 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:31:07,539 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:31:07,544 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:31:07,547 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:31:07,548 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:31:07,549 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:31:07,550 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:31:07,551 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:31:07,552 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:31:07,553 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:31:07,554 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:31:07,555 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:31:07,558 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:31:07,559 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:31:07,560 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:31:07,560 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:31:07,561 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:31:07,562 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:31:07,564 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:31:07,564 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:31:07,566 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:31:07,567 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:31:07,937 [INFO] Step
+2021-07-19 15:31:07,938 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:31:07,938 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:31:07,938 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:31:07,938 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:31:07,942 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:31:07,943 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:31:07,944 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:31:07,944 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:31:07,945 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:31:07,946 [INFO] Customer 0 choosing queue
+2021-07-19 15:31:07,947 [ERROR] Uncaught exception GET /ws (127.0.0.1)
+HTTPServerRequest(protocol='http', host='127.0.0.1:8521', method='GET', uri='/ws', version='HTTP/1.1', remote_ip='127.0.0.1')
+Traceback (most recent call last):
+  File "C:\Users\lucre\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\tornado\websocket.py", line 647, in _run_callback
+    result = callback(*args, **kwargs)
+  File "C:\Users\lucre\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\mesa\visualization\ModularVisualization.py", line 207, in on_message
+    self.application.model.step()
+  File "C:\Users\lucre\PycharmProjects\Supermarket-Checkout-Simulation\src\Supermarket.py", line 61, in step
+    self.customer_scheduler.step()
+  File "C:\Users\lucre\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\mesa\time.py", line 127, in step
+    agent.step()
+  File "C:\Users\lucre\PycharmProjects\Supermarket-Checkout-Simulation\src\Customer.py", line 39, in step
+    self.state.action()
+  File "C:\Users\lucre\PycharmProjects\Supermarket-Checkout-Simulation\src\states\customerstates\CustomerChoosingQueueState.py", line 12, in action
+    self.context.target_queue.enqueue(self.context)
+AttributeError: 'NoneType' object has no attribute 'enqueue'
+2021-07-19 15:31:21,255 [INFO] Init zones
+2021-07-19 15:31:21,255 [INFO] Init cash desks
+2021-07-19 15:31:21,265 [INFO] Init environment
+2021-07-19 15:31:21,265 [INFO] Init grid
+2021-07-19 15:31:21,265 [INFO] Fill grid
+2021-07-19 15:31:21,267 [INFO] Init customers
+2021-07-19 15:31:21,939 [INFO] 200 GET / (127.0.0.1) 12.21ms
+2021-07-19 15:31:22,216 [INFO] 101 GET /ws (127.0.0.1) 2.15ms
+2021-07-19 15:31:22,363 [INFO] Init zones
+2021-07-19 15:31:22,364 [INFO] Init cash desks
+2021-07-19 15:31:22,364 [INFO] Init environment
+2021-07-19 15:31:22,365 [INFO] Init grid
+2021-07-19 15:31:22,365 [INFO] Fill grid
+2021-07-19 15:31:22,366 [INFO] Init customers
+2021-07-19 15:31:29,366 [INFO] Step
+2021-07-19 15:31:29,375 [INFO] Customer 10 step
+2021-07-19 15:31:29,375 [INFO] Customer 6 step
+2021-07-19 15:31:29,375 [INFO] Customer 15 step
+2021-07-19 15:31:29,375 [INFO] Customer 19 step
+2021-07-19 15:31:29,375 [INFO] Customer 2 step
+2021-07-19 15:31:29,375 [INFO] Customer 4 step
+2021-07-19 15:31:29,375 [INFO] Customer 1 step
+2021-07-19 15:31:29,375 [INFO] Customer 3 step
+2021-07-19 15:31:29,375 [INFO] Customer 14 step
+2021-07-19 15:31:29,375 [INFO] Customer 9 step
+2021-07-19 15:31:29,375 [INFO] Customer 12 step
+2021-07-19 15:31:29,375 [INFO] Customer 20 step
+2021-07-19 15:31:29,375 [INFO] Customer 7 step
+2021-07-19 15:31:29,375 [INFO] Customer 13 step
+2021-07-19 15:31:29,383 [INFO] Customer 18 step
+2021-07-19 15:31:29,383 [INFO] Customer 27 step
+2021-07-19 15:31:29,384 [INFO] Customer 5 step
+2021-07-19 15:31:29,384 [INFO] Customer 0 step
+2021-07-19 15:31:29,384 [INFO] Customer 26 step
+2021-07-19 15:31:29,384 [INFO] Customer 28 step
+2021-07-19 15:31:29,384 [INFO] Customer 8 step
+2021-07-19 15:31:29,384 [INFO] Customer 17 step
+2021-07-19 15:31:29,384 [INFO] Customer 24 step
+2021-07-19 15:31:29,384 [INFO] Customer 22 step
+2021-07-19 15:31:29,384 [INFO] Customer 29 step
+2021-07-19 15:31:29,384 [INFO] Customer 25 step
+2021-07-19 15:31:29,384 [INFO] Customer 11 step
+2021-07-19 15:31:29,384 [INFO] Customer 21 step
+2021-07-19 15:31:29,384 [INFO] Customer 16 step
+2021-07-19 15:31:29,384 [INFO] Customer 23 step
+2021-07-19 15:31:30,004 [INFO] 304 GET /local/images/sCircleCyan.png (127.0.0.1) 590.90ms
+2021-07-19 15:31:30,125 [INFO] Step
+2021-07-19 15:31:30,125 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:31:30,125 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:31:30,125 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:31:30,125 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:31:30,125 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:31:30,125 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:31:30,125 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:31:30,125 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:31:30,125 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:31:30,125 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:31:30,125 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:31:30,141 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:31:30,141 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:31:30,141 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:31:30,141 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:31:30,141 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:31:30,141 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:31:30,141 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:31:30,141 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:31:30,141 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:31:30,141 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:31:30,141 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:31:30,141 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:31:30,141 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:31:30,141 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:31:30,141 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:31:30,141 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:31:30,141 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:31:30,141 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:31:30,141 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:31:30,528 [INFO] Step
+2021-07-19 15:31:30,528 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:31:30,528 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:31:30,528 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:31:30,536 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:31:30,536 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:31:30,539 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:31:30,540 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:31:30,542 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:31:30,542 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:31:30,542 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:31:30,542 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:31:30,542 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:31:30,542 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:31:30,542 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:31:30,542 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:31:30,551 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:31:30,551 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:31:30,551 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:31:30,551 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:31:30,551 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:31:30,551 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:31:30,551 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:31:30,559 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:31:30,559 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:31:30,559 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:31:30,559 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:31:30,559 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:31:30,559 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:31:30,559 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:31:30,559 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:31:30,926 [INFO] Step
+2021-07-19 15:31:30,926 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:31:30,926 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:31:30,926 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:31:30,926 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:31:30,926 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:31:30,926 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:31:30,932 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:31:30,932 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:31:30,933 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:31:30,933 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:31:30,934 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:31:30,934 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:31:30,934 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:31:30,934 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:31:30,934 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:31:30,934 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:31:30,934 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:31:30,934 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:31:30,934 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:31:30,940 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:31:30,941 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:31:30,941 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:31:30,941 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:31:30,941 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:31:30,941 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:31:30,941 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:31:30,941 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:31:30,941 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:31:30,941 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:31:30,941 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:31:31,393 [INFO] Step
+2021-07-19 15:31:31,393 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:31:31,393 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:31:31,393 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:31:31,393 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:31:31,393 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:31:31,393 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:31:31,393 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:31:31,393 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:31:31,393 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:31:31,393 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:31:31,393 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:31:31,393 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:31:31,393 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:31:31,393 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:31:31,393 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:31:31,393 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:31:31,393 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:31:31,393 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:31:31,393 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:31:31,393 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:31:31,393 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:31:31,393 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:31:31,393 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:31:31,393 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:31:31,409 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:31:31,409 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:31:31,410 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:31:31,411 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:31:31,412 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:31:31,412 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:31:31,886 [INFO] Step
+2021-07-19 15:31:31,886 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:31:31,902 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:31:31,902 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:31:31,902 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:31:31,902 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:31:31,902 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:31:31,902 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:31:31,902 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:31:31,902 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:31:31,906 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:31:31,907 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:31:31,907 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:31:31,907 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:31:31,907 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:31:31,907 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:31:31,907 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:31:31,907 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:31:31,907 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:31:31,907 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:31:31,907 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:31:31,907 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:31:31,907 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:31:31,907 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:31:31,907 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:31:31,907 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:31:31,907 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:31:31,907 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:31:31,907 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:31:31,907 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:31:31,907 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:31:32,358 [INFO] Step
+2021-07-19 15:31:32,358 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:31:32,358 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:31:32,358 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:31:32,358 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:31:32,358 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:31:32,358 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:31:32,358 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:31:32,358 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:31:32,358 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:31:32,358 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:31:32,358 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:31:32,358 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:31:32,358 [INFO] Customer 0 choosing queue
+2021-07-19 15:32:56,611 [INFO] Init zones
+2021-07-19 15:32:56,611 [INFO] Init cash desks
+2021-07-19 15:32:56,612 [INFO] Init environment
+2021-07-19 15:32:56,612 [INFO] Init grid
+2021-07-19 15:32:56,613 [INFO] Fill grid
+2021-07-19 15:32:56,614 [INFO] Init customers
+2021-07-19 15:32:57,297 [INFO] 200 GET / (127.0.0.1) 12.58ms
+2021-07-19 15:32:57,586 [INFO] 101 GET /ws (127.0.0.1) 3.16ms
+2021-07-19 15:32:57,756 [INFO] Init zones
+2021-07-19 15:32:57,756 [INFO] Init cash desks
+2021-07-19 15:32:57,757 [INFO] Init environment
+2021-07-19 15:32:57,757 [INFO] Init grid
+2021-07-19 15:32:57,758 [INFO] Fill grid
+2021-07-19 15:32:57,759 [INFO] Init customers
+2021-07-19 15:33:01,001 [INFO] Step
+2021-07-19 15:33:01,003 [INFO] Customer 7 step
+2021-07-19 15:33:01,010 [INFO] Customer 2 step
+2021-07-19 15:33:01,011 [INFO] Customer 13 step
+2021-07-19 15:33:01,011 [INFO] Customer 24 step
+2021-07-19 15:33:01,012 [INFO] Customer 0 step
+2021-07-19 15:33:01,013 [INFO] Customer 9 step
+2021-07-19 15:33:01,013 [INFO] Customer 16 step
+2021-07-19 15:33:01,013 [INFO] Customer 1 step
+2021-07-19 15:33:01,014 [INFO] Customer 26 step
+2021-07-19 15:33:01,015 [INFO] Customer 10 step
+2021-07-19 15:33:01,015 [INFO] Customer 14 step
+2021-07-19 15:33:01,015 [INFO] Customer 6 step
+2021-07-19 15:33:01,016 [INFO] Customer 3 step
+2021-07-19 15:33:01,016 [INFO] Customer 17 step
+2021-07-19 15:33:01,017 [INFO] Customer 28 step
+2021-07-19 15:33:01,017 [INFO] Customer 11 step
+2021-07-19 15:33:01,018 [INFO] Customer 22 step
+2021-07-19 15:33:01,018 [INFO] Customer 15 step
+2021-07-19 15:33:01,018 [INFO] Customer 25 step
+2021-07-19 15:33:01,019 [INFO] Customer 20 step
+2021-07-19 15:33:01,019 [INFO] Customer 19 step
+2021-07-19 15:33:01,020 [INFO] Customer 5 step
+2021-07-19 15:33:01,020 [INFO] Customer 23 step
+2021-07-19 15:33:01,020 [INFO] Customer 27 step
+2021-07-19 15:33:01,021 [INFO] Customer 4 step
+2021-07-19 15:33:01,021 [INFO] Customer 12 step
+2021-07-19 15:33:01,023 [INFO] Customer 8 step
+2021-07-19 15:33:01,023 [INFO] Customer 21 step
+2021-07-19 15:33:01,023 [INFO] Customer 18 step
+2021-07-19 15:33:01,024 [INFO] Customer 29 step
+2021-07-19 15:33:01,374 [INFO] Step
+2021-07-19 15:33:01,375 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:33:01,375 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:33:01,376 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:33:01,376 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:33:01,377 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:33:01,377 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:33:01,378 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:33:01,379 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:33:01,380 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:33:01,380 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:33:01,381 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:33:01,382 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:33:01,383 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:33:01,383 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:33:01,383 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:33:01,384 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:33:01,384 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:33:01,384 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:33:01,384 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:33:01,385 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:33:01,385 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:33:01,385 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:33:01,386 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:33:01,386 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:33:01,386 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:33:01,387 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:33:01,388 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:33:01,388 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:33:01,389 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:33:01,389 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:33:01,737 [INFO] Step
+2021-07-19 15:33:01,739 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:33:01,740 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:33:01,740 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:33:01,741 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:33:01,742 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:33:01,743 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:33:01,744 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:33:01,744 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:33:01,745 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:33:01,746 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:33:01,746 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:33:01,747 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:33:01,747 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:33:01,748 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:33:01,749 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:33:01,749 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:33:01,749 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:33:01,749 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:33:01,750 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:33:01,750 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:33:01,752 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:33:01,752 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:33:01,753 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:33:01,753 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:33:01,754 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:33:01,754 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:33:01,755 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:33:01,755 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:33:01,756 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:33:01,756 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:33:02,266 [INFO] Step
+2021-07-19 15:33:02,266 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:33:02,270 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:33:02,270 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:33:02,271 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:33:02,272 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:33:02,272 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:33:02,273 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:33:02,274 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:33:02,274 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:33:02,274 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:33:02,275 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:33:02,276 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:33:02,276 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:33:02,277 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:33:02,278 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:33:02,278 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:33:02,279 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:33:02,279 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:33:02,279 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:33:02,280 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:33:02,280 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:33:02,280 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:33:02,280 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:33:02,282 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:33:02,282 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:33:02,282 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:33:02,283 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:33:02,283 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:33:02,283 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:33:02,285 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:33:02,753 [INFO] Step
+2021-07-19 15:33:02,753 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:33:02,753 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:33:02,753 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:33:02,753 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:33:02,754 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:33:02,754 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:33:02,754 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:33:02,754 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:33:02,754 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:33:02,754 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:33:02,754 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:33:02,754 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:33:02,754 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:33:02,754 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:33:02,754 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:33:02,754 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:33:02,754 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:33:02,754 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:33:02,754 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:33:02,754 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:33:02,754 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:33:02,757 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:33:02,757 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:33:02,757 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:33:02,758 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:33:02,758 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:33:02,758 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:33:02,758 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:33:02,758 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:33:02,759 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:33:03,185 [INFO] Step
+2021-07-19 15:33:03,185 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:33:03,185 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:33:03,185 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:33:03,185 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:33:03,185 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:33:03,190 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:33:03,190 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:33:03,190 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:33:03,190 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:33:03,190 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:33:03,191 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:33:03,191 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:33:03,191 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:33:03,191 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:33:03,191 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:33:03,191 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:33:03,191 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:33:03,191 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:33:03,191 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:33:03,191 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:33:03,191 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:33:03,191 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:33:03,191 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:33:03,191 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:33:03,191 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:33:03,191 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:33:03,191 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:33:03,191 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:33:03,191 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:33:03,191 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:33:03,544 [INFO] Step
+2021-07-19 15:33:03,545 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:33:03,545 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:33:03,546 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:33:03,547 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:33:03,548 [INFO] Customer 15 choosing queue
+2021-07-19 15:33:56,478 [INFO] Customer 15 moving to queue
+2021-07-19 15:33:56,480 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:33:56,481 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:33:56,481 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:33:56,482 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:33:56,482 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:33:56,483 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:33:56,483 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:33:56,484 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:33:56,484 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:33:56,484 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:33:56,485 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:33:56,486 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:33:56,486 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:33:56,488 [INFO] Customer 0 choosing queue
+2021-07-19 15:34:13,005 [INFO] Init zones
+2021-07-19 15:34:13,005 [INFO] Init cash desks
+2021-07-19 15:34:13,007 [INFO] Init environment
+2021-07-19 15:34:13,008 [INFO] Init grid
+2021-07-19 15:34:13,008 [INFO] Fill grid
+2021-07-19 15:34:13,009 [INFO] Init customers
+2021-07-19 15:34:13,658 [INFO] 200 GET / (127.0.0.1) 12.57ms
+2021-07-19 15:34:13,996 [INFO] 101 GET /ws (127.0.0.1) 0.81ms
+2021-07-19 15:34:14,109 [INFO] Init zones
+2021-07-19 15:34:14,109 [INFO] Init cash desks
+2021-07-19 15:34:14,110 [INFO] Init environment
+2021-07-19 15:34:14,110 [INFO] Init grid
+2021-07-19 15:34:14,111 [INFO] Fill grid
+2021-07-19 15:34:14,112 [INFO] Init customers
+2021-07-19 15:34:19,222 [INFO] Step
+2021-07-19 15:34:19,223 [INFO] Customer 11 step
+2021-07-19 15:34:19,223 [INFO] Customer 1 step
+2021-07-19 15:34:19,223 [INFO] Customer 7 step
+2021-07-19 15:34:19,223 [INFO] Customer 16 step
+2021-07-19 15:34:19,223 [INFO] Customer 2 step
+2021-07-19 15:34:19,223 [INFO] Customer 22 step
+2021-07-19 15:34:19,223 [INFO] Customer 12 step
+2021-07-19 15:34:19,223 [INFO] Customer 14 step
+2021-07-19 15:34:19,223 [INFO] Customer 24 step
+2021-07-19 15:34:19,233 [INFO] Customer 6 step
+2021-07-19 15:34:19,235 [INFO] Customer 5 step
+2021-07-19 15:34:19,236 [INFO] Customer 20 step
+2021-07-19 15:34:19,239 [INFO] Customer 0 step
+2021-07-19 15:34:19,240 [INFO] Customer 27 step
+2021-07-19 15:34:19,242 [INFO] Customer 8 step
+2021-07-19 15:34:19,243 [INFO] Customer 21 step
+2021-07-19 15:34:19,243 [INFO] Customer 17 step
+2021-07-19 15:34:19,243 [INFO] Customer 10 step
+2021-07-19 15:34:19,243 [INFO] Customer 29 step
+2021-07-19 15:34:19,243 [INFO] Customer 23 step
+2021-07-19 15:34:19,250 [INFO] Customer 25 step
+2021-07-19 15:34:19,251 [INFO] Customer 26 step
+2021-07-19 15:34:19,254 [INFO] Customer 15 step
+2021-07-19 15:34:19,256 [INFO] Customer 9 step
+2021-07-19 15:34:19,257 [INFO] Customer 3 step
+2021-07-19 15:34:19,258 [INFO] Customer 28 step
+2021-07-19 15:34:19,260 [INFO] Customer 18 step
+2021-07-19 15:34:19,260 [INFO] Customer 13 step
+2021-07-19 15:34:19,261 [INFO] Customer 19 step
+2021-07-19 15:34:19,262 [INFO] Customer 4 step
+2021-07-19 15:34:19,890 [INFO] 304 GET /local/images/sCircleCyan.png (127.0.0.1) 610.39ms
+2021-07-19 15:34:20,020 [INFO] Step
+2021-07-19 15:34:20,021 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:34:20,021 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:34:20,021 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:34:20,021 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:34:20,021 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:34:20,021 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:34:20,021 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:34:20,021 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:34:20,021 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:34:20,021 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:34:20,021 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:34:20,021 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:34:20,021 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:34:20,030 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:34:20,031 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:34:20,031 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:34:20,032 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:34:20,032 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:34:20,032 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:34:20,032 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:34:20,032 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:34:20,032 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:34:20,032 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:34:20,032 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:34:20,032 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:34:20,032 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:34:20,032 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:34:20,032 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:34:20,040 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:34:20,040 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:34:20,402 [INFO] Step
+2021-07-19 15:34:20,408 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:34:20,411 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:34:20,413 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:34:20,415 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:34:20,415 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:34:20,415 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:34:20,420 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:34:20,422 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:34:20,423 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:34:20,423 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:34:20,423 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:34:20,423 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:34:20,423 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:34:20,423 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:34:20,423 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:34:20,423 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:34:20,423 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:34:20,423 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:34:20,432 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:34:20,432 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:34:20,432 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:34:20,432 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:34:20,432 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:34:20,432 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:34:20,432 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:34:20,432 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:34:20,432 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:34:20,432 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:34:20,432 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:34:20,432 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:34:20,802 [INFO] Step
+2021-07-19 15:34:20,807 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:34:20,809 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:34:20,809 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:34:20,809 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:34:20,809 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:34:20,809 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:34:20,809 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:34:20,809 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:34:20,809 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:34:20,809 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:34:20,809 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:34:20,809 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:34:20,809 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:34:20,826 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:34:20,826 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:34:20,826 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:34:20,831 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:34:20,832 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:34:20,832 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:34:20,832 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:34:20,832 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:34:20,832 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:34:20,836 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:34:20,836 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:34:20,836 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:34:20,838 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:34:20,838 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:34:20,839 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:34:20,840 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:34:20,840 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:34:21,211 [INFO] Step
+2021-07-19 15:34:21,211 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:34:21,211 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:34:21,211 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:34:21,220 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:34:21,223 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:34:21,225 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:34:21,225 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:34:21,225 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:34:21,225 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:34:21,225 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:34:21,225 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:34:21,225 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:34:21,233 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:34:21,233 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:34:21,233 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:34:21,233 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:34:21,233 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:34:21,233 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:34:21,241 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:34:21,241 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:34:21,241 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:34:21,241 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:34:21,241 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:34:21,241 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:34:21,241 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:34:21,241 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:34:21,249 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:34:21,249 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:34:21,249 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:34:21,249 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:34:21,615 [INFO] Step
+2021-07-19 15:34:21,615 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:34:21,616 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:34:21,616 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:34:21,616 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:34:21,617 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:34:21,618 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:34:21,618 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:34:21,619 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:34:21,620 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:34:21,620 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:34:21,621 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:34:21,621 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:34:21,621 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:34:21,622 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:34:21,622 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:34:21,622 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:34:21,623 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:34:21,623 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:34:21,624 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:34:21,624 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:34:21,624 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:34:21,624 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:34:21,624 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:34:21,624 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:34:21,624 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:34:21,628 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:34:21,629 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:34:21,630 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:34:21,630 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:34:21,631 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:34:22,115 [INFO] Step
+2021-07-19 15:34:22,115 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:34:22,115 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:34:22,115 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:34:22,115 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:34:22,115 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:34:22,115 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:34:22,115 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:34:22,122 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:34:22,122 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:34:22,124 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:34:22,124 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:34:22,125 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:34:22,126 [INFO] Customer 0 choosing queue
+2021-07-19 15:34:34,579 [INFO] Init zones
+2021-07-19 15:34:34,579 [INFO] Init cash desks
+2021-07-19 15:34:34,580 [INFO] Init environment
+2021-07-19 15:34:34,580 [INFO] Init grid
+2021-07-19 15:34:34,581 [INFO] Fill grid
+2021-07-19 15:34:34,581 [INFO] Init customers
+2021-07-19 15:34:35,210 [INFO] 304 GET / (127.0.0.1) 14.25ms
+2021-07-19 15:34:35,478 [INFO] 101 GET /ws (127.0.0.1) 2.62ms
+2021-07-19 15:34:35,626 [INFO] Init zones
+2021-07-19 15:34:35,626 [INFO] Init cash desks
+2021-07-19 15:34:35,626 [INFO] Init environment
+2021-07-19 15:34:35,627 [INFO] Init grid
+2021-07-19 15:34:35,627 [INFO] Fill grid
+2021-07-19 15:34:35,628 [INFO] Init customers
+2021-07-19 15:34:37,336 [INFO] Step
+2021-07-19 15:34:37,337 [INFO] Customer 22 step
+2021-07-19 15:34:37,338 [INFO] Customer 25 step
+2021-07-19 15:34:37,338 [INFO] Customer 9 step
+2021-07-19 15:34:37,340 [INFO] Customer 17 step
+2021-07-19 15:34:37,343 [INFO] Customer 3 step
+2021-07-19 15:34:37,345 [INFO] Customer 18 step
+2021-07-19 15:34:37,346 [INFO] Customer 4 step
+2021-07-19 15:34:37,349 [INFO] Customer 12 step
+2021-07-19 15:34:37,350 [INFO] Customer 10 step
+2021-07-19 15:34:37,351 [INFO] Customer 11 step
+2021-07-19 15:34:37,352 [INFO] Customer 29 step
+2021-07-19 15:34:37,353 [INFO] Customer 6 step
+2021-07-19 15:34:37,356 [INFO] Customer 0 step
+2021-07-19 15:34:37,357 [INFO] Customer 26 step
+2021-07-19 15:34:37,359 [INFO] Customer 1 step
+2021-07-19 15:34:37,360 [INFO] Customer 24 step
+2021-07-19 15:34:37,361 [INFO] Customer 27 step
+2021-07-19 15:34:37,363 [INFO] Customer 14 step
+2021-07-19 15:34:37,364 [INFO] Customer 19 step
+2021-07-19 15:34:37,365 [INFO] Customer 13 step
+2021-07-19 15:34:37,366 [INFO] Customer 15 step
+2021-07-19 15:34:37,368 [INFO] Customer 28 step
+2021-07-19 15:34:37,368 [INFO] Customer 21 step
+2021-07-19 15:34:37,371 [INFO] Customer 8 step
+2021-07-19 15:34:37,372 [INFO] Customer 23 step
+2021-07-19 15:34:37,372 [INFO] Customer 16 step
+2021-07-19 15:34:37,372 [INFO] Customer 20 step
+2021-07-19 15:34:37,372 [INFO] Customer 5 step
+2021-07-19 15:34:37,380 [INFO] Customer 2 step
+2021-07-19 15:34:37,383 [INFO] Customer 7 step
+2021-07-19 15:34:37,778 [INFO] Step
+2021-07-19 15:34:37,779 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:34:37,780 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:34:37,781 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:34:37,782 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:34:37,783 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:34:37,785 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:34:37,786 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:34:37,787 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:34:37,788 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:34:37,789 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:34:37,790 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:34:37,791 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:34:37,792 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:34:37,793 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:34:37,794 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:34:37,795 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:34:37,795 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:34:37,796 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:34:37,797 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:34:37,797 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:34:37,798 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:34:37,799 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:34:37,799 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:34:37,800 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:34:37,800 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:34:37,801 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:34:37,802 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:34:37,803 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:34:37,803 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:34:37,804 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:34:38,158 [INFO] Step
+2021-07-19 15:34:38,159 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:34:38,160 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:34:38,161 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:34:38,161 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:34:38,162 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:34:38,163 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:34:38,164 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:34:38,164 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:34:38,166 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:34:38,166 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:34:38,167 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:34:38,167 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:34:38,168 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:34:38,168 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:34:38,168 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:34:38,170 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:34:38,171 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:34:38,171 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:34:38,172 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:34:38,173 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:34:38,173 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:34:38,174 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:34:38,175 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:34:38,176 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:34:38,177 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:34:38,177 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:34:38,178 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:34:38,179 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:34:38,179 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:34:38,180 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:34:38,608 [INFO] Step
+2021-07-19 15:34:38,609 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:34:38,609 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:34:38,609 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:34:38,609 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:34:38,609 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:34:38,610 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:34:38,610 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:34:38,610 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:34:38,610 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:34:38,610 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:34:38,610 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:34:38,611 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:34:38,611 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:34:38,612 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:34:38,612 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:34:38,612 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:34:38,612 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:34:38,612 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:34:38,612 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:34:38,613 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:34:38,613 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:34:38,613 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:34:38,613 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:34:38,613 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:34:38,613 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:34:38,613 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:34:38,614 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:34:38,614 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:34:38,614 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:34:38,614 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:34:38,966 [INFO] Step
+2021-07-19 15:34:38,968 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:34:38,969 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:34:38,970 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:34:38,972 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:34:38,973 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:34:38,974 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:34:38,975 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:34:38,977 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:34:38,978 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:34:38,979 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:34:38,981 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:34:38,982 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:34:38,983 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:34:38,984 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:34:38,984 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:34:38,986 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:34:38,987 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:34:38,988 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:34:38,989 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:34:38,989 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:34:38,990 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:34:38,990 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:34:38,991 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:34:38,991 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:34:38,992 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:34:38,992 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:34:38,993 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:34:38,993 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:34:38,994 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:34:38,994 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:34:39,348 [INFO] Step
+2021-07-19 15:34:39,350 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:34:39,351 [INFO] Customer 14 moves to shopping zone
+2021-07-19 15:34:39,352 [INFO] Customer 2 moves to shopping zone
+2021-07-19 15:34:39,354 [INFO] Customer 7 moves to shopping zone
+2021-07-19 15:34:39,355 [INFO] Customer 9 moves to shopping zone
+2021-07-19 15:34:39,357 [INFO] Customer 0 moves to shopping zone
+2021-07-19 15:34:39,358 [INFO] Customer 20 moves to shopping zone
+2021-07-19 15:34:39,358 [INFO] Customer 15 moves to shopping zone
+2021-07-19 15:34:39,360 [INFO] Customer 4 moves to shopping zone
+2021-07-19 15:34:39,361 [INFO] Customer 3 moves to shopping zone
+2021-07-19 15:34:39,363 [INFO] Customer 17 moves to shopping zone
+2021-07-19 15:34:39,364 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:34:39,365 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:34:39,366 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:34:39,366 [INFO] Customer 12 moves to shopping zone
+2021-07-19 15:34:39,366 [INFO] Customer 5 moves to shopping zone
+2021-07-19 15:34:39,369 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:34:39,371 [INFO] Customer 23 moves to shopping zone
+2021-07-19 15:34:39,371 [INFO] Customer 18 moves to shopping zone
+2021-07-19 15:34:39,371 [INFO] Customer 24 moves to shopping zone
+2021-07-19 15:34:39,373 [INFO] Customer 29 moves to shopping zone
+2021-07-19 15:34:39,374 [INFO] Customer 21 moves to shopping zone
+2021-07-19 15:34:39,374 [INFO] Customer 28 moves to shopping zone
+2021-07-19 15:34:39,374 [INFO] Customer 13 moves to shopping zone
+2021-07-19 15:34:39,375 [INFO] Customer 26 moves to shopping zone
+2021-07-19 15:34:39,376 [INFO] Customer 8 moves to shopping zone
+2021-07-19 15:34:39,377 [INFO] Customer 11 moves to shopping zone
+2021-07-19 15:34:39,377 [INFO] Customer 6 moves to shopping zone
+2021-07-19 15:34:39,378 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:34:39,378 [INFO] Customer 22 moves to shopping zone
+2021-07-19 15:34:39,736 [INFO] Step
+2021-07-19 15:34:39,738 [INFO] Customer 16 moves to shopping zone
+2021-07-19 15:34:39,739 [INFO] Customer 27 moves to shopping zone
+2021-07-19 15:34:39,741 [INFO] Customer 19 moves to shopping zone
+2021-07-19 15:34:39,742 [INFO] Customer 1 moves to shopping zone
+2021-07-19 15:34:39,745 [INFO] Customer 25 moves to shopping zone
+2021-07-19 15:34:39,747 [INFO] Customer 10 moves to shopping zone
+2021-07-19 15:34:39,751 [INFO] Customer 0 choosing queue
