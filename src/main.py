@@ -90,7 +90,7 @@ def agent_portrayal(agent):
 entering_zone_width = 6
 shopping_zone_height = 3
 number_cash_desk_self_scan = 0
-number_cash_desk = 4
+number_cash_desk = 2
 number_cash_desk_self_service_groups = 0
 zones_metadata = [('ENTERING', entering_zone_width),
                   ('SHOPPING', shopping_zone_height),
@@ -100,13 +100,13 @@ zones_metadata = [('ENTERING', entering_zone_width),
 
 # Customers metadata
 queue_choice_strategy = QueueChoiceLeastPeople()
-queue_jockeying_strategy = QueueJockeyNoJockeying
+queue_jockeying_strategy = QueueJockeyLeastPeople()
 
 customers_metadata = []
 #for i in range(15):
 #    customers_metadata.append((5 + i, True, queue_choice_strategy, queue_jockeying_strategy()))
-for i in range(15):
-    customers_metadata.append((5 + i, False, queue_choice_strategy, queue_jockeying_strategy()))
+for i in range(5):
+    customers_metadata.append((20 + i, False, queue_choice_strategy, queue_jockeying_strategy))
 
 height = 20
 # numero casse self-scan (ognuna occupa 2) + 1 spazio + barriera (1) + 1 spazio +
