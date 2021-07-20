@@ -1,6 +1,10 @@
 import logging
 from datetime import datetime
 
+from numpy import random
+import pandas as pd
+import math
+
 from mesa.visualization.ModularVisualization import ModularServer
 from mesa.visualization.modules import CanvasGrid
 
@@ -21,6 +25,9 @@ GREEN = "#77eb34"
 ORANGE = "#eba234"
 GREY = "#a1a3a0"
 BLACK = "#000000"
+
+# Basket size exponential distribution parameter
+LAMBA_EXPONENTIAL_DISTRIBUTION = 0.0736184654254411
 
 filename = '../log/log' + str(datetime.now().strftime("%d-%m-%Y")) + '.log'
 logging.basicConfig(
@@ -86,11 +93,31 @@ def agent_portrayal(agent):
     return portrayal
 
 
+def generate_basket_size(n, lambda_parameter=LAMBA_EXPONENTIAL_DISTRIBUTION):
+    values = pd.Series(random.exponential(scale=1 / lambda_parameter, size=1000))
+    values = values.apply(lambda x: math.ceil(round(x)))
+    return values
+
+
+def generate_customers_metadata(n_customers):
+    customers_metadata = []
+
+    basket_size_values = generate_basket_size(n_customers)
+    # TODO: Cancellare questa riga!!!!
+    basket_size_values = [20 + i for i in range(n_customers)]
+
+    for basket_size in basket_size_values:
+        self_scan = False
+        new_tuple = (basket_size, self_scan, queue_choice_strategy, queue_jockeying_strategy)
+        customers_metadata.append(new_tuple)
+    return customers_metadata
+
+
 # Zones metadata
 entering_zone_width = 6
 shopping_zone_height = 3
-number_cash_desk_self_scan = 2
-number_cash_desk = 0
+number_cash_desk_self_scan = 0
+number_cash_desk = 2
 number_cash_desk_self_service_groups = 0
 zones_metadata = [('ENTERING', entering_zone_width),
                   ('SHOPPING', shopping_zone_height),
@@ -103,11 +130,8 @@ zones_metadata = [('ENTERING', entering_zone_width),
 queue_choice_strategy = QueueChoiceLeastPeople()
 queue_jockeying_strategy = QueueJockeyLeastPeople()
 
-customers_metadata = []
-for i in range(15):
-    customers_metadata.append((5 + i, True, queue_choice_strategy, queue_jockeying_strategy))
-#for i in range(15):
- #   customers_metadata.append((5 + i, False, queue_choice_strategy, queue_jockeying_strategy()))
+N_CUSTOMERS = 5
+customers_metadata = generate_customers_metadata(N_CUSTOMERS)
 
 height = 20
 # numero casse self-scan (ognuna occupa 2) + 1 spazio + barriera (1) + 1 spazio +
