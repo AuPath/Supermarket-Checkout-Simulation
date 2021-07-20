@@ -108,7 +108,7 @@ def generate_customers_metadata(n_customers):
 
     for basket_size in basket_size_values:
         self_scan = False
-        new_tuple = (basket_size, self_scan, queue_choice_strategy, queue_jockeying_strategy())
+        new_tuple = (basket_size, self_scan, queue_choice_strategy, queue_jockeying_strategy)
         customers_metadata.append(new_tuple)
     return customers_metadata
 
