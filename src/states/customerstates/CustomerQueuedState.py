@@ -18,7 +18,6 @@ class CustomerQueuedState(State):
                              " is JOCKEYING from cashdesk " + str(self.context.get_cash_desk(self.context.target_queue).unique_id) +
                              " to cashdesk " + str(self.context.get_cash_desk(chosen_queue).unique_id))
 
-
                 queue_before_customer = self.context.target_queue.content()
                 i = queue_before_customer.index(self.context)
                 queue_before_customer = queue_before_customer[i + 1:]

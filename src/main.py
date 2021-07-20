@@ -104,7 +104,7 @@ def generate_customers_metadata(n_customers):
 
     basket_size_values = generate_basket_size(n_customers)
     # TODO: Cancellare questa riga!!!!
-    basket_size_values = [20] * len(n_customers)
+    basket_size_values = [20 + i for i in range(n_customers)]
 
     for basket_size in basket_size_values:
         self_scan = False
@@ -117,7 +117,7 @@ def generate_customers_metadata(n_customers):
 entering_zone_width = 6
 shopping_zone_height = 3
 number_cash_desk_self_scan = 0
-number_cash_desk = 4
+number_cash_desk = 2
 number_cash_desk_self_service_groups = 0
 zones_metadata = [('ENTERING', entering_zone_width),
                   ('SHOPPING', shopping_zone_height),
@@ -127,9 +127,9 @@ zones_metadata = [('ENTERING', entering_zone_width),
 
 # Customers metadata
 queue_choice_strategy = QueueChoiceLeastPeople()
-queue_jockeying_strategy = QueueJockeyNoJockeying
+queue_jockeying_strategy = QueueJockeyLeastPeople()
 
-N_CUSTOMERS = 15
+N_CUSTOMERS = 5
 customers_metadata = generate_customers_metadata(N_CUSTOMERS)
 
 height = 20
@@ -151,4 +151,3 @@ server = ModularServer(Supermarket,
                         "zones_metadata": zones_metadata})
 server.port = 8521  # The default
 server.launch()
-

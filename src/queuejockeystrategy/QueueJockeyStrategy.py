@@ -9,5 +9,5 @@ class QueueJockeyStrategy(ABC):
     # Quando ci sará il codice per cambiare coda bisogna cambiare solo se la coda é diversa.
 
     @abstractmethod
-    def switch_queue(self, queues):
+    def switch_queue(self, cash_desks):
         pass

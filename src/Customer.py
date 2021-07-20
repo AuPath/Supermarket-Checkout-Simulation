@@ -76,7 +76,7 @@ class Customer(Agent):
         the queue if he computes that it has less expected wait time.
         """
 
-        chosen_queue = self.queue_jockeying_strategy.switch_queue(self.model.get_adj_queues(self.target_queue))
+        chosen_queue = self.queue_jockeying_strategy.switch_queue(self.model.get_adj_cash_desks(self.get_cash_desk(self.target_queue)))
         return chosen_queue
 
     def state(self):
