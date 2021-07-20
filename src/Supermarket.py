@@ -117,6 +117,7 @@ class Supermarket(Model):
                     self.add_cash_desk(cash_desk)
                     idx += 1
             elif zone_type == 'CASH_DESK_SELF_SCAN':
+                # TODO: implementare cassa riservata ed estrazione per rilettura (facile dai)
                 normal_queue = NormalQueue()
                 for i in range(dimension):
                     cash_desk = CashDeskSelfScan(idx, self, normal_queue)
@@ -224,20 +225,10 @@ class Supermarket(Model):
                     ordered_queues.append(cash_desk.queue)
 
         chosen_queue_index = ordered_queues.index(queue)
-        adjacent_queues = [queue]
-        neg_delta = ADJ_WINDOW_SIZE
-        pos_delta = ADJ_WINDOW_SIZE
-        if chosen_queue_index < ADJ_WINDOW_SIZE:
-            neg_delta = chosen_queue_index
-        if len(ordered_queues) - chosen_queue_index < ADJ_WINDOW_SIZE:
-            pos_delta = chosen_queue_index
+        left_queues = ordered_queues[chosen_queue_index - ADJ_WINDOW_SIZE:chosen_queue_index]
+        right_queues = ordered_queues[chosen_queue_index + 1:chosen_queue_index + ADJ_WINDOW_SIZE + 1]
 
-        for i in range(1, neg_delta):
-            adjacent_queues.append(ordered_queues[chosen_queue_index - i])
-        for i in range(1, pos_delta):
-            adjacent_queues.append(ordered_queues[chosen_queue_index + i])
-
-        return adjacent_queues
+        return [left_queues, queue, right_queues]
 
     def get_cash_desk_by_id(self, unique_id):
         for cash_desk in self.get_cash_desks():
@@ -245,7 +236,7 @@ class Supermarket(Model):
                 return cash_desk
 
     def get_valid_queues(self):
-        pass  # todo non so a cosa serve questo
+        pass  # TODO: apertura/chiusura casse
 
     def get_occupied_cells(self):
         return self.__occupied_cells
