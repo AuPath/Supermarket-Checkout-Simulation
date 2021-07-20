@@ -207,29 +207,29 @@ class Supermarket(Model):
         return set(self.queues)
 
     # returns the adjacent queues to the given queue
-    def get_adj_queues(self, queue: SupermarketQueue):
+    def get_adj_cash_desks(self, cash_desk: CashDesk):
         # list of queues in the right order
-        ordered_queues = []
+        ordered_cash_desks = []
         if self.cash_desk_standard_zone is not None and self.cash_desk_standard_zone.cash_desks_number > 0:
             for cash_desk in self.cash_desk_standard_zone.cash_desks:
                 # already ordered
-                if cash_desk.queue not in ordered_queues:
-                    ordered_queues.append(cash_desk.queue)
+                if cash_desk.queue not in ordered_cash_desks:
+                    ordered_cash_desks.append(cash_desk)
         if self.cash_desk_self_service_zone is not None and self.cash_desk_self_service_zone.cash_desks_number > 0:
             for cash_desk in self.cash_desk_self_service_zone.cash_desks:
                 # already ordered
-                if cash_desk.queue not in ordered_queues:
-                    ordered_queues.append(cash_desk.queue)
+                if cash_desk.queue not in ordered_cash_desks:
+                    ordered_cash_desks.append(cash_desk)
 
-        chosen_queue_index = ordered_queues.index(queue)
-        left_queues = ordered_queues[chosen_queue_index - ADJ_WINDOW_SIZE:chosen_queue_index]
-        right_queues = ordered_queues[chosen_queue_index + 1:chosen_queue_index + ADJ_WINDOW_SIZE + 1]
+        chosen_cash_desk_index = ordered_cash_desks.index(cash_desk)
+        left_cash_desks = ordered_cash_desks[chosen_cash_desk_index - ADJ_WINDOW_SIZE:chosen_cash_desk_index]
+        right_cash_desks = ordered_cash_desks[chosen_cash_desk_index + 1:chosen_cash_desk_index + ADJ_WINDOW_SIZE + 1]
 
-        adjacent_queues = left_queues
-        adjacent_queues.append(queue)
-        adjacent_queues = adjacent_queues + right_queues
+        adjacent_cash_desks = left_cash_desks
+        adjacent_cash_desks.append(cash_desk)
+        adjacent_cash_desks = adjacent_cash_desks + right_cash_desks
 
-        return adjacent_queues
+        return adjacent_cash_desks
 
     def get_cash_desk_by_id(self, unique_id):
         for cash_desk in self.get_cash_desks():
