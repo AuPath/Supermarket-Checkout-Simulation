@@ -40,6 +40,10 @@ class CashDesk(ABC, Agent):
     def customer(self, value: Customer):
         self.__customer = value
 
+    @property
+    def processing_speed(self):
+        return self.__processing_speed
+
     def step(self):
         self.__state.action()
 
