@@ -100,22 +100,7 @@ class Supermarket(Model):
             elif zone_type == 'CASH_DESK_SELF_SERVICE':
                 for i in range(dimension):
                     normal_queue = NormalQueue()
-                    cash_desk = CashDeskSelfService(idx, self, normal_queue)
-                    self.cash_desk_self_service_zone.cash_desks.append(cash_desk)
-                    self.add_cash_desk(cash_desk)
-                    idx += 1
-                    cash_desk = CashDeskSelfService(idx, self, normal_queue)
-                    self.cash_desk_self_service_zone.cash_desks.append(cash_desk)
-                    self.add_cash_desk(cash_desk)
-                    idx += 1
-                    cash_desk = CashDeskSelfService(idx, self, normal_queue)
-                    self.cash_desk_self_service_zone.cash_desks.append(cash_desk)
-                    self.add_cash_desk(cash_desk)
-                    idx += 1
-                    cash_desk = CashDeskSelfService(idx, self, normal_queue)
-                    self.cash_desk_self_service_zone.cash_desks.append(cash_desk)
-                    self.add_cash_desk(cash_desk)
-                    idx += 1
+                    self.add_four_cash_desk_to_self_service_zone(idx, normal_queue)
             elif zone_type == 'CASH_DESK_SELF_SCAN':
                 # TODO: implementare cassa riservata ed estrazione per rilettura (facile dai)
                 normal_queue = NormalQueue()
@@ -132,6 +117,13 @@ class Supermarket(Model):
                     idx += 1
             else:
                 pass
+
+    def add_four_cash_desk_to_self_service_zone(self, idx, normal_queue):
+        for i in range(4):
+            cash_desk = CashDeskSelfService(idx, self, normal_queue)
+            self.cash_desk_self_service_zone.cash_desks.append(cash_desk)
+            self.add_cash_desk(cash_desk)
+            idx += 1
 
     def init_environment(self):
         logging.info("Init environment")
@@ -228,7 +220,11 @@ class Supermarket(Model):
         left_queues = ordered_queues[chosen_queue_index - ADJ_WINDOW_SIZE:chosen_queue_index]
         right_queues = ordered_queues[chosen_queue_index + 1:chosen_queue_index + ADJ_WINDOW_SIZE + 1]
 
-        return [left_queues, queue, right_queues]
+        adjacent_queues = left_queues
+        adjacent_queues.append(queue)
+        adjacent_queues = adjacent_queues + right_queues
+
+        return adjacent_queues
 
     def get_cash_desk_by_id(self, unique_id):
         for cash_desk in self.get_cash_desks():
