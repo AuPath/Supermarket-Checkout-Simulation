@@ -100,7 +100,14 @@ class Supermarket(Model):
             elif zone_type == 'CASH_DESK_SELF_SERVICE':
                 for i in range(dimension):
                     normal_queue = NormalQueue()
-                    self.add_four_cash_desk_to_self_service_zone(idx, normal_queue)
+                    self.add_cash_desk_to_self_service_zone(idx, normal_queue)
+                    idx += 1
+                    self.add_cash_desk_to_self_service_zone(idx, normal_queue)
+                    idx += 1
+                    self.add_cash_desk_to_self_service_zone(idx, normal_queue)
+                    idx += 1
+                    self.add_cash_desk_to_self_service_zone(idx, normal_queue)
+                    idx += 1
             elif zone_type == 'CASH_DESK_SELF_SCAN':
                 # TODO: implementare cassa riservata ed estrazione per rilettura (facile dai)
                 normal_queue = NormalQueue()
@@ -118,12 +125,10 @@ class Supermarket(Model):
             else:
                 pass
 
-    def add_four_cash_desk_to_self_service_zone(self, idx, normal_queue):
-        for i in range(4):
-            cash_desk = CashDeskSelfService(idx, self, normal_queue)
-            self.cash_desk_self_service_zone.cash_desks.append(cash_desk)
-            self.add_cash_desk(cash_desk)
-            idx += 1
+    def add_cash_desk_to_self_service_zone(self, idx, normal_queue):
+        cash_desk = CashDeskSelfService(idx, self, normal_queue)
+        self.cash_desk_self_service_zone.cash_desks.append(cash_desk)
+        self.add_cash_desk(cash_desk)
 
     def init_environment(self):
         logging.info("Init environment")
