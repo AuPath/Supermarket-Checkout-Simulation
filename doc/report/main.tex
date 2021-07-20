@@ -1,0 +1,30 @@
+
+\documentclass[a4paper, oneside]{book}
+
+% Packages
+\usepackage{relsize}
+\usepackage[margin=3.5cm]{geometry}
+\usepackage{hyperref}
+\usepackage{dirtree}
+\usepackage[parfill]{parskip}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{multirow}
+
+\begin{document}
+	
+	\include{chapters/title}
+	
+	\tableofcontents 
+	
+	\include{chapters/intro}
+	\include{chapters/sota}
+	\include{chapters/model}
+	\include{chapters/implementation}
+	\include{chapters/simulation}
+	\include{chapters/analysis}
+	\include{chapters/conclusions}
+	
+\end{document}

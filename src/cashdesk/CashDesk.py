@@ -1,21 +1,14 @@
-import logging
+import math
 from abc import ABC, abstractmethod
-from enum import Enum
 
 from mesa import Agent
 
-import math
-
 from src.Customer import Customer
 from src.queue.SupermarketQueue import SupermarketQueue
+from src.states.cashdeskstates.CashDeskStates import *
+from src.states.State import State
 
 PROCESSING_SPEED = 2
-
-
-class CashDeskState(Enum):
-    GET_NEW_CUSTOMER = 1
-    PROCESSING_CUSTOMER = 2
-    TRANSACTION_COMPLETED = 3
 
 
 class CashDesk(ABC, Agent):
@@ -28,7 +21,7 @@ class CashDesk(ABC, Agent):
         self.__queue = supermarket_queue
         self.__customer: Customer = None
         self.__processing_speed = processing_speed
-        self.__state = CashDeskState.GET_NEW_CUSTOMER
+        self.__state = CashDeskNewCustomerState(self)
         # Transaction time and break time parameters
         self.a_transaction = 1
         self.b_transaction = 0
@@ -43,52 +36,31 @@ class CashDesk(ABC, Agent):
     def customer(self):
         return self.__customer
 
+    @customer.setter
+    def customer(self, value: Customer):
+        self.__customer = value
+
     def step(self):
-        if self.__state == CashDeskState.GET_NEW_CUSTOMER:
-            new_state = self.serve_new_customer()
-            self.__state = new_state
-        elif self.__state == CashDeskState.PROCESSING_CUSTOMER:
-            logging.info("Cash desk " + type(self).__name__ + " " + str(self.unique_id) + " processing customer " + str(
-                self.__customer.unique_id))
-            if not self.__customer.transaction_is_completed():
-                self.process_customer()
-            else:
-                logging.info(
-                    "Cash desk " + type(self).__name__ + " " + str(self.unique_id) + " completing the transaction")
-                self.__state = CashDeskState.TRANSACTION_COMPLETED
-                self.complete_transaction()
-                self.__state = CashDeskState.GET_NEW_CUSTOMER
-        elif self.__state == CashDeskState.TRANSACTION_COMPLETED:
-            self.complete_transaction()
-            self.__state = CashDeskState.GET_NEW_CUSTOMER
-
-    def serve_new_customer(self):
-        if self.queue.size() > 0:
-            self.__customer = self.__queue.dequeue()
-            self.__customer.start_transaction()
-            self.move_beside(self.__customer)
-            new_state = CashDeskState.PROCESSING_CUSTOMER
-
-            # make every customer advance
-            for customer in self.__queue.content():
-                self.advance(customer)
-        else:
-            new_state = CashDeskState.GET_NEW_CUSTOMER
-        return new_state
+        self.__state.action()
 
     def process_customer(self):
-        self.get_customer().increase_processed_basket(self.__processing_speed)
+        c = self.customer
 
-    def complete_transaction(self):
-        self.get_customer().complete_transaction()
+        if c.basket_size - self.__processing_speed <= 0:
+            c.basket_size = 0
+        else:
+            c.basket_size -= self.__processing_speed
 
-    def get_customer(self):
-        return self.__customer
+    def is_transaction_complete(self):
+        return self.customer.basket_size == 0
+
+    def state_change(self, new_state: State):
+        self.__state = new_state
 
     def transaction_time(self, c: Customer):
         return math.exp(self.a_transaction * math.log(c.basket_size) + self.b_transaction)
 
-    def break_time(self, c: Customer): # Todo non la calcola cosi nel caso di cassa Standard, la lascio cosí perché almeno si puó testare
+    def break_time(self, c: Customer):
         return math.exp(self.a_break * math.log(c.basket_size) + self.b_break)
 
     def service_time(self, c: Customer):
@@ -100,8 +72,9 @@ class CashDesk(ABC, Agent):
             total += self.service_time(c)
         return total
 
-    def move_beside(self, customer: Customer):
+    # todo rinomina in move_customer_besides_cashdesk, il customer come parametro non dovrebbe essere necessario in quanto lavora solo sul customer al cashdesk
+    def move_beside(self):
         pass
 
-    def advance(self, customer: Customer):
+    def advance(self, customer: Customer): # todo forse advance é un qualcosa di riservato per Mesa
         pass

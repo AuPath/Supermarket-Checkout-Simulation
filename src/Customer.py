@@ -1,18 +1,9 @@
-import logging
-
-from enums import Enum
 from mesa import Agent
 
+from src.states.State import State
+from src.states.customerstates.CustomerEnteredState import CustomerEnteredState
+
 SHOPPING_SPEED = 1
-
-
-class CustomerState(Enum):
-    ENTERED = 1
-    SHOPPING = 2
-    CHOOSING_QUEUE = 3
-    QUEUED = 4
-    CASH_DESK = 5
-    EXITING = 6
 
 
 class Customer(Agent):
@@ -20,6 +11,7 @@ class Customer(Agent):
 
     def __init__(self, agent_id, model,
                  basket_size_target, self_scan, queue_choice_strategy,
+                 queue_jockeying_strategy,
                  shopping_speed=SHOPPING_SPEED):
         """Constructor, the basket_size_target and the boolean self_scan are assigned by the main class."""
         super().__init__(agent_id, model)
@@ -28,80 +20,50 @@ class Customer(Agent):
 
         self.basket_size = 0
         self.self_scan = self_scan
-        self.state = CustomerState.ENTERED
+        self.state = CustomerEnteredState(self)
 
         self.basket_size_target = basket_size_target
+
+        # todo Magari target_queue ha piú senso chiamarlo current_queue
         self.target_queue = None
-        self.processed_basket = 0
 
         self.shopping_speed = shopping_speed
 
         self.queue_choice_strategy = queue_choice_strategy
+        self.queue_jockeying_strategy = queue_jockeying_strategy
 
     def basket_size_target(self):
         return self.basket_size_target
 
-    def increase_processed_basket(self, processing_speed):
-        logging.info("Customer " + str(self.unique_id) + " processing basket")
-        if self.processed_basket > self.basket_size_target:
-            raise Exception("Basket has been already completely processed")
-        self.processed_basket += processing_speed
-
     def step(self):
-        logging.info("Customer " + str(self.unique_id) + " step")
-        if self.state == CustomerState.ENTERED:
-            # As the customer enters the market, he waits a step and then starts shopping, moving in the shopping zone
-            self.state = CustomerState.SHOPPING
-            logging.info("Customer " + str(self.unique_id) + " moves to shopping zone")
-            if not self.model.shopping_zone.is_agent_in_zone(self):
-                self.model.shopping_zone.move_to_first_available(self)
-
-        elif self.state == CustomerState.SHOPPING:
-            '''
-            Every step the customer puts an element i
-            n his basket, when
-            he reaches the target basket size, he starts choosing a queue
-            '''
-            if self.basket_size < self.basket_size_target:
-                self.shop()
-            elif self.basket_size_target == self.basket_size:
-                self.state = CustomerState.CHOOSING_QUEUE
-
-        elif self.state == CustomerState.CHOOSING_QUEUE:
-            logging.info("Customer " + str(self.unique_id) + " choosing queue")
-            self.state = CustomerState.QUEUED
-            self.choose_queue()
-
-        elif self.state == CustomerState.QUEUED:
-            # TODO: define the strategy to do jockeying
-            self.jockey()
-
-    def enter(self):
-        """
-        When the customer enters the supermarket, he is assigned two variables:
-        his basket size and if he wants to go to the self-scan cash desk.
-        """
-        pass
+        self.state.action()
 
     def shop(self):
         """
         The customer enters the shop and starts shopping,
         he goes on until he has reached the target basket size.
         """
-        self.basket_size += self.shopping_speed
+
+        if self.basket_size + self.shopping_speed >= self.basket_size_target:
+            self.basket_size = self.basket_size_target
+        else:
+            self.basket_size += self.shopping_speed
+
+    def is_done_shopping(self):
+        return self.basket_size == self.basket_size_target
+
+    def move_to_shopping_zone(self):
+        if not self.model.shopping_zone.is_agent_in_zone(self):
+            self.model.shopping_zone.move_to_first_available(self)
 
     def choose_queue(self):
         """
-        The customer chooses following a strategy,
-        only if he has already finished to shop.
+        The customer chooses a queue based on the the chosen Strategy.
         """
         if not self.self_scan:
-            self.target_queue = self.queue_choice_strategy.choose_queue(self.model.get_cash_desks(True))
+            return self.queue_choice_strategy.choose_queue(self.model.get_cash_desks(True))
         else:
-            self.target_queue = self.model.get_self_scan_queue()
-        self.target_queue.enqueue(self)
-        logging.info("Customer " + str(self.unique_id) + " moving to queue")
-        self.move_to_queue()
+            return self.model.get_self_scan_queue()
 
     def get_cash_desk(self, queue):
         for cash_desk in self.model.get_cash_desks():
@@ -113,28 +75,24 @@ class Customer(Agent):
         When the customer is following a queue, he can change
         the queue if he computes that it has less expected wait time.
         """
-        pass
 
-    def get_state(self):
-        return self.state
+        chosen_queue = self.queue_jockeying_strategy.switch_queue(self.model.get_adj_queues(self.target_queue))
+        return chosen_queue
 
     def state(self):
         return self.state
 
-    def start_transaction(self):
-        self.state = CustomerState.CASH_DESK
-        logging.info("Customer " + str(self.unique_id) + " moving beside the cash desk")
+    def state_change(self, new_state: State):
+        self.state = new_state
 
-    def complete_transaction(self):
-        self.state = CustomerState.EXITING
-        logging.info("Customer " + str(self.unique_id) + " exiting")
+    def exit_store(self):
         self.model.remove_customer(self)
-
-    def transaction_is_completed(self):
-        return self.basket_size_target <= self.processed_basket
 
     def advance(self):
         self.model.cash_desk_standard_zone.advance(self)
+
+    def leave_queue(self):
+        self.target_queue.remove_element(self)
 
     def move_to_queue(self):
         cash_desk = self.get_cash_desk(self.target_queue)

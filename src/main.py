@@ -4,11 +4,17 @@ from datetime import datetime
 from mesa.visualization.ModularVisualization import ModularServer
 from mesa.visualization.modules import CanvasGrid
 
-from src.Customer import CustomerState
 from src.Supermarket import Supermarket
-# colors
 from src.queuechoicestrategy.QueueChoiceLeastPeople import QueueChoiceLeastPeople
+from src.queuechoicestrategy.QueueChoiceLeastItems import QueueChoiceLeastItems
+from src.queuechoicestrategy.QueueChoiceLeastWaitingTimeServiceImplied import QueueChoiceLeastWaitingTimeServiceImplied
+from src.queuechoicestrategy.QueueChoiceLeastWaitingPowerImplied import QueueChoiceLeastWaitingPowerImplied
 
+from src.queuejockeystrategy.QueueJockeyNoJockeying import QueueJockeyNoJockeying
+from src.queuejockeystrategy.QueueJockeyLeastPeople import QueueJockeyLeastPeople
+from src.queuejockeystrategy.QueueJockeyLeastItems import QueueJockeyLeastItems
+
+# colors
 RED = "#eb3461"
 BLUE = "#3493eb"
 GREEN = "#77eb34"
@@ -37,15 +43,19 @@ def agent_portrayal(agent):
         portrayal = {"scale": 1,
                      "r": 0.5,
                      "Layer": 1}
-        if agent.state == CustomerState.ENTERED:
+        # Todo questa cose con le stringhe magiche va cambiata per forza
+        if type(agent.state).__name__ == "CustomerEnteredState":
             portrayal["Shape"] = "images/eCircle.png"
-        elif agent.state == CustomerState.SHOPPING:
-            portrayal["Shape"] = "images/sCircle.png"
-        elif agent.state == CustomerState.CHOOSING_QUEUE:
+        elif type(agent.state).__name__ == "CustomerShoppingState":
+            if not agent.self_scan:
+                portrayal["Shape"] = "images/sCircleCyan.png"
+            else:
+                portrayal["Shape"] = "images/sCircleGrey.png"
+        elif type(agent.state).__name__ == "CustomerChoosingQueueState":
             portrayal["Shape"] = "images/cCircle.png"
-        elif agent.state == CustomerState.QUEUED:
+        elif type(agent.state).__name__ == "CustomerQueuedState":
             portrayal["Shape"] = "images/qCircle.png"
-        elif agent.state == CustomerState.CASH_DESK:
+        elif type(agent.state).__name__ == "CustomerAtCashDeskState":
             portrayal["Shape"] = "images/pCircle.png"
     elif agent.type == 1:
         portrayal = {"Shape": "rect",
@@ -79,9 +89,9 @@ def agent_portrayal(agent):
 # Zones metadata
 entering_zone_width = 6
 shopping_zone_height = 3
-number_cash_desk_self_scan = 2
-number_cash_desk = 1
-number_cash_desk_self_service_groups = 1
+number_cash_desk_self_scan = 0
+number_cash_desk = 4
+number_cash_desk_self_service_groups = 0
 zones_metadata = [('ENTERING', entering_zone_width),
                   ('SHOPPING', shopping_zone_height),
                   ('CASH_DESK_SELF_SCAN', number_cash_desk_self_scan),
@@ -89,11 +99,14 @@ zones_metadata = [('ENTERING', entering_zone_width),
                   ('CASH_DESK_SELF_SERVICE', number_cash_desk_self_service_groups)]
 
 # Customers metadata
+queue_choice_strategy = QueueChoiceLeastPeople()
+queue_jockeying_strategy = QueueJockeyNoJockeying
+
 customers_metadata = []
+#for i in range(15):
+#    customers_metadata.append((5 + i, True, queue_choice_strategy, queue_jockeying_strategy()))
 for i in range(15):
-    customers_metadata.append((5 + i, True, QueueChoiceLeastPeople()))
-for i in range(15):
-    customers_metadata.append((5 + i, False, QueueChoiceLeastPeople()))
+    customers_metadata.append((5 + i, False, queue_choice_strategy, queue_jockeying_strategy()))
 
 height = 20
 # numero casse self-scan (ognuna occupa 2) + 1 spazio + barriera (1) + 1 spazio +

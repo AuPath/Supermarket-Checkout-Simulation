@@ -40,5 +40,15 @@ class SupermarketQueue(ABC, Agent):
         self.__queue = new_queue
         return l
 
+    def remove_element(self, e):
+        new_queue = Queue()
+
+        while self.__queue.qsize() > 0:
+            element = self.__queue.get()
+            if element != e:
+                new_queue.put(element)
+
+        self.__queue = new_queue
+
     def total_items(self):
         return sum([c.basket_size for c in self.content()])

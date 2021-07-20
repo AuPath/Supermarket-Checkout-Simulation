@@ -1,5 +1,10 @@
+import logging
+
 from src.queuechoicestrategy.QueueChoiceStrategy import QueueChoiceStrategy
-from src.cashdesk import CashDesk, CashDeskStandard, CashDeskSelfService
+from src.cashdesk import CashDesk
+from src.cashdesk.CashDeskStandard import CashDeskStandard
+from src.cashdesk.CashDeskSelfService import CashDeskSelfService
+
 
 # Waiting time per ogni coda calcolato come prodotto tra persone in coda (queue.size())
 # e tempo service time medio per la tipologia di cassa alla quale la coda fa riferimento
@@ -11,24 +16,49 @@ class QueueChoiceLeastWaitingTimeServiceImplied(QueueChoiceStrategy):
     def choose_queue(self, cash_desks: list[CashDesk]):
 
         # Separo per tipo di cassa, devo farlo per calcolare i tempi medi per tipo di cassa
-        normal_cash_desks = list(filter(cash_desks, lambda x: isinstance(x, CashDeskStandard)))
-        self_service_cash_desks = list(filter(cash_desks, lambda x: isinstance(x, CashDeskSelfService)))
+        normal_cash_desks = list(filter(lambda x: isinstance(x, CashDeskStandard)
+                                        , cash_desks))
+        self_service_cash_desks = list(filter(lambda x: isinstance(x, CashDeskSelfService)
+                                              , cash_desks))
+
+        logging.info("normal cash desks: " + str(len(normal_cash_desks)))
+        logging.info("self cash desks: " + str(len(self_service_cash_desks)))
 
         # Calcolo tempo medio
-        normal_queues_mean_service_time = self.mean_service_time(normal_cash_desks)
-        self_service_queues_mean_service_time = self.mean_service_time(self_service_cash_desks)
-
         # Minimo per tipo di cassa
-        normal_queue_min = min(self.get_queues_for_cash_desk_type(normal_cash_desks),
-                               key=lambda x: x.size() * normal_queues_mean_service_time)
 
-        self_service_queue_min = min(self.get_queues_for_cash_desk_type(self_service_cash_desks),
-                                     key=lambda x: x.size() * self_service_queues_mean_service_time)
 
-        # Minimo assoluto
-        return normal_queue_min if (normal_queue_min.size() * normal_queues_mean_service_time <=
-                                    self_service_queue_min.size() * self_service_queues_mean_service_time) \
-            else self_service_queue_min
+        # todo refactoring di sto mega if che fa schifo, era per vedere se funzionava
+        if len(normal_cash_desks) > 0 and len(self_service_cash_desks) > 0:
+            normal_queues_mean_service_time = self.mean_service_time(normal_cash_desks)
+
+            normal_queue_min = min(self.get_queues_for_cash_desk_type(normal_cash_desks),
+                                   key=lambda x: x.size() * normal_queues_mean_service_time)
+
+            self_service_queues_mean_service_time = self.mean_service_time(self_service_cash_desks)
+
+            self_service_queue_min = min(self.get_queues_for_cash_desk_type(self_service_cash_desks),
+                                         key=lambda x: x.size() * self_service_queues_mean_service_time)
+
+            return normal_queue_min if (normal_queue_min.size() * normal_queues_mean_service_time <=
+                                        self_service_queue_min.size() * self_service_queues_mean_service_time) \
+                else self_service_queue_min
+
+        elif len(normal_cash_desks) > 0 and len(self_service_cash_desks) == 0:
+            normal_queues_mean_service_time = self.mean_service_time(normal_cash_desks)
+
+            normal_queue_min = min(self.get_queues_for_cash_desk_type(normal_cash_desks),
+                                   key=lambda x: x.size() * normal_queues_mean_service_time)
+
+            return normal_queue_min
+
+        else:
+            self_service_queues_mean_service_time = self.mean_service_time(self_service_cash_desks)
+
+            self_service_queue_min = min(self.get_queues_for_cash_desk_type(self_service_cash_desks),
+                                         key=lambda x: x.size() * self_service_queues_mean_service_time)
+
+            return self_service_queue_min
 
     # Da una lista di casse (si assume di tipo omogeneo) ritorna una lista di code associate a quel tipo di cassa
     def get_queues_for_cash_desk_type(self, cash_desks: list[CashDesk]):
