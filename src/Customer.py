@@ -75,10 +75,11 @@ class Customer(Agent):
         When the customer is following a queue, he can change
         the queue if he computes that it has less expected wait time.
         """
-        cash_desk = self.get_cash_desk(self.target_queue)
+        if self.model.cash_desk_standard_zone is not None:
+            cash_desk = self.get_cash_desk(self.target_queue)
 
-        chosen_queue = self.queue_jockeying_strategy.switch_queue(self.model.get_adj_cash_desks(cash_desk))
-        return chosen_queue
+            chosen_queue = self.queue_jockeying_strategy.switch_queue(self.model.get_adj_cash_desks(cash_desk))
+            return chosen_queue
 
     def state(self):
         return self.state
@@ -101,6 +102,9 @@ class Customer(Agent):
             self.model.cash_desk_self_scan_zone.move_to_queue(self, cash_desk)
         else:
             if type(cash_desk).__name__ == 'CashDeskStandard':
-                self.model.cash_desk_standard_zone.move_to_queue(self, cash_desk)
+                if self.model.cash_desk_standard_zone is not None:
+                    self.model.cash_desk_standard_zone.move_to_queue(self, cash_desk)
+                else:
+                    self.model.cash_desk_standard_shared_zone.move_to_queue(self, cash_desk)
             elif type(cash_desk).__name__ == 'CashDeskSelfService':
                 self.model.cash_desk_self_service_zone.move_to_queue(self, cash_desk)
