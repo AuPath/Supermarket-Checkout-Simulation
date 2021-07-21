@@ -60,6 +60,13 @@ class Supermarket(Model):
 
     def step(self):
         # logging.info("Step")
+
+        if len(self.get_not_working_queues()) > 0:
+            if self.is_active_cash_desk_needed():
+                self.get_not_working_queues()[0].working = True
+            else:
+                self.get_not_working_queues()[0].working = False
+
         self.customer_scheduler.step()
         self.cash_desk_scheduler.step()
 
@@ -97,11 +104,15 @@ class Supermarket(Model):
         for zone_type, dimension in self.zones_metadata:
             if zone_type == 'CASH_DESK_STANDARD':
                 for i in range(dimension):
-                    # TODO: da implementare l'attivazione e la disattivazione delle casse in base al numero di clienti
-                    cash_desk = CashDeskStandard(idx, self, NormalQueue(), True)
+                    cash_desk = CashDeskStandard(idx, self, NormalQueue())
                     self.cash_desk_standard_zone.cash_desks.append(cash_desk)
                     self.add_cash_desk(cash_desk)
                     idx += 1
+                # TODO: quante casse devono essere aperte sempre? ne metto 2
+                if self.get_cash_desk_by_id(1):
+                    self.get_cash_desk_by_id(1).working = True
+                if self.get_cash_desk_by_id(2):
+                    self.get_cash_desk_by_id(2).working = True
             elif zone_type == 'CASH_DESK_STANDARD_SHARED_QUEUE':
                 normal_queue = NormalQueue()
                 for i in range(dimension):
@@ -255,7 +266,7 @@ class Supermarket(Model):
         left_queues = ordered_queues[max(0, chosen_queue_index - ADJ_WINDOW_SIZE):chosen_queue_index]
         right_queues = ordered_queues[chosen_queue_index + 1:chosen_queue_index + ADJ_WINDOW_SIZE + 1]
 
-        #adjacent_queues = left_queues + [pivot_cash_desk.queue] + right_queues
+        # adjacent_queues = left_queues + [pivot_cash_desk.queue] + right_queues
         adjacent_queues = left_queues + right_queues
 
         adjacent_cash_desks = []
@@ -272,22 +283,55 @@ class Supermarket(Model):
 
         return cash_desks
 
+    def get_cash_desks_by_type(self, cash_desk_type):
+        cash_desks = []
+        for cash_desk in self.get_cash_desks():
+            if type(cash_desk).__name__ == cash_desk_type:
+                cash_desks.append(cash_desk)
+
+        return cash_desks
+
     def get_cash_desk_by_id(self, unique_id):
         for cash_desk in self.get_cash_desks():
             if cash_desk.unique_id == unique_id:
                 return cash_desk
 
-    def get_working_queues(self, exclude_self_scan=False):
-        if not exclude_self_scan:
-            return self.__cash_desks
+    def get_working_queues(self):
+        filtered_cash_desk = []
+        for cash_desk in self.__cash_desks:
+            if type(cash_desk).__name__ == "CashDeskSelfService":
+                filtered_cash_desk.append(cash_desk)
+            elif type(cash_desk).__name__ == "CashDeskStandard" and cash_desk.working:
+                filtered_cash_desk.append(cash_desk)
+        return filtered_cash_desk
+
+    def get_not_working_queues(self):
+        filtered_cash_desk = []
+        for cash_desk in self.__cash_desks:
+            if type(cash_desk).__name__ == "CashDeskStandard" and not cash_desk.working:
+                filtered_cash_desk.append(cash_desk)
+        return filtered_cash_desk
+
+    def is_active_cash_desk_needed(self):
+        if len(self.get_working_queues()) <= 2:
+            return True
         else:
-            filtered_cash_desk = []
-            for cash_desk in self.__cash_desks:
-                if type(cash_desk).__name__ == "CashDeskSelfService":
-                    filtered_cash_desk.append(cash_desk)
-                elif type(cash_desk).__name__ == "CashDeskStandard" and cash_desk.working:
-                    filtered_cash_desk.append(cash_desk)
-            return filtered_cash_desk
+            if self.get_total_customers() > len(self.get_working_queues()) * 5:
+                return True
+            else:
+                return False
+
+    def get_total_customers(self):
+        # questo metodo serve per l'attivazione e la disattivazione delle casse
+        # ritorna i clienti che devono essere ancora processati e che sono presenti nel supermarket:
+        # ovvero i clienti negli stati CustomerEnteredState, CustomerShoppingState, CustomerChoosingQueueState e
+        # CustomerQueuedState -> tutto tranne CustomerAtCashDeskState
+        total_customers = 0
+        for customer in self.__customers:
+            if type(customer.state).__name__ != 'CustomeAtCashDeskState':
+                total_customers += 1
+
+        return total_customers
 
     def get_occupied_cells(self):
         return self.__occupied_cells
