@@ -108,6 +108,14 @@ class Supermarket(Model):
                     idx += 1
                     self.add_cash_desk_to_self_service_zone(idx, normal_queue)
                     idx += 1
+                    self.add_cash_desk_to_self_service_zone(idx, normal_queue)
+                    idx += 1
+                    self.add_cash_desk_to_self_service_zone(idx, normal_queue)
+                    idx += 1
+                    self.add_cash_desk_to_self_service_zone(idx, normal_queue)
+                    idx += 1
+                    self.add_cash_desk_to_self_service_zone(idx, normal_queue)
+                    idx += 1
             elif zone_type == 'CASH_DESK_SELF_SCAN':
                 normal_queue = NormalQueue()
                 for i in range(dimension):
@@ -142,7 +150,7 @@ class Supermarket(Model):
                 + 3 + (
                     self.cash_desk_standard_zone.cash_desks_number * 2 if self.cash_desk_standard_zone is not None else 0) \
                 + 1 + (
-                    self.cash_desk_self_service_zone.cash_desks_number * 4 if self.cash_desk_self_service_zone is not None else 0) \
+                    self.cash_desk_self_service_zone.cash_desks_number * 8 if self.cash_desk_self_service_zone is not None else 0) \
                 + 1 + self.entering_zone.dimension
         self.grid = SingleGrid(width, height, False)
 
