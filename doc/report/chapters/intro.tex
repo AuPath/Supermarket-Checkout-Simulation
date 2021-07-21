@@ -1,4 +1,19 @@
 \chapter{Introduzione}
 
-In questo capitolo viene introdotto il problema, il dominio di
-riferimento e l'approccio adottato per la risoluzione.
+In questo progetto è stato costrutio un modello basato su aganti con lo scopo di simulare il comportamento dei clienti all'interno di un supermercato durante la fase di scelta della coda relativa a diversi tipi di casse.
+
+Un grande supermercato è composto molte casse, ognuna di queste ha un comportamento diverso. \todo{Inserire il riferimento al capitolo} Come vederemo in dettaglio nel capitolo successivo, esistono diversi tipi di casse:
+
+il tipo standard, in cui ogni cassa ha la relativa coda, tante casse con un'unica coda condivisa, casse in cui non è presente un cassiere ma è il cliente stesso a scannerizzare i prodotti a fine spesa e utimamente sono comaprsi nei suepermercati delle casse in cui il cliente scanerizza i prodotti durante la spesa così da arrivare effettuare solamente il pagamento una volta arrivato in cassa.
+
+Dal momento che in un grande supermercato sono presenti più clienti che casse, è fondamentale l'utilizzo di code per gestire la grande quantità di clienti.  Un supermercato può essere considerato a tutti gli effetti un sistema complesso in qunato si hanno diversi aspetti che considerati contemporaneamnte fanno emergerge un comportamento complessivo difficilmente prevedibile, tra questi aspetti si hanno:
+\begin{itemize}
+	\item Flusso di clienti in ingresso variabile (influendo sulle persone in coda)
+	\item Numero di prodotti che un cliente acquista durante la spesa (influendo sul tempo passato in cassa e quindi scatenando eventualmente il cambio della coda da parte di altri clienti)
+	\item Il numero di casse aperte contemporaneamente nel supermercato
+	\item Strategia di scelta della coda dei clienti (un cliente può avere diversi criteri per la scelta della coda)
+	\item Stategia di cambio della coda se ne esiste una più conveniente
+\end{itemize}
+
+
+Lo scopo di questo lavoro è costruire un modello basato su agenti per simulare il comprtamento del supermercato. Dopo una prima fase di validazione, sfruttando i pochi dati a disposizione, vengono considerare diversi casi "what-if" con lo scopo di sperimentare diverse configuarzioni di casse per una gestione ottimale del flusso dei clienti. 
