@@ -7,7 +7,7 @@ from src.states.customerstates.CustomerAtCashDeskState import CustomerAtCashDesk
 class CashDeskStandardNewCustomerState(State):
 
     def action(self):
-        if self.context.working or self.context.queue.size() > 0:
+        if self.context.queue.size() > 0:
 
             # Prendo il cliente e gli cambio lo stato
             self.context.customer = self.context.queue.dequeue()
