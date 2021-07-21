@@ -79,7 +79,10 @@ class Customer(Agent):
         if self.model.cash_desk_standard_zone is not None:
             cash_desk = self.get_cash_desk(self.target_queue)
 
-        chosen_queue = self.queue_jockeying_strategy.switch_queue(self, self.model.get_adj_cash_desks(cash_desk))
+        adj_cash_desks = self.model.get_adj_cash_desks(cash_desk)
+        working_adj_cash_desks = self.model.get_working_queues(adj_cash_desks)
+
+        chosen_queue = self.queue_jockeying_strategy.switch_queue(self, working_adj_cash_desks)
         return chosen_queue
 
     def state(self):
