@@ -23,4 +23,5 @@ class QueueJockeyLeastItems(QueueJockeyStrategy):
 
         min_other_cash_desks = min(other_cash_desks, key=methodcaller('total_items'))
 
-        return current_cash_desk if current_queue_total_items <= min_other_cash_desks.total_items() else min_other_cash_desks
+        return current_cash_desk.queue if current_queue_total_items <= min_other_cash_desks.total_items() \
+            else min_other_cash_desks.queue

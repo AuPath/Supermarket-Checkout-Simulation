@@ -11,4 +11,4 @@ class QueueJockeyLeastPeople(QueueJockeyStrategy):
         customer_pos = customer_pos if current_cash_desk.customer is None else customer_pos + 1
 
         min_other_cash_desk = min(other_cash_desks, key=methodcaller('queue_size'))
-        return current_cash_desk if customer_pos <= min_other_cash_desk.queue_size() else min_other_cash_desk
+        return current_cash_desk.queue if customer_pos <= min_other_cash_desk.queue_size() else min_other_cash_desk.queue
