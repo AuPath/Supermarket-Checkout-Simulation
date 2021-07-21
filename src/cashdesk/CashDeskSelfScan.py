@@ -22,3 +22,6 @@ class CashDeskSelfScan(CashDesk):
     def process_customer(self):
         c = self.customer
         c.basket_size = 0
+
+    def get_image(self):
+        return "images/sSquare.png"

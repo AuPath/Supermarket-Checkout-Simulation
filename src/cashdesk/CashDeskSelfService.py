@@ -17,3 +17,6 @@ class CashDeskSelfService(CashDesk):
 
     def advance(self, customer: Customer):
         self.model.cash_desk_self_service_zone.advance(customer)
+
+    def get_image(self):
+        return "images/aSquare.png"

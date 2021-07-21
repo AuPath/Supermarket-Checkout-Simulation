@@ -33,3 +33,6 @@ class CashDeskReserved(CashDesk):
             c.basket_size = 0
         else:
             c.basket_size -= self.processing_speed
+
+    def get_image(self):
+        return "images/nSquare.png"

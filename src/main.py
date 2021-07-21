@@ -21,6 +21,7 @@ from src.queuejockeystrategy.QueueJockeyLeastItems import QueueJockeyLeastItems
 # colors
 RED = "#eb3461"
 BLUE = "#3493eb"
+BLUE_GREY = "#a9bac9"
 GREEN = "#77eb34"
 ORANGE = "#eba234"
 GREY = "#a1a3a0"
@@ -47,23 +48,10 @@ def agent_portrayal(agent):
     portrayal = {}
 
     if agent.type == 0:
-        portrayal = {"scale": 1,
+        portrayal = {"Shape": agent.state.get_image(),
+                     "scale": 1,
                      "r": 0.5,
                      "Layer": 1}
-        # Todo questa cose con le stringhe magiche va cambiata per forza
-        if type(agent.state).__name__ == "CustomerEnteredState":
-            portrayal["Shape"] = "images/eCircle.png"
-        elif type(agent.state).__name__ == "CustomerShoppingState":
-            if not agent.self_scan:
-                portrayal["Shape"] = "images/sCircleCyan.png"
-            else:
-                portrayal["Shape"] = "images/sCircleGrey.png"
-        elif type(agent.state).__name__ == "CustomerChoosingQueueState":
-            portrayal["Shape"] = "images/cCircle.png"
-        elif type(agent.state).__name__ == "CustomerQueuedState":
-            portrayal["Shape"] = "images/qCircle.png"
-        elif type(agent.state).__name__ == "CustomerAtCashDeskState":
-            portrayal["Shape"] = "images/pCircle.png"
     elif agent.type == 1:
         portrayal = {"Shape": "rect",
                      "Filled": "true",
@@ -76,20 +64,11 @@ def agent_portrayal(agent):
             portrayal["w"] = 1
             portrayal["h"] = 0.2
     elif agent.type == 2:
-        portrayal = {"Shape": "rect",
+        portrayal = {"Shape": agent.get_image(),
                      "Filled": "true",
                      "w": 1,
                      "h": 1,
                      "Layer": 1}
-        if type(agent).__name__ == "CashDeskStandard":
-            portrayal["Color"] = BLUE
-        elif type(agent).__name__ == "CashDeskSelfService":
-            portrayal["Color"] = GREEN
-        elif type(agent).__name__ == "CashDeskSelfScan":
-            portrayal["Color"] = RED
-        elif type(agent).__name__ == "CashDeskReserved":
-            portrayal["Color"] = ORANGE
-
     return portrayal
 
 

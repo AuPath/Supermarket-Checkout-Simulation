@@ -9,3 +9,6 @@ class State(ABC):
     @abstractmethod
     def action(self):
         pass
+
+    def get_image(self):
+        pass

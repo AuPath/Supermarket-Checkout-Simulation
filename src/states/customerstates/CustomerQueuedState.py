@@ -32,3 +32,6 @@ class CustomerQueuedState(State):
                     for customer in queue_before_customer:
                         self.context.get_cash_desk(self.context.target_queue).advance(customer)
 
+    def get_image(self):
+        return "images/qCircle.png"
+

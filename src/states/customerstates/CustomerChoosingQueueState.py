@@ -15,3 +15,6 @@ class CustomerChoosingQueueState(State):
         self.context.move_to_queue()
 
         self.context.state_change(CustomerQueuedState(self.context))
+
+    def get_image(self):
+        return "images/cCircle.png"

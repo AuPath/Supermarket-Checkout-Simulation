@@ -87,3 +87,6 @@ class CashDesk(ABC, Agent):
 
     def advance(self, customer: Customer): # todo forse advance é un qualcosa di riservato per Mesa
         pass
+
+    def get_image(self):
+        pass
