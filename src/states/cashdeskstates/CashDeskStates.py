@@ -31,16 +31,16 @@ class CashDeskNewCustomerStateSelfScan(CashDeskNewCustomerState):
 
     def action(self):
         if self.context.queue.size() > 0:
-            rand_num = random.random()  # 0.7 niente, 0.2 parziale, 0.1 totale
-            # TODO: forse 20% e 10% sono troppi... li tengo solo per fare dei test poi vanno cambiati
-            if rand_num <= 0.7:
+            rand_num = random.random()  # 0.8 niente, 0.15 parziale, 0.05 totale
+            if rand_num <= 0.8:
                 super().action()
             else:
                 # Prendo il cliente e gli cambio lo stato
                 self.context.customer = self.context.queue.dequeue()
-                if rand_num <= 0.9:
+                if rand_num <= 0.95:
                     # partial rereading
                     self.context.total_reread = False
+                    self.context.customer.basket_size = 10
                     self.context.move_customer_to_reserved_queue()
                 else:
                     # total rereading

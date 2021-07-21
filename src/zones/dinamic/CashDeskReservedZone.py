@@ -27,7 +27,7 @@ class CashDeskReservedZone(CashDeskZone):
         customer.target_queue = cash_desk.queue
         if customer.target_queue in self.queues:
             (x, y) = cash_desk.pos
-            y = y - customer.target_queue.size() - 2
+            y = y - customer.target_queue.size() - 1
             self.model.grid.move_agent(customer, (x, y))
             if self.cash_desks[0].total_reread:
                 cash_desk.total.append(customer)
