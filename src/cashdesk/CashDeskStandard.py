@@ -26,10 +26,16 @@ class CashDeskStandard(CashDesk):
         self.__working = value
 
     def move_customer_beside_cashdesk(self):
-        self.model.cash_desk_standard_zone.move_customer_beside_cashdesk(self.customer, self)
+        if self.model.cash_desk_standard_zone is not None:
+            self.model.cash_desk_standard_zone.move_customer_beside_cashdesk(self.customer, self)
+        else:
+            self.model.cash_desk_standard_shared_zone.move_customer_beside_cashdesk(self.customer, self)
 
     def advance(self, customer: Customer):
-        self.model.cash_desk_standard_zone.advance(customer)
+        if self.model.cash_desk_standard_zone is not None:
+            self.model.cash_desk_standard_zone.advance(customer)
+        else:
+            self.model.cash_desk_standard_shared_zone.advance(customer)
 
     # Il calcolo del breaktime nel caso di cassa Standard non dipende da
     # basket size. Nel paper non dice come lo calcola.

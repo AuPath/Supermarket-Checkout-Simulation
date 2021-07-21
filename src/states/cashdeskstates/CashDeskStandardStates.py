@@ -7,7 +7,7 @@ from src.states.customerstates.CustomerAtCashDeskState import CustomerAtCashDesk
 class CashDeskStandardNewCustomerState(State):
 
     def action(self):
-        if self.context.working and self.context.queue.size() > 0:
+        if self.context.working or self.context.queue.size() > 0:
 
             # Prendo il cliente e gli cambio lo stato
             self.context.customer = self.context.queue.dequeue()
@@ -29,7 +29,7 @@ class CashDeskStandardNewCustomerState(State):
 class CashDeskStandardProcessingState(State):
 
     def action(self):
-        if self.context.working:
+        if self.context.working or self.context.customer is not None:
             logging.info("Cash desk " + type(self.context).__name__ + " " + str(self.context.unique_id) +
                          " processing customer " + str(self.context.customer.unique_id))
 
