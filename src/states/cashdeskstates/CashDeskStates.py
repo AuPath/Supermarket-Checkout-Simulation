@@ -33,7 +33,21 @@ class CashDeskNewCustomerStateSelfScan(CashDeskNewCustomerState):
         if self.context.queue.size() > 0:
             rand_num = random.random()  # 0.8 niente, 0.15 parziale, 0.05 totale
             if rand_num <= 0.8:
-                super().action()
+                # Prendo il cliente e gli cambio lo stato
+                self.context.customer = self.context.queue.dequeue()
+
+                logging.info("Cash desk " + type(self.context).__name__ + " " + str(self.context.unique_id) +
+                             " has acquired customer " + str(self.context.customer.unique_id))
+
+                self.context.customer.state_change(CustomerAtCashDeskState(self.context.customer))
+
+                self.context.move_beside()
+
+                self.context.state_change(CashDeskProcessingStateSelfScan(self.context))
+
+                if self.context.queue.size() > 0:
+                    for customer in self.context.queue.content():
+                        self.context.advance(customer)
             else:
                 # Prendo il cliente e gli cambio lo stato
                 self.context.customer = self.context.queue.dequeue()
@@ -96,6 +110,21 @@ class CashDeskNewCustomerStateReserved(CashDeskNewCustomerState):
 
 
 class CashDeskProcessingState(State):
+
+    def action(self):
+        logging.info("Cash desk " + type(self.context).__name__ + " " + str(self.context.unique_id) +
+                     " processing customer " + str(self.context.customer.unique_id))
+
+        self.context.process_customer()
+
+        if self.context.is_transaction_complete():
+            self.context.customer.exit_store()
+
+            logging.info("Customer exited")
+            self.context.state_change(CashDeskTransactionCompletedState(self.context))
+
+
+class CashDeskProcessingStateSelfScan(State):
 
     def action(self):
         logging.info("Cash desk " + type(self.context).__name__ + " " + str(self.context.unique_id) +
