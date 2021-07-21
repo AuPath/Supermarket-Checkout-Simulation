@@ -37,6 +37,7 @@ class CashDeskStandardProcessingState(State):
 
             if self.context.is_transaction_complete():
                 self.context.customer.exit_store()
+                self.context.customer = None
 
                 logging.info("Customer exited")
                 self.context.state_change(CashDeskStandardTransactionCompletedState(self.context))

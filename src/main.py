@@ -73,8 +73,7 @@ def generate_customers_metadata(n_customers):
     customers_metadata = []
 
     basket_size_values = generate_basket_size(n_customers)
-    # TODO: Cancellare questa riga!!!!
-    basket_size_values = [20 + i for i in range(n_customers)]
+    #basket_size_values = [20 + i for i in range(n_customers)]
 
     self_scan = False
     for basket_size in basket_size_values:
