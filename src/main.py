@@ -108,7 +108,7 @@ def generate_customers_metadata(n_customers):
 
     self_scan = False
     for basket_size in basket_size_values:
-        self_scan = not self_scan
+        #self_scan = not self_scan
         new_tuple = (basket_size, self_scan, queue_choice_strategy, queue_jockeying_strategy)
         customers_metadata.append(new_tuple)
     return customers_metadata
@@ -118,8 +118,8 @@ def generate_customers_metadata(n_customers):
 entering_zone_width = 6
 shopping_zone_height = 3
 number_cash_desk_self_scan = 3
-number_cash_desk = 3
-number_cash_desk_self_service_groups = 1
+number_cash_desk = 1
+number_cash_desk_self_service_groups = 3
 zones_metadata = [('ENTERING', entering_zone_width),
                   ('SHOPPING', shopping_zone_height),
                   ('CASH_DESK_SELF_SCAN', number_cash_desk_self_scan),

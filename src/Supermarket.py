@@ -207,28 +207,43 @@ class Supermarket(Model):
 
     # returns the adjacent queues to the given queue
     def get_adj_cash_desks(self, cash_desk: CashDesk):
+        # TODO: ricontrollare, penso sia giusto così perchè per le self-service vanno ritornate tutte e 4
+        # le casse del gruppo. Per come era prima non teneva conto delle altre 3 casse invece deve, perchè
+        # se una è vuota deve andare lì e non ad esempio in una cassa normale dove c'è un cliente che paga
         # list of queues in the right order
-        ordered_cash_desks = []
+        ordered_queues = []
         if self.cash_desk_standard_zone is not None and self.cash_desk_standard_zone.cash_desks_number > 0:
             for cash_desk in self.cash_desk_standard_zone.cash_desks:
                 # already ordered
-                if cash_desk.queue not in ordered_cash_desks:
-                    ordered_cash_desks.append(cash_desk)
+                if cash_desk.queue not in ordered_queues:
+                    ordered_queues.append(cash_desk.queue)
         if self.cash_desk_self_service_zone is not None and self.cash_desk_self_service_zone.cash_desks_number > 0:
             for cash_desk in self.cash_desk_self_service_zone.cash_desks:
                 # already ordered
-                if cash_desk.queue not in ordered_cash_desks:
-                    ordered_cash_desks.append(cash_desk)
+                if cash_desk.queue not in ordered_queues:
+                    ordered_queues.append(cash_desk.queue)
 
-        chosen_cash_desk_index = ordered_cash_desks.index(cash_desk)
-        left_cash_desks = ordered_cash_desks[chosen_cash_desk_index - ADJ_WINDOW_SIZE:chosen_cash_desk_index]
-        right_cash_desks = ordered_cash_desks[chosen_cash_desk_index + 1:chosen_cash_desk_index + ADJ_WINDOW_SIZE + 1]
+        chosen_queue_index = ordered_queues.index(cash_desk.queue)
+        left_queues = ordered_queues[chosen_queue_index - ADJ_WINDOW_SIZE:chosen_queue_index]
+        right_queues = ordered_queues[chosen_queue_index + 1:chosen_queue_index + ADJ_WINDOW_SIZE + 1]
 
-        adjacent_cash_desks = left_cash_desks
-        adjacent_cash_desks.append(cash_desk)
-        adjacent_cash_desks = adjacent_cash_desks + right_cash_desks
+        adjacent_queues = left_queues
+        adjacent_queues.append(cash_desk.queue)
+        adjacent_queues = adjacent_queues + right_queues
+
+        adjacent_cash_desks = []
+        for queue in adjacent_queues:
+            adjacent_cash_desks = adjacent_cash_desks + self.get_cash_desks_by_queue(queue)
 
         return adjacent_cash_desks
+
+    def get_cash_desks_by_queue(self, queue: SupermarketQueue):
+        cash_desks = []
+        for cash_desk in self.get_cash_desks():
+            if cash_desk.queue == queue:
+                cash_desks.append(cash_desk)
+
+        return cash_desks
 
     def get_cash_desk_by_id(self, unique_id):
         for cash_desk in self.get_cash_desks():
