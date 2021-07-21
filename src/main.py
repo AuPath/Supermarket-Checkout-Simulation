@@ -107,7 +107,7 @@ zones_metadata = [('ENTERING', entering_zone_width),
                   ('CASH_DESK_RESERVED', 1)]
 
 # Customers metadata
-queue_choice_strategy = QueueChoiceLeastItems()
+queue_choice_strategy = QueueChoiceLeastPeople()
 queue_jockeying_strategy = QueueJockeyLeastPeople()
 
 N_CUSTOMERS = 35
