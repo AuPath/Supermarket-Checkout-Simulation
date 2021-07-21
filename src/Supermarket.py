@@ -17,6 +17,7 @@ from src.queue.SupermarketQueue import SupermarketQueue
 from src.zones.dinamic.CashDeskReservedZone import CashDeskReservedZone
 from src.zones.dinamic.CashDeskSelfScanZone import CashDeskSelfScanZone
 from src.zones.dinamic.CashDeskSelfServiceZone import CashDeskSelfServiceZone
+from src.zones.dinamic.CashDeskStandardSharedQueueZone import CashDeskStandardSharedQueueZone
 from src.zones.dinamic.CashDeskStandardZone import CashDeskStandardZone
 from src.zones.stationary.EnteringZone import EnteringZone
 from src.zones.stationary.ShoppingZone import ShoppingZone
@@ -45,6 +46,7 @@ class Supermarket(Model):
         self.entering_zone = None
         self.shopping_zone = None
         self.cash_desk_standard_zone = None
+        self.cash_desk_standard_shared_zone = None
         self.cash_desk_self_service_zone = None
         self.cash_desk_self_scan_zone = None
         self.cash_desk_reserved_zone = None
@@ -78,6 +80,8 @@ class Supermarket(Model):
                 self.shopping_zone = ShoppingZone(self, dimension)
             elif zone_type == 'CASH_DESK_STANDARD':
                 self.cash_desk_standard_zone = CashDeskStandardZone(self, dimension)
+            elif zone_type == 'CASH_DESK_STANDARD_SHARED_QUEUE':
+                self.cash_desk_standard_shared_zone = CashDeskStandardSharedQueueZone(self, dimension)
             elif zone_type == 'CASH_DESK_SELF_SERVICE':
                 self.cash_desk_self_service_zone = CashDeskSelfServiceZone(self, dimension)
             elif zone_type == 'CASH_DESK_SELF_SCAN':
@@ -93,8 +97,16 @@ class Supermarket(Model):
         for zone_type, dimension in self.zones_metadata:
             if zone_type == 'CASH_DESK_STANDARD':
                 for i in range(dimension):
+                    # TODO: da implementare l'attivazione e la disattivazione delle casse in base al numero di clienti
                     cash_desk = CashDeskStandard(idx, self, NormalQueue(), True)
                     self.cash_desk_standard_zone.cash_desks.append(cash_desk)
+                    self.add_cash_desk(cash_desk)
+                    idx += 1
+            elif zone_type == 'CASH_DESK_STANDARD_SHARED_QUEUE':
+                normal_queue = NormalQueue()
+                for i in range(dimension):
+                    cash_desk = CashDeskStandard(idx, self, normal_queue, True)
+                    self.cash_desk_standard_shared_zone.cash_desks.append(cash_desk)
                     self.add_cash_desk(cash_desk)
                     idx += 1
             elif zone_type == 'CASH_DESK_SELF_SERVICE':
@@ -149,6 +161,8 @@ class Supermarket(Model):
                     self.cash_desk_self_scan_zone.cash_desks_number * 2 if self.cash_desk_self_scan_zone is not None else 0) \
                 + 3 + (
                     self.cash_desk_standard_zone.cash_desks_number * 2 if self.cash_desk_standard_zone is not None else 0) \
+                + (
+                    self.cash_desk_standard_shared_zone.cash_desks_number * 2 if self.cash_desk_standard_shared_zone is not None else 0) \
                 + 1 + (
                     self.cash_desk_self_service_zone.cash_desks_number * 8 if self.cash_desk_self_service_zone is not None else 0) \
                 + 1 + self.entering_zone.dimension
@@ -165,7 +179,11 @@ class Supermarket(Model):
         # Reserved zone
         self.cash_desk_reserved_zone.build()
         # Cash-desk standard zone
-        self.cash_desk_standard_zone.build()
+        if self.cash_desk_standard_zone is not None:
+            self.cash_desk_standard_zone.build()
+        # Cash-desk standard zone with shared queue
+        if self.cash_desk_standard_shared_zone is not None:
+            self.cash_desk_standard_shared_zone.build()
         # Self-service zone
         self.cash_desk_self_service_zone.build()
 

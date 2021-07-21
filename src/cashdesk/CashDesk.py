@@ -89,3 +89,9 @@ class CashDesk(ABC, Agent):
 
     def get_image(self):
         pass
+
+    def total_items(self):
+        if self.customer is not None:
+            return self.queue.total_items() + self.customer.basket_size
+        else:
+            return self.queue.total_items()

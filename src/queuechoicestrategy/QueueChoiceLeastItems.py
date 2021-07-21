@@ -6,6 +6,9 @@ class QueueChoiceLeastItems(QueueChoiceStrategy):
 
     # Returns shortest/smallest queue from queues, the comparison is made on the
     # basis of the size() function of the queues
+
+    # todo considerare anche quello in cassa
+
     def choose_queue(self, cash_desks):
 
         queues = []

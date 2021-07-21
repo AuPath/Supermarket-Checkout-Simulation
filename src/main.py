@@ -1,22 +1,15 @@
 import logging
+import math
 from datetime import datetime
 
-from numpy import random
 import pandas as pd
-import math
-
 from mesa.visualization.ModularVisualization import ModularServer
 from mesa.visualization.modules import CanvasGrid
+from numpy import random
 
 from src.Supermarket import Supermarket
 from src.queuechoicestrategy.QueueChoiceLeastPeople import QueueChoiceLeastPeople
-from src.queuechoicestrategy.QueueChoiceLeastItems import QueueChoiceLeastItems
-from src.queuechoicestrategy.QueueChoiceLeastWaitingTimeServiceImplied import QueueChoiceLeastWaitingTimeServiceImplied
-from src.queuechoicestrategy.QueueChoiceLeastWaitingPowerImplied import QueueChoiceLeastWaitingPowerImplied
-
-from src.queuejockeystrategy.QueueJockeyNoJockeying import QueueJockeyNoJockeying
 from src.queuejockeystrategy.QueueJockeyLeastPeople import QueueJockeyLeastPeople
-from src.queuejockeystrategy.QueueJockeyLeastItems import QueueJockeyLeastItems
 
 # colors
 RED = "#eb3461"
@@ -87,7 +80,7 @@ def generate_customers_metadata(n_customers):
 
     self_scan = False
     for basket_size in basket_size_values:
-        #self_scan = not self_scan
+        # self_scan = not self_scan
         new_tuple = (basket_size, self_scan, queue_choice_strategy, queue_jockeying_strategy)
         customers_metadata.append(new_tuple)
     return customers_metadata
@@ -98,11 +91,13 @@ entering_zone_width = 6
 shopping_zone_height = 3
 number_cash_desk_self_scan = 0
 number_cash_desk = 2
-number_cash_desk_self_service_groups = 1 # non cambiare abbiamo deciso che è sempre 1
+number_cash_desk_self_service_groups = 0
+shared_queue = False  # coda unica tipo decathlon
 zones_metadata = [('ENTERING', entering_zone_width),
                   ('SHOPPING', shopping_zone_height),
                   ('CASH_DESK_SELF_SCAN', number_cash_desk_self_scan),
-                  ('CASH_DESK_STANDARD', number_cash_desk),
+                  (('CASH_DESK_STANDARD_SHARED_QUEUE', number_cash_desk) if shared_queue else
+                   ('CASH_DESK_STANDARD', number_cash_desk)),
                   ('CASH_DESK_SELF_SERVICE', number_cash_desk_self_service_groups),
                   ('CASH_DESK_RESERVED', 1)]
 
