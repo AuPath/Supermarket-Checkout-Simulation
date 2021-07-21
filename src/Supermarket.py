@@ -251,7 +251,8 @@ class Supermarket(Model):
                     ordered_queues.append(cash_desk.queue)
 
         chosen_queue_index = ordered_queues.index(pivot_cash_desk.queue)
-        left_queues = ordered_queues[chosen_queue_index - ADJ_WINDOW_SIZE:chosen_queue_index]
+
+        left_queues = ordered_queues[max(0, chosen_queue_index - ADJ_WINDOW_SIZE):chosen_queue_index]
         right_queues = ordered_queues[chosen_queue_index + 1:chosen_queue_index + ADJ_WINDOW_SIZE + 1]
 
         #adjacent_queues = left_queues + [pivot_cash_desk.queue] + right_queues
