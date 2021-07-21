@@ -93,7 +93,7 @@ class Supermarket(Model):
         for zone_type, dimension in self.zones_metadata:
             if zone_type == 'CASH_DESK_STANDARD':
                 for i in range(dimension):
-                    cash_desk = CashDeskStandard(idx, self, NormalQueue(), False)
+                    cash_desk = CashDeskStandard(idx, self, NormalQueue(), True)
                     self.cash_desk_standard_zone.cash_desks.append(cash_desk)
                     self.add_cash_desk(cash_desk)
                     idx += 1
