@@ -250,8 +250,17 @@ class Supermarket(Model):
             if cash_desk.unique_id == unique_id:
                 return cash_desk
 
-    def get_working_queues(self):
-        pass  # TODO: apertura/chiusura casse
+    def get_working_queues(self, exclude_self_scan=False):
+        if not exclude_self_scan:
+            return self.__cash_desks
+        else:
+            filtered_cash_desk = []
+            for cash_desk in self.__cash_desks:
+                if type(cash_desk).__name__ == "CashDeskSelfService":
+                    filtered_cash_desk.append(cash_desk)
+                elif type(cash_desk).__name__ == "CashDeskStandard" and cash_desk.working:
+                    filtered_cash_desk.append(cash_desk)
+            return filtered_cash_desk
 
     def get_occupied_cells(self):
         return self.__occupied_cells

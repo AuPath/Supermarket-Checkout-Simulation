@@ -61,7 +61,7 @@ class Customer(Agent):
         The customer chooses a queue based on the the chosen Strategy.
         """
         if not self.self_scan:
-            return self.queue_choice_strategy.choose_queue(self.model.get_cash_desks(True))
+            return self.queue_choice_strategy.choose_queue(self.model.get_working_queues(True))
         else:
             return self.model.get_self_scan_queue()
 

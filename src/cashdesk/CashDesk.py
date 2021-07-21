@@ -5,8 +5,8 @@ from mesa import Agent
 
 from src.Customer import Customer
 from src.queue.SupermarketQueue import SupermarketQueue
-from src.states.cashdeskstates.CashDeskStates import *
 from src.states.State import State
+from src.states.cashdeskstates.CashDeskStandardStates import CashDeskStandardNewCustomerState
 
 PROCESSING_SPEED = 2
 
@@ -21,7 +21,6 @@ class CashDesk(ABC, Agent):
         self.__queue = supermarket_queue
         self.__customer: Customer = None
         self.__processing_speed = processing_speed
-        self.__state = CashDeskNewCustomerState(self)
         # Transaction time and break time parameters
         self.a_transaction = 1
         self.b_transaction = 0

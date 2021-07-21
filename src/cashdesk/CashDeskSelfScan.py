@@ -1,13 +1,13 @@
 from src.Customer import Customer
 from src.cashdesk.CashDesk import CashDesk
 from src.queue.SupermarketQueue import SupermarketQueue
-from src.states.cashdeskstates.CashDeskStates import CashDeskNewCustomerStateSelfScan
+from src.states.cashdeskstates.CashDeskSelfScanStates import CashDeskSelfScanNewCustomerState
 
 
 class CashDeskSelfScan(CashDesk):
     def __init__(self, agent_id, model, supermarket_queue: SupermarketQueue):
         super().__init__(agent_id, model, supermarket_queue)
-        self.state_change(CashDeskNewCustomerStateSelfScan(self))
+        self.state_change(CashDeskSelfScanNewCustomerState(self))
 
     def move_customer_beside_cashdesk(self):
         self.model.cash_desk_self_scan_zone.move_customer_beside_cashdesk(self.customer, self)

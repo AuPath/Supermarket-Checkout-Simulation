@@ -3,12 +3,14 @@ import random
 
 from src.cashdesk.CashDesk import CashDesk
 from src.queue.SupermarketQueue import SupermarketQueue
+from src.states.cashdeskstates.CashDeskStandardStates import CashDeskStandardNewCustomerState
 
 
 class CashDeskStandard(CashDesk):
 
     def __init__(self, agent_id, model, supermarket_queue: SupermarketQueue, working: bool):
         super().__init__(agent_id, model, supermarket_queue)
+        self.state_change(CashDeskStandardNewCustomerState(self))
         self.__working = working
         self.a_transaction = 0.6984
         self.b_transaction = 2.1219

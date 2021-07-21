@@ -1,13 +1,13 @@
 from src.Customer import Customer
 from src.cashdesk.CashDesk import CashDesk
 from src.queue.SupermarketQueue import SupermarketQueue
-from src.states.cashdeskstates.CashDeskStates import CashDeskNewCustomerStateReserved
+from src.states.cashdeskstates.CashDeskReservedStates import CashDeskReservedNewCustomerState
 
 
 class CashDeskReserved(CashDesk):
     def __init__(self, agent_id, model, supermarket_queue: SupermarketQueue):
         super().__init__(agent_id, model, supermarket_queue)
-        self.state_change(CashDeskNewCustomerStateReserved(self))
+        self.state_change(CashDeskReservedNewCustomerState(self))
         self.total_reread = False
         self.partial = []
         self.total = []
