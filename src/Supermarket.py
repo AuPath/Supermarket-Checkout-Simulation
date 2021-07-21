@@ -317,6 +317,8 @@ class Supermarket(Model):
     def is_active_cash_desk_needed(self):
         if len(self.get_working_queues()) <= 2:
             return True
+        elif len(self.get_not_working_queues()) == 0:
+            return False
         else:
             if self.get_total_customers() > len(self.get_working_queues()) * 5:
                 return True
