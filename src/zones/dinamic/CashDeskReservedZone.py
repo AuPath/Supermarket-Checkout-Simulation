@@ -34,7 +34,7 @@ class CashDeskReservedZone(CashDeskZone):
             else:
                 cash_desk.partial.append(customer)
 
-    def move_beside(self, customer: Customer, cash_desk: CashDesk):
+    def move_customer_beside_cashdesk(self, customer: Customer, cash_desk: CashDesk):
         if customer.target_queue in self.queues:
             (x, y) = cash_desk.pos
             x -= 1

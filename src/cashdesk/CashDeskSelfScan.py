@@ -9,8 +9,8 @@ class CashDeskSelfScan(CashDesk):
         super().__init__(agent_id, model, supermarket_queue)
         self.state_change(CashDeskNewCustomerStateSelfScan(self))
 
-    def move_beside(self):
-        self.model.cash_desk_self_scan_zone.move_beside(self.customer, self)
+    def move_customer_beside_cashdesk(self):
+        self.model.cash_desk_self_scan_zone.move_customer_beside_cashdesk(self.customer, self)
 
     def advance(self, customer: Customer):
         self.model.cash_desk_self_scan_zone.advance(customer)

@@ -18,7 +18,7 @@ class CashDeskNewCustomerState(State):
 
             self.context.customer.state_change(CustomerAtCashDeskState(self.context.customer))
 
-            self.context.move_beside()
+            self.context.move_customer_beside_cashdesk()
 
             self.context.state_change(CashDeskProcessingState(self.context))
 
@@ -41,7 +41,7 @@ class CashDeskNewCustomerStateSelfScan(CashDeskNewCustomerState):
 
                 self.context.customer.state_change(CustomerAtCashDeskState(self.context.customer))
 
-                self.context.move_beside()
+                self.context.move_customer_beside_cashdesk()
 
                 self.context.state_change(CashDeskProcessingStateSelfScan(self.context))
 
@@ -80,7 +80,7 @@ class CashDeskNewCustomerStateReserved(CashDeskNewCustomerState):
 
                 self.context.customer.state_change(CustomerAtCashDeskState(self.context.customer))
 
-                self.context.move_beside()
+                self.context.move_customer_beside_cashdesk()
 
                 self.context.state_change(CashDeskProcessingStateReserved(self.context))
 
@@ -100,7 +100,7 @@ class CashDeskNewCustomerStateReserved(CashDeskNewCustomerState):
 
                 self.context.customer.state_change(CustomerAtCashDeskState(self.context.customer))
 
-                self.context.move_beside()
+                self.context.move_customer_beside_cashdesk()
 
                 self.context.state_change(CashDeskProcessingStateReserved(self.context))
 

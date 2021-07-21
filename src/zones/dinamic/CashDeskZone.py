@@ -19,7 +19,7 @@ class CashDeskZone(Zone):
     def move_to_queue(self, customer: Customer, cash_desk: CashDesk):
         pass
 
-    def move_beside(self, customer: Customer, cash_desk: CashDesk):
+    def move_customer_beside_cashdesk(self, customer: Customer, cash_desk: CashDesk):
         pass
 
     def advance(self, customer: Customer):

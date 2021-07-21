@@ -12,8 +12,8 @@ class CashDeskReserved(CashDesk):
         self.partial = []
         self.total = []
 
-    def move_beside(self):
-        self.model.cash_desk_reserved_zone.move_beside(self.customer, self)
+    def move_customer_beside_cashdesk(self):
+        self.model.cash_desk_reserved_zone.move_customer_beside_cashdesk(self.customer, self)
 
     def advance(self, customer: Customer):
         self.model.cash_desk_reserved_zone.advance(customer)
