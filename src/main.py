@@ -11,11 +11,19 @@ from mesa.visualization.modules import CanvasGrid
 from src.Supermarket import Supermarket
 from src.queuechoicestrategy.QueueChoiceLeastPeople import QueueChoiceLeastPeople
 from src.queuechoicestrategy.QueueChoiceLeastItems import QueueChoiceLeastItems
+<<<<<<< HEAD
+from src.queuechoicestrategy.QueueChoiceLeastWaitingPowerImplied import QueueChoiceLeastWaitingPowerImplied
+from src.queuechoicestrategy.QueueChoiceLeastWaitingTimeServiceImplied import QueueChoiceLeastWaitingTimeServiceImplied
+
+from src.queuejockeystrategy.QueueJockeyLeastPeople import QueueJockeyLeastPeople
+from src.queuejockeystrategy.QueueJockeyNoJockeying import QueueJockeyNoJockeying
+=======
 from src.queuechoicestrategy.QueueChoiceLeastWaitingTimeServiceImplied import QueueChoiceLeastWaitingTimeServiceImplied
 from src.queuechoicestrategy.QueueChoiceLeastWaitingPowerImplied import QueueChoiceLeastWaitingPowerImplied
 
 from src.queuejockeystrategy.QueueJockeyNoJockeying import QueueJockeyNoJockeying
 from src.queuejockeystrategy.QueueJockeyLeastPeople import QueueJockeyLeastPeople
+>>>>>>> b6b02dbf9f510f98d94fd91b177a5e53523eb74e
 from src.queuejockeystrategy.QueueJockeyLeastItems import QueueJockeyLeastItems
 
 # colors
@@ -94,7 +102,11 @@ def generate_customers_metadata(n_customers):
 entering_zone_width = 6
 shopping_zone_height = 3
 number_cash_desk_self_scan = 0
+<<<<<<< HEAD
+number_cash_desk = 4
+=======
 number_cash_desk = 10
+>>>>>>> b6b02dbf9f510f98d94fd91b177a5e53523eb74e
 number_cash_desk_self_service_groups = 0
 shared_queue = False  # coda unica tipo decathlon
 zones_metadata = [('ENTERING', entering_zone_width),
@@ -106,10 +118,14 @@ zones_metadata = [('ENTERING', entering_zone_width),
                   ('CASH_DESK_RESERVED', 1)]
 
 # Customers metadata
-queue_choice_strategy = QueueChoiceLeastPeople()
+queue_choice_strategy = QueueChoiceLeastItems()
 queue_jockeying_strategy = QueueJockeyLeastPeople()
 
+<<<<<<< HEAD
+N_CUSTOMERS = 30
+=======
 N_CUSTOMERS = 35
+>>>>>>> b6b02dbf9f510f98d94fd91b177a5e53523eb74e
 customers_metadata = generate_customers_metadata(N_CUSTOMERS)
 
 height = 20

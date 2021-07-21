@@ -61,10 +61,16 @@ class CashDesk(ABC, Agent):
         self.__state = new_state
 
     def transaction_time(self, c: Customer):
-        return math.exp(self.a_transaction * math.log(c.basket_size) + self.b_transaction)
+        if c.basket_size == 0:
+            return 0
+        else:
+            return math.exp(self.a_transaction * math.log(c.basket_size) + self.b_transaction)
 
     def break_time(self, c: Customer):
-        return math.exp(self.a_break * math.log(c.basket_size) + self.b_break)
+        if c.basket_size == 0:
+            return 0
+        else:
+            return math.exp(self.a_break * math.log(c.basket_size) + self.b_break)
 
     def service_time(self, c: Customer):
         return self.transaction_time(c) + self.break_time(c)
