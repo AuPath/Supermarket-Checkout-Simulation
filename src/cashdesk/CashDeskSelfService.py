@@ -14,6 +14,8 @@ class CashDeskSelfService(CashDesk):
         self.a_break = 0.2251
         self.b_break = 3.5167
 
+    # TODO: dato che il cliente deve anche fare bagging, qua bisogna aumentare il tempo di processing
+
     def move_customer_beside_cashdesk(self):
         self.model.cash_desk_self_service_zone.move_customer_beside_cashdesk(self.customer, self)
 

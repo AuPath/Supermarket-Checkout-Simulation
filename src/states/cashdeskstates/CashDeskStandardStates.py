@@ -29,17 +29,16 @@ class CashDeskStandardNewCustomerState(State):
 class CashDeskStandardProcessingState(State):
 
     def action(self):
-        if self.context.working or self.context.customer is not None:
-            logging.info("Cash desk " + type(self.context).__name__ + " " + str(self.context.unique_id) +
-                         " processing customer " + str(self.context.customer.unique_id))
+        logging.info("Cash desk " + type(self.context).__name__ + " " + str(self.context.unique_id) +
+                     " processing customer " + str(self.context.customer.unique_id))
 
-            self.context.process_customer()
+        self.context.process_customer()
 
-            if self.context.is_transaction_complete():
-                self.context.customer.exit_store()
+        if self.context.is_transaction_complete():
+            self.context.customer.exit_store()
 
-                logging.info("Customer exited")
-                self.context.state_change(CashDeskStandardTransactionCompletedState(self.context))
+            logging.info("Customer exited")
+            self.context.state_change(CashDeskStandardTransactionCompletedState(self.context))
 
 
 class CashDeskStandardTransactionCompletedState(State):
