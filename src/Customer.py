@@ -77,7 +77,7 @@ class Customer(Agent):
         """
         cash_desk = self.get_cash_desk(self.target_queue)
 
-        chosen_queue = self.queue_jockeying_strategy.switch_queue(self.model.get_adj_cash_desks(cash_desk))
+        chosen_queue = self.queue_jockeying_strategy.switch_queue(self, self.model.get_adj_cash_desks(cash_desk))
         return chosen_queue
 
     def state(self):
