@@ -68,7 +68,7 @@ class Supermarket(Model):
 
         while not self.is_active_cash_desk_needed():
             if len(self.get_working_queues()) > 0:
-                self.get_working_queues()[0].working = False
+                self.get_working_queues()[-1].working = False
 
         self.customer_scheduler.step()
         self.cash_desk_scheduler.step()
@@ -111,11 +111,13 @@ class Supermarket(Model):
                     self.cash_desk_standard_zone.cash_desks.append(cash_desk)
                     self.add_cash_desk(cash_desk)
                     idx += 1
+                '''
                 # TODO: quante casse devono essere aperte sempre? ne metto 2
                 if self.get_cash_desk_by_id(1):
                     self.get_cash_desk_by_id(1).working = True
                 if self.get_cash_desk_by_id(2):
                     self.get_cash_desk_by_id(2).working = True
+                '''
             elif zone_type == 'CASH_DESK_STANDARD_SHARED_QUEUE':
                 normal_queue = NormalQueue()
                 for i in range(dimension):
@@ -317,9 +319,7 @@ class Supermarket(Model):
         return filtered_cash_desk
 
     def is_active_cash_desk_needed(self):
-        if len(self.get_working_queues()) <= 2:
-            return True
-        elif len(self.get_not_working_queues()) == 0:
+        if len(self.get_not_working_queues()) == 0:
             return False
         else:
             if self.get_total_customers() > len(self.get_working_queues()) * 5:

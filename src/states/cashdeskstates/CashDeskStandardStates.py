@@ -45,9 +45,8 @@ class CashDeskStandardProcessingState(State):
 class CashDeskStandardTransactionCompletedState(State):
 
     def action(self):
-        if self.context.working:
-            logging.info("Cash desk " + type(self.context).__name__ + " " + str(self.context.unique_id) +
-                         " completing the transaction")
+        logging.info("Cash desk " + type(self.context).__name__ + " " + str(self.context.unique_id) +
+                     " completing the transaction")
 
-            # terminato un cliente riprendo ad accettarne di nuovi
-            self.context.state_change(CashDeskStandardNewCustomerState(self.context))
+        # terminato un cliente riprendo ad accettarne di nuovi
+        self.context.state_change(CashDeskStandardNewCustomerState(self.context))
