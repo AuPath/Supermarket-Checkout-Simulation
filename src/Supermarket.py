@@ -227,7 +227,8 @@ class Supermarket(Model):
         left_queues = ordered_queues[chosen_queue_index - ADJ_WINDOW_SIZE:chosen_queue_index]
         right_queues = ordered_queues[chosen_queue_index + 1:chosen_queue_index + ADJ_WINDOW_SIZE + 1]
 
-        adjacent_queues = left_queues + [pivot_cash_desk.queue] + right_queues
+        #adjacent_queues = left_queues + [pivot_cash_desk.queue] + right_queues
+        adjacent_queues = left_queues + right_queues
 
         adjacent_cash_desks = []
         for queue in adjacent_queues:
