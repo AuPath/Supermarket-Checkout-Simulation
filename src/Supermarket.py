@@ -276,6 +276,7 @@ class Supermarket(Model):
         for queue in adjacent_queues:
             adjacent_cash_desks = adjacent_cash_desks + self.get_cash_desks_by_queue(queue)
 
+        adjacent_cash_desks = list(filter(lambda x: x.working, adjacent_cash_desks))
         return adjacent_cash_desks
 
     def get_cash_desks_by_queue(self, queue: SupermarketQueue):
