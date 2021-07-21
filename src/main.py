@@ -72,10 +72,8 @@ def agent_portrayal(agent):
 
 
 def generate_basket_size(n, lambda_parameter=LAMBA_EXPONENTIAL_DISTRIBUTION):
-    values = pd.Series(random.exponential(scale=1 / lambda_parameter, size=1000))
-    values = values.apply(lambda x: math.ceil(round(x)))
-    return values
-
+    values = map(lambda x: math.ceil(x), random.exponential(scale=1 / lambda_parameter, size=n))
+    return list(values)
 
 def generate_customers_metadata(n_customers):
     customers_metadata = []
