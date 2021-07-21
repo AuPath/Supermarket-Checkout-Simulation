@@ -21,23 +21,35 @@ class CashDeskSelfServiceZone(CashDeskZone):
                 + 1
             y = 0
             for i, cash_desk in enumerate(self.cash_desks):
-                if i % 4 == 0:
+                if i % 8 == 0:
                     self.model.grid.place_agent(cash_desk, (x, y))
-                elif i % 4 == 1:
+                elif i % 8 == 1:
                     self.model.grid.place_agent(cash_desk, (x, y + 2))
-                elif i % 4 == 2:
+                elif i % 8 == 2:
                     self.model.grid.place_agent(cash_desk, (x + 2, y))
-                elif i % 4 == 3:
+                elif i % 8 == 3:
                     self.model.grid.place_agent(cash_desk, (x + 2, y + 2))
-                    x += 5
+                elif i % 8 == 4:
+                    self.model.grid.place_agent(cash_desk, (x + 4, y))
+                elif i % 8 == 5:
+                    self.model.grid.place_agent(cash_desk, (x + 4, y + 2))
+                elif i % 8 == 6:
+                    self.model.grid.place_agent(cash_desk, (x + 6, y))
+                elif i % 8 == 7:
+                    self.model.grid.place_agent(cash_desk, (x + 6, y + 2))
+                    x += 9
 
     def move_to_queue(self, customer: Customer, cash_desk: CashDesk):
         if customer.target_queue in self.queues:
             (x, y) = cash_desk.pos
-            if self.model.grid.is_cell_empty((x + 2, y)):
+            if self.model.grid.is_cell_empty((x + 8, y)):
+                x -= 3
+            if self.model.grid.is_cell_empty((x + 6, y)):
                 x -= 1
-            else:
+            if self.model.grid.is_cell_empty((x + 4, y)):
                 x += 1
+            else:
+                x += 3
             self.model.grid.move_agent(customer, (x, 4 + customer.target_queue.size()))
 
     def move_customer_beside_cashdesk(self, customer: Customer, cash_desk: CashDesk):
