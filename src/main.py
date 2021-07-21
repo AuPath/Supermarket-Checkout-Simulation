@@ -9,7 +9,13 @@ from numpy import random
 
 from src.Supermarket import Supermarket
 from src.queuechoicestrategy.QueueChoiceLeastPeople import QueueChoiceLeastPeople
+from src.queuechoicestrategy.QueueChoiceLeastItems import QueueChoiceLeastItems
+from src.queuechoicestrategy.QueueChoiceLeastWaitingPowerImplied import QueueChoiceLeastWaitingPowerImplied
+from src.queuechoicestrategy.QueueChoiceLeastWaitingTimeServiceImplied import QueueChoiceLeastWaitingTimeServiceImplied
+
 from src.queuejockeystrategy.QueueJockeyLeastPeople import QueueJockeyLeastPeople
+from src.queuejockeystrategy.QueueJockeyNoJockeying import QueueJockeyNoJockeying
+from src.queuejockeystrategy.QueueJockeyLeastItems import QueueJockeyLeastItems
 
 # colors
 RED = "#eb3461"
@@ -90,7 +96,7 @@ def generate_customers_metadata(n_customers):
 entering_zone_width = 6
 shopping_zone_height = 3
 number_cash_desk_self_scan = 0
-number_cash_desk = 2
+number_cash_desk = 4
 number_cash_desk_self_service_groups = 0
 shared_queue = False  # coda unica tipo decathlon
 zones_metadata = [('ENTERING', entering_zone_width),
@@ -102,10 +108,10 @@ zones_metadata = [('ENTERING', entering_zone_width),
                   ('CASH_DESK_RESERVED', 1)]
 
 # Customers metadata
-queue_choice_strategy = QueueChoiceLeastPeople()
+queue_choice_strategy = QueueChoiceLeastItems()
 queue_jockeying_strategy = QueueJockeyLeastPeople()
 
-N_CUSTOMERS = 5
+N_CUSTOMERS = 30
 customers_metadata = generate_customers_metadata(N_CUSTOMERS)
 
 height = 20
