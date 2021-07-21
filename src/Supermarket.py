@@ -61,11 +61,12 @@ class Supermarket(Model):
     def step(self):
         # logging.info("Step")
 
-        if len(self.get_not_working_queues()) > 0:
-            if self.is_active_cash_desk_needed():
-                self.get_not_working_queues()[0].working = True
-            else:
-                self.get_not_working_queues()[0].working = False
+        while self.is_active_cash_desk_needed():
+            if len(self.get_not_working_queues()) > 0:
+                if self.is_active_cash_desk_needed():
+                    self.get_not_working_queues()[0].working = True
+                else:
+                    self.get_not_working_queues()[0].working = False
 
         self.customer_scheduler.step()
         self.cash_desk_scheduler.step()
