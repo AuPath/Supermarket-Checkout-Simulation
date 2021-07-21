@@ -15,7 +15,7 @@ class QueueChoiceLeastWaitingPowerImplied(QueueChoiceStrategy):
         chosen_queue = None
 
         for c in cash_desks:
-            waiting_time = c.queue.size() * c.service_time_total()
+            waiting_time = c.queue_size() * c.service_time_total()
             if minimum > waiting_time:
                 minimum = waiting_time
                 chosen_queue = c.queue
