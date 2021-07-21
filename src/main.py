@@ -91,8 +91,8 @@ entering_zone_width = 6
 shopping_zone_height = 3
 number_cash_desk_self_scan = 0
 number_cash_desk = 2
-number_cash_desk_self_service_groups = 1  # non cambiare abbiamo deciso che è sempre 1
-shared_queue = True  # coda unica tipo decathlon
+number_cash_desk_self_service_groups = 0
+shared_queue = False  # coda unica tipo decathlon
 zones_metadata = [('ENTERING', entering_zone_width),
                   ('SHOPPING', shopping_zone_height),
                   ('CASH_DESK_SELF_SCAN', number_cash_desk_self_scan),
@@ -105,7 +105,7 @@ zones_metadata = [('ENTERING', entering_zone_width),
 queue_choice_strategy = QueueChoiceLeastPeople()
 queue_jockeying_strategy = QueueJockeyLeastPeople()
 
-N_CUSTOMERS = 25
+N_CUSTOMERS = 5
 customers_metadata = generate_customers_metadata(N_CUSTOMERS)
 
 height = 20
