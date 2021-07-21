@@ -108,6 +108,14 @@ class Supermarket(Model):
                     idx += 1
                     self.add_cash_desk_to_self_service_zone(idx, normal_queue)
                     idx += 1
+                    self.add_cash_desk_to_self_service_zone(idx, normal_queue)
+                    idx += 1
+                    self.add_cash_desk_to_self_service_zone(idx, normal_queue)
+                    idx += 1
+                    self.add_cash_desk_to_self_service_zone(idx, normal_queue)
+                    idx += 1
+                    self.add_cash_desk_to_self_service_zone(idx, normal_queue)
+                    idx += 1
             elif zone_type == 'CASH_DESK_SELF_SCAN':
                 normal_queue = NormalQueue()
                 for i in range(dimension):
@@ -142,7 +150,7 @@ class Supermarket(Model):
                 + 3 + (
                     self.cash_desk_standard_zone.cash_desks_number * 2 if self.cash_desk_standard_zone is not None else 0) \
                 + 1 + (
-                    self.cash_desk_self_service_zone.cash_desks_number * 4 if self.cash_desk_self_service_zone is not None else 0) \
+                    self.cash_desk_self_service_zone.cash_desks_number * 8 if self.cash_desk_self_service_zone is not None else 0) \
                 + 1 + self.entering_zone.dimension
         self.grid = SingleGrid(width, height, False)
 
@@ -206,7 +214,7 @@ class Supermarket(Model):
         return set(self.queues)
 
     # returns the adjacent queues to the given queue
-    def get_adj_cash_desks(self, cash_desk: CashDesk):
+    def get_adj_cash_desks(self, pivot_cash_desk: CashDesk):
         # TODO: ricontrollare, penso sia giusto così perchè per le self-service vanno ritornate tutte e 4
         # le casse del gruppo. Per come era prima non teneva conto delle altre 3 casse invece deve, perchè
         # se una è vuota deve andare lì e non ad esempio in una cassa normale dove c'è un cliente che paga
@@ -223,13 +231,12 @@ class Supermarket(Model):
                 if cash_desk.queue not in ordered_queues:
                     ordered_queues.append(cash_desk.queue)
 
-        chosen_queue_index = ordered_queues.index(cash_desk.queue)
+        chosen_queue_index = ordered_queues.index(pivot_cash_desk.queue)
         left_queues = ordered_queues[chosen_queue_index - ADJ_WINDOW_SIZE:chosen_queue_index]
         right_queues = ordered_queues[chosen_queue_index + 1:chosen_queue_index + ADJ_WINDOW_SIZE + 1]
 
-        adjacent_queues = left_queues
-        adjacent_queues.append(cash_desk.queue)
-        adjacent_queues = adjacent_queues + right_queues
+        #adjacent_queues = left_queues + [pivot_cash_desk.queue] + right_queues
+        adjacent_queues = left_queues + right_queues
 
         adjacent_cash_desks = []
         for queue in adjacent_queues:

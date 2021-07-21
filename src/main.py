@@ -96,9 +96,9 @@ def generate_customers_metadata(n_customers):
 # Zones metadata
 entering_zone_width = 6
 shopping_zone_height = 3
-number_cash_desk_self_scan = 1
+number_cash_desk_self_scan = 0
 number_cash_desk = 2
-number_cash_desk_self_service_groups = 0
+number_cash_desk_self_service_groups = 1 # non cambiare abbiamo deciso che è sempre 1
 zones_metadata = [('ENTERING', entering_zone_width),
                   ('SHOPPING', shopping_zone_height),
                   ('CASH_DESK_SELF_SCAN', number_cash_desk_self_scan),
@@ -115,10 +115,10 @@ customers_metadata = generate_customers_metadata(N_CUSTOMERS)
 
 height = 20
 # numero casse self-scan (ognuna occupa 2) + 1 spazio + barriera (1) + 1 spazio +
-# numero casse standard (ognuna occupa 2) + 2 spazi + numero gruppi casse self (ognuna occupa 4) +
+# numero casse standard (ognuna occupa 2) + 2 spazi + numero gruppi casse self (ognuna occupa 8) +
 # barriera (1) + larghezza entering zone
 width = number_cash_desk_self_scan * 2 + 3 + number_cash_desk * 2 + 1 + \
-        number_cash_desk_self_service_groups * 4 + 1 + entering_zone_width
+        number_cash_desk_self_service_groups * 8 + 1 + entering_zone_width
 pixels_width = 500
 pixels_height = 500 / width * height
 grid = CanvasGrid(agent_portrayal, width,
