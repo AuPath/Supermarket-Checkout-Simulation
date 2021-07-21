@@ -96,8 +96,7 @@ def generate_customers_metadata(n_customers):
 # Zones metadata
 entering_zone_width = 6
 shopping_zone_height = 3
-# TODO: testare il caso self_scan = 0 perchè scazza con la reserved
-number_cash_desk_self_scan = 1
+number_cash_desk_self_scan = 0
 number_cash_desk = 2
 number_cash_desk_self_service_groups = 1 # non cambiare abbiamo deciso che è sempre 1
 zones_metadata = [('ENTERING', entering_zone_width),

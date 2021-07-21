@@ -13,14 +13,14 @@ class CashDeskReservedZone(CashDeskZone):
         super(CashDeskReservedZone, self).__init__(model, cash_desks_number)
 
     def build(self):
-        if self.cash_desks_number == 0:
-            pass
-        else:
-            x = (self.model.cash_desk_self_scan_zone.cash_desks_number * 2
-                 if self.model.cash_desk_self_scan_zone is not None else 0) - 1
-            y = self.model.grid.height - self.model.shopping_zone.dimension - 2
-            cash_desk = self.cash_desks[0]
-            self.model.grid.place_agent(cash_desk, (x, y))
+        if self.model.cash_desk_self_scan_zone is not None and self.model.cash_desk_self_scan_zone.cash_desks_number > 0:
+            if self.cash_desks_number == 0:
+                pass
+            else:
+                x = self.model.cash_desk_self_scan_zone.cash_desks_number * 2 - 1
+                y = self.model.grid.height - self.model.shopping_zone.dimension - 2
+                cash_desk = self.cash_desks[0]
+                self.model.grid.place_agent(cash_desk, (x, y))
 
     def move_to_reserved_queue(self, customer: Customer, cash_desk: CashDesk):
         cash_desk.queue.enqueue(customer)
