@@ -9,7 +9,7 @@ class CustomerQueuedState(State):
         logging.info("Customer " + str(self.context.unique_id) + " is in a QUEUE")
 
         if not self.context.self_scan and \
-                self.context.get_cash_desk(self.context.target_queue) in self.context.model.cash_desk_self_service_zone.cash_desks:
+                self.context.get_cash_desk(self.context.target_queue) not in self.context.model.cash_desk_self_service_zone.cash_desks:
             chosen_queue = self.context.jockey()
 
             # Il controllo del None serve nel caso non vogliamo jockeying
