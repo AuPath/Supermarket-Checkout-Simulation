@@ -33,8 +33,8 @@ GRID_HEIGHT = 20
 
 MAX_CUSTOMER_QUEUED = 6
 
-QUEUED_PERCENTAGE_OPEN_THRESHOLD = 0.60
-QUEUED_PERCENTAGE_CLOSE_THRESHOLD = 0.30
+QUEUED_PERCENTAGE_OPEN_THRESHOLD = 0.6
+QUEUED_PERCENTAGE_CLOSE_THRESHOLD = 0.3
 
 # Basket size exponential distribution parameter
 LAMBA_EXPONENTIAL_DISTRIBUTION = 0.0736184654254411
@@ -112,7 +112,7 @@ class Supermarket(Model):
                 self.get_not_working_queues()[0].working = True
             else:
                 if self.need_to_close_cash_desk():
-                    self.get_working_queues()[-1].working = False
+                    self.get_working_queues(exclude_self_service=True)[-1].working = False
         else:
             self.close_all_cash_desks()
 
@@ -304,11 +304,6 @@ class Supermarket(Model):
                 # already ordered
                 if cash_desk.queue not in ordered_queues:
                     ordered_queues.append(cash_desk.queue)
-        if self.cash_desk_self_service_zone is not None and self.cash_desk_self_service_zone.cash_desks_number > 0:
-            for cash_desk in self.cash_desk_self_service_zone.cash_desks:
-                # already ordered
-                if cash_desk.queue not in ordered_queues:
-                    ordered_queues.append(cash_desk.queue)
 
         chosen_queue_index = ordered_queues.index(pivot_cash_desk.queue)
 
@@ -346,10 +341,10 @@ class Supermarket(Model):
             if cash_desk.unique_id == unique_id:
                 return cash_desk
 
-    def get_working_queues(self):
+    def get_working_queues(self, exclude_self_service=False):
         filtered_cash_desk = []
         for cash_desk in self.__cash_desks:
-            if type(cash_desk).__name__ == "CashDeskSelfService":
+            if type(cash_desk).__name__ == "CashDeskSelfService" and not exclude_self_service:
                 filtered_cash_desk.append(cash_desk)
             elif type(cash_desk).__name__ == "CashDeskStandard" and cash_desk.working:
                 filtered_cash_desk.append(cash_desk)
@@ -363,15 +358,17 @@ class Supermarket(Model):
         return filtered_cash_desk
 
     def need_to_open_cash_desk(self, opening_threshold=QUEUED_PERCENTAGE_OPEN_THRESHOLD):
-        if len(self.get_working_queues()) == 0:
+        if len(self.get_working_queues(exclude_self_service=True)) == 0:
             return True
+        if len(self.get_not_working_queues()) == 0:
+            return False
         if self.avg_queue_load() > opening_threshold:
             return True
         else:
             return False
 
     def need_to_close_cash_desk(self, closing_threshold=QUEUED_PERCENTAGE_CLOSE_THRESHOLD):
-        if len(self.get_working_queues()) == 1:
+        if len(self.get_working_queues(exclude_self_service=True)) == 1:
             return False
         if self.avg_queue_load() < closing_threshold:
             return True

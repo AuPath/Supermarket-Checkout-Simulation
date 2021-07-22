@@ -61,7 +61,10 @@ class Customer(Agent):
         The customer chooses a queue based on the the chosen Strategy.
         """
         if not self.self_scan:
-            working_queues = [c for c in self.model.get_working_queues() if not c.is_queue_full()]
+            if self.basket_size > 15: # TODO: ho impostato a 15 il max basket size per le casse automatiche
+                working_queues = [c for c in self.model.get_working_queues(exclude_self_service=True) if not c.is_queue_full()]
+            else:
+                working_queues = [c for c in self.model.get_working_queues(exclude_self_service=False) if not c.is_queue_full()]
             if not working_queues:
                 return None
             else:
