@@ -106,3 +106,5 @@ class CashDesk(ABC, Agent):
         else:
             return self.queue.total_items()
 
+    def is_queue_full(self):
+        return self.queue.size() >= self.model.max_customer_in_queue

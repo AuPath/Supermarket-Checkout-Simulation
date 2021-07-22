@@ -61,8 +61,11 @@ class Customer(Agent):
         The customer chooses a queue based on the the chosen Strategy.
         """
         if not self.self_scan:
-            working_queues = self.model.get_working_queues()
-            return self.queue_choice_strategy.choose_queue(working_queues)
+            working_queues = [c for c in self.model.get_working_queues() if not c.is_queue_full()]
+            if not working_queues:
+                return None
+            else:
+                return self.queue_choice_strategy.choose_queue(working_queues)
         else:
             return self.model.get_self_scan_queue()
 
@@ -80,8 +83,12 @@ class Customer(Agent):
             cash_desk = self.get_cash_desk(self.target_queue)
 
         working_adj_cash_desks = self.model.get_adj_cash_desks(cash_desk)
-        chosen_queue = self.queue_jockeying_strategy.switch_queue(self, working_adj_cash_desks)
-        return chosen_queue
+        valid_cash_desks = [c for c in working_adj_cash_desks if not c.is_queue_full()]
+
+        if not valid_cash_desks:
+            return None
+        else:
+            return self.queue_jockeying_strategy.switch_queue(self, working_adj_cash_desks)
 
     def state(self):
         return self.state

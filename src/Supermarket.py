@@ -27,7 +27,7 @@ ADJ_WINDOW_SIZE = 2
 
 GRID_HEIGHT = 20
 
-MAX_CUSTOMER_QUEUED = 8
+MAX_CUSTOMER_QUEUED = 6
 
 QUEUED_PERCENTAGE_OPEN_THRESHOLD = 0.60
 QUEUED_PERCENTAGE_CLOSE_THRESHOLD = 0.30
@@ -64,12 +64,13 @@ class Supermarket(Model):
         # Create customers
         self.init_customers(customers_metadata)
         # Max customer per queue
-        self.max_customer_queued = MAX_CUSTOMER_QUEUED
+        self.max_customer_in_queue = MAX_CUSTOMER_QUEUED
+        assert self.max_customer_in_queue >= 1
 
     def step(self):
-        # logging.info("Step")
+
         if self.get_total_customers() > 0:
-            while self.need_to_open_cash_desk():
+            while self.need_to_open_cash_desk() and self.get_not_working_queues() != []:
                 self.get_not_working_queues()[0].working = True
             else:
                 if self.need_to_close_cash_desk():

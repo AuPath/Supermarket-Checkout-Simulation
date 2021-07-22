@@ -13,8 +13,7 @@ from src.cashdesk.CashDeskSelfService import CashDeskSelfService
 class QueueChoiceLeastWaitingTimeServiceImplied(QueueChoiceStrategy):
 
     # Assumo che le cash desk escludano quella self scan
-    def choose_queue(self, cash_desks: list[CashDesk]):
-
+    def choose_queue(self, cash_desks):
         # Separo per tipo di cassa, devo farlo per calcolare i tempi medi per tipo di cassa
         normal_cash_desks = list(filter(lambda x: isinstance(x, CashDeskStandard)
                                         , cash_desks))

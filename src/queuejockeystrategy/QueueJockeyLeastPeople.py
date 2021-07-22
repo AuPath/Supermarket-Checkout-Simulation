@@ -5,8 +5,6 @@ from src.queuejockeystrategy.QueueJockeyStrategy import QueueJockeyStrategy
 class QueueJockeyLeastPeople(QueueJockeyStrategy):
 
     def switch_queue(self, customer, other_cash_desks):
-        if not other_cash_desks:
-            return None
 
         current_cash_desk = customer.get_cash_desk(customer.target_queue)
         customer_pos = current_cash_desk.queue.content().index(customer)

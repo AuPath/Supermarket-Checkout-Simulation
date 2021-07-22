@@ -9,8 +9,7 @@ import math
 class QueueChoiceLeastWaitingPowerImplied(QueueChoiceStrategy):
 
     # Assumo che le cash desk escludano quella self scan
-    def choose_queue(self, cash_desks: list[CashDesk]):
-
+    def choose_queue(self, cash_desks):
         minimum = math.inf
         chosen_queue = None
 

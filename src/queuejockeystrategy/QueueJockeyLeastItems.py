@@ -6,9 +6,6 @@ from src.queuejockeystrategy.QueueJockeyStrategy import QueueJockeyStrategy
 class QueueJockeyLeastItems(QueueJockeyStrategy):
 
     def switch_queue(self, customer, other_cash_desks):
-        # todo considerare quello in cassa, devo considerare diversamente la coda dove mi trovo rispetto alle altre
-        if not other_cash_desks:
-            return None
 
         current_cash_desk = customer.get_cash_desk(customer.target_queue)
 
