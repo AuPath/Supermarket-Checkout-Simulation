@@ -293,11 +293,6 @@ class Supermarket(Model):
 
     # returns the adjacent queues to the given queue
     def get_adj_cash_desks(self, pivot_cash_desk: CashDesk):
-        # TODO: ricontrollare, penso sia giusto così perchè per le self-service vanno ritornate tutte e 4
-        # todo ritorna lista vuota
-        # le casse del gruppo. Per come era prima non teneva conto delle altre 3 casse invece deve, perchè
-        # se una è vuota deve andare lì e non ad esempio in una cassa normale dove c'è un cliente che paga
-        # list of queues in the right order
         ordered_queues = []
         if self.cash_desk_standard_zone is not None and self.cash_desk_standard_zone.cash_desks_number > 0:
             for cash_desk in self.cash_desk_standard_zone.cash_desks:
