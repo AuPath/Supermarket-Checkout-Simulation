@@ -8,7 +8,9 @@ class CustomerQueuedState(State):
     def action(self):
         logging.info("Customer " + str(self.context.unique_id) + " is in a QUEUE")
 
-        if self.context.get_cash_desk(self.context.target_queue) in self.context.model.cash_desk_standard_zone\
+        if self.context.model.cash_desk_standard_zone is not None and \
+                self.context.model.cash_desk_standard_zone.cash_desks_number > 0 and \
+                self.context.get_cash_desk(self.context.target_queue) in self.context.model.cash_desk_standard_zone\
                 .cash_desks:
             chosen_queue = self.context.jockey()
 

@@ -1,6 +1,5 @@
 import logging
 import math
-import random
 from statistics import mean
 
 from mesa import Model
@@ -39,6 +38,8 @@ QUEUED_PERCENTAGE_CLOSE_THRESHOLD = 0.3
 # Basket size exponential distribution parameter
 LAMBA_EXPONENTIAL_DISTRIBUTION = 0.0736184654254411
 
+SELF_SCAN_PERCENTAGE = 0.4
+
 
 def generate_basket_size(n, lambda_parameter=LAMBA_EXPONENTIAL_DISTRIBUTION):
     values = map(lambda x: math.ceil(x), random.exponential(scale=1 / lambda_parameter, size=n))
@@ -52,9 +53,9 @@ def generate_customers_metadata(n_customers, queue_choice_strategy: QueueChoiceS
     basket_size_values = generate_basket_size(n_customers)
 
     # TODO: che distribuzione hanno i self scan? da inventarsela
-    self_scan = True
+    rand_num = random.random()
     for basket_size in basket_size_values:
-        #self_scan = not self_scan
+        self_scan = rand_num < SELF_SCAN_PERCENTAGE
         new_tuple = (basket_size, self_scan, queue_choice_strategy, queue_jockey_strategy)
         customers_metadata.append(new_tuple)
     return customers_metadata
@@ -165,7 +166,7 @@ class Supermarket(Model):
             elif zone_type == 'CASH_DESK_STANDARD_SHARED_QUEUE':
                 normal_queue = NormalQueue()
                 for i in range(dimension):
-                    cash_desk = CashDeskStandard(idx, self, normal_queue, True)
+                    cash_desk = CashDeskStandard(idx, self, normal_queue)
                     self.cash_desk_standard_shared_zone.cash_desks.append(cash_desk)
                     self.add_cash_desk(cash_desk)
                     idx += 1
