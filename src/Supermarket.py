@@ -52,9 +52,9 @@ def generate_customers_metadata(n_customers, queue_choice_strategy: QueueChoiceS
     basket_size_values = generate_basket_size(n_customers)
 
     # TODO: che distribuzione hanno i self scan? da inventarsela
-    self_scan = False
+    self_scan = True
     for basket_size in basket_size_values:
-        # self_scan = not self_scan
+        #self_scan = not self_scan
         new_tuple = (basket_size, self_scan, queue_choice_strategy, queue_jockey_strategy)
         customers_metadata.append(new_tuple)
     return customers_metadata
