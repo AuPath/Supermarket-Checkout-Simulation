@@ -43,6 +43,10 @@ class CashDesk(ABC, Agent):
     def processing_speed(self):
         return self.__processing_speed
 
+    @processing_speed.setter
+    def processing_speed(self, value: int):
+        self.__processing_speed = value
+
     def step(self):
         self.__state.action()
 

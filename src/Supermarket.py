@@ -1,9 +1,12 @@
 import logging
+import math
 import random
+from statistics import mean
 
 from mesa import Model
 from mesa.space import SingleGrid
 from mesa.time import RandomActivation
+from numpy import random
 
 from src.Customer import Customer
 from src.OccupiedCell import OccupiedCell
@@ -14,6 +17,8 @@ from src.cashdesk.CashDeskSelfService import CashDeskSelfService
 from src.cashdesk.CashDeskStandard import CashDeskStandard
 from src.queue.NormalQueue import NormalQueue
 from src.queue.SupermarketQueue import SupermarketQueue
+from src.queuechoicestrategy.QueueChoiceStrategy import QueueChoiceStrategy
+from src.queuejockeystrategy.QueueJockeyStrategy import QueueJockeyStrategy
 from src.zones.dinamic.CashDeskReservedZone import CashDeskReservedZone
 from src.zones.dinamic.CashDeskSelfScanZone import CashDeskSelfScanZone
 from src.zones.dinamic.CashDeskSelfServiceZone import CashDeskSelfServiceZone
@@ -21,7 +26,6 @@ from src.zones.dinamic.CashDeskStandardSharedQueueZone import CashDeskStandardSh
 from src.zones.dinamic.CashDeskStandardZone import CashDeskStandardZone
 from src.zones.stationary.EnteringZone import EnteringZone
 from src.zones.stationary.ShoppingZone import ShoppingZone
-from statistics import mean
 
 ADJ_WINDOW_SIZE = 2
 
@@ -32,11 +36,35 @@ MAX_CUSTOMER_QUEUED = 6
 QUEUED_PERCENTAGE_OPEN_THRESHOLD = 0.60
 QUEUED_PERCENTAGE_CLOSE_THRESHOLD = 0.30
 
+# Basket size exponential distribution parameter
+LAMBA_EXPONENTIAL_DISTRIBUTION = 0.0736184654254411
+
+
+def generate_basket_size(n, lambda_parameter=LAMBA_EXPONENTIAL_DISTRIBUTION):
+    values = map(lambda x: math.ceil(x), random.exponential(scale=1 / lambda_parameter, size=n))
+    return list(values)
+
+
+def generate_customers_metadata(n_customers, queue_choice_strategy: QueueChoiceStrategy,
+                                queue_jockey_strategy: QueueJockeyStrategy):
+    customers_metadata = []
+
+    basket_size_values = generate_basket_size(n_customers)
+
+    # TODO: che distribuzione hanno i self scan? da inventarsela
+    self_scan = False
+    for basket_size in basket_size_values:
+        # self_scan = not self_scan
+        new_tuple = (basket_size, self_scan, queue_choice_strategy, queue_jockey_strategy)
+        customers_metadata.append(new_tuple)
+    return customers_metadata
+
 
 class Supermarket(Model):
     """SuperMARCO model: description here"""
 
-    def __init__(self, customers_metadata, zones_metadata, adj_window_size=ADJ_WINDOW_SIZE):
+    def __init__(self, zones_metadata, customer_distribution, queue_choice_strategy: QueueChoiceStrategy,
+                 queue_jockey_strategy: QueueJockeyStrategy, adj_window_size=ADJ_WINDOW_SIZE):
         self.__customers = set()
         self.__occupied_cells = set()
         self.__cash_desks: list[CashDesk] = []
@@ -47,6 +75,10 @@ class Supermarket(Model):
         self.__num_agent = 0
         self.running = True
         self.queues = None
+        self.__customer_distribution = customer_distribution
+        self.__current_step = 1
+        self.__queue_choice_strategy = queue_choice_strategy
+        self.__queue_jockey_strategy = queue_jockey_strategy
         self.zones_metadata = zones_metadata
         # Create zones
         self.entering_zone = None
@@ -61,14 +93,20 @@ class Supermarket(Model):
         self.init_cash_desks()
         # Init grid
         self.init_environment()
-        # Create customers
-        self.init_customers(customers_metadata)
         # Max customer per queue
         self.max_customer_in_queue = MAX_CUSTOMER_QUEUED
         assert self.max_customer_in_queue >= 1
 
     def step(self):
 
+        if self.__current_step < 60 * 8:  # TODO: la giornata finisce dopo 8h
+            # continuous creation of customers
+            customers_metadata = generate_customers_metadata(self.__customer_distribution[self.__current_step],
+                                                             self.__queue_choice_strategy, self.__queue_jockey_strategy)
+            self.init_customers(customers_metadata)
+            self.__current_step += 1
+
+        # activation / deactivation cash desks
         if self.get_total_customers() > 0:
             while self.need_to_open_cash_desk() and self.get_not_working_queues() != []:
                 self.get_not_working_queues()[0].working = True
@@ -78,6 +116,7 @@ class Supermarket(Model):
         else:
             self.close_all_cash_desks()
 
+        # agent's steps
         self.customer_scheduler.step()
         self.cash_desk_scheduler.step()
 
