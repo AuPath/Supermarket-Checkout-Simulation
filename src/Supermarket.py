@@ -360,8 +360,6 @@ class Supermarket(Model):
     def need_to_open_cash_desk(self, opening_threshold=QUEUED_PERCENTAGE_OPEN_THRESHOLD):
         if len(self.get_working_queues(exclude_self_service=True)) == 0:
             return True
-        if len(self.get_not_working_queues()) == 0:
-            return False
         if self.avg_queue_load() > opening_threshold:
             return True
         else:
@@ -376,7 +374,7 @@ class Supermarket(Model):
             return False
 
     def avg_queue_load(self):
-        avg_load = mean(map(lambda x: x.queue.size(), self.get_working_queues()))
+        avg_load = mean(map(lambda x: x.queue.size(), self.get_working_queues(exclude_self_service=True)))
         return avg_load / MAX_CUSTOMER_QUEUED
 
     def get_total_customers(self):
