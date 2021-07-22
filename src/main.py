@@ -94,9 +94,9 @@ def generate_customers_metadata(n_customers):
 entering_zone_width = 6
 shopping_zone_height = 3
 number_cash_desk_self_scan = 0
-number_cash_desk = 6
+number_cash_desk = 0
 
-number_cash_desk_self_service_groups = 0
+number_cash_desk_self_service_groups = 1
 shared_queue = False  # coda unica tipo decathlon
 zones_metadata = [('ENTERING', entering_zone_width),
                   ('SHOPPING', shopping_zone_height),
