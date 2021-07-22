@@ -21,10 +21,16 @@ from src.zones.dinamic.CashDeskStandardSharedQueueZone import CashDeskStandardSh
 from src.zones.dinamic.CashDeskStandardZone import CashDeskStandardZone
 from src.zones.stationary.EnteringZone import EnteringZone
 from src.zones.stationary.ShoppingZone import ShoppingZone
+from statistics import mean
 
 ADJ_WINDOW_SIZE = 2
 
 GRID_HEIGHT = 20
+
+MAX_CUSTOMER_QUEUED = 8
+
+QUEUED_PERCENTAGE_OPEN_THRESHOLD = 0.60
+QUEUED_PERCENTAGE_CLOSE_THRESHOLD = 0.30
 
 
 class Supermarket(Model):
@@ -57,21 +63,26 @@ class Supermarket(Model):
         self.init_environment()
         # Create customers
         self.init_customers(customers_metadata)
+        # Max customer per queue
+        self.max_customer_queued = MAX_CUSTOMER_QUEUED
 
     def step(self):
         # logging.info("Step")
-
-        while self.is_active_cash_desk_needed():
-            if len(self.get_not_working_queues()) > 0:
-                if self.is_active_cash_desk_needed():
-                    self.get_not_working_queues()[0].working = True
-
-        while not self.is_active_cash_desk_needed():
-            if len(self.get_working_queues()) > 0:
-                self.get_working_queues()[-1].working = False
+        if self.get_total_customers() > 0:
+            while self.need_to_open_cash_desk():
+                self.get_not_working_queues()[0].working = True
+            else:
+                if self.need_to_close_cash_desk():
+                    self.get_working_queues()[-1].working = False
+        else:
+            self.close_all_cash_desks()
 
         self.customer_scheduler.step()
         self.cash_desk_scheduler.step()
+
+    def close_all_cash_desks(self):
+        for cash_desk in self.get_working_queues():
+            cash_desk.working = False
 
     def init_customers(self, customers_metadata):
         logging.info("Init customers")
@@ -111,13 +122,6 @@ class Supermarket(Model):
                     self.cash_desk_standard_zone.cash_desks.append(cash_desk)
                     self.add_cash_desk(cash_desk)
                     idx += 1
-                '''
-                # TODO: quante casse devono essere aperte sempre? ne metto 2
-                if self.get_cash_desk_by_id(1):
-                    self.get_cash_desk_by_id(1).working = True
-                if self.get_cash_desk_by_id(2):
-                    self.get_cash_desk_by_id(2).working = True
-                '''
             elif zone_type == 'CASH_DESK_STANDARD_SHARED_QUEUE':
                 normal_queue = NormalQueue()
                 for i in range(dimension):
@@ -318,14 +322,25 @@ class Supermarket(Model):
                 filtered_cash_desk.append(cash_desk)
         return filtered_cash_desk
 
-    def is_active_cash_desk_needed(self):
-        if len(self.get_not_working_queues()) == 0:
-            return False
+    def need_to_open_cash_desk(self, opening_threshold=QUEUED_PERCENTAGE_OPEN_THRESHOLD):
+        if len(self.get_working_queues()) == 0:
+            return True
+        if self.avg_queue_load() > opening_threshold:
+            return True
         else:
-            if self.get_total_customers() > len(self.get_working_queues()) * 5:
-                return True
-            else:
-                return False
+            return False
+
+    def need_to_close_cash_desk(self, closing_threshold=QUEUED_PERCENTAGE_CLOSE_THRESHOLD):
+        if len(self.get_working_queues()) == 1:
+            return False
+        if self.avg_queue_load() < closing_threshold:
+            return True
+        else:
+            return False
+
+    def avg_queue_load(self):
+        avg_load = mean(map(lambda x: x.queue.size(), self.get_working_queues()))
+        return avg_load / MAX_CUSTOMER_QUEUED
 
     def get_total_customers(self):
         # questo metodo serve per l'attivazione e la disattivazione delle casse
@@ -334,7 +349,7 @@ class Supermarket(Model):
         # CustomerQueuedState -> tutto tranne CustomerAtCashDeskState
         total_customers = 0
         for customer in self.__customers:
-            if type(customer.state).__name__ != 'CustomeAtCashDeskState':
+            if type(customer.state).__name__ != 'CustomerAtCashDeskState':
                 total_customers += 1
 
         return total_customers

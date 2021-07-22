@@ -76,11 +76,11 @@ def generate_basket_size(n, lambda_parameter=LAMBA_EXPONENTIAL_DISTRIBUTION):
     values = map(lambda x: math.ceil(x), random.exponential(scale=1 / lambda_parameter, size=n))
     return list(values)
 
+
 def generate_customers_metadata(n_customers):
     customers_metadata = []
 
     basket_size_values = generate_basket_size(n_customers)
-    #basket_size_values = [20 + i for i in range(n_customers)]
 
     self_scan = False
     for basket_size in basket_size_values:
@@ -94,7 +94,7 @@ def generate_customers_metadata(n_customers):
 entering_zone_width = 6
 shopping_zone_height = 3
 number_cash_desk_self_scan = 0
-number_cash_desk = 10
+number_cash_desk = 6
 
 number_cash_desk_self_service_groups = 0
 shared_queue = False  # coda unica tipo decathlon
