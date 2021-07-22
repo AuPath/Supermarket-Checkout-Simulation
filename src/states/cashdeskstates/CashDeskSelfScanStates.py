@@ -6,11 +6,14 @@ from src.states.customerstates.CustomerAtCashDeskState import CustomerAtCashDesk
 
 
 class CashDeskSelfScanNewCustomerState(State):
+    RE_READ_PARTIAL_PROBABILITY = 0.075
+    RE_READ_TOTAL_PROBABILITY = 0.025
+    NO_READ_PROBABILITY = 1 - (RE_READ_TOTAL_PROBABILITY + RE_READ_PARTIAL_PROBABILITY)
 
     def action(self):
         if self.context.queue.size() > 0:
-            rand_num = random.random()  # 0.8 niente, 0.15 parziale, 0.05 totale
-            if rand_num <= 0.8:
+            rand_num = random()  # 0.8 niente, 0.15 parziale, 0.05 totale
+            if rand_num <= 0.9:
                 # Prendo il cliente e gli cambio lo stato
                 self.context.customer = self.context.queue.dequeue()
 
@@ -29,7 +32,7 @@ class CashDeskSelfScanNewCustomerState(State):
             else:
                 # Prendo il cliente e gli cambio lo stato
                 self.context.customer = self.context.queue.dequeue()
-                if rand_num <= 0.95:
+                if rand_num <= 0.975:
                     # partial rereading
                     self.context.total_reread = False
                     self.context.customer.basket_size = 10

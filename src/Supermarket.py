@@ -52,9 +52,9 @@ def generate_customers_metadata(n_customers, queue_choice_strategy: QueueChoiceS
     basket_size_values = generate_basket_size(n_customers)
 
     # TODO: che distribuzione hanno i self scan? da inventarsela
-    self_scan = False
+    self_scan = True
     for basket_size in basket_size_values:
-        # self_scan = not self_scan
+        #self_scan = not self_scan
         new_tuple = (basket_size, self_scan, queue_choice_strategy, queue_jockey_strategy)
         customers_metadata.append(new_tuple)
     return customers_metadata
@@ -355,8 +355,6 @@ class Supermarket(Model):
     def need_to_open_cash_desk(self, opening_threshold=QUEUED_PERCENTAGE_OPEN_THRESHOLD):
         if len(self.get_working_queues(exclude_self_service=True)) == 0:
             return True
-        if len(self.get_not_working_queues()) == 0:
-            return False
         if self.avg_queue_load() > opening_threshold:
             return True
         else:
@@ -371,7 +369,7 @@ class Supermarket(Model):
             return False
 
     def avg_queue_load(self):
-        avg_load = mean(map(lambda x: x.queue.size(), self.get_working_queues()))
+        avg_load = mean(map(lambda x: x.queue.size(), self.get_working_queues(exclude_self_service=True)))
         return avg_load / MAX_CUSTOMER_QUEUED
 
     def get_total_customers(self):
