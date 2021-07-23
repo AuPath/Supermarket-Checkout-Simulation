@@ -1,5 +1,3 @@
-import math
-
 from mesa import Model
 
 from src.Customer import Customer
