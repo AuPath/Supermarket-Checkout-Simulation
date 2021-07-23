@@ -1,76 +1,24 @@
-import logging
-from datetime import datetime
-
 from mesa.visualization.ModularVisualization import ModularServer
 from mesa.visualization.modules import CanvasGrid, TextElement, ChartModule
 
 from src.Supermarket import Supermarket
 from src.queuechoicestrategy.QueueChoiceLeastPeople import QueueChoiceLeastPeople
 from src.queuejockeystrategy.QueueJockeyLeastPeople import QueueJockeyLeastPeople
-
-# colors
-RED = "#eb3461"
-BLUE = "#3493eb"
-BLUE_GREY = "#a9bac9"
-GREEN = "#77eb34"
-ORANGE = "#eba234"
-GREY = "#a1a3a0"
-BLACK = "#000000"
-
-filename = '../log/log' + str(datetime.now().strftime("%d-%m-%Y")) + '.log'
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(message)s",
-    handlers=[
-        logging.FileHandler(filename),
-        logging.StreamHandler()
-    ]
-)
+from src.utility import *
 
 
 class CustomerLegendElement(TextElement):
     def render(self, model):
-        return "<p style=font-size:15px;>" + "<b>Customers legend:</b><br>" + "E: entering state<br>" + \
-               "S: shopping state<br>" + "C: choosing queue state<br>" + "Q: queued state<br>" + "P: paying state<br>" \
-               + "</p>"
+        return read_html(STATIC_PAGE_PATH, 'customer_legend.html')
 
 
 class CashDeskLegendElement(TextElement):
     def render(self, model):
-        return "<p style=font-size:15px;>" + "<b>Cash desks legend:</b><br>" + "N: normal cash desk<br>" + \
-               "A: automatic cash desk<br>" + "S: self-scan cash desk" + "</p>"
+        return read_html(STATIC_PAGE_PATH, 'cash_desk_legend.html')
 
 
-def agent_portrayal(agent):
-    if agent is None:
-        return
-
-    portrayal = {}
-
-    if agent.type == 0:
-        portrayal = {"Shape": agent.state.get_image(),
-                     "scale": 1,
-                     "r": 0.5,
-                     "Layer": 1}
-    elif agent.type == 1:
-        portrayal = {"Shape": "rect",
-                     "Filled": "true",
-                     "Color": BLACK,
-                     "Layer": 1}
-        if agent.direction == "v":
-            portrayal["w"] = 0.2
-            portrayal["h"] = 1
-        elif agent.direction == "h":
-            portrayal["w"] = 1
-            portrayal["h"] = 0.2
-    elif agent.type == 2:
-        portrayal = {"Shape": agent.get_image(),
-                     "Filled": "true",
-                     "w": 1,
-                     "h": 1,
-                     "Layer": 1}
-    return portrayal
-
+# Init log
+init_logging(LOG_PATH, enable_logging=False)
 
 # Zones metadata
 entering_zone_width = 6
@@ -121,4 +69,3 @@ server = ModularServer(Supermarket,
                         })
 server.port = 8521  # The default
 server.launch()
-
