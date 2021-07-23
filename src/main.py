@@ -2,7 +2,7 @@ import logging
 from datetime import datetime
 
 from mesa.visualization.ModularVisualization import ModularServer
-from mesa.visualization.modules import CanvasGrid
+from mesa.visualization.modules import CanvasGrid, TextElement, ChartModule
 
 from src.Supermarket import Supermarket
 from src.queuechoicestrategy.QueueChoiceLeastPeople import QueueChoiceLeastPeople
@@ -26,6 +26,19 @@ logging.basicConfig(
         logging.StreamHandler()
     ]
 )
+
+
+class CustomerLegendElement(TextElement):
+    def render(self, model):
+        return "<p style=font-size:15px;>" + "<b>Customers legend:</b><br>" + "E: entering state<br>" + \
+               "S: shopping state<br>" + "C: choosing queue state<br>" + "Q: queued state<br>" + "P: paying state<br>" \
+               + "</p>"
+
+
+class CashDeskLegendElement(TextElement):
+    def render(self, model):
+        return "<p style=font-size:15px;>" + "<b>Cash desks legend:</b><br>" + "N: normal cash desk<br>" + \
+               "A: automatic cash desk<br>" + "S: self-scan cash desk" + "</p>"
 
 
 def agent_portrayal(agent):
@@ -89,9 +102,16 @@ pixels_height = 500 / width * height
 grid = CanvasGrid(agent_portrayal, width,
                   height, pixels_width, pixels_height)
 
+# Grafici e metriche
+chart = ChartModule([{"Label": "Total_customers",
+                      "Color": "Black"}],
+                    data_collector_name='datacollector')
+
 # Create server
+customer_legend_element = CustomerLegendElement()
+cash_desk_legend_element = CashDeskLegendElement()
 server = ModularServer(Supermarket,
-                       [grid],
+                       [grid, customer_legend_element, cash_desk_legend_element, chart],
                        "Supermarket",
                        {"zones_metadata": zones_metadata,
                         # lista con numero di clienti da generare ad ogni step es. [1, 2, 3, 2, 4, 5, 2, ...]
@@ -101,3 +121,4 @@ server = ModularServer(Supermarket,
                         })
 server.port = 8521  # The default
 server.launch()
+

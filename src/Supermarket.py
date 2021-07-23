@@ -1,9 +1,9 @@
 import logging
 import math
-import random
 from statistics import mean
 
 from mesa import Model
+from mesa.datacollection import DataCollector
 from mesa.space import SingleGrid
 from mesa.time import RandomActivation
 from numpy import random
@@ -39,6 +39,8 @@ QUEUED_PERCENTAGE_CLOSE_THRESHOLD = 0.3
 # Basket size exponential distribution parameter
 LAMBA_EXPONENTIAL_DISTRIBUTION = 0.0736184654254411
 
+SELF_SCAN_PERCENTAGE = 0.4
+
 
 def generate_basket_size(n, lambda_parameter=LAMBA_EXPONENTIAL_DISTRIBUTION):
     values = map(lambda x: math.ceil(x), random.exponential(scale=1 / lambda_parameter, size=n))
@@ -52,9 +54,9 @@ def generate_customers_metadata(n_customers, queue_choice_strategy: QueueChoiceS
     basket_size_values = generate_basket_size(n_customers)
 
     # TODO: che distribuzione hanno i self scan? da inventarsela
-    self_scan = True
+    rand_num = random.random()
     for basket_size in basket_size_values:
-        #self_scan = not self_scan
+        self_scan = rand_num < SELF_SCAN_PERCENTAGE
         new_tuple = (basket_size, self_scan, queue_choice_strategy, queue_jockey_strategy)
         customers_metadata.append(new_tuple)
     return customers_metadata
@@ -96,6 +98,11 @@ class Supermarket(Model):
         # Max customer per queue
         self.max_customer_in_queue = MAX_CUSTOMER_QUEUED
         assert self.max_customer_in_queue >= 1
+
+        # TODO: definire qui le metriche
+        self.datacollector = DataCollector(
+            model_reporters={"Total_customers": self.get_total_customers},  # `compute_gini` defined above
+            agent_reporters={"Wealth": "wealth"})
 
     def step(self):
 
@@ -165,7 +172,7 @@ class Supermarket(Model):
             elif zone_type == 'CASH_DESK_STANDARD_SHARED_QUEUE':
                 normal_queue = NormalQueue()
                 for i in range(dimension):
-                    cash_desk = CashDeskStandard(idx, self, normal_queue, True)
+                    cash_desk = CashDeskStandard(idx, self, normal_queue)
                     self.cash_desk_standard_shared_zone.cash_desks.append(cash_desk)
                     self.add_cash_desk(cash_desk)
                     idx += 1
@@ -339,16 +346,16 @@ class Supermarket(Model):
     def get_working_queues(self, exclude_self_service=False):
         filtered_cash_desk = []
         for cash_desk in self.__cash_desks:
-            if type(cash_desk).__name__ == "CashDeskSelfService" and not exclude_self_service:
+            if cash_desk in self.cash_desk_self_service_zone.cash_desks and not exclude_self_service:
                 filtered_cash_desk.append(cash_desk)
-            elif type(cash_desk).__name__ == "CashDeskStandard" and cash_desk.working:
+            elif cash_desk in self.cash_desk_standard_zone.cash_desks and cash_desk.working:
                 filtered_cash_desk.append(cash_desk)
         return filtered_cash_desk
 
     def get_not_working_queues(self):
         filtered_cash_desk = []
         for cash_desk in self.__cash_desks:
-            if type(cash_desk).__name__ == "CashDeskStandard" and not cash_desk.working:
+            if cash_desk in self.cash_desk_standard_zone.cash_desks and not cash_desk.working:
                 filtered_cash_desk.append(cash_desk)
         return filtered_cash_desk
 
@@ -398,6 +405,6 @@ class Supermarket(Model):
         else:
             filtered_cash_desk = []
             for cash_desk in self.__cash_desks:
-                if not type(cash_desk).__name__ == "CashDeskSelfScan":
+                if cash_desk in self.cash_desk_self_scan_zone.cash_desks:
                     filtered_cash_desk.append(cash_desk)
             return filtered_cash_desk
