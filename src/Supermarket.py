@@ -340,16 +340,16 @@ class Supermarket(Model):
     def get_working_queues(self, exclude_self_service=False):
         filtered_cash_desk = []
         for cash_desk in self.__cash_desks:
-            if type(cash_desk).__name__ == "CashDeskSelfService" and not exclude_self_service:
+            if cash_desk in self.cash_desk_self_service_zone.cash_desks and not exclude_self_service:
                 filtered_cash_desk.append(cash_desk)
-            elif type(cash_desk).__name__ == "CashDeskStandard" and cash_desk.working:
+            elif cash_desk in self.cash_desk_standard_zone.cash_desks and cash_desk.working:
                 filtered_cash_desk.append(cash_desk)
         return filtered_cash_desk
 
     def get_not_working_queues(self):
         filtered_cash_desk = []
         for cash_desk in self.__cash_desks:
-            if type(cash_desk).__name__ == "CashDeskStandard" and not cash_desk.working:
+            if cash_desk in self.cash_desk_standard_zone.cash_desks and not cash_desk.working:
                 filtered_cash_desk.append(cash_desk)
         return filtered_cash_desk
 
@@ -399,6 +399,6 @@ class Supermarket(Model):
         else:
             filtered_cash_desk = []
             for cash_desk in self.__cash_desks:
-                if not type(cash_desk).__name__ == "CashDeskSelfScan":
+                if cash_desk in self.cash_desk_self_scan_zone.cash_desks:
                     filtered_cash_desk.append(cash_desk)
             return filtered_cash_desk

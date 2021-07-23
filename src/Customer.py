@@ -112,10 +112,10 @@ class Customer(Agent):
         if self.self_scan:
             self.model.cash_desk_self_scan_zone.move_to_queue(self, cash_desk)
         else:
-            if type(cash_desk).__name__ == 'CashDeskStandard':
+            if cash_desk in self.model.cash_desk_standard_zone.cash_desks:
                 if self.model.cash_desk_standard_zone is not None:
                     self.model.cash_desk_standard_zone.move_to_queue(self, cash_desk)
                 else:
                     self.model.cash_desk_standard_shared_zone.move_to_queue(self, cash_desk)
-            elif type(cash_desk).__name__ == 'CashDeskSelfService':
+            elif cash_desk in self.model.cash_desk_self_service_zone.cash_desks:
                 self.model.cash_desk_self_service_zone.move_to_queue(self, cash_desk)
