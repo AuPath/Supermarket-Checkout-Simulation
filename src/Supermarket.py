@@ -101,8 +101,7 @@ class Supermarket(Model):
 
         # TODO: definire qui le metriche
         self.datacollector = DataCollector(
-            model_reporters={"Total_customers": self.get_total_customers},  # `compute_gini` defined above
-            agent_reporters={"Wealth": "wealth"})
+            model_reporters={"Total_customers": self.get_total_customers})
 
     def step(self):
 
@@ -123,7 +122,8 @@ class Supermarket(Model):
         else:
             self.close_all_cash_desks()
 
-        # agent's steps
+        # Model step
+        self.datacollector.collect(self)
         self.customer_scheduler.step()
         self.cash_desk_scheduler.step()
 
