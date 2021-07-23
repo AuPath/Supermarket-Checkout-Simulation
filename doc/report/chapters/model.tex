@@ -1,7 +1,23 @@
 \chapter{Descrizione del modello}
 
-MESA: modello (Supermarket) + agenti (Customer, CashDesk)
+\section{Framework adottato e descrizione degli agenti}
+
+\todo{reference} Mesa è un framework in Python usato per la modellazione basata su agenti (ABM). Permette di creare modelli con componenti \textit{built-in} come griglie spaziali e scheduler di agenti, e di visualizzare i componenti del modello con un'interfaccia browser; Mesa infine comprende strumenti per l'analisi del modello creato.
+
+Nel nostro modello di supermercato, il modello vero e proprio di Mesa è la classe \textbf{Supermarket} e gli agenti sono i clienti, classe \textbf{Customer}, e le casse, classe \textbf{CashDesk}. 
+
+La classe \textbf{Supermarket} si occupa di inizializzare la griglia che verrà poi mostrata in fase di simulazione sull'interfaccia, inizializzare le casse, l'ambiente e i clienti.
+
+Per inizializzare la griglia, l'ambiente viene diviso in zone: zona d'entrata, zona di shopping, zona casse normali, zona casse self-service, zona casse self-scan. Questa divisione permette una gestione più semplice dello spazio e dei movimenti degli agenti. Ogni zona ha come parametri la dimensione o il numero di casse che deve contenere, questi parametri vengono inizializzati nella classe \textbf{main}, come si vedrà nella prossima sezione.
+
+Ogni zona è responsabile della propria costruzione, ovvero del proprio collocamento nella griglia dell'interfaccia in base alle proprie dimensioni ed eventualmente del posizionamento delle casse che contiene. Inoltre ogni zona è responsabile dei movimenti dei clienti: nel momento in cui un cliente vuole muoversi da una zona all'altra infatti, è la zona di destinazione che fornisce il metodo per posizionarsi correttamente in essa.
+
+\todo{Parlare di quanto dura uno step e quanto dura una simulazione} Ad ogni step della simulazione, il modello crea dei clienti e li posiziona nella \textbf{Entering Zone} del supermercato in coordinate random, dunque si occupa della attivazione e disattivazione delle casse standard in base al numero di clienti presenti nel negozio in quello step, secondo dei parametri che si vedranno nella sezione \todo{citare la sezione} Workflow degli agenti. Quindi il modello chiama gli scheduler degli agenti, clienti e casse, e fa eseguire i loro step.
+
+\section{Parametri del modello}
 
 Inizializzazione della griglia e parametri per creare casse (numero casse, coda condivisa o no), customer, basket size (analisi dei dati di Gianluca).
+
+\section{Workflow degli agenti}
 
 Steps: ad ogni step entrano clienti in base alla distribuzione data come parametro; ad ogni step le casse decidono se aprire o chiudere in base al numero di clienti presenti; mettere grafici dei comportamenti e degli stati dei clienti e delle casse (quindi descrizione in dettaglio di ogni cassa e tipo di coda, di ogni stato della cassa e del cliente).
