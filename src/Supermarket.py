@@ -3,6 +3,7 @@ import math
 from statistics import mean
 
 from mesa import Model
+from mesa.datacollection import DataCollector
 from mesa.space import SingleGrid
 from mesa.time import RandomActivation
 from numpy import random
@@ -97,6 +98,11 @@ class Supermarket(Model):
         # Max customer per queue
         self.max_customer_in_queue = MAX_CUSTOMER_QUEUED
         assert self.max_customer_in_queue >= 1
+
+        # TODO: definire qui le metriche
+        self.datacollector = DataCollector(
+            model_reporters={"Total_customers": self.get_total_customers},  # `compute_gini` defined above
+            agent_reporters={"Wealth": "wealth"})
 
     def step(self):
 
