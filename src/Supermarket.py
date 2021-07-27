@@ -114,9 +114,7 @@ class Supermarket(Model):
                              "Flow_self_scan": self.get_flow_self_scan
                              })
 
-
     def step(self):
-
         if self.__current_step < 60 * 8:  # TODO: la giornata finisce dopo 8h
             # continuous creation of customers
             customers_metadata = generate_customers_metadata(self.__customer_distribution[self.__current_step],
@@ -140,8 +138,16 @@ class Supermarket(Model):
         self.cash_desk_scheduler.step()
 
         if self.get_number_of_customers() == 0 and self.__current_step > 1:
-            with open("../pickle/datacollector.pkl", "wb") as f:
-                pickle.dump(self.datacollector, f)
+            self.dump_data_collector()
+
+    def dump_data_collector(self):
+        from datetime import datetime
+        timestamp = str(datetime.timestamp(datetime.now())).split('.')[0]
+        f_name = f"../pickle/datacollector_{timestamp}.pkl"
+        print("ciao")
+
+        with open(f_name, "wb") as f:
+            pickle.dump(self.datacollector.model_vars, f)
 
     def close_all_cash_desks(self):
         for cash_desk in self.get_working_queues():
