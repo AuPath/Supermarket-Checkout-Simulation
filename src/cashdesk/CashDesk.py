@@ -47,6 +47,10 @@ class CashDesk(ABC, Agent):
     def processing_speed(self, value: int):
         self.__processing_speed = value
 
+    @property
+    def state(self):
+        return self.__state
+
     def step(self):
         self.__state.action()
 

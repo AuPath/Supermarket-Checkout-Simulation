@@ -1,6 +1,7 @@
 import logging
 import math
 from statistics import mean
+import pickle
 
 from mesa import Model
 from mesa.datacollection import DataCollector
@@ -101,7 +102,18 @@ class Supermarket(Model):
 
         # TODO: definire qui le metriche
         self.datacollector = DataCollector(
-            model_reporters={"Total_customers": self.get_total_customers})
+            model_reporters={"Total_customers": self.get_number_of_customers,
+                             # grafici fondamentali: densità sull'asse x, flusso sull'asse y
+                             # lo facciamo totale e differenziando per tipo di cassa
+                             "Density_total": self.get_density_total,
+                             # numero di clienti totali fratto numero di casse per ogni step
+                             "Flow_total": self.get_flow_total,  # numero di clienti processati per ogni cassa a step,
+                             "Density_standard": self.get_density_standard,
+                             "Flow_standard": self.get_flow_standard,
+                             "Density_self_scan": self.get_density_self_scan,
+                             "Flow_self_scan": self.get_flow_self_scan
+                             })
+
 
     def step(self):
 
@@ -126,6 +138,10 @@ class Supermarket(Model):
         self.datacollector.collect(self)
         self.customer_scheduler.step()
         self.cash_desk_scheduler.step()
+
+        if self.get_number_of_customers() == 0 and self.__current_step > 1:
+            with open("../pickle/datacollector.pkl", "wb") as f:
+                pickle.dump(self.datacollector, f)
 
     def close_all_cash_desks(self):
         for cash_desk in self.get_working_queues():
@@ -390,6 +406,60 @@ class Supermarket(Model):
                 total_customers += 1
 
         return total_customers
+
+    def get_number_of_customers(self, exclude_self_scan=False):
+        if exclude_self_scan:
+            n_customers = 0
+            for customer in self.__customers:
+                if not customer.self_scan:
+                    n_customers += 1
+            return n_customers
+        else:
+            return len(self.__customers)
+
+    def get_number_processed_customers(self, exclude_self_scan=False):
+        n = 0
+        if exclude_self_scan:
+            cash_desks = self.get_cash_desks(exclude_self_scan=True)
+        else:
+            cash_desks = self.get_cash_desks()
+
+        for cash_desk in cash_desks:
+            cash_desk_type = type(cash_desk.state).__name__
+            if cash_desk_type == 'CashDeskStandardTransactionCompletedState' or \
+                    cash_desk_type == 'CashDeskSelfServiceTransactionCompletedState' or \
+                    cash_desk_type == 'CashDeskSelfScanTransactionCompletedState' or \
+                    cash_desk_type == 'CashDeskReservedTransactionCompletedState':
+                n += 1
+
+        return n
+
+    def get_density_total(self):
+        # numero di clienti totale / numero di casse totali
+        return self.get_number_of_customers() / len(self.get_cash_desks())
+
+    def get_flow_total(self):
+        # numero di clienti processati (uscenti) totali
+        return self.get_number_processed_customers() / len(self.get_cash_desks())
+
+    def get_density_standard(self):
+        # numero di clienti non self scan / numero di casse non self scan
+        return self.get_number_of_customers(exclude_self_scan=True) / len(self.get_cash_desks(exclude_self_scan=True))
+
+    def get_flow_standard(self):
+        # numero di clienti processati (uscenti) dalle casse non self scan
+        return self.get_number_processed_customers(exclude_self_scan=True) / \
+               len(self.get_cash_desks(exclude_self_scan=True))
+
+    def get_density_self_scan(self):
+        # numero di clienti self scan / numero di casse self scan
+        return (self.get_number_of_customers() - self.get_number_of_customers(exclude_self_scan=True)) / \
+               len(self.get_cash_desks_by_type("CashDeskSelfScan"))
+
+    def get_flow_self_scan(self):
+        # numero di clienti processati (uscenti) dalle casse self scan
+        return (self.get_number_processed_customers() - self.get_number_processed_customers(exclude_self_scan=True)) / \
+               len(self.get_cash_desks_by_type("CashDeskSelfScan"))
 
     def get_occupied_cells(self):
         return self.__occupied_cells
