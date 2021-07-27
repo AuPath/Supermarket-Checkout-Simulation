@@ -1,1 +1,51 @@
 \chapter{Implementazione dei comportamenti e delle strategie}
+\label{implementation:intro}
+
+In questo capitolo verranno analizzate le strategie di scelta della coda da parte del cliente. In particolare queste strategie determinano la coda che il cliente deciderà di seguire durante la \textit{fase di scelta della coda} e durante la \textit{fase di attesa in coda e jockeying}. 
+
+\todo{Forse qui serve parlare dei paper (quello dei polacchi e quello delle fork)} Come introdotto all'inizio della relazione, obiettivo di questo progetto è analizzare le varie configurazioni di casse all'interno del supermercato, al variare del tipo di casse, della quantità di clienti presenti nel negozio e alla strategia di scelta della coda dei clienti, pertanto è necessario disporre di strategie che sfruttano calcoli basati su variabili diverse: le variabili in gioco saranno il numero di elementi nel carrello, il numero di persone e il tempo medio di attesa.
+
+Se un cliente entra nel supermercato con l'intenzione di usare le casse self-scan, chiaramente non sarà dotato di strategie di scelta della coda e di jockeying, dal momento che le casse self-scan hanno sempre un'unica coda condivisa. Anche nel caso in cui le casse standard abbiano un'unica coda condivisa, come capita in molti negozi, il cliente non avrà una strategia di scelta della coda o di jockeying. Al contrario invece, dopo la fase di shopping il cliente dovrà scegliere la coda tra le code disponibili delle casse standard e delle casse self-service; una volta che esso si accoda in una cassa standard, può decidere di cambiare coda e quindi effettuare il jockeying, se ritiene, con la propria strategia, che nelle casse a lui più vicine ci sia un tempo minore di attesa.
+
+Lo scopo del progetto è indagare sulla configurazione di casse migliori, quindi ad ogni simulazione tutti i clienti avranno la stessa strategia di scelta della coda e di jockeying per creare una netta distinzione tra simulazioni diverse.
+
+\section{Fase di scelta della coda}
+
+Alla fine della \textit{fase di shopping}, il cliente che non vuole andare alla cassa self-scan, deve scegliere quale coda seguire tra quelle disponibili, ovvero tra le code associate a casse aperte. 
+
+Una strategia è una scelta della coda $q$ che minimizza una certa funzione $f(q)$, come riportato nel capitolo precedente alla \ref{eq:strategy}.
+
+\begin{enumerate}
+\item \textbf{Minimo numero di elementi}: viene scelta la coda con il minimo numero di elementi nei carrelli di tutte le persone in attesa. La funzione da minimizzare è quindi per una coda $q \in Q$ dove $Q$ è l'insieme di tutte le code disponibili:
+\begin{equation}
+f(q) = \sum\limits_{i=1}^N \text{basket-size}(c_i) 
+\end{equation}
+dove $c_i \in q$ è un cliente in coda, $\text{basket-size}(c_i)$ è il numero di elementi che ha nel suo carrello e $N = |q|$ è il numero di clienti in coda in $q$.
+\item \textbf{Minimo numero di persone}: viene scelta la coda con il minimo numero di persone accodate. La funzione da minimizzare per $q \in Q$ è:
+\begin{equation}
+f(q) = |q|
+\end{equation}
+\item \textbf{Minimo tempo d'attesa in base al tempo di servizio medio}:
+viene scelta la coda con il tempo d'attesa minimo, calcolato in base al tempo di servizio medio.
+Il \textit{tempo di servizio totale di una coda} è calcolato come somma del tempo di servizio per ogni cliente della coda. Il tempo di servizio per un cliente comprende il \textbf{tempo di transazione} e il \textbf{tempo di pausa} tra un cliente e un altro. \todo{reference al paper} I dati sui tempi di transazione e di pausa sono stati estrapolati dall'articolo, in particolare i coefficienti $a,b,c,d \in \mathbb{R}$, e sono, per un cliente $c_i \in q$: 
+\begin{equation}\label{eq:transaction-time}
+\text{transaction-time}_i = e^{a log(\text{basket-size}(c_i)) + b}
+\end{equation}
+\begin{equation}\label{eq:break-time}
+\text{break-time}_i = e^{c log(\text{basket-size}(c_i)) + d}
+\end{equation}
+I tempi di servizio per ogni cliente di una coda sono quindi sommati per calcolare il tempo servizio totale per quella coda. Il tempo di servizio totale di una coda $q_j$, $j = 1,\ldots ,M$, dove $M$ è il numero totale di code del supermercato, è pertanto:
+\begin{equation}\label{eq:total-service-time}
+\text{total-service-time}(q_j) = \sum\limits_{i=1}^N \left( \text{transaction-time}_i + \text{break-time}_i \right)
+\end{equation}
+Il tempo di servizio medio per le code è la somma dei tempi totali di servizio divisa per il numero di code. Viene scelta la coda con il tempo totale minimo, mettendo insieme la \ref{eq:transaction-time}, la \ref{eq:break-time} e la \ref{eq:total-service-time} si ottiene la funzione da minimizzare:
+\begin{equation}
+f(q) = |q| * \frac{1}{M}\sum\limits_{j=1}^M \left( \text{total-service-time}(q_j) \right)
+\end{equation}
+\item \textbf{Minimo tempo d'attesa in base alla \textit{power regression}}: viene scelta la coda con il tempo d'attesa minimo, calcolato in base al tempo di transazione e il tempo di pausa medi per quella coda. Il tempo di servizio totale per una coda è calcolato anche qui in base alle \ref{eq:transaction-time}, \ref{eq:break-time} e \ref{eq:total-service-time}. La funzione da minimizzare è:
+\begin{equation}
+f(q) = |q| * \text{total-service-time}(q)
+\end{equation}
+\end{enumerate}
+
+\section{Fase di attesa in coda e jockeying}
