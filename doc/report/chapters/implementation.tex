@@ -13,14 +13,27 @@ Lo scopo del progetto è indagare sulla configurazione di casse migliori, quindi
 
 Alla fine della \textit{fase di shopping}, il cliente che non vuole andare alla cassa self-scan, deve scegliere quale coda seguire tra quelle disponibili, ovvero tra le code associate a casse aperte. 
 
-Una strategia è una scelta della coda $q$ che minimizza una certa funzione $f(q)$, come riportato nel capitolo precedente alla \ref{eq:strategy}.
+Una strategia è una scelta della coda $q$ che minimizza una certa funzione $f(q)$, come riportato nel capitolo precedente alla \ref{eq:strategy}. 
+
+Al fine di definire le strategie, è importante notare che la funzione $\text{basket-size}(c_i)$ non deve essere deterministica, come già introdotto nel capitolo precedente: il cliente fa una stima del numero di elementi nel carrello degli altri elementi, non ne è però certo, per questo questa funzione ha una probabilità di errore che rende la stima più veritiera, e si può ridefinire:
+\begin{equation}\label{eq:estimate-basket-size}
+\text{estimate-basket-size}(c_i) = \text{basket-size}(c_i) + e_i
+\end{equation}
+dove $e_i$ è l'errore commesso nella stima e può essere sia positivo che negativo. L'errore dipende dalla grandezza del carrello, in particolare più elementi ci sono nel carrello più l'errore aumenta; intuitivamente in questo modello si è deciso di far variare l'errore in modo logaritmico rispetto alla grandezza del carrello, in base alla formula:
+\begin{equation}\label{eq:error-basket-size}
+e_i = log_b (\text{basket-size}(c_i))
+\end{equation}
+dove $b \in \mathbb{R}$, $b > 1$. 
+La quantità estimate-basket-size diventa dunque una variabile aleatoria normale con media la basket-size reale e deviazione standard l'errore commesso sulla stima.
+
+Le 4 strategie di scelta della coda prese in considerazione per il modello sono:
 
 \begin{enumerate}
 \item \textbf{Minimo numero di elementi}: viene scelta la coda con il minimo numero di elementi nei carrelli di tutte le persone in attesa. La funzione da minimizzare è quindi per una coda $q \in Q$ dove $Q$ è l'insieme di tutte le code disponibili:
 \begin{equation}
-f(q) = \sum\limits_{i=1}^N \text{basket-size}(c_i) 
+f(q) = \sum\limits_{i=1}^N \text{estimate-basket-size-size}(c_i) 
 \end{equation}
-dove $c_i \in q$ è un cliente in coda, $\text{basket-size}(c_i)$ è il numero di elementi che ha nel suo carrello e $N = |q|$ è il numero di clienti in coda in $q$.
+dove $c_i \in q$ è un cliente in coda, $\text{estimate-basket-size-size}(c_i)$ è il numero di elementi che ha nel suo carrello e $N = |q|$ è il numero di clienti in coda in $q$.
 \item \textbf{Minimo numero di persone}: viene scelta la coda con il minimo numero di persone accodate. La funzione da minimizzare per $q \in Q$ è:
 \begin{equation}
 f(q) = |q|
@@ -29,10 +42,10 @@ f(q) = |q|
 viene scelta la coda con il tempo d'attesa minimo, calcolato in base al tempo di servizio medio.
 Il \textit{tempo di servizio totale di una coda} è calcolato come somma del tempo di servizio per ogni cliente della coda. Il tempo di servizio per un cliente comprende il \textbf{tempo di transazione} e il \textbf{tempo di pausa} tra un cliente e un altro. \todo{reference al paper} I dati sui tempi di transazione e di pausa sono stati estrapolati dall'articolo, in particolare i coefficienti $a,b,c,d \in \mathbb{R}$, e sono, per un cliente $c_i \in q$: 
 \begin{equation}\label{eq:transaction-time}
-\text{transaction-time}_i = e^{a log(\text{basket-size}(c_i)) + b}
+\text{transaction-time}_i = e^{a log(\text{basket-estimate-basket-size}(c_i)) + b}
 \end{equation}
 \begin{equation}\label{eq:break-time}
-\text{break-time}_i = e^{c log(\text{basket-size}(c_i)) + d}
+\text{break-time}_i = e^{c log(\text{basket-estimate-basket-size}(c_i)) + d}
 \end{equation}
 I tempi di servizio per ogni cliente di una coda sono quindi sommati per calcolare il tempo servizio totale per quella coda. Il tempo di servizio totale di una coda $q_j$, $j = 1,\ldots ,M$, dove $M$ è il numero totale di code del supermercato, è pertanto:
 \begin{equation}\label{eq:total-service-time}
@@ -49,3 +62,14 @@ f(q) = |q| * \text{total-service-time}(q)
 \end{enumerate}
 
 \section{Fase di attesa in coda e jockeying}
+
+Quando il cliente è nella \textit{fase di attesa in coda} ha la possibilità di cambiare la propria scelta se nota che nelle code adiacenti il tempo di attesa è minore che nella propria; le code adiacenti implicate nel calcolo sono quelle che hanno distanza minore o uguale del \textbf{parametro di adiacenza}, descritto nel capitolo precedente, rispetto a dove il cliente è già accodato. Una coda è distante 1 da un'altra coda se fisicamente nella griglia della simulazione esse compaiono una di fianco all'altra.
+
+Le strategie seguite nel jockeying sono due, e coincidono con le prime due strategie di scelta della coda, descritte nella sezione precedente. Anche in questo caso il cliente stima le grandezze dei carrelli degli altri clienti in base alle \ref{eq:estimate-basket-size} e \ref{eq:error-basket-size}.
+
+\begin{enumerate}
+\item \textbf{Minimo numero di elementi}: viene scelta la coda con il minimo numero di elementi nei carrelli di tutte le persone in attesa.
+\item \textbf{Minimo numero di persone}: viene scelta la coda con il minimo numero di persone accodate.
+\end{enumerate}
+
+Se il cliente, grazie alla sua strategia, calcola che nelle code adiacenti ci sia un tempo di attesa minore rispetto alla propria, cambia coda e si mette in fondo alla nuova coda scelta.
