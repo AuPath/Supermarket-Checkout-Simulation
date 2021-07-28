@@ -62,14 +62,53 @@ Il workflow dell'agente di tipo cliente viene astratto e riassunto da questa imm
 \subsection{Architettura}
 
 \section{Agente di tipo Cassa}
+\label{model:cashdesks}
 
 
 Gli agenti di tipo cassa hanno l'unica funzione di servire i clienti che si mettono in coda per pagare la spesa; sono di 4 tipi e differiscono per modalità di elaborazione della spesa del cliente e per velocità.
 
 \begin{enumerate}
-\item \textbf{Cassa standard}: questa cassa rappresenta la normale cassa che si trova solitamente in tutti i supermercati, all'interno della quale lavora un cassiere che si occupa di passare i prodotti del carrello del cliente sul nastro. 
-  Il tempo di servizio di un cliente per questo tipo di cassa è formato da due tempi diversi: il \textbf{transaction-time}, che è il tempo vero e proprio durante il quale avviene la transazione, e il \textbf{break-time}, che è il tempo che passa tra il servizio di un cliente e di un altro. Questi due tempi sono stati stimati come nel \cite{article1} con una regressione di potenza, come verrà descritto più in dettaglio nella sezione \ref{implementation:queuechoice}.
-\item \textbf{Cassa self-service}:
+\item \textbf{Cassa standard}: questa cassa rappresenta la normale cassa che si trova solitamente in tutti i supermercati, all'interno della quale lavora un cassiere che si occupa di passare i prodotti del carrello del cliente sul nastro.
+ 
+Il tempo di servizio di un cliente per questo tipo di cassa è formato da due tempi diversi: il \textbf{transaction-time}, che è il tempo vero e proprio durante il quale avviene la transazione, e il \textbf{break-time}, che è il tempo che passa tra il servizio di un cliente e di un altro ed include anche la fase in cui il cliente insacchetta i prodotti acquistati. Il transaction-time è stato stimato con una regressione di potenza e il break-time con una distribuzione Gamma. In particolare, per un cliente $c_i \in q$, i due tempi sono calcolati in questo modo:
+
+\begin{equation}\label{eq:transaction-time-standard}
+\text{transaction-time}_i = e^{a log(\text{basket-size}(c_i)) + b}
+\end{equation}
+\begin{equation}\label{eq:break-time-standard}
+\text{break-time}_i = \frac{\beta^{\alpha} \text{basket-size}(c_i)^{\alpha - 1} e^{- \beta \text{estimate-basket-size}(c_i)}}{\Gamma (\alpha)}
+\end{equation}
+
+Dove $\Gamma$ è la funzione \textbf{gamma} e corrisponde a:
+
+\begin{equation}
+\Gamma (z) = \int_{0}^{\infty} x^{z-1} e^{-x} dx \;\; \forall z \in \mathbb{C}
+\end{equation}
+
+Queste stime sono state prese dall'articolo \cite{article1} e in particolare i parametri $a,b,\alpha ,\beta \in \mathbb{R}$ sono:
+
+\begin{equation}
+a = 0.6984, \;\; b = 2.1219, \;\; \alpha = 3.074209, \;\; \beta = \frac{1}{4.830613}
+\end{equation}
+
+\item \textbf{Cassa self-service}: alla cassa self-service il cliente provvede da solo al passaggio dei prodotti del carrello allo scanner, per cui non è presente un cassiere. Si suppone che il cliente non sia veloce quanto un cassiere esperto a passare i prodotti sullo scanner, per questo la velocità di processing per questa cassa è stata divisa per un fattore $1.5$, uno dei parametri descritti nella sezione \ref{model:parameters}. 
+
+\todo{i parametri cambiano dalla standard, in che modo?} Anche in questo caso il tempo di servizio è diviso in transaction-time e break-time, solo che, a differenza della cassa normale, il break-time risulta più lungo in quanto il cliente inizia ad insacchettare solamente dopo aver passato i prodotti allo scanner, invece nella cassa standard può iniziare già mentre il cassiere passa i prodotti. In questo caso, dunque, il transaction-time e il break-time sono stati stimati entrambi con una regressione di potenza:
+
+\begin{equation}\label{eq:transaction-time-self-service}
+\text{transaction-time}_i = e^{a log(\text{basket-size}(c_i)) + b}
+\end{equation}
+\begin{equation}\label{eq:break-time-self-service}
+\text{break-time}_i = e^{c log(\text{basket-size}(c_i)) + d}
+\end{equation}
+
+I parametri in questo caso sono:
+
+\begin{equation}
+a = 0.6725, \;\; b = 3.1223, \;\; c = 0.2251, \;\; d = 3.5167
+\end{equation}
+
+
 \item \textbf{Cassa self-scan}:
 \item \textbf{Cassa riservata}:
 \end{enumerate}
@@ -86,7 +125,7 @@ Il workflow della cassa standard viene riassunto nell'immagine:
 	\centering
 	\hspace*{3cm}
 	\includegraphics[width=8cm]{"images/doggo.jpg"}
-	\caption{Workflow dell'agente di tipo customer.}
+	\caption{Workflow dell'agente di tipo cassa standard.}
 	\label{fig:workflow_customer}
 \end{figure}
 
@@ -98,7 +137,7 @@ Il workflow della cassa self-service viene riassunto nell'immagine:
 	\centering
 	\hspace*{3cm}
 	\includegraphics[width=8cm]{"images/doggo.jpg"}
-	\caption{Workflow dell'agente di tipo customer.}
+	\caption{Workflow dell'agente di tipo self-service.}
 	\label{fig:workflow_customer}
 \end{figure}
 
@@ -110,7 +149,7 @@ Il workflow della cassa self-scan viene riassunto nell'immagine:
 	\centering
 	\hspace*{3cm}
 	\includegraphics[width=8cm]{"images/doggo.jpg"}
-	\caption{Workflow dell'agente di tipo customer.}
+	\caption{Workflow dell'agente di tipo cassa self-scan.}
 	\label{fig:workflow_customer}
 \end{figure}
 
@@ -122,7 +161,7 @@ Il workflow della cassa riservata viene riassunto nell'immagine:
 	\centering
 	\hspace*{3cm}
 	\includegraphics[width=8cm]{"images/doggo.jpg"}
-	\caption{Workflow dell'agente di tipo customer.}
+	\caption{Workflow dell'agente di tipo cassa riservata.}
 	\label{fig:workflow_customer}
 \end{figure}
 
@@ -176,7 +215,7 @@ nell'implementazione dei pattern:
 
 Casse adiacenti considerate
 
-Inizializzazione della griglia e parametri per creare casse (numero casse, coda condivisa o no), customer, basket size (analisi dei dati di Gianluca).
+Inizializzazione della griglia e parametri per creare casse (numero casse, coda condivisa o no, velocità di processing e parametro per rallentare la velocità della self-service), customer, basket size (analisi dei dati di Gianluca).
 
 \subsection{Basket size}
 Citare paper con i dati.

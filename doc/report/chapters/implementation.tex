@@ -41,22 +41,33 @@ f(q) = |q|
 \end{equation}
 \item \textbf{Minimo tempo d'attesa in base al tempo di servizio medio}:
 viene scelta la coda con il tempo d'attesa minimo, calcolato in base al tempo di servizio medio.
-Il \textit{tempo di servizio totale di una coda} è calcolato come somma del tempo di servizio per ogni cliente della coda. Il tempo di servizio per un cliente comprende il \textbf{tempo di transazione} e il \textbf{tempo di pausa} tra un cliente e un altro. \todo{reference al paper} I dati sui tempi di transazione e di pausa sono stati estrapolati dall'articolo, in particolare i coefficienti $a,b,c,d \in \mathbb{R}$, e sono, per un cliente $c_i \in q$: 
-\begin{equation}\label{eq:transaction-time}
-\text{transaction-time}_i = e^{a log(\text{basket-estimate-basket-size}(c_i)) + b}
+Il \textit{tempo di servizio totale di una coda} è calcolato come somma del tempo di servizio per ogni cliente della coda. Il tempo di servizio per un cliente comprende il \textbf{tempo di transazione} e il \textbf{tempo di pausa} tra un cliente e un altro, e variano a seconda del tipo di cassa, come illustrato nella sezione \ref{model:cashdesks}. Le formule per il calcolo dei tempi per la cassa standard \ref{eq:transaction-time-standard} e \ref{eq:break-time-standard}, comprendendo la stima della grandezza del carrello, diventano dunque:
+
+\begin{equation}\label{eq:transaction-time-standard-estimate}
+\text{transaction-time}_i = e^{a log(\text{estimate-basket-size}(c_i)) + b}
 \end{equation}
-\begin{equation}\label{eq:break-time}
-\text{break-time}_i = e^{c log(\text{basket-estimate-basket-size}(c_i)) + d}
+\begin{equation}\label{eq:break-time-standard-estimate}
+\text{break-time}_i = \frac{\beta^{\alpha} \text{estimate-basket-size}(c_i)^{\alpha - 1} e^{- \beta \text{estimate-basket-size}(c_i)}}{\Gamma (\alpha)}
 \end{equation}
+
+e per la cassa self-service, le \ref{eq:transaction-time-self-service} e \ref{eq:break-time-self-service} diventano: \todo{da cambiare con quelle self-service}
+
+\begin{equation}\label{eq:transaction-time-self-service-estimate}
+\text{transaction-time}_i = e^{a log(\text{estimate-basket-size}(c_i)) + b}
+\end{equation}
+\begin{equation}\label{eq:break-time-self-service-estimate}
+\text{break-time}_i = e^{c log(\text{estimate-basket-size}(c_i)) + d}
+\end{equation}
+
 I tempi di servizio per ogni cliente di una coda sono quindi sommati per calcolare il tempo servizio totale per quella coda. Il tempo di servizio totale di una coda $q_j$, $j = 1,\ldots ,M$, dove $M$ è il numero totale di code del supermercato, è pertanto:
 \begin{equation}\label{eq:total-service-time}
 \text{total-service-time}(q_j) = \sum\limits_{i=1}^N \left( \text{transaction-time}_i + \text{break-time}_i \right)
 \end{equation}
-Il tempo di servizio medio per le code è la somma dei tempi totali di servizio divisa per il numero di code. Viene scelta la coda con il tempo totale minimo, mettendo insieme la \ref{eq:transaction-time}, la \ref{eq:break-time} e la \ref{eq:total-service-time} si ottiene la funzione da minimizzare:
+Il tempo di servizio medio per le code è la somma dei tempi totali di servizio divisa per il numero di code. Viene scelta la coda con il tempo totale minimo, mettendo insieme le \ref{eq:transaction-time-standard-estimate}, \ref{eq:break-time-standard-estimate}, \ref{transaction-time-self-service-estimate}, \ref{eq:break-time-self-service-estimate} e \ref{eq:total-service-time} si ottiene la funzione da minimizzare:
 \begin{equation}
 f(q) = |q| * \frac{1}{M}\sum\limits_{j=1}^M \left( \text{total-service-time}(q_j) \right)
 \end{equation}
-\item \textbf{Minimo tempo d'attesa in base alla \textit{power regression}}: viene scelta la coda con il tempo d'attesa minimo, calcolato in base al tempo di transazione e il tempo di pausa medi per quella coda. Il tempo di servizio totale per una coda è calcolato anche qui in base alle \ref{eq:transaction-time}, \ref{eq:break-time} e \ref{eq:total-service-time}. La funzione da minimizzare è:
+\item \textbf{Minimo tempo d'attesa in base alla \textit{power regression}}: viene scelta la coda con il tempo d'attesa minimo, calcolato in base al tempo di transazione e il tempo di pausa medi per quella coda. Il tempo di servizio totale per una coda è calcolato anche qui in base alla \ref{eq:total-service-time}. La funzione da minimizzare è:
 \begin{equation}
 f(q) = |q| * \text{total-service-time}(q)
 \end{equation}
