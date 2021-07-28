@@ -60,24 +60,6 @@ Il workflow dell'agente di tipo cliente viene astratto e riassunto da questa imm
 
 
 \subsection{Architettura}
-Il modello é stato sviluppato cercando di renderlo flessibile per
-permettere con semplicitá future espansioni e cambiamenti. Gli aspetti
-piú dinamici del modello, quindi il comportamento degli agenti e le
-varie modalitá di scelta di una coda e la capacitá di un agente
-Customer di effettuare Jockeying sono stati realizzati lasciando
-all'utilizzatore piena possibilitá di modifica, ampliazione o di non
-utilizzo. A livello di architettura del software questo si traduce
-nell'implementazione dei pattern:
-
-\begin{itemize}
-\item \textbf{Strategy}: Usato per definire diverse modalitá di scelta
-  della coda e diversi comportamenti di Jockeying.
-\item \textbf{State}: Usato per definire tramite una macchina a stati
-  finiti i comportamenti degli agenti Customer e Cashdesk. Nuovi stati
-  possono essere aggiunti con facilitá e collegati ad altri stati
-  tramite transizioni. La divisione in stati rende semplice ragionare
-  sul comportamento di un agente.
-\end{itemize}
 
 \section{Agente di tipo Cassa}
 
@@ -163,6 +145,31 @@ Ogni zona è responsabile della propria costruzione, ovvero del proprio collocam
 - Discreto vs. Continuo
 
 \subsection{Interazione tra agenti}
+
+\section{Considerazioni sul modello}
+
+Il modello é stato sviluppato cercando di renderlo flessibile per
+permettere con semplicitá future espansioni e cambiamenti. Gli aspetti
+piú dinamici del modello, quindi il comportamento degli agenti e le
+varie modalitá di scelta di una coda e la capacitá di un agente
+Customer di effettuare Jockeying sono stati realizzati lasciando
+all'utilizzatore piena possibilitá di modifica, ampliazione o di non
+utilizzo. A livello di architettura del software questo si traduce
+nell'implementazione dei pattern:
+
+% TODO forse aggiungere link a pattern GOF, non so come citare correttamente
+\begin{itemize}
+\item \textbf{Strategy}: Usato per definire diverse modalitá di scelta
+  della coda e diversi comportamenti di Jockeying. Nuovi comportamenti
+  possono essere aggiunti rispettando un'interafaccia
+  standard. Permette inoltre se necessario cambiamenti di
+  comportamento a run time.
+\item \textbf{State}: Usato per definire tramite una macchina a stati
+  finiti i comportamenti degli agenti Customer e Cashdesk. Nuovi stati
+  possono essere aggiunti con facilitá e collegati ad altri stati
+  tramite transizioni. La divisione in stati rende semplice ragionare
+  sul comportamento di un agente.
+\end{itemize}
 
 \section{Parametri del modello}
 \label{model:parameters}
