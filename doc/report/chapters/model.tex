@@ -2,7 +2,7 @@
 
 \section{Framework adottato e descrizione degli agenti}
 
-\todo{reference} Mesa è un framework in Python usato per la modellazione basata su agenti (ABM). Permette di creare il modello con componenti \textit{built-in} come griglie spaziali e scheduler di agenti, e di visualizzare i componenti del modello con un'interfaccia browser. Sfruttando Mesa è possibile definire sia l'ambiente che gli agenti estendendo le relative classi messe a dispozione dal framework. Mesa infine comprende strumenti per l'analisi del modello creato.
+\todo{reference} Mesa è un framework in Python usato per la modellazione basata su agenti (ABM). Permette di creare il modello con componenti \textit{built-in} come griglie spaziali e scheduler di agenti, e di visualizzare i componenti del modello con un'interfaccia browser. Sfruttando Mesa è possibile definire sia l'ambiente che gli agenti estendendo le relative classi messe a disposizione dal framework. Mesa infine comprende strumenti per l'analisi del modello creato.
 
 Nel nostro modello di supermercato, il modello vero e proprio di Mesa è la classe \textbf{Supermarket} e gli agenti sono i clienti, classe \textbf{Customer}, e le casse, classe \textbf{CashDesk}. 
 
@@ -18,33 +18,33 @@ Come avviene l'interazione
 Descrizione dell'ambiente
 
 \section{Agente di tipo Cliente}
-I clienti sono gli agenti principali che vengono compongono il modello. Questi interagiscono con l'ambiente per raggiungere il goal "Fare la spesa", per portare a termine questo compito l'agente esegue acluni macro-step in cui è necessaria anche una fase di pianificazione e valutazione della bontà (utility function) della scelta adottata in alcune di queste.
+I clienti sono gli agenti principali che compongono il modello e interagiscono con l'ambiente per raggiungere l'obiettivo di fare la spesa; per portare a termine questo compito l'agente esegue alcuni macro-step in cui è necessaria anche una fase di pianificazione e valutazione della bontà (\textit{utility function}) della scelta adottata in alcune di queste.
 
 \subsection{Workflow cliente}
 I macro-step che l'agente deve seguire per il raggiungimento del goal sono:
 
 \begin{enumerate}
-	\item \textbf{Attesa all'entrata del supermercato}: In questo stato il cliente si mette in attesa finchè non è possibile entrare nel supermercato. \todo{Sperimenti sul covid}
-	\item \textbf{Fase di shopping}: A questo punto il cliente è entrato e può iniziare a "fare la spesa", con questo si intende raggiungere il numero di prodotti desiderato. Infatti nella simulazione viene considerato il "basket size", un'astrazione del carello modellato con un numero interno. Il basket size è il target da raggiungere nella fase di shopping, a ogni step il numero di prodotti aumenta di una certa quantità (la velocità di shopping è un parametro del modello \autoref{model:parameters}). 
+	\item \textbf{Attesa all'entrata del supermercato}: in questo stato il cliente si mette in attesa finchè non è possibile entrare nel supermercato. \todo{Esperimenti sul covid}
+	\item \textbf{Fase di shopping}: il cliente è entrato e può iniziare a "fare la spesa", con questo si intende raggiungere il numero di prodotti desiderato, infatti nella simulazione viene considerato il \textit{basket size}, un'astrazione del carrello modellato attraverso un numero interno. Il basket size è il target da raggiungere nella fase di shopping, a ogni step il numero di prodotti aumenta di una certa quantità (la velocità di shopping è un parametro del modello descritto nella sezione \ref{model:parameters}). 
 	
-	La basket size viene generata stocasticamente secondo una distribuzione esponenziale goveranta dal parametro $\lambda = 0.07361$. La scelta di questo paramtro viene giusttificata in \autoref{model:parameters}. 
+	La basket size viene generata stocasticamente secondo una distribuzione esponenziale governata dal parametro $\lambda = 0.07361$. La scelta di questo parametro viene giustificata nella sezione \ref{model:parameters}. 
 	
-	\item \textbf{Scelta della coda}: In questo stato il cliente ha finito di fare la spesa e vuole mettersi in coda ad una cassa. Dal momento che sono disponbili più code e ognuga di queste avrà tendinzialmente altri clienti già in coda, il cliente deve scegliere in quale coda andare in base alla coda che lui considera migliore.
+	\item \textbf{Scelta della coda}: in questo stato il cliente ha finito di fare la spesa e vuole mettersi in coda ad una cassa. Dal momento che sono disponibili più code e ognuna di queste avrà molto probabilmente altri clienti già in coda, il cliente deve scegliere in quale coda andare in base alla coda che lui considera migliore.
 	
-	Formalmente viene definita una metrica calcolata per mezzo di una funzione: l'utility function. Il cliente sceglie quindi la coda che minimizza questa metrica.
+	Formalmente viene definita una strategia di scelta della coda in base a una funzione: la \textit{utility function}. Il cliente sceglie quindi la coda che minimizza questa funzione:
 
 	\begin{equation}
 		q^* = \operatorname*{argmin}_{q \in Q} f(q) \label{eq:strategy}
 	\end{equation}
-	dove $Q$ è l'insieme delle code dedicate e $f$ varia a seconda del tipo di strategia che il cliente può utilizzare, ognuga delle quali modella un diverso comportamento per la scelta della coda.
+	dove $Q$ è l'insieme delle code dedicate e $f$ varia a seconda del tipo di strategia che il cliente può utilizzare, ognuna delle quali modella una diversa strategia per la scelta della coda.
 
-	\item \textbf{Attesa in coda e jockeying}:  Una volta che il cliente ha scelto la coda deve aspettare il proprio turno per essere servito. Nel lavoro di Tomasz Antczak e altri \cite{article1} viene suggerito come sviluppo futuro lo studio del fenomeno di jockeying. Con questa espressione si intende cambiare la coda che è stata scelta inizialmente in quanto un'altra risulta essere più conveniente, ad esempio perchè più scorrevole.
+	\item \textbf{Attesa in coda e jockeying}: una volta che il cliente ha scelto la coda deve aspettare il proprio turno per essere servito. Nel lavoro di Tomasz Antczak e altri \cite{article1} viene suggerito come sviluppo futuro lo studio del fenomeno di \textit{jockeying}: con questa espressione si intende cambiare la coda che è stata scelta inizialmente in quanto un'altra risulta essere più conveniente, ad esempio perchè più scorrevole.
 	
-	Ad ogni timestamp l'agente considera le 2 (parametro spiegato in \autoref{model:parameters} e scelto a priori per il modello) code adiacenti alla propria  e per ognuga di queste ricalcola la coda migliore \autoref{eq:strategy}. A questo punto l'agente valuta se per lui è conveniente cambiare la coda o rimanere in quella dove è già presente. Si noti come per effettuare questo confronto è necessario utilizzare l'approccio di \autoref{eq:strategy} sulla coda in cui l'agente è in quel momento andando ad escludere i clienti che si sono inseriti in coda dopo di lui. Una volta fatta questa valutazione, nel caso in cui sia per lui conveniente cambiare coda, il cliente la cambia in modo stocastico secondo una certa distribuzione di probabilità spiegata in \autoref{implementation:intro} che dipende da quanto è conveniente il cambio di coda.
+	Ad ogni timestamp l'agente considera le due code adiacenti (parametro spiegato nella sezione \ref{model:parameters} e scelto a priori per il modello) alla propria e per ognuna di queste ricalcola la coda migliore secondo la \ref{eq:strategy}. A questo punto l'agente valuta se per lui è conveniente cambiare la coda o rimanere in quella dove è già presente. Si noti come per effettuare questo confronto è necessario utilizzare l'approccio della \ref{eq:strategy} sulla coda in cui l'agente è in quel momento, andando ad escludere i clienti che si sono inseriti in coda dopo di lui. Una volta fatta questa valutazione, nel caso in cui sia per lui conveniente cambiare coda, il cliente la cambia in modo stocastico secondo una certa distribuzione di probabilità spiegata nella sezione \ref{implementation:intro}, che è maggiore più il cambio di coda risulta conveniente.
 	
-	La scelta modellistica di effettuare jockeying stocasticamente e in funzione dell'effettivo guadagno di tempo è stata fatta per cercare di avere una rappresentazine il più fedele possibile al mondo reale. Infatti nella realtà un cliente al supermercato potrebbe scegliere di non cambiare la coda nel momento in cui ha un guadagno minimo in quanto questo richiede uno sforzo fisico che non è detto che tutti i clienti vogliano spendere nella realtà. Inoltre questa operazione richiede che gli agenti controllino coninuamente le casse vicine, anche questo non è necessariamente vero in quanto dispendioso di energia. Infatti nel lavoro di Tomasz Antczak e altri \cite{article1} viene fatto notare come questo comportamento non sia molto frequente, tuttavia seppur essendo poco frequente noi lo consideriamo un fattore importante da modellare, adottando le dovuto precauzioni sfruttando la stocasticità dell'azione.
+	La scelta modellistica di effettuare jockeying stocasticamente e in funzione dell'effettivo guadagno di tempo è stata fatta per cercare di avere una rappresentazione il più fedele possibile al mondo reale. Infatti nella realtà un cliente al supermercato potrebbe scegliere di non cambiare la coda nel momento in cui ha un guadagno minimo in quanto questo richiede uno sforzo fisico che non tutti vogliono spendere nella realtà. Inoltre questa operazione richiede che gli agenti controllino continuamente le casse vicine, anche questo non è necessariamente vero in quanto dispendioso di energia. Infatti nel lavoro di Tomasz Antczak e altri \cite{article1} viene fatto notare come questo comportamento non sia molto frequente, tuttavia seppur essendo poco frequente noi lo consideriamo un fattore importante da modellare, adottando le dovute precauzioni e sfruttando la stocasticità dell'azione.
 	
-	\item \textbf{Attesa alla cassa}: In questa fase il cliente, essendo allo step precedente il primo della coda, è arrivato alla cassa. Da questo punto in poi verrà servito dall'agente di tipo cassa che avrà la responsabilità di processare il basket size del cliente. Dal momento che ci sono diversi tipi di casse, questa fase dipende dall'agente di tipo cassa e non dal cliente. Il cliente deve attendere la fine del processamento della spesa e quindi uscire dal negozio.
+	\item \textbf{Attesa alla cassa}: in questa fase il cliente è arrivato alla cassa, essendo arrivato con lo stato precedente in prima posizione della coda. Da questo punto in poi verrà servito dall'agente di tipo cassa che avrà la responsabilità di processare il basket size del cliente. Dal momento che ci sono diversi tipi di casse, questa fase dipende dall'agente di tipo cassa e non dal cliente. Il cliente deve attendere la fine dell'elaborazione della spesa e quindi uscire dal negozio.
 \end{enumerate}
 
 Il workflow dell'agente di tipo cliente viene astratto e riassunto da questa immagine:
@@ -54,7 +54,7 @@ Il workflow dell'agente di tipo cliente viene astratto e riassunto da questa imm
 	\centering
 	\hspace*{3cm}
 	\includegraphics[width=8cm]{"images/workflow_customer.png"}
-	\caption{Workflow agente di tipo customer.}
+	\caption{Workflow dell'agente di tipo customer.}
 	\label{fig:workflow_customer}
 \end{figure}
 
@@ -70,9 +70,9 @@ La classe \textbf{Supermarket} si occupa di inizializzare la griglia che verrà 
 
 Per inizializzare la griglia, l'ambiente viene diviso in zone: zona d'entrata, zona di shopping, zona casse normali, zona casse self-service, zona casse self-scan. Questa divisione permette una gestione più semplice dello spazio e dei movimenti degli agenti. Ogni zona ha come parametri la dimensione o il numero di casse che deve contenere, questi parametri vengono inizializzati nella classe \textbf{main}, come si vedrà nella prossima sezione.
 
-Ogni zona è responsabile della propria costruzione, ovvero del proprio collocamento nella griglia dell'interfaccia in base alle proprie dimensioni ed eventualmente del posizionamento delle casse che contiene. Inoltre ogni zona è responsabile dei movimenti dei clienti: nel momento in cui un cliente vuole muoversi da una zona all'altra infatti, è la zona di destinazione che fornisce il metodo per posizionarsi correttamente in essa.
+Ogni zona è responsabile della propria costruzione, ovvero del proprio collocamento nella griglia dell'interfaccia in base alle proprie dimensioni ed eventualmente del posizionamento delle casse che contiene. Inoltre ogni zona è responsabile dei movimenti dei clienti: se un cliente vuole muoversi da una zona all'altra oppure mettersi in coda nelle casse di una zona, è la zona di destinazione che fornisce il metodo per posizionarsi correttamente in essa.
 
-\todo{Parlare di quanto dura uno step e quanto dura una simulazione} Ad ogni step della simulazione, il modello crea dei clienti e li posiziona nella \textbf{Entering Zone} del supermercato in coordinate random, dunque si occupa della attivazione e disattivazione delle casse standard in base al numero di clienti presenti nel negozio in quello step, secondo dei parametri che si vedranno nella sezione \todo{citare la sezione} Workflow degli agenti. Quindi il modello chiama gli scheduler degli agenti, clienti e casse, e fa eseguire i loro step.
+\todo{Parlare di quanto dura uno step e quanto dura una simulazione} Ad ogni step della simulazione, il modello crea dei clienti secondo la distribuzione data (si veda la sezione \ref{model:parameters}) e li posiziona nella \textbf{Entering Zone} del supermercato in coordinate random, dunque si occupa della attivazione e disattivazione delle casse standard in base al numero di clienti presenti nel negozio in quello step, secondo dei parametri che si vedranno nella prossima sezione. Quindi il modello chiama gli scheduler degli agenti, clienti e casse, e fa eseguire i loro step.
 
 \subsection{Caratteristiche dell'ambiente}
 - Accessibile vs. Inaccessibile
