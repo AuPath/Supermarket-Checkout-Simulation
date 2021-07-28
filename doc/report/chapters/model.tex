@@ -93,7 +93,7 @@ a = 0.6984, \;\; b = 2.1219, \;\; \alpha = 3.074209, \;\; \beta = \frac{1}{4.830
 
 \item \textbf{Cassa self-service}: alla cassa self-service il cliente provvede da solo al passaggio dei prodotti del carrello allo scanner, per cui non è presente un cassiere. Si suppone che il cliente non sia veloce quanto un cassiere esperto a passare i prodotti sullo scanner, per questo la velocità di processing per questa cassa è stata divisa per un fattore $1.5$, uno dei parametri descritti nella sezione \ref{model:parameters}. 
 
-\todo{i parametri cambiano dalla standard, in che modo?} Anche in questo caso il tempo di servizio è diviso in transaction-time e break-time, solo che, a differenza della cassa normale, il break-time risulta più lungo in quanto il cliente inizia ad insacchettare solamente dopo aver passato i prodotti allo scanner, invece nella cassa standard può iniziare già mentre il cassiere passa i prodotti. In questo caso, dunque, il transaction-time e il break-time sono stati stimati entrambi con una regressione di potenza:
+Anche in questo caso il tempo di servizio è diviso in transaction-time e break-time, solo che, a differenza della cassa normale, il break-time risulta più lungo in quanto il cliente inizia ad insacchettare solamente dopo aver passato i prodotti allo scanner, invece nella cassa standard può iniziare già mentre il cassiere passa i prodotti. In questo caso, dunque, il transaction-time e il break-time sono stati stimati entrambi con una regressione di potenza:
 
 \begin{equation}\label{eq:transaction-time-self-service}
 \text{transaction-time}_i = e^{a log(\text{basket-size}(c_i)) + b}
@@ -108,9 +108,13 @@ I parametri in questo caso sono:
 a = 0.6725, \;\; b = 3.1223, \;\; c = 0.2251, \;\; d = 3.5167
 \end{equation}
 
+\item \textbf{Cassa self-scan}: la cassa self-scan si differenzia totalmente dalle prime due descritte, il cliente che voglia utilizzarla infatti, deve deciderlo già al momento dell'entrata nel supermercato, in quanto deve scannerizzare i prodotti man mano che fa la spesa; una volta arrivato alla cassa self-scan, egli deve semplicemente effettuare il pagamento, saltando quindi le fasi di scanner e insacchettamento che caratterizzano le casse standard e self-service. La velocità di elaborazione della spesa in questo caso è praticamente nulla, in particolare un cliente che inizia il pagamento a una cassa self-scanner, lo termina allo step successivo; il tempo di pausa per questa cassa è ugualmente nullo, dato che un cliente paga ed entra immediatamente nella fase di uscita dal negozio.
 
-\item \textbf{Cassa self-scan}:
-\item \textbf{Cassa riservata}:
+Chiaramente per evitare che vengano rubati prodotti, i supermercati decidono di effettuare dei controlli random sui clienti che scelgono di usare le casse self-scan. A questo scopo è stata implementata la cassa di tipo riservato.
+\item \textbf{Cassa riservata}: questa cassa è identica nel funzionamento a una cassa standard, ciò che cambia è che è riservata alla rilettura della spesa dei clienti self-scan, che avviene in maniera random. Nel momento in cui un cliente si approccia ad una cassa self-scan, viene estratto un numero che determina la \textbf{rilettura parziale} o la \textbf{rilettura totale} della sua spesa;
+la rilettura parziale consiste nell'estrazione di 10 prodotti dal carrello e nella verifica che essi appartengano alla lista contenuta nello scanner del cliente, invece la rilettura totale consiste appunto nella rilettura completa della spesa di esso. Le probabilità di rilettura sono parametri del modello ed attualmente corrispondono allo $0.75 \%$ per la rilettura parziale e allo $0.25 \%$ per la rilettura totale.
+
+Il funzionamento e i tempi di servizio sono esattamente gli stessi della cassa standard, considerando un basket-size completo per la rilettura totale e un basket-size di soli 10 elementi per la rilettura parziale.
 \end{enumerate}
 
 Tutti i tipi di cassa attraversano 3 fasi: fase di attesa di un nuovo cliente, fase di elaborazione della spesa del cliente, fase di completamento della transazione.
