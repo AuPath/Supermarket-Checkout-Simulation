@@ -60,14 +60,33 @@ Il workflow dell'agente di tipo cliente viene astratto e riassunto da questa imm
 
 
 \subsection{Architettura}
+Il modello é stato sviluppato cercando di renderlo flessibile per
+permettere con semplicitá future espansioni e cambiamenti. Gli aspetti
+piú dinamici del modello, quindi il comportamento degli agenti e le
+varie modalitá di scelta di una coda e la capacitá di un agente
+Customer di effettuare Jockeying sono stati realizzati lasciando
+all'utilizzatore piena possibilitá di modifica, ampliazione o di non
+utilizzo. A livello di architettura del software questo si traduce
+nell'implementazione dei pattern:
+
+\begin{itemize}
+\item \textbf{Strategy}: Usato per definire diverse modalitá di scelta
+  della coda e diversi comportamenti di Jockeying.
+\item \textbf{State}: Usato per definire tramite una macchina a stati
+  finiti i comportamenti degli agenti Customer e Cashdesk. Nuovi stati
+  possono essere aggiunti con facilitá e collegati ad altri stati
+  tramite transizioni. La divisione in stati rende semplice ragionare
+  sul comportamento di un agente.
+\end{itemize}
 
 \section{Agente di tipo Cassa}
+
 
 Gli agenti di tipo cassa hanno l'unica funzione di servire i clienti che si mettono in coda per pagare la spesa; sono di 4 tipi e differiscono per modalità di elaborazione della spesa del cliente e per velocità.
 
 \begin{enumerate}
 \item \textbf{Cassa standard}: questa cassa rappresenta la normale cassa che si trova solitamente in tutti i supermercati, all'interno della quale lavora un cassiere che si occupa di passare i prodotti del carrello del cliente sul nastro. 
-Il tempo di servizio di un cliente per questo tipo di cassa è formato da due tempi diversi: il \textbf{transaction-time}, che è il tempo vero e proprio durante il quale avviene la transazione, e il \textbf{break-time}, che è il tempo che passa tra il servizio di un cliente e di un altro. Questi due tempi sono stati stimati come nel \cite{article1} con una regressione di potenza, come verrà descritto più in dettaglio nella sezione \ref{implementation:queuechoice}.
+  Il tempo di servizio di un cliente per questo tipo di cassa è formato da due tempi diversi: il \textbf{transaction-time}, che è il tempo vero e proprio durante il quale avviene la transazione, e il \textbf{break-time}, che è il tempo che passa tra il servizio di un cliente e di un altro. Questi due tempi sono stati stimati come nel \cite{article1} con una regressione di potenza, come verrà descritto più in dettaglio nella sezione \ref{implementation:queuechoice}.
 \item \textbf{Cassa self-service}:
 \item \textbf{Cassa self-scan}:
 \item \textbf{Cassa riservata}:
