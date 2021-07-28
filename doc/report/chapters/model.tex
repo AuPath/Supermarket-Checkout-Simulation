@@ -1,6 +1,6 @@
 \chapter{Descrizione del modello}
 
-\section{Framework adottato e descrizione degli agenti}
+\section{Framework adottato}
 
 \todo{reference} Mesa è un framework in Python usato per la modellazione basata su agenti (ABM). Permette di creare il modello con componenti \textit{built-in} come griglie spaziali e scheduler di agenti, e di visualizzare i componenti del modello con un'interfaccia browser. Sfruttando Mesa è possibile definire sia l'ambiente che gli agenti estendendo le relative classi messe a disposizione dal framework. Mesa infine comprende strumenti per l'analisi del modello creato.
 
@@ -20,7 +20,7 @@ Descrizione dell'ambiente
 \section{Agente di tipo Cliente}
 I clienti sono gli agenti principali che compongono il modello e interagiscono con l'ambiente per raggiungere l'obiettivo di fare la spesa; per portare a termine questo compito l'agente esegue alcuni macro-step in cui è necessaria anche una fase di pianificazione e valutazione della bontà (\textit{utility function}) della scelta adottata in alcune di queste.
 
-\subsection{Workflow cliente}
+\subsection{Workflow}
 I macro-step che l'agente deve seguire per il raggiungimento del goal sono:
 
 \begin{enumerate}
@@ -59,11 +59,14 @@ Il workflow dell'agente di tipo cliente viene astratto e riassunto da questa imm
 \end{figure}
 
 
-\subsection{Architettura cliente}
+\subsection{Architettura}
 
 
 \section{Agente di tipo Cassa}
 
+\subsection{Workflow}
+
+\subsection{Architettura}
 
 \section{Ambiente}
 La classe \textbf{Supermarket} si occupa di inizializzare la griglia che verrà poi mostrata in fase di simulazione sull'interfaccia, inizializzare le casse, l'ambiente e i clienti.
@@ -94,5 +97,7 @@ Inizializzazione della griglia e parametri per creare casse (numero casse, coda 
 Citare paper con i dati.
 
 \section{Workflow degli agenti}
+
+\todo{non lo abbiamo mica detto sopra?}
 
 Steps: ad ogni step entrano clienti in base alla distribuzione data come parametro; ad ogni step le casse decidono se aprire o chiudere in base al numero di clienti presenti; mettere grafici dei comportamenti e degli stati dei clienti e delle casse (quindi descrizione in dettaglio di ogni cassa e tipo di coda, di ogni stato della cassa e del cliente).
