@@ -21,7 +21,7 @@ Descrizione dell'ambiente
 I clienti sono gli agenti principali che compongono il modello e interagiscono con l'ambiente per raggiungere l'obiettivo di fare la spesa; per portare a termine questo compito l'agente esegue alcuni macro-step in cui è necessaria anche una fase di pianificazione e valutazione della bontà (\textit{utility function}) della scelta adottata in alcune di queste.
 
 \subsection{Workflow}
-I macro-step che l'agente deve seguire per il raggiungimento del goal sono:
+I macro-step che l'agente deve seguire per il raggiungimento del goal, che coincidono con gli stati associati all'agente durante la simulazione, sono:
 
 \begin{enumerate}
 	\item \textbf{Attesa all'entrata del supermercato}: in questo stato il cliente si mette in attesa finchè non è possibile entrare nel supermercato. \todo{Esperimenti sul covid}
@@ -61,10 +61,69 @@ Il workflow dell'agente di tipo cliente viene astratto e riassunto da questa imm
 
 \subsection{Architettura}
 
-
 \section{Agente di tipo Cassa}
 
+Gli agenti di tipo cassa hanno l'unica funzione di servire i clienti che si mettono in coda per pagare la spesa; sono di 4 tipi e differiscono per modalità di elaborazione della spesa del cliente e per velocità.
+
+\begin{enumerate}
+\item \textbf{Cassa standard}: questa cassa rappresenta la normale cassa che si trova solitamente in tutti i supermercati, all'interno della quale lavora un cassiere che si occupa di passare i prodotti del carrello del cliente sul nastro. 
+Il tempo di servizio di un cliente per questo tipo di cassa è formato da due tempi diversi: il \textbf{transaction-time}, che è il tempo vero e proprio durante il quale avviene la transazione, e il \textbf{break-time}, che è il tempo che passa tra il servizio di un cliente e di un altro. Questi due tempi sono stati stimati come nel \cite{article1} con una regressione di potenza, come verrà descritto più in dettaglio nella sezione \ref{implementation:queuechoice}.
+\item \textbf{Cassa self-service}:
+\item \textbf{Cassa self-scan}:
+\item \textbf{Cassa riservata}:
+\end{enumerate}
+
+Tutti i tipi di cassa attraversano 3 fasi: fase di attesa di un nuovo cliente, fase di elaborazione della spesa del cliente, fase di completamento della transazione.
+
 \subsection{Workflow}
+
+\paragraph{Cassa standard}
+
+Il workflow della cassa standard viene riassunto nell'immagine:
+
+\begin{figure}[htp!]
+	\centering
+	\hspace*{3cm}
+	\includegraphics[width=8cm]{"images/doggo.jpg"}
+	\caption{Workflow dell'agente di tipo customer.}
+	\label{fig:workflow_customer}
+\end{figure}
+
+\paragraph{Cassa self-service}
+
+Il workflow della cassa self-service viene riassunto nell'immagine:
+
+\begin{figure}[htp!]
+	\centering
+	\hspace*{3cm}
+	\includegraphics[width=8cm]{"images/doggo.jpg"}
+	\caption{Workflow dell'agente di tipo customer.}
+	\label{fig:workflow_customer}
+\end{figure}
+
+\paragraph{Cassa self-scan}
+
+Il workflow della cassa self-scan viene riassunto nell'immagine:
+
+\begin{figure}[htp!]
+	\centering
+	\hspace*{3cm}
+	\includegraphics[width=8cm]{"images/doggo.jpg"}
+	\caption{Workflow dell'agente di tipo customer.}
+	\label{fig:workflow_customer}
+\end{figure}
+
+\paragraph{Cassa riservata}
+
+Il workflow della cassa riservata viene riassunto nell'immagine:
+
+\begin{figure}[htp!]
+	\centering
+	\hspace*{3cm}
+	\includegraphics[width=8cm]{"images/doggo.jpg"}
+	\caption{Workflow dell'agente di tipo customer.}
+	\label{fig:workflow_customer}
+\end{figure}
 
 \subsection{Architettura}
 
