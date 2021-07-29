@@ -112,16 +112,30 @@ a = 0.6725, \;\; b = 3.1223, \;\; c = 0.2251, \;\; d = 3.5167
 
 Chiaramente per evitare che vengano rubati prodotti, i supermercati decidono di effettuare dei controlli random sui clienti che scelgono di usare le casse self-scan. A questo scopo è stata implementata la cassa di tipo riservato.
 \item \textbf{Cassa riservata}: questa cassa è identica nel funzionamento a una cassa standard, ciò che cambia è che è riservata alla rilettura della spesa dei clienti self-scan, che avviene in maniera random. Nel momento in cui un cliente si approccia ad una cassa self-scan, viene estratto un numero che determina la \textbf{rilettura parziale} o la \textbf{rilettura totale} della sua spesa;
-la rilettura parziale consiste nell'estrazione di 10 prodotti dal carrello e nella verifica che essi appartengano alla lista contenuta nello scanner del cliente, invece la rilettura totale consiste appunto nella rilettura completa della spesa di esso. Le probabilità di rilettura sono parametri del modello ed attualmente corrispondono allo $0.75 \%$ per la rilettura parziale e allo $0.25 \%$ per la rilettura totale.
+la rilettura parziale consiste nell'estrazione di 10 prodotti dal carrello e nella verifica che essi appartengano alla lista contenuta nello scanner del cliente, invece la rilettura totale consiste appunto nella rilettura completa della spesa di esso. Le probabilità di rilettura sono parametri del modello ed attualmente corrispondono allo $7.5 \%$ per la rilettura parziale e allo $2.5 \%$ per la rilettura totale.
 
 Il funzionamento e i tempi di servizio sono esattamente gli stessi della cassa standard, considerando un basket-size completo per la rilettura totale e un basket-size di soli 10 elementi per la rilettura parziale.
 \end{enumerate}
 
 Tutti i tipi di cassa attraversano 3 fasi: fase di attesa di un nuovo cliente, fase di elaborazione della spesa del cliente, fase di completamento della transazione.
 
+\paragraph{Code} 
+Descrizione di come funzionano le code - ogni cassa ha una coda e una coda può essere associata a più casse
+
 \subsection{Workflow}
 
 \paragraph{Cassa standard}
+All'inizio della simulazione, e in generale quando la cassa ha terminato la transazione di un cliente o quando non ci sono clienti in coda, la cassa si trova nella \textbf{fase di attesa di un nuovo cliente}. L'agente cassa chiede alla coda a cui è associata il primo cliente in fila, se ce n'è, quindi compie 4 passi:
+\begin{itemize}
+\item Cambia lo stato al cliente che sta servendo, impostandolo in fase di attesa alla cassa
+\item Muove il cliente di fianco alla propria postazione, spostandolo quindi dalla coda
+\item Cambia il proprio stato impostandolo in fase di elaborazione
+\item Fa avanzare tutti i clienti che erano in coda dopo il cliente che viene servito
+\end{itemize}
+
+Nella \textbf{fase di elaborazione della spesa del cliente}, la cassa simula il passaggio dei prodotti sullo scanner, diminuendo il \textit{basket-size} del cliente ad ogni passo di una quantità che dipende dalla velocità di processing, parametro del modello. Quando la transazione è completata, ovvero quando il \textit{basket-size} del cliente è nullo, fa uscire il cliente dal negozio e cambia il proprio stato, entrando nella \textbf{fase di completamento della transazione}.
+
+In questa ultima fase la cassa ha terminato il servizio di un cliente, quindi si rimette nel primo stato, in fase di attesa di un nuovo cliente.
 
 Il workflow della cassa standard viene riassunto nell'immagine:
 
@@ -135,17 +149,24 @@ Il workflow della cassa standard viene riassunto nell'immagine:
 
 \paragraph{Cassa self-service}
 
-Il workflow della cassa self-service viene riassunto nell'immagine:
-
-\begin{figure}[htp!]
-	\centering
-	\hspace*{3cm}
-	\includegraphics[width=8cm]{"images/doggo.jpg"}
-	\caption{Workflow dell'agente di tipo self-service.}
-	\label{fig:workflow_customer}
-\end{figure}
+Il workflow della cassa self-service è uguale in tutto a quello della cassa standard, le uniche differenze sono che esiste una coda condivisa ogni 8 casse self-service (che però funziona allo stesso modo della coda della cassa standard) e che la velocità di elaborazione della spesa è più piccola di 1.5, un parametro del modello.
 
 \paragraph{Cassa self-scan}
+
+Nella \textbf{fase di attesa di un nuovo cliente}, se ci sono clienti nella coda condivisa, la cassa self-scan prende il primo cliente della coda; estrae quindi un numero e, con lo $7.5 \%$ di probabilità lo manda alla cassa riservata per una \textbf{rilettura parziale}, con lo $2.5 \%$ di probabilità lo manda alla cassa riservata per una \textbf{rilettura totale} e invece con il $90 \%$ di probabilità gli fa fare il pagamento normale. Nel caso di rilettura parziale o totale, la cassa sposta il cliente alla cassa riservata, fa avanzare i clienti in coda e rimane nella fase di attesa di un nuovo cliente, pronta per prendere il nuovo cliente della coda.
+
+Nel caso non debba avvenire una rilettura la cassa compie queste 4 azioni:
+
+\begin{itemize}
+\item Cambia lo stato al cliente che sta servendo, impostandolo in fase di attesa alla cassa
+\item Muove il cliente di fianco alla propria postazione, spostandolo quindi dalla coda
+\item Cambia il proprio stato impostandolo in fase di elaborazione
+\item Fa avanzare tutti i clienti che erano in coda dopo il cliente che viene servito
+\end{itemize}
+
+Nella \textbf{fase di elaborazione della spesa del cliente}, la cassa effettua la vera e propria transazione, la differenza con la cassa standard è la velocità di elaborazione della spesa, che in questo caso è uguale alla \textit{basket-size} del cliente; il cliente infatti deve soltanto pagare, in quanto ha già scannerizzato i prodotti durante la sua spesa.
+
+Nell'ultima fase la cassa ha terminato il servizio di un cliente, quindi si rimette nel primo stato, in fase di attesa di un nuovo cliente.
 
 Il workflow della cassa self-scan viene riassunto nell'immagine:
 
@@ -158,6 +179,10 @@ Il workflow della cassa self-scan viene riassunto nell'immagine:
 \end{figure}
 
 \paragraph{Cassa riservata}
+
+Nella \textbf{fase di attesa di un nuovo cliente} la cassa riservata è pronta a servire i clienti in coda, però prima controlla che ci siano in coda clienti a cui è stata assegnata una rilettura parziale della spesa, dandogli la precedenza in quanto la rilettura parziale è più veloce di quella totale.
+
+Scelto quindi il cliente, questa cassa passa per le stesse fasi della cassa standard.
 
 Il workflow della cassa riservata viene riassunto nell'immagine:
 
@@ -200,7 +225,7 @@ all'utilizzatore piena possibilitá di modifica, ampliazione o di non
 utilizzo. A livello di architettura del software questo si traduce
 nell'implementazione dei pattern:
 
-% TODO forse aggiungere link a pattern GOF, non so come citare correttamente
+\todo{TODO forse aggiungere link a pattern GOF, non so come citare correttamente}
 \begin{itemize}
 \item \textbf{Strategy}: Usato per definire diverse modalitá di scelta
   della coda e diversi comportamenti di Jockeying. Nuovi comportamenti
