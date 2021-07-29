@@ -18,7 +18,25 @@ Come avviene l'interazione
 Descrizione dell'ambiente
 
 \section{Agente di tipo Cliente}
-I clienti sono gli agenti principali che compongono il modello e interagiscono con l'ambiente per raggiungere l'obiettivo di fare la spesa; per portare a termine questo compito l'agente esegue alcuni macro-step in cui è necessaria anche una fase di pianificazione e valutazione della bontà (\textit{utility function}) della scelta adottata in alcune di queste.
+I clienti sono gli agenti principali che compongono il modello e interagiscono con l'ambiente per raggiungere l'obiettivo di fare la spesa; per portare a termine questo compito l'agente esegue alcuni macro-step in cui è necessaria anche una fase di pianificazione e valutazione della bontà (\textit{utility function}) della scelta.
+
+Dal punto di vista dell'agente di tipo cliente, la fase più complicata è quella in cui ha raggiunto il target basekt size e deve quindi mettersi in una coda per attendere il suo turno in cassa.
+A questo punto il \textbf{goal dell'agente }è: essere servito da una cassa nel minor tempo possibile, pur dovendo necessariamente passare per una coda.
+Questa fase richiede una pianificazione da parte dell'agente in quanto la coda viene scelta in modo ottimale cercando di minimizzare il tempo passato in coda, ciò avviene basandosi su diverse strategie. Ragionamenti analoghi vengono fatti nel momento in cui l'agente già in coda decide di fare jockeying, ovvero cambiare la coda attuale perchè questa azione porta al raggiungimento del goal.
+
+Da queste considerazione è possibile classificare l'agente di tipo Cliente come "utility-based", secondo la tassonomia proposta Russel-Norvig \cite{norvig}; viene qui sotto riportata l'architettura di un agente "utility-based":
+
+
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=11cm]{"images/utility-based_architecture.png"}
+	\caption{Agente di tipo utility-based.}
+	\label{fig:workflow_customer}
+\end{figure}
+
+Da questa immagine possiamo notare come ci sia una corrispondenza tra l'architettura proposta e quella dell'agente di tipo cliente. Infatti l'agente pianifica le sue azione e valuta la bontà dell'azione di scegliere una coda per mezzo di un'utlity function.
+
+
 
 \subsection{Workflow}
 I macro-step che l'agente deve seguire per il raggiungimento del goal, che coincidono con gli stati associati all'agente durante la simulazione, sono:
@@ -57,9 +75,6 @@ Il workflow dell'agente di tipo cliente viene astratto e riassunto da questa imm
 	\caption{Workflow dell'agente di tipo customer.}
 	\label{fig:workflow_customer}
 \end{figure}
-
-
-\subsection{Architettura}
 
 \section{Agente di tipo Cassa}
 \label{model:cashdesks}
