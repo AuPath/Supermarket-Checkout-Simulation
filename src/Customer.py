@@ -60,7 +60,7 @@ class Customer(Agent):
         The customer chooses a queue based on the the chosen Strategy.
         """
         if not self.self_scan:
-            if self.basket_size > 15: # TODO: ho impostato a 15 il max basket size per le casse automatiche
+            if self.basket_size > 15:
                 working_queues = [c for c in self.model.get_working_queues(exclude_self_service=True) if not c.is_queue_full()]
             else:
                 working_queues = [c for c in self.model.get_working_queues(exclude_self_service=False) if not c.is_queue_full()]
@@ -81,7 +81,7 @@ class Customer(Agent):
         When the customer is following a queue, he can change
         the queue if he computes that it has less expected wait time.
         """
-        # TODO: Devo cambiare la cassa con una certa probabilità e non sempre
+        # TODO: Devo cambiare la cassa con una certa probabilità e non sempre - più conviene cambiare più è probabile cambiare
         if self.model.cash_desk_standard_zone is not None:
             cash_desk = self.get_cash_desk(self.target_queue)
 

@@ -51,7 +51,6 @@ def generate_customers_metadata(n_customers, queue_choice_strategy: QueueChoiceS
 
     basket_size_values = generate_basket_size(n_customers)
 
-    # TODO: che distribuzione hanno i self scan? da inventarsela
     rand_num = random.random()
     for basket_size in basket_size_values:
         self_scan = rand_num < SELF_SCAN_PERCENTAGE
