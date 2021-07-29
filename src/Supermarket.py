@@ -438,6 +438,8 @@ class Supermarket(Model):
 
         return n
 
+    # TODO: aggiungere tempo di attesa dei clienti, tempo totale di simulazione
+
     def get_density_total(self):
         # numero di clienti totale / numero di casse totali
         return self.get_number_of_customers() / len(self.get_cash_desks())
