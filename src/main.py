@@ -39,14 +39,14 @@ zones_metadata = [('ENTERING', entering_zone_width),
 # TODO: quanto vale uno step? qui 1 minuto, gli faccio entrare un cliente al minuto, e la giornata dura 8 ore
 customer_distribution = [1] * (60 * 8)
 
-height = 20
+height = 28
 # numero casse self-scan (ognuna occupa 2) + 1 spazio + barriera (1) + 1 spazio +
 # numero casse standard (ognuna occupa 2) + 2 spazi + numero gruppi casse self (ognuna occupa 8) +
 # barriera (1) + larghezza entering zone
 width = number_cash_desk_self_scan * 2 + 3 + number_cash_desk * 2 + 1 + \
         number_cash_desk_self_service_groups * 8 + 1 + entering_zone_width
-pixels_width = 500
-pixels_height = 500 / width * height
+pixels_width = 1500
+pixels_height = 1500 / width * height
 grid = CanvasGrid(agent_portrayal, width,
                   height, pixels_width, pixels_height)
 
@@ -93,4 +93,5 @@ server = ModularServer(Supermarket,
                         "queue_jockey_strategy": QueueJockeyLeastPeople()
                         })
 server.port = 8521  # The default
+server.settings["template_path"] = STATIC_PAGE_PATH
 server.launch()
