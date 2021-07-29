@@ -22,7 +22,7 @@ init_logging(LOG_PATH, enable_logging=False)
 
 # Zones metadata
 entering_zone_width = 6
-shopping_zone_height = 3
+shopping_zone_height = 10
 number_cash_desk_self_scan = 4
 number_cash_desk = 10
 
@@ -39,7 +39,7 @@ zones_metadata = [('ENTERING', entering_zone_width),
 # TODO: quanto vale uno step? qui 1 minuto, gli faccio entrare un cliente al minuto, e la giornata dura 8 ore
 customer_distribution = [1] * (60 * 8)
 
-height = 28
+height = 30
 # numero casse self-scan (ognuna occupa 2) + 1 spazio + barriera (1) + 1 spazio +
 # numero casse standard (ognuna occupa 2) + 2 spazi + numero gruppi casse self (ognuna occupa 8) +
 # barriera (1) + larghezza entering zone
@@ -89,6 +89,7 @@ server = ModularServer(Supermarket,
                        {"zones_metadata": zones_metadata,
                         # lista con numero di clienti da generare ad ogni step es. [1, 2, 3, 2, 4, 5, 2, ...]
                         "customer_distribution": customer_distribution,
+                        "grid_height": height,
                         "queue_choice_strategy": QueueChoiceLeastPeople(),
                         "queue_jockey_strategy": QueueJockeyLeastPeople()
                         })
