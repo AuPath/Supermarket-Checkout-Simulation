@@ -29,9 +29,6 @@ from src.zones.stationary.EnteringZone import EnteringZone
 from src.zones.stationary.ShoppingZone import ShoppingZone
 
 ADJ_WINDOW_SIZE = 2
-
-GRID_HEIGHT = 20
-
 MAX_CUSTOMER_QUEUED = 6
 
 QUEUED_PERCENTAGE_OPEN_THRESHOLD = 0.6
@@ -66,12 +63,14 @@ def generate_customers_metadata(n_customers, queue_choice_strategy: QueueChoiceS
 class Supermarket(Model):
     """SuperMARCO model: description here"""
 
-    def __init__(self, zones_metadata, customer_distribution, queue_choice_strategy: QueueChoiceStrategy,
-                 queue_jockey_strategy: QueueJockeyStrategy, adj_window_size=ADJ_WINDOW_SIZE):
+    def __init__(self, zones_metadata, customer_distribution, grid_height,
+                 queue_choice_strategy: QueueChoiceStrategy, queue_jockey_strategy: QueueJockeyStrategy,
+                 adj_window_size=ADJ_WINDOW_SIZE):
         self.__customers = set()
         self.__occupied_cells = set()
         self.__cash_desks: list[CashDesk] = []
         self.grid = None
+        self.grid_height = grid_height
         self.customer_scheduler = RandomActivation(self)
         self.cash_desk_scheduler = RandomActivation(self)
         self.__adj_window_size = adj_window_size
@@ -245,7 +244,7 @@ class Supermarket(Model):
 
     def init_grid(self):
         logging.info("Init grid")
-        height = GRID_HEIGHT
+        height = self.grid_height
         width = (
                     self.cash_desk_self_scan_zone.cash_desks_number * 2 if self.cash_desk_self_scan_zone is not None else 0) \
                 + 3 + (
