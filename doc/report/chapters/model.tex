@@ -1,8 +1,8 @@
 \chapter{Descrizione del modello}
+\label{chapter:model}
 
 \section{Framework adottato}
-
-\todo{reference} Mesa è un framework in Python usato per la modellazione basata su agenti (ABM). Permette di creare il modello con componenti \textit{built-in} come griglie spaziali e scheduler di agenti, e di visualizzare i componenti del modello con un'interfaccia browser. Sfruttando Mesa è possibile definire sia l'ambiente che gli agenti estendendo le relative classi messe a disposizione dal framework. Mesa infine comprende strumenti per l'analisi del modello creato.
+Mesa \cite{mesa} è un framework in Python usato per la modellazione basata su agenti (ABM). Permette di creare il modello con componenti \textit{built-in} come griglie spaziali e scheduler di agenti, e di visualizzare i componenti del modello con un'interfaccia browser. Sfruttando Mesa è possibile definire sia l'ambiente che gli agenti estendendo le relative classi messe a disposizione dal framework. Mesa infine comprende strumenti per l'analisi del modello creato.
 
 Nel nostro modello di supermercato, il modello vero e proprio di Mesa è la classe \textbf{Supermarket} e gli agenti sono i clienti, classe \textbf{Customer}, e le casse, classe \textbf{CashDesk}. 
 
@@ -78,6 +78,9 @@ Il workflow dell'agente di tipo cliente viene astratto e riassunto da questa imm
 \section{Agente di tipo Cassa}
 \label{model:cashdesks}
 
+\todo{Qua parlare dell'architettura delle casse (tipo di agente, immagine ecc..)}
+
+\subsection{Tipi di cassa}
 
 Gli agenti di tipo cassa hanno l'unica funzione di servire i clienti che si mettono in coda per pagare la spesa; sono di 4 tipi e differiscono per modalità di elaborazione della spesa del cliente e per velocità.
 
@@ -105,7 +108,7 @@ Queste stime sono state prese dall'articolo \cite{article1} e in particolare i p
 a = 0.6984, \;\; b = 2.1219, \;\; \alpha = 3.074209, \;\; \beta = \frac{1}{4.830613}
 \end{equation}
 
-\item \textbf{Cassa self-service}: alla cassa self-service il cliente provvede da solo al passaggio dei prodotti del carrello allo scanner, per cui non è presente un cassiere. Si suppone che il cliente non sia veloce quanto un cassiere esperto a passare i prodotti sullo scanner, per questo la velocità di processing per questa cassa è stata divisa per un fattore $1.5$, uno dei parametri descritti nella sezione \ref{model:parameters}. 
+\item \textbf{Cassa self-service}: alla cassa self-service il cliente provvede da solo al passaggio dei prodotti del carrello allo scanner, per cui non è presente un cassiere. Si suppone che il cliente non sia veloce quanto un cassiere esperto a passare i prodotti sullo scanner, per questo la velocità di processing per questa cassa è stata divisa per un fattore $1.5$, uno dei parametri descritti nella sezione \ref{model:parameters}. A causa della velocità ridotta, di solito nei supermercati è posto un limite di \textit{basket-size} per accedere alla cassa self-service; nel nostro modello questo limite è posto a 15, per cui se un cliente ha più di 15 elementi nel carrello e non va nel self-scan, deve per forza andare alla cassa standard.
 
 Anche in questo caso il tempo di servizio è diviso in transaction-time e break-time, solo che, a differenza della cassa normale, il break-time risulta più lungo in quanto il cliente inizia ad insacchettare solamente dopo aver passato i prodotti allo scanner, invece nella cassa standard può iniziare già mentre il cassiere passa i prodotti. In questo caso, dunque, il transaction-time e il break-time sono stati stimati entrambi con una regressione di potenza:
 
@@ -133,21 +136,15 @@ Il funzionamento e i tempi di servizio sono esattamente gli stessi della cassa s
 
 Tutti i tipi di cassa attraversano 3 fasi: fase di attesa di un nuovo cliente, fase di elaborazione della spesa del cliente, fase di completamento della transazione.
 
-\paragraph{Code} 
-Descrizione di come funzionano le code - ogni cassa ha una coda e una
-coda può essere associata a più casse
-
+\paragraph{Code}
 Nel modello vengono considerati i casi di:
 
 \begin{itemize}
-\item \textbf{Code parallele} Per questa disposizione ad ogni cassa è
-  associata una coda. Nel momento che la cassa è libera il cliente in
+\item \textbf{Code parallele}: per questa disposizione ad ogni cassa è
+  associata una coda. Nel momento in cui la cassa è libera il cliente in
   cima alla coda viene spostato alla cassa per procedere con la fase
   di elaborazione della spesa.
-\item \textbf{Coda condivisa} Nota anche come \textit{N-fork} \cite{yanagisawa2011methods}, N casse
-  condividono la stessa coda, nel momento che una qualsiasi delle
-  casse risulta libera il cliente in posizione utile procede alla
-  cassa. Utilizzando questa disposizione non viene ammesso jockeying.
+\item \textbf{Coda condivisa}: nota anche come \textit{N-fork} \cite{yanagisawa2011methods}, più casse condividono la stessa coda, nel momento che una qualsiasi delle casse risulta libera il cliente in posizione utile procede alla cassa. Utilizzando questa disposizione non viene ammesso jockeying.
 \end{itemize}
 
 \begin{figure}[htp!]
@@ -184,13 +181,13 @@ Nella \textbf{fase di elaborazione della spesa del cliente}, la cassa simula il 
 
 In questa ultima fase la cassa ha terminato il servizio di un cliente, quindi si rimette nel primo stato, in fase di attesa di un nuovo cliente.
 
-Il workflow della cassa standard viene riassunto nell'immagine:
+Il workflow della cassa standard viene riassunto nell'immagine \ref{fig:workflow_cashdesk_standard}.
 
 \begin{figure}[htp!]
 	\centering
-	\includegraphics[width=8cm]{"images/doggo.jpg"}
+	\includegraphics[width=8cm]{"images/workflow_cashdesk_standard.png"}
 	\caption{Workflow dell'agente di tipo cassa standard.}
-	\label{fig:workflow_customer}
+	\label{fig:workflow_cashdesk_standard}
 \end{figure}
 
 \paragraph{Cassa self-service}
@@ -214,13 +211,13 @@ Nella \textbf{fase di elaborazione della spesa del cliente}, la cassa effettua l
 
 Nell'ultima fase la cassa ha terminato il servizio di un cliente, quindi si rimette nel primo stato, in fase di attesa di un nuovo cliente.
 
-Il workflow della cassa self-scan viene riassunto nell'immagine:
+Il workflow della cassa self-scan viene riassunto nell'immagine \ref{fig:workflow_cashdesk_self_scan}.
 
 \begin{figure}[htp!]
 	\centering
-	\includegraphics[width=8cm]{"images/doggo.jpg"}
+	\includegraphics[width=8cm]{"images/workflow_cashdesk_self_scan.png"}
 	\caption{Workflow dell'agente di tipo cassa self-scan.}
-	\label{fig:workflow_customer}
+	\label{fig:workflow_cashdesk_self_scan}
 \end{figure}
 
 \paragraph{Cassa riservata}
@@ -229,13 +226,13 @@ Nella \textbf{fase di attesa di un nuovo cliente} la cassa riservata è pronta a
 
 Scelto quindi il cliente, questa cassa passa per le stesse fasi della cassa standard.
 
-Il workflow della cassa riservata viene riassunto nell'immagine:
+Il workflow della cassa riservata viene riassunto nell'immagine \ref{fig:workflow_cashdesk_reserved}.
 
 \begin{figure}[htp!]
 	\centering
-	\includegraphics[width=8cm]{"images/doggo.jpg"}
+	\includegraphics[width=8cm]{"images/workflow_cashdesk_reserved.png"}
 	\caption{Workflow dell'agente di tipo cassa riservata.}
-	\label{fig:workflow_customer}
+	\label{fig:workflow_cashdesk_reserved}
 \end{figure}
 
 
@@ -269,25 +266,23 @@ Ogni zona è responsabile della propria costruzione, ovvero del proprio collocam
 
 \section{Considerazioni sul modello}
 
-Il modello é stato sviluppato cercando di renderlo flessibile per
-permettere con semplicitá future espansioni e cambiamenti. Gli aspetti
-piú dinamici del modello, quindi il comportamento degli agenti e le
-varie modalitá di scelta di una coda e la capacitá di un agente
-Customer di effettuare Jockeying sono stati realizzati lasciando
-all'utilizzatore piena possibilitá di modifica, ampliazione o di non
+Il modello é stato sviluppato in modo da essere flessibile per
+permettere con semplicità future espansioni e cambiamenti. Gli aspetti
+più dinamici del modello, quindi il comportamento degli agenti e le
+varie modalità di scelta di una coda e la capacità di un agente
+Cliente di effettuare \textit{jockeying} sono stati realizzati lasciando
+all'utilizzatore piena possibilità di modifica, ampliamento o di non
 utilizzo. A livello di architettura del software questo si traduce
 nell'implementazione dei pattern:
 
 \todo{TODO forse aggiungere link a pattern GOF, non so come citare correttamente}
 \begin{itemize}
-\item \textbf{Strategy}: Usato per definire diverse modalitá di scelta
-  della coda e diversi comportamenti di Jockeying. Nuovi comportamenti
-  possono essere aggiunti rispettando un'interafaccia
-  standard. Permette inoltre se necessario cambiamenti di
-  comportamento a run time.
-\item \textbf{State}: Usato per definire tramite una macchina a stati
-  finiti i comportamenti degli agenti Customer e Cashdesk. Nuovi stati
-  possono essere aggiunti con facilitá e collegati ad altri stati
+\item \textbf{Strategy}: usato per definire diverse modalità di scelta
+  della coda e diversi comportamenti di \textit{jockeying}. Nuovi comportamenti
+  possono essere aggiunti rispettando un'interfaccia standard. Permette inoltre se necessario cambiamenti di comportamento a run time.
+\item \textbf{State}: usato per definire tramite una macchina a stati
+  finiti i comportamenti degli agenti Cliente e Cassa. Nuovi stati
+  possono essere aggiunti con facilità e collegati ad altri stati
   tramite transizioni. La divisione in stati rende semplice ragionare
   sul comportamento di un agente.
 \end{itemize}
@@ -300,10 +295,4 @@ Casse adiacenti considerate
 Inizializzazione della griglia e parametri per creare casse (numero casse, coda condivisa o no, velocità di processing e parametro per rallentare la velocità della self-service), customer, basket size (analisi dei dati di Gianluca).
 
 \subsection{Basket size}
-Citare paper con i dati.
-
-\section{Workflow degli agenti}
-
-\todo{non lo abbiamo mica detto sopra?}
-
-Steps: ad ogni step entrano clienti in base alla distribuzione data come parametro; ad ogni step le casse decidono se aprire o chiudere in base al numero di clienti presenti; mettere grafici dei comportamenti e degli stati dei clienti e delle casse (quindi descrizione in dettaglio di ogni cassa e tipo di coda, di ogni stato della cassa e del cliente).
+Citare paper con i dati (distribuzione, parametro lambda scelto).
