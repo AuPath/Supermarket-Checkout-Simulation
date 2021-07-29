@@ -242,10 +242,10 @@ Il workflow della cassa riservata viene riassunto nell'immagine:
 	\label{fig:workflow_customer}
 \end{figure}
 
-\subsection{Architettura}
 
 \section{Ambiente}
-La classe \textbf{Supermarket} si occupa di inizializzare la griglia che verrà poi mostrata in fase di simulazione sull'interfaccia, inizializzare le casse, l'ambiente e i clienti.
+
+L'ambiente del sistema in cui gli agenti vivono è il supermercato, implementato dalla classe \textbf{Supermarket} che si occupa di inizializzare la griglia che verrà poi mostrata in fase di simulazione sull'interfaccia, inizializzare le casse, i clienti e mediare le interazioni con gli agenti.
 
 Per inizializzare la griglia, l'ambiente viene diviso in zone: zona d'entrata, zona di shopping, zona casse normali, zona casse self-service, zona casse self-scan. Questa divisione permette una gestione più semplice dello spazio e dei movimenti degli agenti. Ogni zona ha come parametri la dimensione o il numero di casse che deve contenere, questi parametri vengono inizializzati nella classe \textbf{main}, come si vedrà nella prossima sezione.
 
