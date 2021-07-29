@@ -106,7 +106,7 @@ Queste stime sono state prese dall'articolo \cite{article1} e in particolare i p
 a = 0.6984, \;\; b = 2.1219, \;\; \alpha = 3.074209, \;\; \beta = \frac{1}{4.830613}
 \end{equation}
 
-\item \textbf{Cassa self-service}: alla cassa self-service il cliente provvede da solo al passaggio dei prodotti del carrello allo scanner, per cui non è presente un cassiere. Si suppone che il cliente non sia veloce quanto un cassiere esperto a passare i prodotti sullo scanner, per questo la velocità di processing per questa cassa è stata divisa per un fattore $1.5$, uno dei parametri descritti nella sezione \ref{model:parameters}. 
+\item \textbf{Cassa self-service}: alla cassa self-service il cliente provvede da solo al passaggio dei prodotti del carrello allo scanner, per cui non è presente un cassiere. Si suppone che il cliente non sia veloce quanto un cassiere esperto a passare i prodotti sullo scanner, per questo la velocità di processing per questa cassa è stata divisa per un fattore $1.5$, uno dei parametri descritti nella sezione \ref{model:parameters}. A causa della velocità ridotta, di solito nei supermercati è posto un limite di \textit{basket-size} per accedere alla cassa self-service; nel nostro modello questo limite è posto a 15, per cui se un cliente ha più di 15 elementi nel carrello e non va nel self-scan, deve per forza andare alla cassa standard.
 
 Anche in questo caso il tempo di servizio è diviso in transaction-time e break-time, solo che, a differenza della cassa normale, il break-time risulta più lungo in quanto il cliente inizia ad insacchettare solamente dopo aver passato i prodotti allo scanner, invece nella cassa standard può iniziare già mentre il cassiere passa i prodotti. In questo caso, dunque, il transaction-time e il break-time sono stati stimati entrambi con una regressione di potenza:
 
@@ -185,14 +185,14 @@ Nella \textbf{fase di elaborazione della spesa del cliente}, la cassa simula il 
 
 In questa ultima fase la cassa ha terminato il servizio di un cliente, quindi si rimette nel primo stato, in fase di attesa di un nuovo cliente.
 
-Il workflow della cassa standard viene riassunto nell'immagine:
+Il workflow della cassa standard viene riassunto nell'immagine \ref{fig:workflow_cashdesk_standard}.
 
 \begin{figure}[htp!]
 	\centering
 	\hspace*{3cm}
-	\includegraphics[width=8cm]{"images/doggo.jpg"}
+	\includegraphics[width=8cm]{"images/workflow_cashdesk_standard.png"}
 	\caption{Workflow dell'agente di tipo cassa standard.}
-	\label{fig:workflow_customer}
+	\label{fig:workflow_cashdesk_standard}
 \end{figure}
 
 \paragraph{Cassa self-service}
@@ -216,14 +216,14 @@ Nella \textbf{fase di elaborazione della spesa del cliente}, la cassa effettua l
 
 Nell'ultima fase la cassa ha terminato il servizio di un cliente, quindi si rimette nel primo stato, in fase di attesa di un nuovo cliente.
 
-Il workflow della cassa self-scan viene riassunto nell'immagine:
+Il workflow della cassa self-scan viene riassunto nell'immagine \ref{fig:workflow_cashdesk_self_scan}.
 
 \begin{figure}[htp!]
 	\centering
 	\hspace*{3cm}
-	\includegraphics[width=8cm]{"images/doggo.jpg"}
+	\includegraphics[width=8cm]{"images/workflow_cashdesk_self_scan.png"}
 	\caption{Workflow dell'agente di tipo cassa self-scan.}
-	\label{fig:workflow_customer}
+	\label{fig:workflow_cashdesk_self_scan}
 \end{figure}
 
 \paragraph{Cassa riservata}
@@ -232,14 +232,14 @@ Nella \textbf{fase di attesa di un nuovo cliente} la cassa riservata è pronta a
 
 Scelto quindi il cliente, questa cassa passa per le stesse fasi della cassa standard.
 
-Il workflow della cassa riservata viene riassunto nell'immagine:
+Il workflow della cassa riservata viene riassunto nell'immagine \ref{fig:workflow_cashdesk_reserved}.
 
 \begin{figure}[htp!]
 	\centering
 	\hspace*{3cm}
-	\includegraphics[width=8cm]{"images/doggo.jpg"}
+	\includegraphics[width=8cm]{"images/workflow_cashdesk_reserved.png"}
 	\caption{Workflow dell'agente di tipo cassa riservata.}
-	\label{fig:workflow_customer}
+	\label{fig:workflow_cashdesk_reserved}
 \end{figure}
 
 \subsection{Architettura}
