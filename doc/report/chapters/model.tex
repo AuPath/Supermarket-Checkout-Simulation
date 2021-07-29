@@ -70,7 +70,6 @@ Il workflow dell'agente di tipo cliente viene astratto e riassunto da questa imm
 
 \begin{figure}[htp!]
 	\centering
-	\hspace*{3cm}
 	\includegraphics[width=8cm]{"images/workflow_customer.png"}
 	\caption{Workflow dell'agente di tipo customer.}
 	\label{fig:workflow_customer}
@@ -151,7 +150,7 @@ Nel modello vengono considerati i casi di:
   cassa. Utilizzando questa disposizione non viene ammesso jockeying.
 \end{itemize}
 
-\begin{figure}[H]
+\begin{figure}[htp!]
 \centering
 \begin{subfigure}{.5\textwidth}
   \centering
@@ -189,7 +188,6 @@ Il workflow della cassa standard viene riassunto nell'immagine:
 
 \begin{figure}[htp!]
 	\centering
-	\hspace*{3cm}
 	\includegraphics[width=8cm]{"images/doggo.jpg"}
 	\caption{Workflow dell'agente di tipo cassa standard.}
 	\label{fig:workflow_customer}
@@ -220,7 +218,6 @@ Il workflow della cassa self-scan viene riassunto nell'immagine:
 
 \begin{figure}[htp!]
 	\centering
-	\hspace*{3cm}
 	\includegraphics[width=8cm]{"images/doggo.jpg"}
 	\caption{Workflow dell'agente di tipo cassa self-scan.}
 	\label{fig:workflow_customer}
@@ -236,7 +233,6 @@ Il workflow della cassa riservata viene riassunto nell'immagine:
 
 \begin{figure}[htp!]
 	\centering
-	\hspace*{3cm}
 	\includegraphics[width=8cm]{"images/doggo.jpg"}
 	\caption{Workflow dell'agente di tipo cassa riservata.}
 	\label{fig:workflow_customer}
@@ -247,9 +243,18 @@ Il workflow della cassa riservata viene riassunto nell'immagine:
 
 L'ambiente del sistema in cui gli agenti vivono è il supermercato, implementato dalla classe \textbf{Supermarket} che si occupa di inizializzare la griglia che verrà poi mostrata in fase di simulazione sull'interfaccia, inizializzare le casse, i clienti e mediare le interazioni con gli agenti.
 
-Per inizializzare la griglia, l'ambiente viene diviso in zone: zona d'entrata, zona di shopping, zona casse normali, zona casse self-service, zona casse self-scan. Questa divisione permette una gestione più semplice dello spazio e dei movimenti degli agenti. Ogni zona ha come parametri la dimensione o il numero di casse che deve contenere, questi parametri vengono inizializzati nella classe \textbf{main}, come si vedrà nella prossima sezione.
+Per inizializzare la griglia, l'ambiente viene diviso in zone: zona d'entrata, zona di shopping, zona casse normali, zona casse self-service, zona casse self-scan. Questa divisione permette una gestione più semplice dello spazio e dei movimenti degli agenti. Ogni zona ha come parametri la dimensione o il numero di casse che deve contenere, questi parametri vengono inizializzati a priori e gestiti dall'entry point del programma, il file \textbf{main}, come si vedrà nella prossima sezione.
 
 Ogni zona è responsabile della propria costruzione, ovvero del proprio collocamento nella griglia dell'interfaccia in base alle proprie dimensioni ed eventualmente del posizionamento delle casse che contiene. Inoltre ogni zona è responsabile dei movimenti dei clienti: se un cliente vuole muoversi da una zona all'altra oppure mettersi in coda nelle casse di una zona, è la zona di destinazione che fornisce il metodo per posizionarsi correttamente in essa.
+
+
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=14cm]{"images/supermarket-start-zones.png"}
+	\caption{Stuttura del supermercato diviso in zone.}
+	\label{fig:supermarket_zones}
+\end{figure}
+
 
 \todo{Parlare di quanto dura uno step e quanto dura una simulazione} Ad ogni step della simulazione, il modello crea dei clienti secondo la distribuzione data (si veda la sezione \ref{model:parameters}) e li posiziona nella \textbf{Entering Zone} del supermercato in coordinate random, dunque si occupa della attivazione e disattivazione delle casse standard in base al numero di clienti presenti nel negozio in quello step, secondo dei parametri che si vedranno nella prossima sezione. Quindi il modello chiama gli scheduler degli agenti, clienti e casse, e fa eseguire i loro step.
 
