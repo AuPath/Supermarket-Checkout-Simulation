@@ -459,12 +459,20 @@ class Supermarket(Model):
 
     def get_density_self_scan(self):
         # numero di clienti self scan / numero di casse self scan
-        return (self.get_number_of_customers() - self.get_number_of_customers(exclude_self_scan=True)) / \
+
+        if len(self.get_cash_desks_by_type("CashDeskSelfScan")) == 0:
+            return 0
+        else:
+            return (self.get_number_of_customers() - self.get_number_of_customers(exclude_self_scan=True)) / \
                len(self.get_cash_desks_by_type("CashDeskSelfScan"))
 
     def get_flow_self_scan(self):
         # numero di clienti processati (uscenti) dalle casse self scan
-        return (self.get_number_processed_customers() - self.get_number_processed_customers(exclude_self_scan=True)) / \
+
+        if len(self.get_cash_desks_by_type("CashDeskSelfScan")) == 0:
+            return 0
+        else:
+            return (self.get_number_processed_customers() - self.get_number_processed_customers(exclude_self_scan=True)) / \
                len(self.get_cash_desks_by_type("CashDeskSelfScan"))
 
     def get_occupied_cells(self):
@@ -481,6 +489,6 @@ class Supermarket(Model):
         else:
             filtered_cash_desk = []
             for cash_desk in self.__cash_desks:
-                if cash_desk in self.cash_desk_self_scan_zone.cash_desks:
+                if cash_desk not in self.cash_desk_self_scan_zone.cash_desks:
                     filtered_cash_desk.append(cash_desk)
             return filtered_cash_desk
