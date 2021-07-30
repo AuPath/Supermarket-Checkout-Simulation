@@ -1,8 +1,14 @@
 from operator import methodcaller
+
+
 from src.queuejockeystrategy.QueueJockeyStrategy import QueueJockeyStrategy
 
 
 class QueueJockeyLeastPeople(QueueJockeyStrategy):
+
+    def __init__(self, threshold): 
+        super().__init__()
+        self.threshold = threshold
 
     def switch_queue(self, customer, other_cash_desks):
 
@@ -12,7 +18,9 @@ class QueueJockeyLeastPeople(QueueJockeyStrategy):
 
         min_other_cash_desk = min(other_cash_desks, key=methodcaller('queue_size'))
 
-        if customer_pos <= min_other_cash_desk.queue_size():
-            return current_cash_desk.queue
-        else:
+        queue_diff = customer_pos - min_other_cash_desk.queue_size()
+
+        if queue_diff > self.threshold:
             return min_other_cash_desk.queue
+        else:
+            return current_cash_desk.queue
