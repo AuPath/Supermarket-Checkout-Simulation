@@ -1,4 +1,30 @@
 \chapter{Stato dell'arte}
 
-In questo capitolo viene introdotto il problema, il dominio di
-riferimento e l'approccio adottato per la risoluzione.
+\todo{in ogni capitolo aggiungere qualche riga iniziale in cui si spiega cosa verrà detto e qualche riga finale in cui si riassume quanto detto}
+
+Questo progetto prende spunto principalmente dal lavoro di Tomasz Antczak, Rafal Weron e Jacek Zabawa \cite{article1}, in cui viene costruito un modello ad agenti realistico per simulare la scelta della coda dei clienti di un supermercato; lo scopo principale è il supporto alle decisioni nelle operazioni di vendita. Essi mostrano che quando i clienti scelgono la coda in modo da minimizzare il tempo d'attesa previsto, questo porta in generale a tempi d'attesa minori nelle code per tutti i clienti e porta anche benefici per la gestione del supermercato, in quanto permette di ridurre i turni di lavoro dei cassieri.
+
+L'articolo sopracitato prende in considerazione 4 strategie diverse di scelta della coda:
+
+\begin{enumerate}
+	\item La coda è scelta in modo random
+	\item \'E scelta la coda con il numero minore di clienti
+	\item \'E scelta la coda con il numero minore di prodotti in tutti i carrelli
+	\item \'E scelta la coda con il minor tempo d'attesa previsto calcolato come il prodotto del numero di clienti in coda e il tempo di servizio medio per tutte le casse
+	\item \'E scelta la coda con il minor tempo d'attesa previsto calcolato come il prodotto del numero di clienti in coda e la somma dei tempi di transazione e di pausa attesi
+\end{enumerate}
+
+Nel nostro progetto in particolare, non abbiamo considerato la prima strategia di scelta random, ma soltanto le strategie 2-5.
+
+Il loro modello è stato implementato nella piattaforma di simulazione NetLogo, invece noi abbiamo optato per una riscrittura nel framework Python Mesa.
+
+Dal repository del loro progetto, abbiamo estratto i dati su cui si basa il loro modello, in particolare la distribuzione di arrivo dei clienti nel supermercato e la distribuzione della grandezza dei loro carrelli (più avanti chiamata \textit{basket-size}).
+
+L'articolo \cite{article1} non modella il \textit{jockeying}, ovvero il fatto che un cliente possa cambiare coda prima di essere servito, se calcola che in un'altra cassa ci sia un tempo d'attesa minore; abbiamo deciso di estendere il loro lavoro includendo la possibilità per i clienti di fare \textit{jockeying}, per valutare se questo portasse a una riduzione ulteriore dei tempi d'attesa. Per implementare questa estensione, abbiamo preso spunto dall'articolo \cite{yanagisawa2011methods}.
+
+In questo articolo i ricercatori prendono in considerazione due tipi di disposizioni delle code: \textbf{parallela}, che si trova quando ogni cassa ha una coda dedicata, e \textbf{N-Fork}, che si trova quando c'è un'unica coda condivisa tra più casse. Essi hanno l'obiettivo di estendere la \textit{queuing theory} considerando la distanza da percorrere per arrivare a una coda, allo scopo di rendere più efficiente il sistema di code. Nel nostro progetto, noi non abbiamo incluso nelle strategie di scelta della coda la distanza da essa, e di fatti questa potrebbe essere un'estensione, abbiamo però considerato le due disposizioni di casse studiate.
+
+Un'ulteriore estensione che abbiamo apportato a questi modelli è stata l'introduzione delle casse \textit{self-scan}: nell'articolo \cite{article1} vengono considerate le casse standard, con il cassiere, e le casse self-service, in cui il cliente passa in autonomia i prodotti allo scanner; nell'articolo \cite{yanagisawa2011methods}, invece, viene considerata solamente la cassa standard. Negli ultimi anni molti supermercati hanno adottato le casse self-scan, che permettono al cliente di scannerizzare i prodotti durante la spesa e, arrivati alla cassa, semplicemente pagare, senza passare i prodotti su un nastro; questo tipo di cassa sembra essere molto efficiente, in quanto richiede soltanto il pagamento, che diventa ancora più veloce se fatto in forma telematica. Per evitare furti, i supermercati decidono di effettuare in maniera randomica delle riletture della spesa, e questo dovrebbe diminuire la velocità media di attesa per le casse self-scan; per questi motivi abbiamo trovato utile simulare anche la presenza di queste casse.
+
+\todo{manca qualcosa nelle variabili probabilistiche?}
+Infine, per rendere la simulazione non deterministica e più realistica, abbiamo voluto inserire delle variabili probabilistiche: l'entrata dei clienti e la loro \textit{basket-size} sono basate su distribuzioni di probabilità estratte dai dati di \cite{article1}; l'estrazione dei clienti delle casse self-scan per la rilettura della spesa è randomica; il \textit{jockeying} da parte di un cliente segue una distribuzione di probabilità, in particolare diventa più probabile man mano che cambiare coda è più conveniente; la stima del \textit{basket-size} degli altri clienti da parte di un cliente, nel momento in cui utilizza la sua strategia per calcolare qual è la coda da scegliere, segue una distribuzione normale, rispecchiando così l'errore di stima che compie un umano quando deve quantificare una misura. Tutte queste distribuzioni di probabilità sono governate da parametri che, a parte per i dati estratti dal primo articolo, non sono giustificati da alcuno studio, per questo lo studio di essi rappresenta un'ulteriore estensione del nostro modello.
