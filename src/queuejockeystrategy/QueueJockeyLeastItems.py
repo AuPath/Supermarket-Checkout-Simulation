@@ -1,12 +1,14 @@
 from functools import reduce
 from operator import methodcaller
+from numpy import random
 from src.queuejockeystrategy.QueueJockeyStrategy import QueueJockeyStrategy
 
 
 class QueueJockeyLeastItems(QueueJockeyStrategy):
 
-    def __init__(self, threshold):
+    def __init__(self, threshold, prob_jockey):
         super().__init__()
+        self.prob_jockey = prob_jockey # Probabilità di fare jockey secondo bernoulli
         self.threshold = threshold
 
     def switch_queue(self, customer, other_cash_desks):
@@ -28,7 +30,7 @@ class QueueJockeyLeastItems(QueueJockeyStrategy):
 
         queue_diff = current_queue_total_items - min_other_cash_desks.total_items()
 
-        if queue_diff > self.threshold:
+        if queue_diff > self.threshold and random.random() <= self.prob_jockey:
             return min_other_cash_desks
         else:
             return current_cash_desk
