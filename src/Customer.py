@@ -81,7 +81,7 @@ class Customer(Agent):
         When the customer is following a queue, he can change
         the queue if he computes that it has less expected wait time.
         """
-        # TODO: Devo cambiare la cassa con una certa probabilità e non sempre - più conviene cambiare più è probabile cambiare
+
         if self.model.cash_desk_standard_zone is not None:
             cash_desk = self.get_cash_desk(self.target_queue)
 
