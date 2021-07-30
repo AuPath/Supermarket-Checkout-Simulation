@@ -113,7 +113,7 @@ class Supermarket(Model):
                              })
 
     def step(self):
-        if self.__current_step < 60 * 8:  # TODO: la giornata finisce dopo 8h
+        if self.__current_step < 60 * 8:  # TODO: la giornata finisce dopo 8h, controllare sto codice
             # continuous creation of customers
             customers_metadata = generate_customers_metadata(self.__customer_distribution[self.__current_step],
                                                              self.__queue_choice_strategy, self.__queue_jockey_strategy)
