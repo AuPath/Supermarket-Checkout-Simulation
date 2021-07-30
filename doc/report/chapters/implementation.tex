@@ -75,7 +75,7 @@ f(q) = |q| * \text{total-service-time}(q)
 
 \section{Fase di attesa in coda e jockeying}
 
-Quando il cliente è nella \textit{fase di attesa in coda} ha la possibilità di cambiare la propria scelta se nota che nelle code adiacenti il tempo di attesa è minore che nella propria; le code adiacenti implicate nel calcolo sono quelle che hanno distanza minore o uguale del \textbf{parametro di adiacenza}, descritto nel capitolo precedente, rispetto a dove il cliente è già accodato. Una coda è distante 1 da un'altra coda se fisicamente nella griglia della simulazione esse compaiono una di fianco all'altra.
+Quando il cliente è nella \textit{fase di attesa in coda} ha la possibilità di cambiare la propria scelta se nota che nelle code adiacenti il tempo di attesa è minore che nella propria; le code adiacenti implicate nel calcolo sono quelle che hanno distanza minore o uguale del \textbf{parametro di adiacenza}, descritto nel capitolo precedente, rispetto a dove il cliente è già accodato. Una coda è distante 1 da un'altra coda se fisicamente nella griglia della simulazione esse compaiono una di fianco all'altra. Nella pratica la coda in cui il cliente è presente in un determinato momento svolge la funzione di coda pivot e le altre code prese in considerazione per fare jockeying sono quelle adiacenti alla coda pivot.
 
 Le strategie seguite nel jockeying sono due, e coincidono con le prime due strategie di scelta della coda, descritte nella sezione precedente. Anche in questo caso il cliente stima le grandezze dei carrelli degli altri clienti in base alle \ref{eq:estimate-basket-size} e \ref{eq:error-basket-size}.
 
@@ -85,3 +85,11 @@ Le strategie seguite nel jockeying sono due, e coincidono con le prime due strat
 \end{enumerate}
 
 Se il cliente, grazie alla sua strategia, calcola che nelle code adiacenti ci sia un tempo di attesa minore rispetto alla propria, secondo una distribuzione di probabilità, la quale aumenta più risulta conveniente cambiare coda, il cliente si muove o meno. \todo{che distribuzione?}
+
+
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=6cm]{"images/jockeying-flowchart.png"}
+	\caption{Workflow jockeying.}
+	\label{fig:workflow_customer}
+\end{figure}
