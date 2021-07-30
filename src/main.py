@@ -28,6 +28,7 @@ number_cash_desk = 10
 
 threshold_items = 15
 threshold_people = 3
+probability_of_jockeying = 1
 
 number_cash_desk_self_service_groups = 1
 shared_queue = False  # coda unica tipo decathlon
@@ -94,7 +95,7 @@ server = ModularServer(Supermarket,
                         "customer_distribution": customer_distribution,
                         "grid_height": height,
                         "queue_choice_strategy": QueueChoiceLeastPeople(),
-                        "queue_jockey_strategy": QueueJockeyLeastPeople(threshold_people)
+                        "queue_jockey_strategy": QueueJockeyLeastPeople(threshold_people, probability_of_jockeying)
                         })
 server.port = 8521  # The default
 server.settings["template_path"] = STATIC_PAGE_PATH

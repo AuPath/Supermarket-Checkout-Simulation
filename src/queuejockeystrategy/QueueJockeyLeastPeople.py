@@ -1,13 +1,13 @@
 from operator import methodcaller
-
-
+from numpy import random
 from src.queuejockeystrategy.QueueJockeyStrategy import QueueJockeyStrategy
 
 
 class QueueJockeyLeastPeople(QueueJockeyStrategy):
 
-    def __init__(self, threshold): 
+    def __init__(self, threshold, prob_jockey):
         super().__init__()
+        self.prob_jockey = prob_jockey  # Probabilità di fare jockey secondo bernoulli
         self.threshold = threshold
 
     def switch_queue(self, customer, other_cash_desks):
@@ -20,7 +20,7 @@ class QueueJockeyLeastPeople(QueueJockeyStrategy):
 
         queue_diff = customer_pos - min_other_cash_desk.queue_size()
 
-        if queue_diff > self.threshold:
+        if queue_diff > self.threshold and random.random() <= self.prob_jockey:
             return min_other_cash_desk.queue
         else:
             return current_cash_desk.queue
