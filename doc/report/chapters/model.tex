@@ -292,7 +292,34 @@ nell'implementazione dei pattern:
 
 \section{Parametri del modello}
 \label{model:parameters}
+Per rendere il modello più generale possibile e in modo da adattarlo a diverse configurazioni con lo scopo di simulare scenari what-if, vengono introdotti diversi parametri per l'inizializzazione e il comportamento della simulazione.
+\todo{Controllare questo paragrafo pls}
 
+\subsection{Configurazione casse e struttura del supermercato}
+Tra i parametri più importanti e con maggiore impatto per il modello troviamo sicuramento la \textbf{configurazione del supermercato}. Un primo fattore che caratterizza la struttura del supermercato  è la dimensione della diverse zone: \textit{shopping zone}, \textit{cash-desk zone} e \textit{entering zone}.
+
+Ancora più influente e determinante per il comportamento del modello è il numero e tipo di casse che compongono il supermercato. Infatti una volta scelta la struttura e le dimensioni delle diverse zone, è necessario indicare nella \textit{cash-desk zone} il numero di casse per ogni tipo, quindi specificare la quantità di:
+\begin{itemize}
+	\item Casse self-scan ( + 1 riservata obbligatoria)
+	\item Casse standard
+	\item Casse self-service
+\end{itemize}
+
+Inoltre per quanto riguarda le code, seppure per le casse self-service è obbligatorio avere una singola coda condivisa per tutte le casse, per quanto riguarda le casse standard un ulteriore parametro è consiste nel definere se le casse di tipo standard hanno una coda dedicata per ogni cassa o un'unica coda condivisa.
+
+\subsection{Parametri di jockeying}
+Il comportamento di jockeying è influenzato da alcuni parametri, questi sono:
+\begin{itemize}
+	\item \textbf{Numero di code adiacenti considerate}: la coda in cui il customer è presente in quel momento svolge il ruolo di coda pivot, questo parametro indica il numero di code adiacenti alla coda pivot che vengono prese in considerazione per valutare l'eventualità di fare jockeying.
+	\item \textbf{Threshold di jockeying}: questo parametro ha lo scopo di modellare il fatto che un cliente efettua jockeying solo nel caso in cui per lui risulta essere conveniente non meno di un certo livello. Questo threshold indica di quale deve essere il minimo guadagno per effettuare jockeying. Questo approccio basato su una soglia di minimo guadagno è stato presentato nel lavoro di Koenigsberg \cite{koenigsberg1966jockeying}.
+	
+	\item \textbf{Probabilità di jockeying}: Nel lavoro di Tomasz Antczak e altri \cite{article1}, viene spiegato come il fenomeno di jockeying sia piuttosto raro. Il modello proposto tiene conto di questo aspetto introducendo una variabile aleatorio distributita secondo una bernulliana che ha lo scopo di, nel caso in cui il jockeying risulti essere conveniente basandosi sul threshold, consentire o negare il jockeying. Con questo approccio si vuole rendere meno frequente il jockeying.
+\end{itemize}
+
+
+
+\subsection{Parametri di }
+ 
 Casse adiacenti considerate
 
 Inizializzazione della griglia e parametri per creare casse (numero casse, coda condivisa o no, velocità di processing e parametro per rallentare la velocità della self-service), customer, basket size (analisi dei dati di Gianluca).
