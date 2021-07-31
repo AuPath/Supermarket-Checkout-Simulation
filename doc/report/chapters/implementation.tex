@@ -22,9 +22,9 @@ Al fine di definire le strategie, è importante notare che la funzione $\text{ba
 \end{equation}
 dove $e_i$ è l'errore commesso nella stima e può essere sia positivo che negativo. L'errore dipende dalla grandezza del carrello, in particolare più elementi ci sono nel carrello più l'errore aumenta; intuitivamente in questo modello si è deciso di far variare l'errore in modo logaritmico rispetto alla grandezza del carrello, in base alla formula:
 \begin{equation}\label{eq:error-basket-size}
-e_i = log_b (\text{basket-size}(c_i))
+e_i = \frac{\text{basket-size}(c_i)}{d}
 \end{equation}
-dove $b \in \mathbb{R}$, $b > 1$. 
+dove $d \in \mathbb{R}$, $d \ge 1$ e se $d = 1$ non viene commesso alcun errore sulla stima. 
 La quantità estimate-basket-size diventa dunque una variabile aleatoria normale con media la basket-size reale e deviazione standard l'errore commesso sulla stima.
 
 Le 4 strategie di scelta della coda prese in considerazione per il modello sono:
