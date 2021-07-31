@@ -12,5 +12,5 @@ class QueueChoiceLeastItems(QueueChoiceStrategy):
         for c in cash_desks:
             queues.append(c.queue)
 
-        return min(queues, key=methodcaller('total_items'))
+        return min(queues, key=methodcaller('estimate_total_items'))
 

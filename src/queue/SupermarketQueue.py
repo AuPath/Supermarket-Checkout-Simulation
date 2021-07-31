@@ -1,3 +1,5 @@
+import math
+import random
 from abc import ABC, abstractmethod
 from queue import Queue
 
@@ -52,3 +54,7 @@ class SupermarketQueue(ABC, Agent):
 
     def total_items(self):
         return sum([c.basket_size for c in self.content()])
+
+    def estimate_total_items(self):
+        return sum([c.estimate_basket_size() for c in self.content()])
+

@@ -29,12 +29,12 @@ class QueueChoiceLeastWaitingTimeServiceImplied(QueueChoiceStrategy):
 
         # todo refactoring di sto mega if che fa schifo, era per vedere se funzionava
         if len(normal_cash_desks) > 0 and len(self_service_cash_desks) > 0:
-            normal_queues_mean_service_time = self.mean_service_time(normal_cash_desks)
+            normal_queues_mean_service_time = self.estimate_mean_service_time(normal_cash_desks)
 
             normal_queue_min = min(self.get_queues_for_cash_desk_type(normal_cash_desks),
                                    key=lambda x: x.size() * normal_queues_mean_service_time)
 
-            self_service_queues_mean_service_time = self.mean_service_time(self_service_cash_desks)
+            self_service_queues_mean_service_time = self.estimate_mean_service_time(self_service_cash_desks)
 
             self_service_queue_min = min(self.get_queues_for_cash_desk_type(self_service_cash_desks),
                                          key=lambda x: x.size() * self_service_queues_mean_service_time)
@@ -44,7 +44,7 @@ class QueueChoiceLeastWaitingTimeServiceImplied(QueueChoiceStrategy):
                 else self_service_queue_min
 
         elif len(normal_cash_desks) > 0 and len(self_service_cash_desks) == 0:
-            normal_queues_mean_service_time = self.mean_service_time(normal_cash_desks)
+            normal_queues_mean_service_time = self.estimate_mean_service_time(normal_cash_desks)
 
             normal_queue_min = min(self.get_queues_for_cash_desk_type(normal_cash_desks),
                                    key=lambda x: x.size() * normal_queues_mean_service_time)
@@ -52,7 +52,7 @@ class QueueChoiceLeastWaitingTimeServiceImplied(QueueChoiceStrategy):
             return normal_queue_min
 
         else:
-            self_service_queues_mean_service_time = self.mean_service_time(self_service_cash_desks)
+            self_service_queues_mean_service_time = self.estimate_mean_service_time(self_service_cash_desks)
 
             self_service_queue_min = min(self.get_queues_for_cash_desk_type(self_service_cash_desks),
                                          key=lambda x: x.size() * self_service_queues_mean_service_time)
@@ -68,6 +68,14 @@ class QueueChoiceLeastWaitingTimeServiceImplied(QueueChoiceStrategy):
 
     # Ritorna il tempo medio di service time per una lista di casse, considera quindi le code associate alle casse
     def mean_service_time(self, cash_desks: CashDesk):
+        mean_service_time = 0
+        for c in cash_desks:
+            mean_service_time += c.service_time_total()
+
+        return mean_service_time / len(cash_desks)
+
+    # Ritorna il tempo medio di service time per una lista di casse, considera quindi le code associate alle casse
+    def estimate_mean_service_time(self, cash_desks: CashDesk):
         mean_service_time = 0
         for c in cash_desks:
             mean_service_time += c.service_time_total()

@@ -6,7 +6,6 @@ from mesa import Agent
 from src.Customer import Customer
 from src.queue.SupermarketQueue import SupermarketQueue
 from src.states.State import State
-from src.states.cashdeskstates.CashDeskStandardStates import CashDeskStandardNewCustomerState
 
 PROCESSING_SPEED = 2
 
@@ -14,7 +13,8 @@ PROCESSING_SPEED = 2
 class CashDesk(ABC, Agent):
 
     @abstractmethod
-    def __init__(self, agent_id, model, supermarket_queue: SupermarketQueue, processing_speed=PROCESSING_SPEED):
+    def __init__(self, agent_id, model, supermarket_queue: SupermarketQueue, processing_speed=PROCESSING_SPEED,
+                 estimation_bias=False):
         super().__init__(agent_id, model)
 
         self.type = 2
@@ -26,6 +26,7 @@ class CashDesk(ABC, Agent):
         self.b_transaction = 0
         self.a_break = 1
         self.b_break = 0
+        self.estimation_bias = estimation_bias
 
     @property
     def queue(self):
@@ -74,14 +75,26 @@ class CashDesk(ABC, Agent):
         else:
             return math.exp(self.a_transaction * math.log(c.basket_size) + self.b_transaction)
 
+    def estimate_transaction_time(self, c: Customer):
+        if c.basket_size == 0:
+            return 0
+        else:
+            return math.exp(self.a_transaction * math.log(c.estimate_basket_size()) + self.b_transaction)
+
     def break_time(self, c: Customer):
         if c.basket_size == 0:
             return 0
         else:
             return math.exp(self.a_break * math.log(c.basket_size) + self.b_break)
 
+    def estimate_break_time(self, c: Customer):
+        if c.basket_size == 0:
+            return 0
+        else:
+            return math.exp(self.a_break * math.log(c.estimate_basket_size()) + self.b_break)
+
     def service_time(self, c: Customer):
-        return self.transaction_time(c) + self.break_time(c)
+        return self.estimate_transaction_time(c) + self.estimate_break_time(c)
 
     def service_time_total(self):
         total = 0
@@ -92,6 +105,19 @@ class CashDesk(ABC, Agent):
             total += self.service_time(self.customer)
 
         return total
+
+    def estimate_service_time_total(self):
+        if self.estimation_bias:
+            total = 0
+            for c in self.queue.content():
+                total += self.service_time(c)
+
+            if self.customer is not None:
+                total += self.service_time(self.customer)
+
+            return total
+        else:
+            return self.service_time_total()
 
     def queue_size(self):
         if self.customer is not None:
@@ -113,6 +139,15 @@ class CashDesk(ABC, Agent):
             return self.queue.total_items() + self.customer.basket_size
         else:
             return self.queue.total_items()
+
+    def estimate_total_items(self):
+        if self.estimation_bias:
+            if self.customer is not None:
+                return self.queue.estimate_total_items() + self.customer.basket_size
+            else:
+                return self.queue.estimate_total_items()
+        else:
+            return self.total_items()
 
     def is_queue_full(self):
         return self.queue.size() >= self.model.max_customer_in_queue

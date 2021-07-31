@@ -41,6 +41,7 @@ zones_metadata = [('ENTERING', entering_zone_width),
                   ('CASH_DESK_RESERVED', 1)]
 
 # TODO: quanto vale uno step? qui 1 minuto, gli faccio entrare un cliente al minuto, e la giornata dura 8 ore
+# TODO: mettere la distribuzione del Dottor Giudice
 customer_distribution = [1] * (60 * 8)
 
 height = 30

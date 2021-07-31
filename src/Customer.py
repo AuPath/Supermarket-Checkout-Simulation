@@ -1,9 +1,13 @@
+import math
+import random
+
 from mesa import Agent
 
 from src.states.State import State
 from src.states.customerstates.CustomerEnteredState import CustomerEnteredState
 
 SHOPPING_SPEED = 1
+DIVISOR_STANDARD_DEVIATION = 10
 
 
 class Customer(Agent):
@@ -12,7 +16,8 @@ class Customer(Agent):
     def __init__(self, agent_id, model,
                  basket_size_target, self_scan, queue_choice_strategy,
                  queue_jockeying_strategy,
-                 shopping_speed=SHOPPING_SPEED):
+                 shopping_speed=SHOPPING_SPEED,
+                 divisor_standard_deviation=DIVISOR_STANDARD_DEVIATION):
         """Constructor, the basket_size_target and the boolean self_scan are assigned by the main class."""
         super().__init__(agent_id, model)
 
@@ -30,6 +35,8 @@ class Customer(Agent):
 
         self.queue_choice_strategy = queue_choice_strategy
         self.queue_jockeying_strategy = queue_jockeying_strategy
+
+        self.divisor_standard_deviation = divisor_standard_deviation
 
     def basket_size_target(self):
         return self.basket_size_target
@@ -120,3 +127,6 @@ class Customer(Agent):
                     self.model.cash_desk_standard_shared_zone.move_to_queue(self, cash_desk)
             elif cash_desk in self.model.cash_desk_self_service_zone.cash_desks:
                 self.model.cash_desk_self_service_zone.move_to_queue(self, cash_desk)
+
+    def estimate_basket_size(self):
+        return math.ceil(random.normalvariate(self.basket_size, self.basket_size/self.divisor_standard_deviation))
