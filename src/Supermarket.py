@@ -427,20 +427,15 @@ class Supermarket(Model):
         else:
             return len(self.__customers)
 
-    def get_number_processed_customers(self, exclude_self_scan=False):
+    def get_number_entering_customers(self, exclude_self_scan=False):
         n = 0
-        if exclude_self_scan:
-            cash_desks = self.get_cash_desks(exclude_self_scan=True)
-        else:
-            cash_desks = self.get_cash_desks()
-
-        for cash_desk in cash_desks:
-            cash_desk_type = type(cash_desk.state).__name__
-            if cash_desk_type == 'CashDeskStandardTransactionCompletedState' or \
-                    cash_desk_type == 'CashDeskSelfServiceTransactionCompletedState' or \
-                    cash_desk_type == 'CashDeskSelfScanTransactionCompletedState' or \
-                    cash_desk_type == 'CashDeskReservedTransactionCompletedState':
-                n += 1
+        for customer in self.__customers:
+            if type(customer.state).__name__ == 'CustomerEnteredState':
+                if exclude_self_scan:
+                    if not customer.self_scan:
+                        n += 1
+                else:
+                    n += 1
 
         return n
 
@@ -449,16 +444,16 @@ class Supermarket(Model):
         return self.get_number_of_customers() / len(self.get_cash_desks())
 
     def get_flow_total(self):
-        # numero di clienti processati (uscenti) totali
-        return self.get_number_processed_customers() / len(self.get_cash_desks())
+        # numero di clienti entranti totali
+        return self.get_number_entering_customers() / len(self.get_cash_desks())
 
     def get_density_standard(self):
         # numero di clienti non self scan / numero di casse non self scan
         return self.get_number_of_customers(exclude_self_scan=True) / len(self.get_cash_desks(exclude_self_scan=True))
 
     def get_flow_standard(self):
-        # numero di clienti processati (uscenti) dalle casse non self scan
-        return self.get_number_processed_customers(exclude_self_scan=True) / \
+        # numero di clienti entranti non self scan
+        return self.get_number_entering_customers(exclude_self_scan=True) / \
                len(self.get_cash_desks(exclude_self_scan=True))
 
     def get_density_self_scan(self):
@@ -471,12 +466,12 @@ class Supermarket(Model):
                len(self.get_cash_desks_by_type("CashDeskSelfScan"))
 
     def get_flow_self_scan(self):
-        # numero di clienti processati (uscenti) dalle casse self scan
+        # numero di clienti entranti self scan
 
         if len(self.get_cash_desks_by_type("CashDeskSelfScan")) == 0:
             return 0
         else:
-            return (self.get_number_processed_customers() - self.get_number_processed_customers(exclude_self_scan=True)) / \
+            return (self.get_number_entering_customers() - self.get_number_entering_customers(exclude_self_scan=True)) / \
                len(self.get_cash_desks_by_type("CashDeskSelfScan"))
 
     def get_current_step(self):
