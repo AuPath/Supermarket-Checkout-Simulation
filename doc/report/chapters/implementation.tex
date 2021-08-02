@@ -3,7 +3,7 @@
 
 In questo capitolo verranno analizzate le strategie di scelta della coda da parte del cliente. In particolare queste strategie determinano la coda che il cliente deciderà di seguire durante la \textit{fase di scelta della coda} e durante la \textit{fase di attesa in coda e jockeying}. 
 
-\todo{Forse qui serve parlare dei paper (quello dei polacchi e quello delle fork)} Come introdotto all'inizio della relazione, obiettivo di questo progetto è analizzare le varie configurazioni di casse all'interno del supermercato, al variare del tipo di casse, della quantità di clienti presenti nel negozio e alla strategia di scelta della coda dei clienti, pertanto è necessario disporre di strategie che sfruttano calcoli basati su variabili diverse: le variabili in gioco saranno il numero di elementi nel carrello, il numero di persone e il tempo medio di attesa.
+Come introdotto all'inizio della relazione, obiettivo di questo progetto è analizzare le varie configurazioni di casse all'interno del supermercato, al variare del tipo di casse, della quantità di clienti presenti nel negozio e alla strategia di scelta della coda dei clienti, pertanto è necessario disporre di strategie che sfruttano calcoli basati su variabili diverse: le variabili in gioco saranno il numero di elementi nel carrello, il numero di persone e il tempo medio di attesa.
 
 Se un cliente entra nel supermercato con l'intenzione di usare le casse self-scan, chiaramente non sarà dotato di strategie di scelta della coda e di jockeying, dal momento che le casse self-scan hanno sempre un'unica coda condivisa. Anche nel caso in cui le casse standard abbiano un'unica coda condivisa, come capita in molti negozi, il cliente non avrà una strategia di scelta della coda o di jockeying. Al contrario invece, dopo la fase di shopping il cliente dovrà scegliere la coda tra le code disponibili delle casse standard e delle casse self-service; una volta che esso si accoda in una cassa standard, può decidere di cambiare coda e quindi effettuare il jockeying, se ritiene, con la propria strategia, che nelle casse a lui più vicine ci sia un tempo minore di attesa.
 
@@ -50,7 +50,7 @@ Il \textit{tempo di servizio totale di una coda} è calcolato come somma del tem
 \text{break-time}_i = \frac{\beta^{\alpha} \text{estimate-basket-size}(c_i)^{\alpha - 1} e^{- \beta \text{estimate-basket-size}(c_i)}}{\Gamma (\alpha)}
 \end{equation}
 
-e per la cassa self-service, le \ref{eq:transaction-time-self-service} e \ref{eq:break-time-self-service} diventano: \todo{da cambiare con quelle self-service}
+e per la cassa self-service, le \ref{eq:transaction-time-self-service} e \ref{eq:break-time-self-service} diventano:
 
 \begin{equation}\label{eq:transaction-time-self-service-estimate}
 \text{transaction-time}_i = e^{a log(\text{estimate-basket-size}(c_i)) + b}
@@ -63,7 +63,7 @@ I tempi di servizio per ogni cliente di una coda sono quindi sommati per calcola
 \begin{equation}\label{eq:total-service-time}
 \text{total-service-time}(q_j) = \sum\limits_{i=1}^N \left( \text{transaction-time}_i + \text{break-time}_i \right)
 \end{equation}
-Il tempo di servizio medio per le code è la somma dei tempi totali di servizio divisa per il numero di code. Viene scelta la coda con il tempo totale minimo, mettendo insieme le \ref{eq:transaction-time-standard-estimate}, \ref{eq:break-time-standard-estimate}, \ref{transaction-time-self-service-estimate}, \ref{eq:break-time-self-service-estimate} e \ref{eq:total-service-time} si ottiene la funzione da minimizzare:
+Il tempo di servizio medio per le code è la somma dei tempi totali di servizio divisa per il numero di code. Viene scelta la coda con il tempo totale minimo, mettendo insieme le \ref{eq:transaction-time-standard-estimate}, \ref{eq:break-time-standard-estimate}, \ref{eq:transaction-time-self-service-estimate}, \ref{eq:break-time-self-service-estimate} e \ref{eq:total-service-time} si ottiene la funzione da minimizzare:
 \begin{equation}
 f(q) = |q| * \frac{1}{M}\sum\limits_{j=1}^M \left( \text{total-service-time}(q_j) \right)
 \end{equation}
@@ -84,7 +84,7 @@ Le strategie seguite nel jockeying sono due, e coincidono con le prime due strat
 \item \textbf{Minimo numero di persone}: viene scelta la coda con il minimo numero di persone accodate.
 \end{enumerate}
 
-Se il cliente, grazie alla sua strategia, calcola che nelle code adiacenti ci sia un tempo di attesa minore rispetto alla propria, secondo una distribuzione di probabilità, la quale aumenta più risulta conveniente cambiare coda, il cliente si muove o meno. \todo{che distribuzione?}
+Se il cliente, grazie alla sua strategia, calcola che nelle code adiacenti ci sia un tempo di attesa minore rispetto alla propria, secondo una distribuzione di probabilità, la quale aumenta più risulta conveniente cambiare coda, il cliente si muove o meno. \todo{no, parlare del threshold}
 
 
 \begin{figure}[htp!]

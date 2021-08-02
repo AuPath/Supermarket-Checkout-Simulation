@@ -1,9 +1,42 @@
 \chapter{Simulazione e analisi dei risultati}
 
-Per ognuna di queste simulazioni fare i grafici con densità ecc... e grafico fondamentale --> definizione delle metriche usate (densità e flusso)
+\todo{per ognuna di queste simulazioni fare i grafici: grafico fondamentale (flusso asse y, densità asse x), tempo totale di simulazione, tempo medio d'attesa dei clienti (fare grafico con media e deviazione standard, i dati sono nel datacollector), grafico KDE (Kernel density estimates - ovvero densità sull'asse y e waiting time sull'asse x), grafico con tempo sull'asse x e sull'asse y probabilità di stare meno di 5 minuti in coda per ogni strategia (vedi articolo polacchi per questi ultimi due grafici) --> definizione delle metriche usate (densità e flusso)}
 
-- Simulazione dei polacchi
-- Simulazione nostra uguale ai polacchi (validazione - con le 4 strategie)
+Al fine di analizzare i risultati sono state introdotte le definizioni di densità e flusso di clienti per ogni step di simulazione; queste misure ci permettono di misurare l'affluenza dei clienti nel supermercato e come questa viene gestita dalle casse che hanno il potere di attivarsi o disattivarsi in base alla quantità di clienti presenti. Densità e flusso permetteranno di disegnare i grafici fondamentali che mostrano per ogni simulazione come le casse smaltiscono l'afflusso di clienti in entrata, soprattutto nei periodi critici (in cui il supermercato raggiunge una quantità di clienti che "mettono alla prova" le casse).
+
+La \textbf{densità} di clienti per step corrisponde al numero di clienti medio per ogni cassa; la densità allo step $i$ è:
+\begin{equation}
+	\text{density}_i = \frac{\# \text{ customers in the supermarket}}{\# \text{ cashdesks}}
+\end{equation}
+Si terrà conto della densità totale, della densità per le casse standard o self-service e della densità per le casse self-scan.
+
+Il \textbf{flusso in entrata} di clienti per step corrisponde al numero di clienti che entrano ad ogni step per ogni cassa in media; il flusso allo step $i$ è:
+\begin{equation}
+	\text{flow}_i = \frac{\# \text{ customers entering in the supermarket}}{\# \text{ cashdesks}}
+\end{equation}
+Si terrà conto del flusso totale, del flusso per le casse standard o self-service e del flusso per le casse self-scan.
+
+\section{Simulazione allo scopo di validazione}
+
+\paragraph{Stato dell'arte}
+
+Al fine di validare il modello, come primo esperimento è stata condotta una simulazione con gli stessi parametri usati nell'articolo \cite{article1}. In quella simulazione il supermercato contiene 20 casse standard e 6 casse self-service; si noti che nel lavoro citato, le casse si attivano o disattivano in base ai dati raccolti dai ricercatori nei supermercati, nel nostro modello invece le casse si attivano in base al numero di clienti presenti nel supermercato, in base a un parametro che è possibile cambiare nel momento in cui si raccolgono i dati. Vengono messe a confronto le strategie diverse di scelta della coda da parte dei clienti, arrivando alla conclusione che la strategia che porta al minor tempo d'attesa è quella chiamata "minimo tempo d'attesa in base alla \textit{power regression}" nel capitolo \ref{implementation:intro}; tuttavia i risultati portano a dire che questo scenario non è quello ottimale per tutti i supermercati negli orari di punta.
+
+Nelle prossime simulazioni verrà testato il jockeying, in particolare si metteranno a confronto le diverse strategie di scelta della coda e di jockeying per stabilire se questo porti a un miglioramento dell'esperienza del cliente nel supermercato. Questi esperimenti verranno poi messi a confronto con una simulazione in cui c'è soltanto la coda condivisa per le casse standard, pertanto i clienti non avranno bisogno di scegliere la coda nè di fare jockeying: in base a quanto detto nell'articolo \cite{yanagisawa2011methods}, questo tipo di coda dovrebbe portare a tempi di attesa minori. 
+Verranno quindi introdotte nella simulazione le casse self-scan con rilettura randomica, si prevede che queste portino a una diminuzione considerevole dei tempi d'attesa in coda, in quanto viene a mancare la fase di scanner da parte dei cassieri. Infine verrà effettuata una simulazione con gli elementi probabilistici già descritti nel corso dei capitoli \ref{chapter:model} e \ref{implementation:intro}, che rendono l'esperimento non deterministico e a nostro riguardo più realistico.
+
+\paragraph{Simulazione con gli stessi parametri}
+
+- Simulazione nostra uguale ai polacchi (validazione - con le 4 strategie): 6 casse self-service, 20 casse standard
+
+\section{Simulazione con strategie \textit{jockey}}
 - Simulazione nostra con parametri dei polacchi, ma aggiungendo il jockeying (con le 4 strategie) -> viene più veloce
-- Simulazione con self-scan (con le 4 strategie)
-- Simulazione con roba probabilistica (con le 4 strategie)
+
+\section{Simulazione con coda condivisa}
+- Simulazione nostra con parametri dei polacchi, ma con coda condivisa -> viene più veloce come nell'articolo delle fork
+
+\section{Simulazione con casse self-scan}
+- Simulazione con self-scan (con le 4 strategie) -> il tempo medio d'attesa nelle self-scan è più basso
+
+\section{Simulazione non deterministica}
+- Simulazione con roba probabilistica (con le 4 strategie + coda condivisa) -> più realistica
