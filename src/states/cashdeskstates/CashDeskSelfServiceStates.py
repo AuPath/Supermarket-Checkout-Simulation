@@ -36,6 +36,7 @@ class CashDeskSelfServiceProcessingState(State):
 
         if self.context.is_transaction_complete():
             self.context.customer.exit_store()
+            self.context.customer.send_waiting_time()
 
             logging.info("Customer exited")
             self.context.state_change(CashDeskSelfServiceTransactionCompletedState(self.context))

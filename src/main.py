@@ -84,12 +84,24 @@ chart6 = ChartModule([{"Label": "Flow_self_scan",
                        "Color": "Black"}],
                      data_collector_name='datacollector')
 
+chart7 = ChartModule([{"Label": "Total_steps",
+                       "Color": "Black"}],
+                     data_collector_name='datacollector')
+
+chart8 = ChartModule([{"Label": "Avg_waiting_times_standard",
+                       "Color": "Black"}],
+                     data_collector_name='datacollector')
+
+chart9 = ChartModule([{"Label": "Avg_waiting_times_self_scan",
+                       "Color": "Black"}],
+                     data_collector_name='datacollector')
+
 # Create server
 customer_legend_element = CustomerLegendElement()
 cash_desk_legend_element = CashDeskLegendElement()
 server = ModularServer(Supermarket,
                        [grid, customer_legend_element, cash_desk_legend_element, chart, chart1, chart2, chart3,
-                        chart4, chart5, chart6],
+                        chart4, chart5, chart6, chart7, chart8, chart9],
                        "Supermarket",
                        {"zones_metadata": zones_metadata,
                         # lista con numero di clienti da generare ad ogni step es. [1, 2, 3, 2, 4, 5, 2, ...]

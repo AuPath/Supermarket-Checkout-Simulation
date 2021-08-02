@@ -98,6 +98,9 @@ class Supermarket(Model):
         self.max_customer_in_queue = MAX_CUSTOMER_QUEUED
         assert self.max_customer_in_queue >= 1
 
+        self.__waiting_times_standard = []
+        self.__waiting_times_self_scan = []
+
         # TODO: definire qui le metriche
         self.datacollector = DataCollector(
             model_reporters={"Total_customers": self.get_number_of_customers,
@@ -109,7 +112,10 @@ class Supermarket(Model):
                              "Density_standard": self.get_density_standard,
                              "Flow_standard": self.get_flow_standard,
                              "Density_self_scan": self.get_density_self_scan,
-                             "Flow_self_scan": self.get_flow_self_scan
+                             "Flow_self_scan": self.get_flow_self_scan,
+                             "Total_steps": self.get_current_step,
+                             "Avg_waiting_times_standard": self.get_avg_waiting_times_standard,
+                             "Avg_waiting_times_self_scan": self.get_avg_waiting_times_self_scan
                              })
 
     def step(self):
@@ -474,6 +480,37 @@ class Supermarket(Model):
         else:
             return (self.get_number_processed_customers() - self.get_number_processed_customers(exclude_self_scan=True)) / \
                len(self.get_cash_desks_by_type("CashDeskSelfScan"))
+
+    def get_current_step(self):
+        return self.__current_step
+
+    @property
+    def waiting_times_standard(self):
+        return self.__waiting_times_standard
+
+    @waiting_times_standard.setter
+    def waiting_times_standard(self, value):
+        self.__waiting_times_standard = value
+
+    @property
+    def waiting_times_self_scan(self):
+        return self.__waiting_times_self_scan
+
+    @waiting_times_self_scan.setter
+    def waiting_times_self_scan(self, value):
+        self.__waiting_times_self_scan = value
+
+    def get_avg_waiting_times_standard(self):
+        if len(self.__waiting_times_standard) != 0:
+            return sum(self.__waiting_times_standard) / len(self.__waiting_times_standard)
+        else:
+            return 0
+
+    def get_avg_waiting_times_self_scan(self):
+        if len(self.__waiting_times_self_scan) != 0:
+            return sum(self.__waiting_times_self_scan) / len(self.__waiting_times_self_scan)
+        else:
+            return 0
 
     def get_occupied_cells(self):
         return self.__occupied_cells

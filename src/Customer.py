@@ -38,10 +38,15 @@ class Customer(Agent):
 
         self.divisor_standard_deviation = divisor_standard_deviation
 
+        self.waiting_time = 0
+
     def basket_size_target(self):
         return self.basket_size_target
 
     def step(self):
+        if type(self.state).__name__ == 'CustomerChoosingQueueState' or \
+                type(self.state).__name__ == 'CustomerQueuedState':
+            self.waiting_time += 1
         self.state.action()
 
     def shop(self):
@@ -130,3 +135,9 @@ class Customer(Agent):
 
     def estimate_basket_size(self):
         return math.ceil(random.normalvariate(self.basket_size, self.basket_size/self.divisor_standard_deviation))
+
+    def send_waiting_time(self):
+        if not self.self_scan:
+            self.model.waiting_times_standard.append(self.waiting_time)
+        else:
+            self.model.waiting_times_self_scan.append(self.waiting_time)
