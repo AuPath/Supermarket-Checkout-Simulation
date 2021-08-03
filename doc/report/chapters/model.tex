@@ -30,7 +30,7 @@ Questa fase richiede una pianificazione da parte dell'agente in quanto la coda v
 Da queste considerazione è possibile classificare l'agente di tipo Cliente come "utility-based", secondo la tassonomia proposta Russel-Norvig \cite{norvig}; viene qui sotto riportata l'architettura di un agente "utility-based":
 
 
-\begin{figure}[htp!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=11cm]{"images/utility-based_architecture.png"}
 	\caption{Agente di tipo utility-based.}
@@ -71,7 +71,7 @@ I macro-step che l'agente deve seguire per il raggiungimento del goal, che coinc
 Il workflow dell'agente di tipo cliente viene astratto e riassunto da questa immagine:
 
 
-\begin{figure}[htp!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=8cm]{"images/workflow_customer.png"}
 	\caption{Workflow dell'agente di tipo customer.}
@@ -84,6 +84,7 @@ Il workflow dell'agente di tipo cliente viene astratto e riassunto da questa imm
 \todo{Qua parlare dell'architettura delle casse (tipo di agente, immagine ecc..)}
 
 \subsection{Tipi di cassa}
+\label{sec:tipi_cassa}
 
 Gli agenti di tipo cassa hanno l'unica funzione di servire i clienti che si mettono in coda per pagare la spesa; sono di 4 tipi e differiscono per modalità di elaborazione della spesa del cliente e per velocità.
 
@@ -150,7 +151,7 @@ Nel modello vengono considerati i casi di:
 \item \textbf{Coda condivisa}: nota anche come \textit{N-fork} \cite{yanagisawa2011methods}, più casse condividono la stessa coda, nel momento che una qualsiasi delle casse risulta libera il cliente in posizione utile procede alla cassa. Utilizzando questa disposizione non viene ammesso jockeying.
 \end{itemize}
 
-\begin{figure}[htp!]
+\begin{figure}[H]
 \centering
 \begin{subfigure}{.5\textwidth}
   \centering
@@ -186,7 +187,7 @@ In questa ultima fase la cassa ha terminato il servizio di un cliente, quindi si
 
 Il workflow della cassa standard viene riassunto nell'immagine \ref{fig:workflow_cashdesk_standard}.
 
-\begin{figure}[htp!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=8cm]{"images/workflow_cashdesk_standard.png"}
 	\caption{Workflow dell'agente di tipo cassa standard.}
@@ -216,7 +217,7 @@ Nell'ultima fase la cassa ha terminato il servizio di un cliente, quindi si rime
 
 Il workflow della cassa self-scan viene riassunto nell'immagine \ref{fig:workflow_cashdesk_self_scan}.
 
-\begin{figure}[htp!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=8cm]{"images/workflow_cashdesk_self_scan.png"}
 	\caption{Workflow dell'agente di tipo cassa self-scan.}
@@ -231,7 +232,7 @@ Scelto quindi il cliente, questa cassa passa per le stesse fasi della cassa stan
 
 Il workflow della cassa riservata viene riassunto nell'immagine \ref{fig:workflow_cashdesk_reserved}.
 
-\begin{figure}[htp!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=8cm]{"images/workflow_cashdesk_reserved.png"}
 	\caption{Workflow dell'agente di tipo cassa riservata.}
@@ -248,7 +249,7 @@ Per inizializzare la griglia, l'ambiente viene diviso in zone: zona d'entrata, z
 Ogni zona è responsabile della propria costruzione, ovvero del proprio collocamento nella griglia dell'interfaccia in base alle proprie dimensioni ed eventualmente del posizionamento delle casse che contiene. Inoltre ogni zona è responsabile dei movimenti dei clienti: se un cliente vuole muoversi da una zona all'altra oppure mettersi in coda nelle casse di una zona, è la zona di destinazione che fornisce il metodo per posizionarsi correttamente in essa.
 
 
-\begin{figure}[htp!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=14cm]{"images/supermarket-start-zones.png"}
 	\caption{Stuttura del supermercato diviso in zone.}
@@ -290,7 +291,7 @@ nell'implementazione dei pattern:
   sul comportamento di un agente.
 \end{itemize}
 
-\section{Parametri del modello}
+\section{Parametri del modello}\todo{Dire quali parametri abbiamo utilizzato noi per la simulazione}
 \label{model:parameters}
 Per rendere il modello più generale possibile e in modo da adattarlo a diverse configurazioni con lo scopo di simulare scenari what-if, vengono introdotti diversi parametri per l'inizializzazione e il comportamento della simulazione.
 \todo{Controllare questo paragrafo pls}
@@ -311,6 +312,7 @@ Inoltre per quanto riguarda le code, seppure per le casse self-service è obblig
 Il comportamento di jockeying è influenzato da alcuni parametri, questi sono:
 \begin{itemize}
 	\item \textbf{Numero di code adiacenti considerate}: la coda in cui il customer è presente in quel momento svolge il ruolo di coda pivot, questo parametro indica il numero di code adiacenti alla coda pivot che vengono prese in considerazione per valutare l'eventualità di fare jockeying.
+	
 	\item \textbf{Threshold di jockeying}: questo parametro ha lo scopo di modellare il fatto che un cliente efettua jockeying solo nel caso in cui per lui risulta essere conveniente non meno di un certo livello. Questo threshold indica di quale deve essere il minimo guadagno per effettuare jockeying. Questo approccio basato su una soglia di minimo guadagno è stato presentato nel lavoro di Koenigsberg \cite{koenigsberg1966jockeying}.
 	
 	\item \textbf{Probabilità di jockeying}: Nel lavoro di Tomasz Antczak e altri \cite{article1}, viene spiegato come il fenomeno di jockeying sia piuttosto raro. Il modello proposto tiene conto di questo aspetto introducendo una variabile aleatorio distributita secondo una bernulliana che ha lo scopo di, nel caso in cui il jockeying risulti essere conveniente basandosi sul threshold, consentire o negare il jockeying. Con questo approccio si vuole rendere meno frequente il jockeying.
@@ -318,11 +320,111 @@ Il comportamento di jockeying è influenzato da alcuni parametri, questi sono:
 
 
 
-\subsection{Parametri di }
+
+\subsection{Basket size}
+Ogni cliente all'interno del supermercato vuole compare un diverso numero di prodotti. Questa quantità viene assegnata a priori per tutti i clienti e supponiamo non cambi durante la fase di spesa. A questo scopo è necessario assegnare il basket size a ogni cliente secondo una certa distribuzione. Nel lavoro di Antczak e altri \cite{article1} vengono messi a disposzione dei dati relativi al numero di prodotti acquistati da parte dei clienti in tre supermercati diversi nell'arco temporale di 13 giorni. Questi dati sono stati analizzati con lo scopo di introdurre la distribuzione che genera l'effetto basket size di ogni cliente.
+
+Come prima coa è stata presa in considerazione la frequenza delle dimensioni del basket size per ogni negozio al variare del tempo. Plottando queste informazioni si ottiene l'immaggine sotto:
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=14cm]{"images/3d_basket_size.png"}
+	\caption{Frequenza della dimensione del basket size nei supermercati al variare del tempo.}
+	\label{fig:3d_basket_size}
+\end{figure}
+
+Da questa immagine emerge chiaramente come la maggiora parte delle persone compra pochi articoli e solo pochi clienti fanno una grossa spesa. Inoltre il comportamento tra i 3 supermercati è analogo a meno del numero di clienti totali del supermercato. Per quanto riguarda i diversi giorni considerati nell'arco di tempo messo a disposizione, non sembra che questi influiscano sulla dimensione del basket size, pertanto assumiamo per semplicità che non esista una correlazione tra i giorni della settimana e la dimensione del basket size.
+
+Con questa assunzione si procede aggregando i dati sulla dimensione del tempo e calcolando la media, inoltre questi dati vengono normalizzati per renderli scale-free e quindi indipendenti dal numero di clienti per ogni supermercato. Dopo queste operazioni si ottiene:
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=14cm]{"images/basket_size_dist.png"}
+	\caption{Frequenza della dimensione del basket size nei supermercati aggregato sul tempo.}
+	\label{fig:store_basket_size}
+\end{figure}
+
+
+Notiamo come le distribuzione nei 3 supermercati sono pressochè simili, per questa ragione vengono mediate le 3 distribuzioni ottenendo quesa distribuzione finale:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=14cm]{"images/basket_size_dist_avg.png"}
+	\caption{Media delle distribuzioni di frequenza del basket size aggregato sul tempo.}
+	\label{fig:avg_basket_size}
+\end{figure}
+
+
+Da questa ultima immagine emerge chiaramente come il basket size segua un andamento esponenziale. Pertanto a partire dai dati originali si vuole ricavare il parametro $\lambda$ che governa la distribuzione esponenziale sottostante. A questo scopo si trasformano i dati calcolando il logaritmo naturale delle ascisse e tracciando la retta di regressione lineare. Il risultato ottenuto viene mostrato qui sotto:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=14cm]{"images/basket_size_log.png"}
+	\caption{Retta di regressione dopo la trasformazione logaritmica dei dati.}
+	\label{fig:regression_log}
+\end{figure}
+
+
+La retta di regressione in output ha i seguenti parametri:
+\begin{itemize}
+	\item $m = -0.0736184654254411$.
+	\item $q = -2.806857867915933$.
+\end{itemize}
+A parire da questi parametri è facile calcolare il parametro $\lambda$ della distribuzione esponenziale di partenza, infatti:
+
+
+\begin{proof}[\unskip\nopunct]
+	Sia $X$ la variabile aleatoria che rappresenta la dimensione del basket size, e assumendo che $X \sim Exp(\lambda)$, dalla funzione di densità di probabilità si ha che:
+	$$f(x;\lambda) = \lambda e^{\lambda x}, \quad se \; x > 0$$
+	
+	Per mezzo di una log-trasformazione si ottiene:	
+
+	\begin{equation} 
+			\label{eq:regressione}
+		\begin{aligned}
+			&\ln(\lambda e^{\lambda x}) &&\text{(dalla funzione di densità di probabilità)}\\
+			&= \ln(\lambda) + \ln(e^{-\lambda x}) \\
+			&= \ln(\lambda) - \lambda x \ln(e) \\
+			&= \ln(\lambda) - \lambda x \\
+		\end{aligned}
+	\end{equation}
+
+	La retta di regressione ottenuta a parire dai dati dopo la log-trasformazione è della forma:
+	\begin{align*}
+		&y = mx + q\\
+		&m = -0.0736184654254411;\, q = -2.806857867915933 
+	\end{align*}
+
+	Da cui (sfruttando l'equazione \ref{eq:regressione}):
+		\begin{align*}
+			&m = -\lambda \implies \lambda = -m = 0.0736184654254411\\
+			&q = \ln(\lambda)\\
+		\end{align*}
+		
+	Pertando si ricava dai dati che la distribuzione esponenziale teorica sottostante $Exp(\lambda)$ ha $\lambda = 0.0736184654254411$
+\end{proof}
+
+Viene qui sotto mostrata la distrubizione reale dei dati e la distribuzione esponenziale, la quale verrà poi effettivamente utilizzata per genereare il basket size di ogni cliente:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=14cm]{"images/basket_size_fitted.png"}
+	\caption{Distribuzione basket size reale a confronto con distribuzione esponenziale teorica.}
+	\label{fig:dist_basket_size}
+\end{figure}
+
+
+
+\subsection{Parametri di tempo}
+Come visto nel workflow dell'agente di tipo cliente, riassunto nell'immagine \ref{fig:workflow_customer}, una volta entrato nel supermercato è necessario simulare il processo di spesa del cliente, con questo si intende l'arco di tempo che l'agente impiega all'interno del supermercato per prendere i prodotti e inserirli nel carrelo (che in questo lavoro non viene direttamente modellato ma simulato). Il tempo impiegato da parte del cliente per prendere tutti i prodotti desiderati, quantità che corrisponde al suo basket size, dipende dalla velocità di acquisto del cliente. Questa velcosità è un ulteriore parametro del modello che per la simulazione effettuata in questo lavoro è pari a \todo{Inserire a quanti prodotti corrisponde la velocità e quindi cosa si vuole simulare (es 2 prodotti al minuto)}
+
+Dopo la fase di spesa iniziale il cliente sceglierà una coda per venire successivamente servito in cassa. Una volta in cassa, se questa è di tipo cassa standard o cassa self service, spiegate nela sezione \ref{sec:tipi_cassa}, allora sarà necessario il processamento di tutto il basket size e quindi uscire dal supermercato. Il tempo di processamento e governato dai parametri $a,b,\alpha ,\beta \in \mathbb{R}$  introdotti nell'articolo \cite{article1} e diversi per i due tipi di casse. Come questi parametri influiscono il tempo di processamento del cliente una volta in cassa è spiegato nella sezione \ref{sec:tipi_cassa}.
+
+\subsection{Distibuzone dei clienti in entrata nel supermercato}
+
+
+\subsection{Cose da aggiungere}
  
 Casse adiacenti considerate
 
 Inizializzazione della griglia e parametri per creare casse (numero casse, coda condivisa o no, velocità di processing e parametro per rallentare la velocità della self-service), customer, basket size (analisi dei dati di Gianluca).
-
-\subsection{Basket size}
-Citare paper con i dati (distribuzione, parametro lambda scelto).
