@@ -94,8 +94,7 @@ dove $Q_{\text{adj}}$ è l'insieme delle code adiacenti alla coda corrente. Se q
 dove $0 < i \le |q_{\text{current}}|$ è la posizione del cliente nella coda corrente.
 \end{enumerate}
 
-
-
+Nella figura \ref{fig:jockeying-flowchart} è riportato il grafico che rappresenta il comportamento del cliente in fase di jockeying.
 
 \begin{figure}[htp!]
 	\centering
@@ -103,3 +102,5 @@ dove $0 < i \le |q_{\text{current}}|$ è la posizione del cliente nella coda cor
 	\caption{Workflow jockeying.}
 	\label{fig:jockeying-flowchart}
 \end{figure}
+
+In questo capitolo sono state descritte le strategie utilizzate nelle fasi di scelta della coda e di jockeying da parte del cliente; le strategie di scelta della coda come si è visto sono 4 e sono state descritte in ordine di complessità; le strategie per fare jockeying sono invece 2 e si basano solamente sul numero di elementi nel carrello e sul numero di clienti in coda. Probabilmente non tutte le strategie sono realistiche e utilizzate concretamente dalle persone in coda al supermercato, l'obiettivo non è indagare sulla scelta effettuata dagli umani in coda, ma capire quale sia la strategia migliore che può essere implementata in un vero supermercato ad esempio con un display che suggerisce quale sia la coda migliore in un dato istante. Nel prossimo capitolo finalmente vedremo i risultati del nostro modello, in particolare metteremo a confronto la nostra simulazione con quella dell'articolo \cite{article1} allo scopo di calibrare e validare il modello; introdurremo quindi man mano le espansioni che abbiamo apportato, lo scopo rimarrà sempre quello di diminuire i tempi d'attesa dei clienti e migliorare la loro esperienza.

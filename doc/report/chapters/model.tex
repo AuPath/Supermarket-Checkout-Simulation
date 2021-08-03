@@ -1,6 +1,8 @@
 \chapter{Descrizione del modello}
 \label{chapter:model}
 
+In questo capitolo verrà descritto in dettaglio il modello del supermercato da noi implementato; in particolare vedremo il framework utilizzato per implementare il modello, le motivazioni che ci hanno portato a costruire un modello ad agenti, gli agenti Cliente e Cassa visti nel particolare, l'ambiente fisico in cui agiscono gli agenti, come essi interagiscono, infine i pattern e i parametri implementati per rendere il modello flessibile.
+
 \section{Framework adottato}
 Mesa \cite{mesa} è un framework in Python usato per la modellazione basata su agenti (ABM). Permette di creare il modello con componenti \textit{built-in} come griglie spaziali e scheduler di agenti, e di visualizzare i componenti del modello con un'interfaccia browser. Sfruttando Mesa è possibile definire sia l'ambiente che gli agenti estendendo le relative classi messe a disposizione dal framework. Mesa infine comprende strumenti per l'analisi del modello creato.
 
@@ -338,3 +340,5 @@ Inizializzazione della griglia e parametri per creare casse (numero casse, coda 
 
 \subsection{Basket size}
 Citare paper con i dati (distribuzione, parametro lambda scelto).
+
+In questo capitolo è stato descritto abbondantemente il modello di supermercato implementato; in particolare si è parlato della flessibilità del modello (grazie a pattern e parametri) e del workflow e delle capacità degli agenti; nel capitolo successivo vedremo le strategie di scelta della coda e di jockeying, parte importante della simulazione in quanto l'obiettivo finale del progetto è indagare su quale sia la strategia che minimizza il tempo d'attesa alle casse.
