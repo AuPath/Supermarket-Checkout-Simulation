@@ -45,7 +45,7 @@ I macro-step che l'agente deve seguire per il raggiungimento del goal, che coinc
 	\item \textbf{Attesa all'entrata del supermercato}: in questo stato il cliente si mette in attesa finchè non è possibile entrare nel supermercato. \todo{Esperimenti sul covid}
 	\item \textbf{Fase di shopping}: il cliente è entrato e può iniziare a "fare la spesa", con questo si intende raggiungere il numero di prodotti desiderato, infatti nella simulazione viene considerato il \textit{basket size}, un'astrazione del carrello modellato attraverso un numero interno. Il basket size è il target da raggiungere nella fase di shopping, a ogni step il numero di prodotti aumenta di una certa quantità (la velocità di shopping è un parametro del modello descritto nella sezione \ref{model:parameters}). 
 	
-	La basket size viene generata stocasticamente secondo una distribuzione esponenziale governata dal parametro $\lambda = 0.07361$. La scelta di questo parametro viene giustificata nella sezione \ref{model:parameters}. 
+	La basket size viene generata stocasticamente secondo una distribuzione esponenziale di parametro $\lambda = 0.07361$. La scelta di questo parametro viene giustificata nella sezione \ref{model:parameters}. 
 	
 	\item \textbf{Scelta della coda}: in questo stato il cliente ha finito di fare la spesa e vuole mettersi in coda ad una cassa. Dal momento che sono disponibili più code e ognuna di queste avrà molto probabilmente altri clienti già in coda, il cliente deve scegliere in quale coda andare in base alla coda che lui considera migliore.
 	
