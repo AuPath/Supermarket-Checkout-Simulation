@@ -34,12 +34,10 @@ Da queste considerazione è possibile classificare l'agente di tipo Cliente come
 	\centering
 	\includegraphics[width=11cm]{"images/utility-based_architecture.png"}
 	\caption{Agente di tipo utility-based.}
-	\label{fig:workflow_customer}
+	\label{fig:utility-based}
 \end{figure}
 
 Da questa immagine possiamo notare come ci sia una corrispondenza tra l'architettura proposta e quella dell'agente di tipo cliente. Infatti l'agente pianifica le sue azione e valuta la bontà dell'azione di scegliere una coda per mezzo di un'utlity function.
-
-
 
 \subsection{Workflow}
 I macro-step che l'agente deve seguire per il raggiungimento del goal, che coincidono con gli stati associati all'agente durante la simulazione, sono:
@@ -81,7 +79,16 @@ Il workflow dell'agente di tipo cliente viene astratto e riassunto da questa imm
 \section{Agente di tipo Cassa}
 \label{model:cashdesks}
 
-\todo{Qua parlare dell'architettura delle casse (tipo di agente, immagine ecc..)}
+Mentre i clienti sono gli agenti principali del sistema supermercato, che si muovono e svolgono le azioni interagendo con esso, le casse sono agenti statici nella griglia della simulazione; le casse non effettuano azioni per se stesse, ma attendono fino a che non ci sono clienti in coda per servirli, e permettergli di effettuare le transazioni di pagamento. Per servire i clienti, la cassa necessita di una rappresentazione del proprio stato, che dipende dalla presenza o meno di clienti e dal loro basket-size, di cui ha bisogno per effettuare il pagamento. L'unica decisione individuale che può prendere una cassa, e questo vale soltanto per le casse di tipo standard che si vedranno più avanti, è la propria attivazione o disattivazione in base al numero di clienti presenti nel negozio; l'essere attiva o disattiva fa parte dello stato interno della cassa.
+
+Poichè la cassa non ha obiettivi ma solo il compito di attivarsi e servire gli eventuali clienti in coda, può essere classificata come "model-based reflex agent" secondo \cite{norvig}, descritto in figura \ref{fig:model-based}.
+
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=11cm]{"images/model-based-reflex_architecture.png"}
+	\caption{Agente di tipo model-based reflex.}
+	\label{fig:model-based}
+\end{figure}
 
 \subsection{Tipi di cassa}
 
