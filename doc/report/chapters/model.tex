@@ -8,19 +8,16 @@ Nel nostro modello di supermercato, il modello vero e proprio di Mesa è la clas
 
 \section{Sistema}
 
-Giustificare la scelta di fare un modello ad agenti per un supermercato.
+Il supermercato è stato progettato come \textbf{sistema multi-agente}, comprendente agenti Cliente e Cassa, con l'obiettivo di indagare sulle scelte individuali dei clienti, infatti lo scopo del progetto è trovare la migliore strategia di scelta della coda al fine di minimizzare i tempi d'attesa. La presenza di strategie individuali rende utile la modellazione ad agenti, infatti vorremmo che dai comportamenti dei singoli clienti emergano alcune proprietà del sistema, come la non linearità \todo{cazzata?}, che non si possono predire a priori.
 
-Supermercato non predicibile, presente una componente stocastica.
+La scelta del modello ad agenti è in realtà molto naturale: il supermercato è un sistema complesso in cui diverse entità interagiscono e cercano di risolvere alcuni problemi. I clienti effettuano scelte individuali, hanno obiettivi (la spesa, il tipo di pagamento) e i lavoratori e le casse sono lì per soddisfare i loro bisogni; i clienti e i lavoratori devono interagire per far "evolvere" il sistema supermercato durante la giornata, per raggiungere i loro obiettivi.
 
-Il sistema è eterogeneo, due tipi di agenti. Sistema multiagente.
+Qualunque sistema umano, in particolare che comprenda le decisioni umane, ha una componente impredicibile, stocastica; per questo abbiamo voluto inserire, soprattutto nelle decisioni dei clienti, delle variabili che dipendono da delle distribuzioni di probabilità. Per questo motivo il sistema descritto in questa relazione non è deterministico ed ogni simulazione è diversa dalle altre.
 
-Come comunicano
-
-Come avviene l'interazione
-
-Descrizione dell'ambiente
+Il sistema supermercato è multi-agente perchè in esso agiscono tanti agenti, in particolare il numero di clienti presenti varia nel tempo, mentre il numero di casse resta costante durante una simulazione. Come si vedrà nella sezione \ref{model:customers}, gli agenti Cliente e gli agenti Cassa sono di tipo diverso (goal-based e model-based reflex, rispettivamente), per cui il supermercato è un sistema \textbf{eterogeneo}.
 
 \section{Agente di tipo Cliente}
+\label{model:customers}
 I clienti sono gli agenti principali che compongono il modello e interagiscono con l'ambiente per raggiungere l'obiettivo di fare la spesa; per portare a termine questo compito l'agente esegue alcuni macro-step in cui è necessaria anche una fase di pianificazione e valutazione della bontà (\textit{utility function}) della scelta.
 
 Dal punto di vista dell'agente di tipo cliente, la fase più complicata è quella in cui ha raggiunto il target basekt size e deve quindi mettersi in una coda per attendere il suo turno in cassa.
@@ -247,6 +244,7 @@ Il workflow della cassa riservata viene riassunto nell'immagine \ref{fig:workflo
 
 
 \section{Ambiente}
+\label{model:environment}
 
 L'ambiente del sistema in cui gli agenti vivono è il supermercato, implementato dalla classe \textbf{Supermarket} che si occupa di inizializzare la griglia che verrà poi mostrata in fase di simulazione sull'interfaccia, inizializzare le casse, i clienti e mediare le interazioni con gli agenti.
 
@@ -265,14 +263,21 @@ Ogni zona è responsabile della propria costruzione, ovvero del proprio collocam
 
 \todo{Parlare di quanto dura uno step e quanto dura una simulazione} Ad ogni step della simulazione, il modello crea dei clienti secondo la distribuzione data (si veda la sezione \ref{model:parameters}) e li posiziona nella \textbf{Entering Zone} del supermercato in coordinate random, dunque si occupa della attivazione e disattivazione delle casse standard in base al numero di clienti presenti nel negozio in quello step, secondo dei parametri che si vedranno nella prossima sezione. Quindi il modello chiama gli scheduler degli agenti, clienti e casse, e fa eseguire i loro step.
 
-\subsection{Caratteristiche dell'ambiente}
-- Accessibile vs. Inaccessibile
-- Deterministico vs. Non-deterministico
-- Episodicità vs. Non-episodicità
-- Statico vs. Dinamico
-- Discreto vs. Continuo
-
 \subsection{Interazione tra agenti}
+
+I due tipi di agenti che compongono il modello \textbf{interagiscono} tra loro nella fase di attesa in coda da parte del cliente e quindi pagamento; l'interazione è necessaria perchè i clienti non sono in grado di autogestire le code e pagare, e questo fatto giustifica la presenza degli agenti Cassa, pur semplici che siano (insieme al fatto che le casse si attivano o disattivano in base al numero di clienti nel negozio, come si vedrà più avanti).
+
+L'interazione tra clienti e casse è di tipo \textbf{collaborativo semplice}, in quanto gli obiettivi di entrambi sono compatibili (effettuare il pagamento e far uscire i clienti dal negozio), le risorse sufficienti e le abilità insufficienti (i clienti non sanno fare da soli il pagamento e le casse non possono fare la spesa ai clienti). Le casse e i clienti collaborano e comunicano per raggiungere l'obiettivo.
+
+Gli agenti sono a conoscenza di dove si trovano nell'ambiente, ma non vedono in modo diretto gli altri agenti e la distanza che li separa; se un agente di tipo Cliente prende una decisione su quale coda seguire, ha bisogno di chiedere al supermercato dove si trova questa coda. Come verrà descritto nella sezione \ref{model:environment}, il supermercato è diviso in zone, ogni zona è responsabile di comunicare agli agenti la propria posizione e le casse che contiene, quindi fornisce i metodi per muoversi in essa. Il mezzo attraverso cui gli agenti comunicano è dunque l'ambiente stesso.
+
+\subsection{Caratteristiche dell'ambiente}
+
+L'ambiente supermercato è per gli agenti totalmente \textbf{accessibile}, infatti i clienti sanno dove si trovano tutte le casse e le casse conoscono ad ogni istante il numero di clienti presenti nel negozio. \\
+L'ambiente è \textbf{deterministico}, se gli agenti compiono un'azione (ad esempio se un cliente si muove verso una coda), si conosce a priori l'effetto dell'azione; l'evoluzione dell'ambiente è non deterministica, in quanto sono stati introdotti elementi aleatori nelle decisioni degli agenti. \\
+Un'altra caratteristica dell'ambiente è l'\textbf{episodicità}, infatti le esperienze degli agenti, sia casse che clienti, sono divise in fasi il cui esito dipende soltanto dal presente e non dalla serie di azioni svolte in precedenza. \\
+Il supermercato è un ambiente \textbf{statico} perchè non ha altri processi che operano oltre le casse e i clienti, che ci vivono dentro ma non lo modificano; non esistono interferenze nelle azioni degli agenti. \\
+Infine l'ambiente è \textbf{discreto}, esistono un numero finito di azioni da effettuare, ma anche dal punto di vista fisico esso è rappresentato da una griglia di celle finite.
 
 \section{Considerazioni sul modello}
 
