@@ -1,6 +1,7 @@
 \chapter{Stato dell'arte}
+\label{chapter:sota}
 
-\todo{in ogni capitolo aggiungere qualche riga iniziale in cui si spiega cosa verrà detto e qualche riga finale in cui si riassume quanto detto}
+In questo capitolo si scorreranno brevemente gli articoli principali da cui abbiamo preso spunto per il nostro progetto. 
 
 Questo progetto prende spunto principalmente dal lavoro di Tomasz Antczak, Rafal Weron e Jacek Zabawa \cite{article1}, in cui viene costruito un modello ad agenti realistico per simulare la scelta della coda dei clienti di un supermercato; lo scopo principale è il supporto alle decisioni nelle operazioni di vendita. Essi mostrano che quando i clienti scelgono la coda in modo da minimizzare il tempo d'attesa previsto, questo porta in generale a tempi d'attesa minori nelle code per tutti i clienti e porta anche benefici per la gestione del supermercato, in quanto permette di ridurre i turni di lavoro dei cassieri.
 
@@ -29,3 +30,5 @@ Un'ulteriore estensione che abbiamo apportato a questi modelli è stata l'introd
 
 \todo{manca qualcosa nelle variabili probabilistiche?}
 Infine, per rendere la simulazione non deterministica e più realistica, abbiamo voluto inserire delle variabili probabilistiche: l'entrata dei clienti e la loro \textit{basket-size} sono basate su distribuzioni di probabilità estratte dai dati di \cite{article1}; l'estrazione dei clienti delle casse self-scan per la rilettura della spesa è randomica; il \textit{jockeying} da parte di un cliente è random, in quanto non tutte le persone in fila guardano le altre code allo scopo di minimizzare il tempo di attesa; la stima del \textit{basket-size} degli altri clienti da parte di un cliente, nel momento in cui utilizza la sua strategia per calcolare qual è la coda da scegliere, segue una distribuzione normale, rispecchiando così l'errore di stima che compie un umano quando deve quantificare una misura. Tutte queste distribuzioni di probabilità sono governate da parametri che, a parte per i dati estratti dal primo articolo, non sono giustificati da alcuno studio, per questo lo studio di essi rappresenta un'ulteriore estensione del nostro modello.
+
+Abbiamo chiarito le fonti da cui abbiamo preso ispirazione per costruire il supermercato ed estenderlo con più funzionalità; nel prossimo capitolo verranno descritti l'ambiente e gli agenti nel dettaglio, le loro caratteristiche e le interazioni tra essi; quindi verranno descritti tutti i parametri che caratterizzano una simulazione nel nostro modello.

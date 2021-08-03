@@ -1,6 +1,8 @@
 \chapter{Descrizione del modello}
 \label{chapter:model}
 
+In questo capitolo verrà descritto in dettaglio il modello del supermercato da noi implementato; in particolare vedremo il framework utilizzato per implementare il modello, le motivazioni che ci hanno portato a costruire un modello ad agenti, gli agenti Cliente e Cassa visti nel particolare, l'ambiente fisico in cui agiscono gli agenti, come essi interagiscono, infine i pattern e i parametri implementati per rendere il modello flessibile.
+
 \section{Framework adottato}
 Mesa \cite{mesa} è un framework in Python usato per la modellazione basata su agenti (ABM). Permette di creare il modello con componenti \textit{built-in} come griglie spaziali e scheduler di agenti, e di visualizzare i componenti del modello con un'interfaccia browser. Sfruttando Mesa è possibile definire sia l'ambiente che gli agenti estendendo le relative classi messe a disposizione dal framework. Mesa infine comprende strumenti per l'analisi del modello creato.
 
@@ -8,19 +10,16 @@ Nel nostro modello di supermercato, il modello vero e proprio di Mesa è la clas
 
 \section{Sistema}
 
-Giustificare la scelta di fare un modello ad agenti per un supermercato.
+Il supermercato è stato progettato come \textbf{sistema multi-agente}, comprendente agenti Cliente e Cassa, con l'obiettivo di indagare sulle scelte individuali dei clienti, infatti lo scopo del progetto è trovare la migliore strategia di scelta della coda al fine di minimizzare i tempi d'attesa. La presenza di strategie individuali rende utile la modellazione ad agenti, infatti vorremmo che dai comportamenti dei singoli clienti emergano alcune proprietà del sistema, come la non linearità \todo{cazzata?}, che non si possono predire a priori.
 
-Supermercato non predicibile, presente una componente stocastica.
+La scelta del modello ad agenti è in realtà molto naturale: il supermercato è un sistema complesso in cui diverse entità interagiscono e cercano di risolvere alcuni problemi. I clienti effettuano scelte individuali, hanno obiettivi (la spesa, il tipo di pagamento) e i lavoratori e le casse sono lì per soddisfare i loro bisogni; i clienti e i lavoratori devono interagire per far "evolvere" il sistema supermercato durante la giornata, per raggiungere i loro obiettivi.
 
-Il sistema è eterogeneo, due tipi di agenti. Sistema multiagente.
+Qualunque sistema umano, in particolare che comprenda le decisioni umane, ha una componente impredicibile, stocastica; per questo abbiamo voluto inserire, soprattutto nelle decisioni dei clienti, delle variabili che dipendono da delle distribuzioni di probabilità. Per questo motivo il sistema descritto in questa relazione non è deterministico ed ogni simulazione è diversa dalle altre.
 
-Come comunicano
-
-Come avviene l'interazione
-
-Descrizione dell'ambiente
+Il sistema supermercato è multi-agente perchè in esso agiscono tanti agenti, in particolare il numero di clienti presenti varia nel tempo, mentre il numero di casse resta costante durante una simulazione. Come si vedrà nella sezione \ref{model:customers}, gli agenti Cliente e gli agenti Cassa sono di tipo diverso (goal-based e model-based reflex, rispettivamente), per cui il supermercato è un sistema \textbf{eterogeneo}.
 
 \section{Agente di tipo Cliente}
+\label{model:customers}
 I clienti sono gli agenti principali che compongono il modello e interagiscono con l'ambiente per raggiungere l'obiettivo di fare la spesa; per portare a termine questo compito l'agente esegue alcuni macro-step in cui è necessaria anche una fase di pianificazione e valutazione della bontà (\textit{utility function}) della scelta.
 
 Dal punto di vista dell'agente di tipo cliente, la fase più complicata è quella in cui ha raggiunto il target basekt size e deve quindi mettersi in una coda per attendere il suo turno in cassa.
@@ -34,12 +33,10 @@ Da queste considerazione è possibile classificare l'agente di tipo Cliente come
 	\centering
 	\includegraphics[width=11cm]{"images/utility-based_architecture.png"}
 	\caption{Agente di tipo utility-based.}
-	\label{fig:workflow_customer}
+	\label{fig:utility-based}
 \end{figure}
 
 Da questa immagine possiamo notare come ci sia una corrispondenza tra l'architettura proposta e quella dell'agente di tipo cliente. Infatti l'agente pianifica le sue azione e valuta la bontà dell'azione di scegliere una coda per mezzo di un'utlity function.
-
-
 
 \subsection{Workflow}
 I macro-step che l'agente deve seguire per il raggiungimento del goal, che coincidono con gli stati associati all'agente durante la simulazione, sono:
@@ -81,7 +78,16 @@ Il workflow dell'agente di tipo cliente viene astratto e riassunto da questa imm
 \section{Agente di tipo Cassa}
 \label{model:cashdesks}
 
-\todo{Qua parlare dell'architettura delle casse (tipo di agente, immagine ecc..)}
+Mentre i clienti sono gli agenti principali del sistema supermercato, che si muovono e svolgono le azioni interagendo con esso, le casse sono agenti statici nella griglia della simulazione; le casse non effettuano azioni per se stesse, ma attendono fino a che non ci sono clienti in coda per servirli, e permettergli di effettuare le transazioni di pagamento. Per servire i clienti, la cassa necessita di una rappresentazione del proprio stato, che dipende dalla presenza o meno di clienti e dal loro basket-size, di cui ha bisogno per effettuare il pagamento. L'unica decisione individuale che può prendere una cassa, e questo vale soltanto per le casse di tipo standard che si vedranno più avanti, è la propria attivazione o disattivazione in base al numero di clienti presenti nel negozio; l'essere attiva o disattiva fa parte dello stato interno della cassa.
+
+Poichè la cassa non ha obiettivi ma solo il compito di attivarsi e servire gli eventuali clienti in coda, può essere classificata come "model-based reflex agent" secondo \cite{norvig}, descritto in figura \ref{fig:model-based}.
+
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=11cm]{"images/model-based-reflex_architecture.png"}
+	\caption{Agente di tipo model-based reflex.}
+	\label{fig:model-based}
+\end{figure}
 
 \subsection{Tipi di cassa}
 \label{sec:tipi_cassa}
@@ -241,6 +247,7 @@ Il workflow della cassa riservata viene riassunto nell'immagine \ref{fig:workflo
 
 
 \section{Ambiente}
+\label{model:environment}
 
 L'ambiente del sistema in cui gli agenti vivono è il supermercato, implementato dalla classe \textbf{Supermarket} che si occupa di inizializzare la griglia che verrà poi mostrata in fase di simulazione sull'interfaccia, inizializzare le casse, i clienti e mediare le interazioni con gli agenti.
 
@@ -259,14 +266,21 @@ Ogni zona è responsabile della propria costruzione, ovvero del proprio collocam
 
 \todo{Parlare di quanto dura uno step e quanto dura una simulazione} Ad ogni step della simulazione, il modello crea dei clienti secondo la distribuzione data (si veda la sezione \ref{model:parameters}) e li posiziona nella \textbf{Entering Zone} del supermercato in coordinate random, dunque si occupa della attivazione e disattivazione delle casse standard in base al numero di clienti presenti nel negozio in quello step, secondo dei parametri che si vedranno nella prossima sezione. Quindi il modello chiama gli scheduler degli agenti, clienti e casse, e fa eseguire i loro step.
 
-\subsection{Caratteristiche dell'ambiente}
-- Accessibile vs. Inaccessibile
-- Deterministico vs. Non-deterministico
-- Episodicità vs. Non-episodicità
-- Statico vs. Dinamico
-- Discreto vs. Continuo
-
 \subsection{Interazione tra agenti}
+
+I due tipi di agenti che compongono il modello \textbf{interagiscono} tra loro nella fase di attesa in coda da parte del cliente e quindi pagamento; l'interazione è necessaria perchè i clienti non sono in grado di autogestire le code e pagare, e questo fatto giustifica la presenza degli agenti Cassa, pur semplici che siano (insieme al fatto che le casse si attivano o disattivano in base al numero di clienti nel negozio, come si vedrà più avanti).
+
+L'interazione tra clienti e casse è di tipo \textbf{collaborativo semplice}, in quanto gli obiettivi di entrambi sono compatibili (effettuare il pagamento e far uscire i clienti dal negozio), le risorse sufficienti e le abilità insufficienti (i clienti non sanno fare da soli il pagamento e le casse non possono fare la spesa ai clienti). Le casse e i clienti collaborano e comunicano per raggiungere l'obiettivo.
+
+Gli agenti sono a conoscenza di dove si trovano nell'ambiente, ma non vedono in modo diretto gli altri agenti e la distanza che li separa; se un agente di tipo Cliente prende una decisione su quale coda seguire, ha bisogno di chiedere al supermercato dove si trova questa coda. Come verrà descritto nella sezione \ref{model:environment}, il supermercato è diviso in zone, ogni zona è responsabile di comunicare agli agenti la propria posizione e le casse che contiene, quindi fornisce i metodi per muoversi in essa. Il mezzo attraverso cui gli agenti comunicano è dunque l'ambiente stesso.
+
+\subsection{Caratteristiche dell'ambiente}
+
+L'ambiente supermercato è per gli agenti totalmente \textbf{accessibile}, infatti i clienti sanno dove si trovano tutte le casse e le casse conoscono ad ogni istante il numero di clienti presenti nel negozio. \\
+L'ambiente è \textbf{deterministico}, se gli agenti compiono un'azione (ad esempio se un cliente si muove verso una coda), si conosce a priori l'effetto dell'azione; l'evoluzione dell'ambiente è non deterministica, in quanto sono stati introdotti elementi aleatori nelle decisioni degli agenti. \\
+Un'altra caratteristica dell'ambiente è l'\textbf{episodicità}, infatti le esperienze degli agenti, sia casse che clienti, sono divise in fasi il cui esito dipende soltanto dal presente e non dalla serie di azioni svolte in precedenza. \\
+Il supermercato è un ambiente \textbf{statico} perchè non ha altri processi che operano oltre le casse e i clienti, che ci vivono dentro ma non lo modificano; non esistono interferenze nelle azioni degli agenti. \\
+Infine l'ambiente è \textbf{discreto}, esistono un numero finito di azioni da effettuare, ma anche dal punto di vista fisico esso è rappresentato da una griglia di celle finite.
 
 \section{Considerazioni sul modello}
 
@@ -312,7 +326,6 @@ Inoltre per quanto riguarda le code, seppure per le casse self-service è obblig
 Il comportamento di jockeying è influenzato da alcuni parametri, questi sono:
 \begin{itemize}
 	\item \textbf{Numero di code adiacenti considerate}: la coda in cui il customer è presente in quel momento svolge il ruolo di coda pivot, questo parametro indica il numero di code adiacenti alla coda pivot che vengono prese in considerazione per valutare l'eventualità di fare jockeying.
-	
 	\item \textbf{Threshold di jockeying}: questo parametro ha lo scopo di modellare il fatto che un cliente efettua jockeying solo nel caso in cui per lui risulta essere conveniente non meno di un certo livello. Questo threshold indica di quale deve essere il minimo guadagno per effettuare jockeying. Questo approccio basato su una soglia di minimo guadagno è stato presentato nel lavoro di Koenigsberg \cite{koenigsberg1966jockeying}.
 	
 	\item \textbf{Probabilità di jockeying}: Nel lavoro di Tomasz Antczak e altri \cite{article1}, viene spiegato come il fenomeno di jockeying sia piuttosto raro. Il modello proposto tiene conto di questo aspetto introducendo una variabile aleatorio distributita secondo una bernulliana che ha lo scopo di, nel caso in cui il jockeying risulti essere conveniente basandosi sul threshold, consentire o negare il jockeying. Con questo approccio si vuole rendere meno frequente il jockeying.
@@ -376,10 +389,10 @@ A parire da questi parametri è facile calcolare il parametro $\lambda$ della di
 \begin{proof}[\unskip\nopunct]
 	Sia $X$ la variabile aleatoria che rappresenta la dimensione del basket size, e assumendo che $X \sim Exp(\lambda)$, dalla funzione di densità di probabilità si ha che:
 	$$f(x;\lambda) = \lambda e^{\lambda x}, \quad se \; x > 0$$
-	
-	Per mezzo di una log-trasformazione si ottiene:	
 
-	\begin{equation} 
+	Per mezzo di una log-trasformazione si ottiene:
+
+	\begin{equation}
 			\label{eq:regressione}
 		\begin{aligned}
 			&\ln(\lambda e^{\lambda x}) &&\text{(dalla funzione di densità di probabilità)}\\
@@ -392,7 +405,7 @@ A parire da questi parametri è facile calcolare il parametro $\lambda$ della di
 	La retta di regressione ottenuta a parire dai dati dopo la log-trasformazione è della forma:
 	\begin{align*}
 		&y = mx + q\\
-		&m = -0.0736184654254411;\, q = -2.806857867915933 
+		&m = -0.0736184654254411;\, q = -2.806857867915933
 	\end{align*}
 
 	Da cui (sfruttando l'equazione \ref{eq:regressione}):
@@ -400,7 +413,7 @@ A parire da questi parametri è facile calcolare il parametro $\lambda$ della di
 			&m = -\lambda \implies \lambda = -m = 0.0736184654254411\\
 			&q = \ln(\lambda)\\
 		\end{align*}
-		
+
 	Pertando si ricava dai dati che la distribuzione esponenziale teorica sottostante $Exp(\lambda)$ ha $\lambda = 0.0736184654254411$
 \end{proof}
 
@@ -428,3 +441,7 @@ Dopo la fase di spesa iniziale il cliente sceglierà una coda per venire success
 Casse adiacenti considerate
 
 Inizializzazione della griglia e parametri per creare casse (numero casse, coda condivisa o no, velocità di processing e parametro per rallentare la velocità della self-service), customer, basket size (analisi dei dati di Gianluca).
+
+\subsection{Conclusioni}
+
+In questo capitolo è stato descritto abbondantemente il modello di supermercato implementato; in particolare si è parlato della flessibilità del modello (grazie a pattern e parametri) e del workflow e delle capacità degli agenti; nel capitolo successivo vedremo le strategie di scelta della coda e di jockeying, parte importante della simulazione in quanto l'obiettivo finale del progetto è indagare su quale sia la strategia che minimizza il tempo d'attesa alle casse.
