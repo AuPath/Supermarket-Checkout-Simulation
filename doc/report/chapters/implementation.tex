@@ -63,7 +63,8 @@ I tempi di servizio per ogni cliente di una coda sono quindi sommati per calcola
 \begin{equation}\label{eq:total-service-time}
 \text{total-service-time}(q_j) = \sum\limits_{i=1}^N \left( \text{transaction-time}_i + \text{break-time}_i \right)
 \end{equation}
-Il tempo di servizio medio per le code è la somma dei tempi totali di servizio divisa per il numero di code. Viene scelta la coda con il tempo totale minimo, mettendo insieme le \ref{eq:transaction-time-standard-estimate}, \ref{eq:break-time-standard-estimate}, \ref{eq:transaction-time-self-service-estimate}, \ref{eq:break-time-self-service-estimate} e \ref{eq:total-service-time} si ottiene la funzione da minimizzare:
+Il tempo di servizio medio per le code è la somma dei tempi totali di servizio divisa per il numero di code. Viene scelta la coda con il tempo totale minimo, mettendo insieme le equazioni
+ \ref{eq:transaction-time-standard-estimate}, \ref{eq:break-time-standard-estimate}, \ref{eq:transaction-time-self-service-estimate}, \ref{eq:break-time-self-service-estimate} e \ref{eq:total-service-time} si ottiene la funzione da minimizzare:
 \begin{equation}
 f(q) = |q| * \frac{1}{M}\sum\limits_{j=1}^M \left( \text{total-service-time}(q_j) \right)
 \end{equation}
