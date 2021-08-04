@@ -3,6 +3,7 @@ from src.cashdesk.CashDesk import CashDesk
 from src.queue.SupermarketQueue import SupermarketQueue
 from src.states.cashdeskstates.CashDeskSelfServiceStates import CashDeskSelfServiceNewCustomerState
 
+# TODO: A cosa serve questo parametro questo parametro?
 PROCESSING_SPEED_SLOWER = 1.5
 
 

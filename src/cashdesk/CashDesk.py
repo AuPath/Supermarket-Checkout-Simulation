@@ -58,6 +58,7 @@ class CashDesk(ABC, Agent):
     def process_customer(self):
         c = self.customer
 
+        # TODO: Come viene usato questo parametro?
         if c.basket_size - self.__processing_speed <= 0:
             c.basket_size = 0
         else:
