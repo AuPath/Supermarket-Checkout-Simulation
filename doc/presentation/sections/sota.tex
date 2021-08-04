@@ -1,5 +1,20 @@
 \section{Stato dell'arte}
 \begin{frame}{Stato dell'arte}
-	\centering
-	DAJE RAGA
+	Il principale spunto per il modello è stato l'articolo \textit{Data-driven simulation modeling of the checkout process in supermarkets: Insights for decision support in retail operations} \footnote{Antczak, Tomasz and Weron, Rafał and Zabawa, Jacek, 2020}, che utilizza 5 strategie di scelta della coda confrontando i \textbf{tempi d'attesa medi} dei clienti.
+\end{frame}
+
+\begin{frame}{Estensioni}
+	Abbiamo voluto estendere il modello introducendo nuovi concetti:
+	
+	\begin{itemize}
+		\item \textbf{Jockeying} \footnote{\textit{On jockeying in queues}, E. Koenigsberg, 1966}: quando un cliente sta attendendo in coda, confronta i tempi d'attesa della propria coda con quelli delle code vicine e può decidere di spostarsi di conseguenza.
+		\item \textbf{Code parallele e N-Fork} \footnote{\textit{Methods for improving efficiency of queuing systems}, Yanagisawa, D and Suma, Y and Tanaka, Y and Tomoeda, A and Ohtsuka, K and Nishinari, K, 2011}: vogliamo indagare sull'effetto della disposizione delle code sui tempi di attesa medi, questa può essere \textbf{parallela}, se ogni cassa ha una coda dedicata, oppure \textbf{N-Fork}, se c'è un'unica coda condivisa.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Estensioni}
+	\begin{itemize}
+		\item \textbf{Casse self-scan}: l'articolo sopra citato prende in considerazione solo 2 tipi di casse, le casse \textbf{standard} e le casse \textbf{self-service}. Nel modello sono presenti le casse \textbf{self-scan}, presenti attualmente in molti supermercati, che permettono di scannerizzare i prodotti in fase di spesa e rendere la fase di pagamento molto più veloce.
+		\item \textbf{Simulazione non deterministica}: per far emergere comportamenti non banali nel supermercato e rendere più realistiche le simulazioni sono state aggiunte alcune variabili probabilistiche.
+	\end{itemize}
 \end{frame}
