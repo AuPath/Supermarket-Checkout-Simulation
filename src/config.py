@@ -12,3 +12,7 @@ GREEN = "#77eb34"
 ORANGE = "#eba234"
 GREY = "#a1a3a0"
 BLACK = "#000000"
+
+# Customers distribution
+
+INPUT_FILE_CUSTOMER_DISTRIBUTION = '../pickle/df_arrivals_aggregated.pkl'

@@ -49,11 +49,7 @@ grid = init_grid(height, pixels_width, pixels_height, zones_metadata)
 # Time parameters
 STEP_IN_SECONDS = 30
 CUSTOMER_SPEED_PER_STEP = 0.5
-NUMBER_OF_HOURS = 8
-number_of_steps_in_hour = lambda step_in_seconds: 60 * 60 / step_in_seconds
-
-# TODO: mettere la distribuzione del Dottor Giudice
-customer_distribution = [1] * (NUMBER_OF_HOURS * number_of_steps_in_hour(STEP_IN_SECONDS))
+customer_distribution = init_customer_distribution(STEP_IN_SECONDS)
 
 # Simulation name
 simulation_name = 'supermercato1'
@@ -64,7 +60,6 @@ server = ModularServer(Supermarket,
                        {"zones_metadata": zones_metadata,
                         "simulation_name": simulation_name,
                         "customer_shopping_speed": CUSTOMER_SPEED_PER_STEP,
-                        # lista con numero di clienti da generare ad ogni step es. [1, 2, 3, 2, 4, 5, 2, ...]
                         "customer_distribution": customer_distribution,
                         "grid_height": height,
                         "queue_choice_strategy": QueueChoiceLeastPeople(),

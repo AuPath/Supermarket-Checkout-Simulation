@@ -1,10 +1,11 @@
-import logging
+import os, logging, pickle, numpy as np
 from datetime import datetime
-import os
 
 from mesa.visualization.modules import ChartModule, CanvasGrid
 
 from config import *
+
+SIGMA_CUSTOMER_DISTRIBUTION = 0.4
 
 
 def init_logging(log_path, enable_logging=False):
@@ -143,3 +144,30 @@ def init_zones_metadata(entering_zone_width, shopping_zone_height, number_cash_d
                       ('CASH_DESK_SELF_SERVICE', number_cash_desk_self_service_groups),
                       ('CASH_DESK_RESERVED', 1)]
     return zones_metadata
+
+
+def read_input_customer_distribution(input_file=INPUT_FILE_CUSTOMER_DISTRIBUTION):
+    with open(input_file, 'rb') as f:
+        df = pickle.load(f)
+    return df
+
+
+def generate_customers_dist(df, steps_in_hour, sigma=SIGMA_CUSTOMER_DISTRIBUTION):
+    customers_distribution = []
+
+    for customers_in_hour in df["value"]:
+        # Generate samples
+        mu = customers_in_hour / steps_in_hour
+        bias_customers_in_hour = np.random.normal(mu, sigma, steps_in_hour)
+        bias_customers_in_hour = [round(abs(x)) for x in bias_customers_in_hour]
+        customers_distribution += bias_customers_in_hour
+
+    return customers_distribution
+
+
+def init_customer_distribution(step_in_seconds):
+    df = read_input_customer_distribution()
+    number_of_steps_in_hour = int(60 * 60 / step_in_seconds)
+    customer_distribution = generate_customers_dist(df, number_of_steps_in_hour)
+    return customer_distribution
+
