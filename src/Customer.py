@@ -7,7 +7,7 @@ from src.states.State import State
 from src.states.customerstates.CustomerEnteredState import CustomerEnteredState
 
 SHOPPING_SPEED = 1
-DIVISOR_STANDARD_DEVIATION = 10
+STANDARD_DEVIATION_COEFFICIENT = 0.1
 
 
 class Customer(Agent):
@@ -17,7 +17,7 @@ class Customer(Agent):
                  basket_size_target, self_scan, queue_choice_strategy,
                  queue_jockeying_strategy,
                  shopping_speed=SHOPPING_SPEED,
-                 divisor_standard_deviation=DIVISOR_STANDARD_DEVIATION):
+                 standard_deviation_coefficient=STANDARD_DEVIATION_COEFFICIENT):
         """Constructor, the basket_size_target and the boolean self_scan are assigned by the main class."""
         super().__init__(agent_id, model)
 
@@ -36,7 +36,7 @@ class Customer(Agent):
         self.queue_choice_strategy = queue_choice_strategy
         self.queue_jockeying_strategy = queue_jockeying_strategy
 
-        self.divisor_standard_deviation = divisor_standard_deviation
+        self.standard_deviation_coefficient = standard_deviation_coefficient
 
         self.waiting_time = 0
 
@@ -134,7 +134,7 @@ class Customer(Agent):
                 self.model.cash_desk_self_service_zone.move_to_queue(self, cash_desk)
 
     def estimate_basket_size(self):
-        return math.ceil(random.normalvariate(self.basket_size, self.basket_size/self.divisor_standard_deviation))
+        return math.ceil(random.normalvariate(self.basket_size, self.basket_size * self.standard_deviation_coefficient))
 
     def send_waiting_time(self):
         if not self.self_scan:
