@@ -50,18 +50,20 @@ pixels_width = 1500
 pixels_height = 1500
 grid = init_grid(height, pixels_width, pixels_height, zones_metadata)
 
+# Simulation name
+simulation_name = 'supermercato1'
 # Create server
-customer_legend_element = CustomerLegendElement()
-cash_desk_legend_element = CashDeskLegendElement()
 server = ModularServer(Supermarket,
-                       [grid, customer_legend_element, cash_desk_legend_element] + charts[:N_CHARTS],
+                       [grid, CustomerLegendElement(), CashDeskLegendElement()] + charts[:N_CHARTS],
                        "Supermarket",
                        {"zones_metadata": zones_metadata,
+                        "simulation_name": simulation_name,
                         # lista con numero di clienti da generare ad ogni step es. [1, 2, 3, 2, 4, 5, 2, ...]
                         "customer_distribution": customer_distribution,
                         "grid_height": height,
                         "queue_choice_strategy": QueueChoiceLeastPeople(),
-                        "queue_jockey_strategy": QueueJockeyLeastPeople(threshold_people, probability_of_jockeying)
+                        "queue_jockey_strategy": QueueJockeyLeastPeople(threshold_people,
+                                                                        probability_of_jockeying)
                         })
 server.port = 8521  # The default
 server.settings["template_path"] = STATIC_PAGE_PATH

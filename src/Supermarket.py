@@ -64,7 +64,7 @@ class Supermarket(Model):
 
     def __init__(self, zones_metadata, customer_distribution, grid_height,
                  queue_choice_strategy: QueueChoiceStrategy, queue_jockey_strategy: QueueJockeyStrategy,
-                 adj_window_size=ADJ_WINDOW_SIZE):
+                 simulation_name, adj_window_size=ADJ_WINDOW_SIZE):
         self.__customers = set()
         self.__occupied_cells = set()
         self.__cash_desks: list[CashDesk] = []
@@ -81,6 +81,8 @@ class Supermarket(Model):
         self.__queue_choice_strategy = queue_choice_strategy
         self.__queue_jockey_strategy = queue_jockey_strategy
         self.zones_metadata = zones_metadata
+        # Simulation name
+        self.simulation_name = simulation_name
         # Create zones
         self.entering_zone = None
         self.shopping_zone = None
@@ -142,13 +144,17 @@ class Supermarket(Model):
         self.cash_desk_scheduler.step()
 
         if self.get_number_of_customers() == 0 and self.__current_step > 1:
-            self.dump_data_collector()
+            self.stop_simulation()
+
+    def stop_simulation(self):
+        self.dump_data_collector()
+        self.running = False
 
     def dump_data_collector(self):
         from datetime import datetime
         timestamp = str(datetime.timestamp(datetime.now())).split('.')[0]
-        f_name = f"../pickle/datacollector_{timestamp}.pkl"
-        print("ciao")
+        f_name = f"../pickle/datacollector_{self.simulation_name}_{timestamp}.pkl"
+        print("Dump data collector completed")
 
         with open(f_name, "wb") as f:
             pickle.dump(self.datacollector.model_vars, f)
