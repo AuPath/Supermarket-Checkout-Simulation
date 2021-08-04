@@ -27,7 +27,7 @@ class QueueChoiceLeastWaitingTimeServiceImplied(QueueChoiceStrategy):
         # Minimo per tipo di cassa
 
 
-        # todo refactoring di sto mega if che fa schifo, era per vedere se funzionava
+
         if len(normal_cash_desks) > 0 and len(self_service_cash_desks) > 0:
             normal_queues_mean_service_time = self.estimate_mean_service_time(normal_cash_desks)
 
