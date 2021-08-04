@@ -41,14 +41,19 @@ zones_metadata = init_zones_metadata(
     entering_zone_width, shopping_zone_height, number_cash_desk_self_scan,
     number_cash_desk, shared_queue, number_cash_desk_self_service_groups)
 
-# TODO: quanto vale uno step? qui 1 minuto, gli faccio entrare un cliente al minuto, e la giornata dura 8 ore
-# TODO: mettere la distribuzione del Dottor Giudice
-customer_distribution = [1] * (60 * 8)
-
 height = 30
 pixels_width = 1500
 pixels_height = 1500
 grid = init_grid(height, pixels_width, pixels_height, zones_metadata)
+
+# Time parameters
+STEP_IN_SECONDS = 30
+CUSTOMER_SPEED_PER_STEP = 0.5
+NUMBER_OF_HOURS = 8
+number_of_steps_in_hour = lambda step_in_seconds: 60 * 60 / step_in_seconds
+
+# TODO: mettere la distribuzione del Dottor Giudice
+customer_distribution = [1] * (NUMBER_OF_HOURS * number_of_steps_in_hour(STEP_IN_SECONDS))
 
 # Simulation name
 simulation_name = 'supermercato1'
@@ -58,6 +63,7 @@ server = ModularServer(Supermarket,
                        "Supermarket",
                        {"zones_metadata": zones_metadata,
                         "simulation_name": simulation_name,
+                        "customer_shopping_speed": CUSTOMER_SPEED_PER_STEP,
                         # lista con numero di clienti da generare ad ogni step es. [1, 2, 3, 2, 4, 5, 2, ...]
                         "customer_distribution": customer_distribution,
                         "grid_height": height,

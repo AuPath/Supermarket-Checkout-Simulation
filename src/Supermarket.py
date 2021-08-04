@@ -51,9 +51,8 @@ def generate_customers_metadata(n_customers, queue_choice_strategy: QueueChoiceS
 
     basket_size_values = generate_basket_size(n_customers)
 
-    rand_num = random.random()
     for basket_size in basket_size_values:
-        self_scan = rand_num < SELF_SCAN_PERCENTAGE
+        self_scan = random.random() < SELF_SCAN_PERCENTAGE
         new_tuple = (basket_size, self_scan, queue_choice_strategy, queue_jockey_strategy)
         customers_metadata.append(new_tuple)
     return customers_metadata
@@ -64,7 +63,7 @@ class Supermarket(Model):
 
     def __init__(self, zones_metadata, customer_distribution, grid_height,
                  queue_choice_strategy: QueueChoiceStrategy, queue_jockey_strategy: QueueJockeyStrategy,
-                 simulation_name, adj_window_size=ADJ_WINDOW_SIZE):
+                 simulation_name, customer_shopping_speed, adj_window_size=ADJ_WINDOW_SIZE):
         self.__customers = set()
         self.__occupied_cells = set()
         self.__cash_desks: list[CashDesk] = []
@@ -76,13 +75,15 @@ class Supermarket(Model):
         self.__num_agent = 0
         self.running = True
         self.queues = None
-        self.__customer_distribution = customer_distribution
-        self.__current_step = 1
+        self.customer_distribution = customer_distribution
+        self.current_step = 1
         self.__queue_choice_strategy = queue_choice_strategy
         self.__queue_jockey_strategy = queue_jockey_strategy
         self.zones_metadata = zones_metadata
         # Simulation name
         self.simulation_name = simulation_name
+        # Time parameters
+        self.customer_shopping_speed = customer_shopping_speed
         # Create zones
         self.entering_zone = None
         self.shopping_zone = None
@@ -121,12 +122,12 @@ class Supermarket(Model):
                              })
 
     def step(self):
-        if self.__current_step < 60 * 8:  # TODO: la giornata finisce dopo 8h, controllare sto codice
+        if self.current_step < len(self.customer_distribution):
             # continuous creation of customers
-            customers_metadata = generate_customers_metadata(self.__customer_distribution[self.__current_step],
+            customers_metadata = generate_customers_metadata(self.customer_distribution[self.current_step],
                                                              self.__queue_choice_strategy, self.__queue_jockey_strategy)
             self.init_customers(customers_metadata)
-            self.__current_step += 1
+            self.current_step += 1
 
         # activation / deactivation cash desks
         if self.get_total_customers() > 0:
@@ -143,7 +144,8 @@ class Supermarket(Model):
         self.customer_scheduler.step()
         self.cash_desk_scheduler.step()
 
-        if self.get_number_of_customers() == 0 and self.__current_step > 1:
+        # TODO: Questa funzione tiene conto dei clienti che sono temporaneamente in cassa?
+        if self.get_number_of_customers() == 0 and self.current_step > 1:
             self.stop_simulation()
 
     def stop_simulation(self):
@@ -167,7 +169,7 @@ class Supermarket(Model):
         logging.info("Init customers")
         for basket_size, self_scan, queue_choice_strategy, queue_jockey_strategy in customers_metadata:
             customer = Customer(self.__num_agent, self, basket_size, self_scan, queue_choice_strategy,
-                                queue_jockey_strategy)
+                                queue_jockey_strategy, shopping_speed=self.customer_shopping_speed)
             self.__num_agent += 1
             self.add_customer(customer)
 
@@ -481,7 +483,7 @@ class Supermarket(Model):
                len(self.get_cash_desks_by_type("CashDeskSelfScan"))
 
     def get_current_step(self):
-        return self.__current_step
+        return self.current_step
 
     @property
     def waiting_times_standard(self):
