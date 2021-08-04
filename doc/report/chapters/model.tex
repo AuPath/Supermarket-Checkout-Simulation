@@ -10,24 +10,23 @@ Nel nostro modello di supermercato, il modello vero e proprio di Mesa è la clas
 
 \section{Sistema}
 
-Il supermercato è stato progettato come \textbf{sistema multi-agente}, comprendente agenti Cliente e Cassa, con l'obiettivo di indagare sulle scelte individuali dei clienti, infatti lo scopo del progetto è trovare la migliore strategia di scelta della coda al fine di minimizzare i tempi d'attesa. La presenza di strategie individuali rende utile la modellazione ad agenti, infatti vorremmo che dai comportamenti dei singoli clienti emergano alcune proprietà del sistema, come la non linearità \todo{cazzata?}, che non si possono predire a priori.
+Il supermercato è stato progettato come \textbf{sistema multi-agente}, comprendente agenti Cliente e Cassa, con l'obiettivo di indagare sulle scelte individuali dei clienti, infatti lo scopo del progetto è trovare la migliore strategia di scelta della coda al fine di minimizzare i tempi d'attesa. La presenza di strategie individuali rende utile la modellazione ad agenti, infatti vorremmo che dai comportamenti dei singoli clienti emergano alcune proprietà del sistema, come la non linearità, che non si possono predire a priori.
 
 La scelta del modello ad agenti è in realtà molto naturale: il supermercato è un sistema complesso in cui diverse entità interagiscono e cercano di risolvere alcuni problemi. I clienti effettuano scelte individuali, hanno obiettivi (la spesa, il tipo di pagamento) e i lavoratori e le casse sono lì per soddisfare i loro bisogni; i clienti e i lavoratori devono interagire per far "evolvere" il sistema supermercato durante la giornata, per raggiungere i loro obiettivi.
 
 Qualunque sistema umano, in particolare che comprenda le decisioni umane, ha una componente impredicibile, stocastica; per questo abbiamo voluto inserire, soprattutto nelle decisioni dei clienti, delle variabili che dipendono da delle distribuzioni di probabilità. Per questo motivo il sistema descritto in questa relazione non è deterministico ed ogni simulazione è diversa dalle altre.
 
-Il sistema supermercato è multi-agente perchè in esso agiscono tanti agenti, in particolare il numero di clienti presenti varia nel tempo, mentre il numero di casse resta costante durante una simulazione. Come si vedrà nella sezione \ref{model:customers}, gli agenti Cliente e gli agenti Cassa sono di tipo diverso (goal-based e model-based reflex, rispettivamente), per cui il supermercato è un sistema \textbf{eterogeneo}.
+Il sistema supermercato è multi-agente perchè in esso agiscono tanti agenti, in particolare il numero di clienti presenti varia nel tempo, mentre il numero di casse resta costante durante una simulazione. Come si vedrà nelle sezioni \ref{model:customers} e \ref{model:cashdesks}, gli agenti Cliente e gli agenti Cassa sono di tipo diverso (goal-based e model-based reflex, rispettivamente), per cui il supermercato è un sistema \textbf{eterogeneo}.
 
 \section{Agente di tipo Cliente}
 \label{model:customers}
 I clienti sono gli agenti principali che compongono il modello e interagiscono con l'ambiente per raggiungere l'obiettivo di fare la spesa; per portare a termine questo compito l'agente esegue alcuni macro-step in cui è necessaria anche una fase di pianificazione e valutazione della bontà (\textit{utility function}) della scelta.
 
 Dal punto di vista dell'agente di tipo cliente, la fase più complicata è quella in cui ha raggiunto il target basekt size e deve quindi mettersi in una coda per attendere il suo turno in cassa.
-A questo punto il \textbf{goal dell'agente }è: essere servito da una cassa nel minor tempo possibile, pur dovendo necessariamente passare per una coda.
-Questa fase richiede una pianificazione da parte dell'agente in quanto la coda viene scelta in modo ottimale cercando di minimizzare il tempo passato in coda, ciò avviene basandosi su diverse strategie. Ragionamenti analoghi vengono fatti nel momento in cui l'agente già in coda decide di fare jockeying, ovvero cambiare la coda attuale perchè questa azione porta al raggiungimento del goal.
+A questo punto il \textbf{goal dell'agente }è essere servito da una cassa nel minor tempo possibile, pur dovendo necessariamente passare per una coda.
+Questa fase richiede una pianificazione da parte dell'agente in quanto la coda viene scelta in modo ottimale cercando di minimizzare il tempo passato in coda, ciò avviene basandosi su diverse strategie che saranno descritte nel capitolo \ref{implementation:intro}. Ragionamenti analoghi vengono fatti nel momento in cui l'agente già in coda decide di fare jockeying, ovvero cambiare la coda attuale perchè questa azione porta al raggiungimento del goal.
 
-Da queste considerazione è possibile classificare l'agente di tipo Cliente come "utility-based", secondo la tassonomia proposta Russel-Norvig \cite{norvig}; viene qui sotto riportata l'architettura di un agente "utility-based":
-
+Da queste considerazioni è possibile classificare l'agente di tipo Cliente come "utility-based", secondo la tassonomia proposta Russel-Norvig \cite{norvig}; l'architettura di un agente "utility-based" è riportata nella figura \ref{fig:utility-based}.
 
 \begin{figure}[H]
 	\centering
@@ -36,29 +35,29 @@ Da queste considerazione è possibile classificare l'agente di tipo Cliente come
 	\label{fig:utility-based}
 \end{figure}
 
-Da questa immagine possiamo notare come ci sia una corrispondenza tra l'architettura proposta e quella dell'agente di tipo cliente. Infatti l'agente pianifica le sue azione e valuta la bontà dell'azione di scegliere una coda per mezzo di un'utlity function.
+Da questa immagine possiamo notare come ci sia una corrispondenza tra l'architettura proposta e quella dell'agente di tipo cliente. Infatti l'agente pianifica le sue azioni e valuta la bontà dell'azione di scegliere una coda per mezzo di una utlity function.
 
 \subsection{Workflow}
 I macro-step che l'agente deve seguire per il raggiungimento del goal, che coincidono con gli stati associati all'agente durante la simulazione, sono:
 
 \begin{enumerate}
-	\item \textbf{Attesa all'entrata del supermercato}: in questo stato il cliente si mette in attesa finchè non è possibile entrare nel supermercato. \todo{Esperimenti sul covid}
+	\item \textbf{Attesa all'entrata del supermercato}: in questo stato il cliente si mette in attesa finchè non è possibile entrare nel supermercato.
 	\item \textbf{Fase di shopping}: il cliente è entrato e può iniziare a "fare la spesa", con questo si intende raggiungere il numero di prodotti desiderato, infatti nella simulazione viene considerato il \textit{basket size}, un'astrazione del carrello modellato attraverso un numero interno. Il basket size è il target da raggiungere nella fase di shopping, a ogni step il numero di prodotti aumenta di una certa quantità (la velocità di shopping è un parametro del modello descritto nella sezione \ref{model:parameters}). 
 	
 	La basket size viene generata stocasticamente secondo una distribuzione esponenziale di parametro $\lambda = 0.07361$. La scelta di questo parametro viene giustificata nella sezione \ref{model:parameters}. 
 	
 	\item \textbf{Scelta della coda}: in questo stato il cliente ha finito di fare la spesa e vuole mettersi in coda ad una cassa. Dal momento che sono disponibili più code e ognuna di queste avrà molto probabilmente altri clienti già in coda, il cliente deve scegliere in quale coda andare in base alla coda che lui considera migliore.
 	
-	Formalmente viene definita una strategia di scelta della coda in base a una funzione: la \textit{utility function}. Il cliente sceglie quindi la coda che minimizza questa funzione:
+	Formalmente viene definita una strategia di scelta della coda in base a una funzione: la \textit{utility function}. Il cliente sceglie quindi la coda $q^*$ che minimizza questa funzione:
 
 	\begin{equation}
 		q^* = \operatorname*{argmin}_{q \in Q} f(q) \label{eq:strategy}
 	\end{equation}
-	dove $Q$ è l'insieme delle code dedicate e $f$ varia a seconda del tipo di strategia che il cliente può utilizzare, ognuna delle quali modella una diversa strategia per la scelta della coda.
+	dove $Q$ è l'insieme delle code dedicate e $f$ varia a seconda del tipo di strategia che il cliente può utilizzare per la scelta della coda.
 
 	\item \textbf{Attesa in coda e jockeying}: una volta che il cliente ha scelto la coda deve aspettare il proprio turno per essere servito. Nel lavoro di Tomasz Antczak e altri \cite{article1} viene suggerito come sviluppo futuro lo studio del fenomeno di \textit{jockeying}: con questa espressione si intende cambiare la coda che è stata scelta inizialmente in quanto un'altra risulta essere più conveniente, ad esempio perchè più scorrevole.
 	
-	Ad ogni timestamp l'agente considera le due code adiacenti (parametro spiegato nella sezione \ref{model:parameters} e scelto a priori per il modello) alla propria e per ognuna di queste ricalcola la coda migliore secondo la \ref{eq:strategy}. A questo punto l'agente valuta se per lui è conveniente cambiare la coda o rimanere in quella dove è già presente. Si noti come per effettuare questo confronto è necessario utilizzare l'approccio della \ref{eq:strategy} sulla coda in cui l'agente è in quel momento, andando ad escludere i clienti che si sono inseriti in coda dopo di lui. Una volta fatta questa valutazione, nel caso in cui sia per lui conveniente cambiare coda, il cliente la cambia in modo stocastico secondo una certa distribuzione di probabilità spiegata nella sezione \ref{implementation:intro}, che è maggiore più il cambio di coda risulta conveniente.
+	Ad ogni timestamp l'agente considera le due code adiacenti (parametro spiegato nella sezione \ref{model:parameters} e scelto a priori per il modello) alla propria e per ognuna di queste ricalcola la coda migliore secondo la \ref{eq:strategy}. A questo punto l'agente valuta se per lui è conveniente cambiare la coda o rimanere in quella dove è già presente. Si noti come per effettuare questo confronto è necessario utilizzare l'approccio della \ref{eq:strategy} sulla coda in cui l'agente è in quel momento, andando ad escludere i clienti che si sono inseriti in coda dopo di lui. Una volta fatta questa valutazione, il cliente cambia coda solo se il "guadagno" è maggiore di un certo threshold, anche questo parametro nel modello. A questo punto il cliente può cambiare coda con una certa probabilità, scelta a priori.
 	
 	La scelta modellistica di effettuare jockeying stocasticamente e in funzione dell'effettivo guadagno di tempo è stata fatta per cercare di avere una rappresentazione il più fedele possibile al mondo reale. Infatti nella realtà un cliente al supermercato potrebbe scegliere di non cambiare la coda nel momento in cui ha un guadagno minimo in quanto questo richiede uno sforzo fisico che non tutti vogliono spendere nella realtà. Inoltre questa operazione richiede che gli agenti controllino continuamente le casse vicine, anche questo non è necessariamente vero in quanto dispendioso di energia. Infatti nel lavoro di Tomasz Antczak e altri \cite{article1} viene fatto notare come questo comportamento non sia molto frequente, tuttavia seppur essendo poco frequente noi lo consideriamo un fattore importante da modellare, adottando le dovute precauzioni e sfruttando la stocasticità dell'azione.
 	
@@ -97,7 +96,7 @@ Gli agenti di tipo cassa hanno l'unica funzione di servire i clienti che si mett
 \begin{enumerate}
 \item \textbf{Cassa standard}: questa cassa rappresenta la normale cassa che si trova solitamente in tutti i supermercati, all'interno della quale lavora un cassiere che si occupa di passare i prodotti del carrello del cliente sul nastro.
  
-Il tempo di servizio di un cliente per questo tipo di cassa è formato da due tempi diversi: il \textbf{transaction-time}, che è il tempo vero e proprio durante il quale avviene la transazione, e il \textbf{break-time}, che è il tempo che passa tra il servizio di un cliente e di un altro ed include anche la fase in cui il cliente insacchetta i prodotti acquistati. Il transaction-time è stato stimato con una regressione di potenza e il break-time con una distribuzione Gamma. In particolare, per un cliente $c_i \in q$, i due tempi sono calcolati in questo modo:
+Il tempo di servizio di un cliente per questo tipo di cassa è formato da due tempi diversi: il \textbf{transaction-time}, che è il tempo vero e proprio durante il quale avviene la transazione, e il \textbf{break-time}, che è il tempo che passa tra il servizio di un cliente e di un altro ed include anche la fase in cui il cliente insacchetta i prodotti acquistati. Il transaction-time è stato stimato con una regressione di potenza e il break-time con una distribuzione Gamma. In particolare, per un cliente in coda $c_i \in q$, i due tempi sono calcolati in questo modo:
 
 \begin{equation}\label{eq:transaction-time-standard}
 \text{transaction-time}_i = e^{a log(\text{basket-size}(c_i)) + b}
@@ -135,7 +134,7 @@ I parametri in questo caso sono:
 a = 0.6725, \;\; b = 3.1223, \;\; c = 0.2251, \;\; d = 3.5167
 \end{equation}
 
-\item \textbf{Cassa self-scan}: la cassa self-scan si differenzia totalmente dalle prime due descritte, il cliente che voglia utilizzarla infatti, deve deciderlo già al momento dell'entrata nel supermercato, in quanto deve scannerizzare i prodotti man mano che fa la spesa; una volta arrivato alla cassa self-scan, egli deve semplicemente effettuare il pagamento, saltando quindi le fasi di scanner e insacchettamento che caratterizzano le casse standard e self-service. La velocità di elaborazione della spesa in questo caso è praticamente nulla, in particolare un cliente che inizia il pagamento a una cassa self-scanner, lo termina allo step successivo; il tempo di pausa per questa cassa è ugualmente nullo, dato che un cliente paga ed entra immediatamente nella fase di uscita dal negozio.
+\item \textbf{Cassa self-scan}: la cassa self-scan si differenzia totalmente dalle prime due descritte, il cliente che voglia utilizzarla infatti, deve deciderlo già al momento dell'entrata nel supermercato, in quanto deve scannerizzare i prodotti man mano che fa la spesa e necessita dunque di una macchinetta scanner; una volta arrivato alla cassa self-scan, egli deve semplicemente effettuare il pagamento, saltando quindi le fasi di scanner e insacchettamento che caratterizzano le casse standard e self-service. La velocità di elaborazione della spesa in questo caso è praticamente nulla, in particolare un cliente che inizia il pagamento a una cassa self-scanner, lo termina allo step successivo; il tempo di pausa per questa cassa è ugualmente nullo, dato che un cliente paga ed entra immediatamente nella fase di uscita dal negozio.
 
 Chiaramente per evitare che vengano rubati prodotti, i supermercati decidono di effettuare dei controlli random sui clienti che scelgono di usare le casse self-scan. A questo scopo è stata implementata la cassa di tipo riservato.
 \item \textbf{Cassa riservata}: questa cassa è identica nel funzionamento a una cassa standard, ciò che cambia è che è riservata alla rilettura della spesa dei clienti self-scan, che avviene in maniera random. Nel momento in cui un cliente si approccia ad una cassa self-scan, viene estratto un numero che determina la \textbf{rilettura parziale} o la \textbf{rilettura totale} della sua spesa;
@@ -147,14 +146,14 @@ Il funzionamento e i tempi di servizio sono esattamente gli stessi della cassa s
 Tutti i tipi di cassa attraversano 3 fasi: fase di attesa di un nuovo cliente, fase di elaborazione della spesa del cliente, fase di completamento della transazione.
 
 \paragraph{Code}
-Nel modello vengono considerati i casi di:
+Nel modello, per quanto riguarda le sole casse standard, vengono considerati i casi di:
 
 \begin{itemize}
 \item \textbf{Code parallele}: per questa disposizione ad ogni cassa è
   associata una coda. Nel momento in cui la cassa è libera il cliente in
   cima alla coda viene spostato alla cassa per procedere con la fase
   di elaborazione della spesa.
-\item \textbf{Coda condivisa}: nota anche come \textit{N-fork} \cite{yanagisawa2011methods}, più casse condividono la stessa coda, nel momento che una qualsiasi delle casse risulta libera il cliente in posizione utile procede alla cassa. Utilizzando questa disposizione non viene ammesso jockeying.
+\item \textbf{Coda condivisa}: nota anche come \textit{N-fork} in \cite{yanagisawa2011methods}, più casse condividono la stessa coda, nel momento che una qualsiasi delle casse risulta libera il cliente in posizione utile procede alla cassa. Utilizzando questa disposizione non viene ammesso jockeying.
 \end{itemize}
 
 \begin{figure}[H]
@@ -179,13 +178,13 @@ Nel modello vengono considerati i casi di:
 \subsection{Workflow}
 
 \paragraph{Cassa standard}
-All'inizio della simulazione, e in generale quando la cassa ha terminato la transazione di un cliente o quando non ci sono clienti in coda, la cassa si trova nella \textbf{fase di attesa di un nuovo cliente}. L'agente cassa chiede alla coda a cui è associata il primo cliente in fila, se ce n'è, quindi compie 4 passi:
-\begin{itemize}
+All'inizio della simulazione, e in generale quando la cassa ha terminato la transazione di un cliente o quando non ci sono clienti in coda, la cassa si trova nella \textbf{fase di attesa di un nuovo cliente}. L'agente cassa chiede alla coda (sia nel caso di code parallele sia nel caso di N-fork) a cui è associata il primo cliente in fila, se ce n'è, quindi compie 4 passi:
+\begin{enumerate}
 \item Cambia lo stato al cliente che sta servendo, impostandolo in fase di attesa alla cassa
 \item Muove il cliente di fianco alla propria postazione, spostandolo quindi dalla coda
 \item Cambia il proprio stato impostandolo in fase di elaborazione
 \item Fa avanzare tutti i clienti che erano in coda dopo il cliente che viene servito
-\end{itemize}
+\end{enumerate}
 
 Nella \textbf{fase di elaborazione della spesa del cliente}, la cassa simula il passaggio dei prodotti sullo scanner, diminuendo il \textit{basket-size} del cliente ad ogni passo di una quantità che dipende dalla velocità di processing, parametro del modello. Quando la transazione è completata, ovvero quando il \textit{basket-size} del cliente è nullo, fa uscire il cliente dal negozio e cambia il proprio stato, entrando nella \textbf{fase di completamento della transazione}.
 
@@ -206,7 +205,7 @@ Il workflow della cassa self-service è uguale in tutto a quello della cassa sta
 
 \paragraph{Cassa self-scan}
 
-Nella \textbf{fase di attesa di un nuovo cliente}, se ci sono clienti nella coda condivisa, la cassa self-scan prende il primo cliente della coda; estrae quindi un numero e, con lo $7.5 \%$ di probabilità lo manda alla cassa riservata per una \textbf{rilettura parziale}, con lo $2.5 \%$ di probabilità lo manda alla cassa riservata per una \textbf{rilettura totale} e invece con il $90 \%$ di probabilità gli fa fare il pagamento normale. Nel caso di rilettura parziale o totale, la cassa sposta il cliente alla cassa riservata, fa avanzare i clienti in coda e rimane nella fase di attesa di un nuovo cliente, pronta per prendere il nuovo cliente della coda.
+Le casse self-scan hanno sempre una coda condivisa, come si può notare in tutti i negozi che hanno adottato questo tipo di cassa. Nella \textbf{fase di attesa di un nuovo cliente}, se ci sono clienti nella coda condivisa, la cassa self-scan prende il primo cliente della coda; estrae quindi un numero e, con il $7.5 \%$ di probabilità lo manda alla cassa riservata per una \textbf{rilettura parziale}, con il $2.5 \%$ di probabilità lo manda alla cassa riservata per una \textbf{rilettura totale} e invece con il $90 \%$ di probabilità gli fa fare il pagamento normale. Nel caso di rilettura parziale o totale, la cassa sposta il cliente alla cassa riservata, fa avanzare i clienti in coda e rimane nella fase di attesa di un nuovo cliente, pronta per prendere il nuovo cliente della coda.
 
 Nel caso non debba avvenire una rilettura la cassa compie queste 4 azioni:
 
@@ -232,8 +231,7 @@ Il workflow della cassa self-scan viene riassunto nell'immagine \ref{fig:workflo
 
 \paragraph{Cassa riservata}
 
-Nella \textbf{fase di attesa di un nuovo cliente} la cassa riservata è pronta a servire i clienti in coda, però prima controlla che ci siano in coda clienti a cui è stata assegnata una rilettura parziale della spesa, dandogli la precedenza in quanto la rilettura parziale è più veloce di quella totale.
-
+Nella \textbf{fase di attesa di un nuovo cliente} la cassa riservata è pronta a servire i clienti in coda, però prima controlla che ci siano in coda clienti a cui è stata assegnata una rilettura parziale della spesa, dandogli la precedenza in quanto la rilettura parziale è più veloce di quella totale. \\
 Scelto quindi il cliente, questa cassa passa per le stesse fasi della cassa standard.
 
 Il workflow della cassa riservata viene riassunto nell'immagine \ref{fig:workflow_cashdesk_reserved}.
@@ -249,7 +247,7 @@ Il workflow della cassa riservata viene riassunto nell'immagine \ref{fig:workflo
 \section{Ambiente}
 \label{model:environment}
 
-L'ambiente del sistema in cui gli agenti vivono è il supermercato, implementato dalla classe \textbf{Supermarket} che si occupa di inizializzare la griglia che verrà poi mostrata in fase di simulazione sull'interfaccia, inizializzare le casse, i clienti e mediare le interazioni con gli agenti.
+L'ambiente in cui gli agenti vivono è il supermercato, implementato dalla classe \textbf{Supermarket} che si occupa di inizializzare la griglia che verrà poi mostrata in fase di simulazione sull'interfaccia, inizializzare le casse, i clienti e mediare le interazioni con gli agenti.
 
 Per inizializzare la griglia, l'ambiente viene diviso in zone: zona d'entrata, zona di shopping, zona casse normali, zona casse self-service, zona casse self-scan. Questa divisione permette una gestione più semplice dello spazio e dei movimenti degli agenti. Ogni zona ha come parametri la dimensione o il numero di casse che deve contenere, questi parametri vengono inizializzati a priori e gestiti dall'entry point del programma, il file \textbf{main}, come si vedrà nella prossima sezione.
 
@@ -268,11 +266,11 @@ Ogni zona è responsabile della propria costruzione, ovvero del proprio collocam
 
 \subsection{Interazione tra agenti}
 
-I due tipi di agenti che compongono il modello \textbf{interagiscono} tra loro nella fase di attesa in coda da parte del cliente e quindi pagamento; l'interazione è necessaria perchè i clienti non sono in grado di autogestire le code e pagare, e questo fatto giustifica la presenza degli agenti Cassa, pur semplici che siano (insieme al fatto che le casse si attivano o disattivano in base al numero di clienti nel negozio, come si vedrà più avanti).
+I due tipi di agenti che compongono il modello interagiscono tra loro nella fase di attesa in coda da parte del cliente e quindi pagamento; l'interazione è necessaria perchè i clienti non sono in grado di autogestire le code e pagare, e questo fatto giustifica la presenza degli agenti Cassa, pur semplici che siano (insieme al fatto che le casse si attivano o disattivano in base al numero di clienti nel negozio, come si vedrà più avanti).
 
 L'interazione tra clienti e casse è di tipo \textbf{collaborativo semplice}, in quanto gli obiettivi di entrambi sono compatibili (effettuare il pagamento e far uscire i clienti dal negozio), le risorse sufficienti e le abilità insufficienti (i clienti non sanno fare da soli il pagamento e le casse non possono fare la spesa ai clienti). Le casse e i clienti collaborano e comunicano per raggiungere l'obiettivo.
 
-Gli agenti sono a conoscenza di dove si trovano nell'ambiente, ma non vedono in modo diretto gli altri agenti e la distanza che li separa; se un agente di tipo Cliente prende una decisione su quale coda seguire, ha bisogno di chiedere al supermercato dove si trova questa coda. Come verrà descritto nella sezione \ref{model:environment}, il supermercato è diviso in zone, ogni zona è responsabile di comunicare agli agenti la propria posizione e le casse che contiene, quindi fornisce i metodi per muoversi in essa. Il mezzo attraverso cui gli agenti comunicano è dunque l'ambiente stesso.
+Gli agenti sono a conoscenza di dove si trovano nell'ambiente, ma non vedono in modo diretto gli altri agenti e la distanza che li separa; se un agente di tipo Cliente prende una decisione su quale coda seguire, ha bisogno di chiedere al supermercato dove si trova questa coda. Come descritto sopra, il supermercato è diviso in zone, ogni zona è responsabile di comunicare agli agenti la propria posizione e le casse che contiene, quindi fornisce i metodi per muoversi in essa. Il mezzo attraverso cui gli agenti comunicano è dunque l'ambiente stesso.
 
 \subsection{Caratteristiche dell'ambiente}
 
@@ -286,7 +284,7 @@ Infine l'ambiente è \textbf{discreto}, esistono un numero finito di azioni da e
 
 Il modello é stato sviluppato in modo da essere flessibile per
 permettere con semplicità future espansioni e cambiamenti. Gli aspetti
-più dinamici del modello, quindi il comportamento degli agenti e le
+più dinamici del modello, ovvero il comportamento degli agenti, le
 varie modalità di scelta di una coda e la capacità di un agente
 Cliente di effettuare \textit{jockeying} sono stati realizzati lasciando
 all'utilizzatore piena possibilità di modifica, ampliamento o di non
@@ -297,7 +295,7 @@ nell'implementazione dei pattern:
 \begin{itemize}
 \item \textbf{Strategy}: usato per definire diverse modalità di scelta
   della coda e diversi comportamenti di \textit{jockeying}. Nuovi comportamenti
-  possono essere aggiunti rispettando un'interfaccia standard. Permette inoltre se necessario cambiamenti di comportamento a run time.
+  possono essere aggiunti rispettando un'interfaccia standard. Permette se necessario cambiamenti di comportamento a run time.
 \item \textbf{State}: usato per definire tramite una macchina a stati
   finiti i comportamenti degli agenti Cliente e Cassa. Nuovi stati
   possono essere aggiunti con facilità e collegati ad altri stati
@@ -305,40 +303,37 @@ nell'implementazione dei pattern:
   sul comportamento di un agente.
 \end{itemize}
 
-\section{Parametri del modello}\todo{Dire quali parametri abbiamo utilizzato noi per la simulazione}
+\section{Parametri del modello}
 \label{model:parameters}
+
 Per rendere il modello più generale possibile e in modo da adattarlo a diverse configurazioni con lo scopo di simulare scenari what-if, vengono introdotti diversi parametri per l'inizializzazione e il comportamento della simulazione.
 \todo{Controllare questo paragrafo pls}
 
-\subsection{Configurazione casse e struttura del supermercato}
-Tra i parametri più importanti e con maggiore impatto per il modello troviamo sicuramento la \textbf{configurazione del supermercato}. Un primo fattore che caratterizza la struttura del supermercato  è la dimensione della diverse zone: \textit{shopping zone}, \textit{cash-desk zone} e \textit{entering zone}.
+\subsection{Configurazione delle casse e struttura del supermercato}
+Tra i parametri più importanti e con maggiore impatto per il modello troviamo sicuramente la \textbf{configurazione del supermercato}. Un primo fattore che caratterizza la struttura del supermercato  è la dimensione delle diverse zone: \textit{shopping zone}, \textit{cash-desk zone} e \textit{entering zone}.
 
 Ancora più influente e determinante per il comportamento del modello è il numero e tipo di casse che compongono il supermercato. Infatti una volta scelta la struttura e le dimensioni delle diverse zone, è necessario indicare nella \textit{cash-desk zone} il numero di casse per ogni tipo, quindi specificare la quantità di:
 \begin{itemize}
-	\item Casse self-scan ( + 1 riservata obbligatoria)
+	\item Casse self-scan (+ 1 riservata obbligatoria)
 	\item Casse standard
 	\item Casse self-service
 \end{itemize}
 
-Inoltre per quanto riguarda le code, seppure per le casse self-service è obbligatorio avere una singola coda condivisa per tutte le casse, per quanto riguarda le casse standard un ulteriore parametro è consiste nel definere se le casse di tipo standard hanno una coda dedicata per ogni cassa o un'unica coda condivisa.
+Inoltre è necessario specificare un'ulteriore parametro che definisce se le casse di tipo standard hanno delle code parallele o una coda condivisa tra tutte; questo non avviene per le casse self-scan e self-service, in quanto nel primo caso c'è sempre una coda condivisa unica, e nel secondo c'è sempre una coda ogni 8 casse.
 
 \subsection{Parametri di jockeying}
 Il comportamento di jockeying è influenzato da alcuni parametri, questi sono:
 \begin{itemize}
 	\item \textbf{Numero di code adiacenti considerate}: la coda in cui il customer è presente in quel momento svolge il ruolo di coda pivot, questo parametro indica il numero di code adiacenti alla coda pivot che vengono prese in considerazione per valutare l'eventualità di fare jockeying.
-	\item \textbf{Threshold di jockeying}: questo parametro ha lo scopo di modellare il fatto che un cliente efettua jockeying solo nel caso in cui per lui risulta essere conveniente non meno di un certo livello. Questo threshold indica di quale deve essere il minimo guadagno per effettuare jockeying. Questo approccio basato su una soglia di minimo guadagno è stato presentato nel lavoro di Koenigsberg \cite{koenigsberg1966jockeying}.
+	\item \textbf{Threshold di jockeying}: questo parametro ha lo scopo di modellare il fatto che un cliente efettua jockeying solo nel caso in cui per lui risulta essere conveniente non meno di un certo livello; questo threshold indica quale deve essere il minimo guadagno per effettuare jockeying. Questo approccio basato su una soglia di minimo guadagno è stato presentato nel lavoro di Koenigsberg \cite{koenigsberg1966jockeying}.
 	
-	\item \textbf{Probabilità di jockeying}: Nel lavoro di Tomasz Antczak e altri \cite{article1}, viene spiegato come il fenomeno di jockeying sia piuttosto raro. Il modello proposto tiene conto di questo aspetto introducendo una variabile aleatorio distributita secondo una bernulliana che ha lo scopo di, nel caso in cui il jockeying risulti essere conveniente basandosi sul threshold, consentire o negare il jockeying. Con questo approccio si vuole rendere meno frequente il jockeying.
+	\item \textbf{Probabilità di jockeying}: nel lavoro di Tomasz Antczak e altri \cite{article1}, viene spiegato come il fenomeno di jockeying sia piuttosto raro. Il modello proposto tiene conto di questo aspetto introducendo una variabile aleatoria bernoulliana che ha lo scopo di consentire o negare il jockeying, nel caso in cui il jockeying risulti essere conveniente basandosi sul threshold. Con questo approccio si vuole rendere meno frequente il jockeying.
 \end{itemize}
 
-
-
-
 \subsection{Basket size}
-Ogni cliente all'interno del supermercato vuole compare un diverso numero di prodotti. Questa quantità viene assegnata a priori per tutti i clienti e supponiamo non cambi durante la fase di spesa. A questo scopo è necessario assegnare il basket size a ogni cliente secondo una certa distribuzione. Nel lavoro di Antczak e altri \cite{article1} vengono messi a disposzione dei dati relativi al numero di prodotti acquistati da parte dei clienti in tre supermercati diversi nell'arco temporale di 13 giorni. Questi dati sono stati analizzati con lo scopo di introdurre la distribuzione che genera l'effetto basket size di ogni cliente.
+Ogni cliente all'interno del supermercato vuole comprare un diverso numero di prodotti. Questa quantità viene assegnata a priori per tutti i clienti e supponiamo non cambi durante la fase di spesa; a questo scopo è necessario assegnare il basket size a ogni cliente secondo una certa distribuzione. Nel lavoro di Antczak e altri \cite{article1} vengono messi a disposzione dei dati relativi al numero di prodotti acquistati da parte dei clienti in tre supermercati diversi nell'arco temporale di 13 giorni. Questi dati sono stati analizzati con lo scopo di introdurre la distribuzione che genera il basket-size di ogni cliente.
 
-Come prima coa è stata presa in considerazione la frequenza delle dimensioni del basket size per ogni negozio al variare del tempo. Plottando queste informazioni si ottiene l'immaggine sotto:
-
+Come prima cosa è stata presa in considerazione la frequenza delle dimensioni del basket-size per ogni negozio al variare del tempo. Disegnando in un grafico queste informazioni si ottiene l'immagine \ref{fig:3d_basket_size}.
 
 \begin{figure}[H]
 	\centering
@@ -347,9 +342,10 @@ Come prima coa è stata presa in considerazione la frequenza delle dimensioni de
 	\label{fig:3d_basket_size}
 \end{figure}
 
-Da questa immagine emerge chiaramente come la maggiora parte delle persone compra pochi articoli e solo pochi clienti fanno una grossa spesa. Inoltre il comportamento tra i 3 supermercati è analogo a meno del numero di clienti totali del supermercato. Per quanto riguarda i diversi giorni considerati nell'arco di tempo messo a disposizione, non sembra che questi influiscano sulla dimensione del basket size, pertanto assumiamo per semplicità che non esista una correlazione tra i giorni della settimana e la dimensione del basket size.
+Da questa immagine emerge chiaramente come la maggior parte delle persone compra pochi articoli e solo pochi clienti fanno una grossa spesa. Inoltre il comportamento tra i 3 supermercati è analogo a meno del numero di clienti totali del supermercato. Per quanto riguarda i diversi giorni considerati nell'arco di tempo messo a disposizione, non sembra che questi influiscano sulla dimensione del basket-size, pertanto assumiamo per semplicità che non esista una correlazione tra i giorni della settimana e la dimensione del basket-size.
 
-Con questa assunzione si procede aggregando i dati sulla dimensione del tempo e calcolando la media, inoltre questi dati vengono normalizzati per renderli scale-free e quindi indipendenti dal numero di clienti per ogni supermercato. Dopo queste operazioni si ottiene:
+Con questa assunzione si procede aggregando i dati sulla dimensione del tempo e calcolando la media, inoltre questi dati vengono normalizzati per renderli \textit{scale-free} e quindi indipendenti dal numero di clienti per ogni supermercato. Dopo queste operazioni si ottiene il grafico \ref{fig:store_basket_size}.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=14cm]{"images/basket_size_dist.png"}
@@ -357,8 +353,7 @@ Con questa assunzione si procede aggregando i dati sulla dimensione del tempo e 
 	\label{fig:store_basket_size}
 \end{figure}
 
-
-Notiamo come le distribuzione nei 3 supermercati sono pressochè simili, per questa ragione vengono mediate le 3 distribuzioni ottenendo quesa distribuzione finale:
+Notiamo come le distribuzioni nei 3 supermercati siano in generale simili, per questa ragione vengono mediate le 3 distribuzioni ottenendo questa la distribuzione finale \ref{fig:avg_basket_size}.
 
 \begin{figure}[H]
 	\centering
@@ -367,8 +362,7 @@ Notiamo come le distribuzione nei 3 supermercati sono pressochè simili, per que
 	\label{fig:avg_basket_size}
 \end{figure}
 
-
-Da questa ultima immagine emerge chiaramente come il basket size segua un andamento esponenziale. Pertanto a partire dai dati originali si vuole ricavare il parametro $\lambda$ che governa la distribuzione esponenziale sottostante. A questo scopo si trasformano i dati calcolando il logaritmo naturale delle ascisse e tracciando la retta di regressione lineare. Il risultato ottenuto viene mostrato qui sotto:
+Da questa ultima immagine emerge chiaramente come la probabilità del basket-size segua un andamento esponenziale, pertanto a partire dai dati originali si vuole ricavare il parametro $\lambda$ che governa la distribuzione esponenziale sottostante. A questo scopo si trasformano i dati calcolando il logaritmo naturale delle ascisse e tracciando la retta di regressione lineare. Il risultato ottenuto viene mostrato nell'immagine \ref{fig:regression_log}.
 
 \begin{figure}[H]
 	\centering
@@ -377,14 +371,12 @@ Da questa ultima immagine emerge chiaramente come il basket size segua un andame
 	\label{fig:regression_log}
 \end{figure}
 
-
 La retta di regressione in output ha i seguenti parametri:
 \begin{itemize}
-	\item $m = -0.0736184654254411$.
-	\item $q = -2.806857867915933$.
+	\item $m = -0.0736184654254411$
+	\item $q = -2.806857867915933$
 \end{itemize}
-A parire da questi parametri è facile calcolare il parametro $\lambda$ della distribuzione esponenziale di partenza, infatti:
-
+A partire da questi parametri è facile calcolare il parametro $\lambda$ della distribuzione esponenziale di partenza, infatti:
 
 \begin{proof}[\unskip\nopunct]
 	Sia $X$ la variabile aleatoria che rappresenta la dimensione del basket size, e assumendo che $X \sim Exp(\lambda)$, dalla funzione di densità di probabilità si ha che:
@@ -414,10 +406,10 @@ A parire da questi parametri è facile calcolare il parametro $\lambda$ della di
 			&q = \ln(\lambda)\\
 		\end{align*}
 
-	Pertando si ricava dai dati che la distribuzione esponenziale teorica sottostante $Exp(\lambda)$ ha $\lambda = 0.0736184654254411$
+	Pertanto si ricava dai dati che la distribuzione esponenziale teorica sottostante $Exp(\lambda)$ ha $\lambda = 0.0736184654254411$.
 \end{proof}
 
-Viene qui sotto mostrata la distrubizione reale dei dati e la distribuzione esponenziale, la quale verrà poi effettivamente utilizzata per genereare il basket size di ogni cliente:
+Nella figura \ref{fig:dist_basket_size} viene mostrata la distribuzione reale dei dati e la distribuzione esponenziale, la quale verrà poi effettivamente utilizzata per generare il basket-size di ogni cliente:
 
 \begin{figure}[H]
 	\centering
@@ -426,15 +418,14 @@ Viene qui sotto mostrata la distrubizione reale dei dati e la distribuzione espo
 	\label{fig:dist_basket_size}
 \end{figure}
 
-
-
 \subsection{Parametri di tempo}
-Come visto nel workflow dell'agente di tipo cliente, riassunto nell'immagine \ref{fig:workflow_customer}, una volta entrato nel supermercato è necessario simulare il processo di spesa del cliente, con questo si intende l'arco di tempo che l'agente impiega all'interno del supermercato per prendere i prodotti e inserirli nel carrelo (che in questo lavoro non viene direttamente modellato ma simulato). Il tempo impiegato da parte del cliente per prendere tutti i prodotti desiderati, quantità che corrisponde al suo basket size, dipende dalla velocità di acquisto del cliente. Questa velcosità è un ulteriore parametro del modello che per la simulazione effettuata in questo lavoro è pari a \todo{Inserire a quanti prodotti corrisponde la velocità e quindi cosa si vuole simulare (es 2 prodotti al minuto)}
+Come visto nel workflow dell'agente di tipo cliente, riassunto nell'immagine \ref{fig:workflow_customer}, una volta che egli entra nel supermercato è necessario simulare il processo di spesa del cliente, con questo si intende l'arco di tempo che l'agente impiega all'interno del supermercato per prendere i prodotti e inserirli nel carrello (che in questo lavoro non viene direttamente modellato ma simulato). Il tempo impiegato da parte del cliente per prendere tutti i prodotti desiderati, quantità che corrisponde al suo basket-size, dipende dalla velocità di acquisto del cliente. Questa velocità è un ulteriore parametro del modello, che al momento è pari a \todo{Inserire a quanti prodotti corrisponde la velocità e quindi cosa si vuole simulare (es 2 prodotti al minuto)}
 
-Dopo la fase di spesa iniziale il cliente sceglierà una coda per venire successivamente servito in cassa. Una volta in cassa, se questa è di tipo cassa standard o cassa self service, spiegate nela sezione \ref{sec:tipi_cassa}, allora sarà necessario il processamento di tutto il basket size e quindi uscire dal supermercato. Il tempo di processamento e governato dai parametri $a,b,\alpha ,\beta \in \mathbb{R}$  introdotti nell'articolo \cite{article1} e diversi per i due tipi di casse. Come questi parametri influiscono il tempo di processamento del cliente una volta in cassa è spiegato nella sezione \ref{sec:tipi_cassa}.
+Dopo la fase di spesa iniziale il cliente sceglie una coda per venire successivamente servito in cassa. Una volta in cassa, se questa è di tipo cassa standard o cassa self-service, introdotte nella sezione \ref{sec:tipi_cassa}, allora è necessario processare tutto il basket-size; quindi il cliente esce dal supermercato. Il tempo di elaborazione della spesa e governato dai parametri $a,b,\alpha ,\beta \in \mathbb{R}$  introdotti nell'articolo \cite{article1} e diversi per i due tipi di casse. Come questi parametri influiscono il tempo di processamento del cliente una volta in cassa è spiegato nella sezione \ref{sec:tipi_cassa}.
 
 \subsection{Distibuzone dei clienti in entrata nel supermercato}
 
+\todo{manca}
 
 \subsection{Cose da aggiungere}
  
