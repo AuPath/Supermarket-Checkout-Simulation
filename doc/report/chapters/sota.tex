@@ -17,9 +17,18 @@ L'articolo sopracitato prende in considerazione 4 strategie diverse di scelta de
 	\item \'E scelta la coda con il minor tempo d'attesa previsto calcolato come il prodotto del numero di clienti in coda e la somma dei tempi di transazione e di pausa attesi
 \end{enumerate}
 
-Nel nostro progetto in particolare, non abbiamo considerato la prima strategia di scelta random, ma soltanto le strategie 2-5.
+Nel nostro progetto in particolare, non abbiamo considerato la prima
+strategia di scelta random, ma soltanto le strategie 2-5.
 
-Il loro modello è stato implementato nella piattaforma di simulazione NetLogo, invece noi abbiamo optato per una riscrittura nel framework Python Mesa. \todo{da giustificare il perchè?}
+Il modello di riferimento \cite{article1} implementato in NetLogo non
+corrisponde esattamente al modello reso disponibile nella repository
+\footnote{\protect\url{https://github.com/tant2002/NetLogo-Supermarket-Queue-Model}}in
+quanto questo presenta aspetti non considerati nel paper. Questo
+fattore accompagnato dalla nostra inesperienza con NetLogo e la
+relativamente scarna documentazione del modello ha portato alla
+decisione di reimplementare le parti del modello descritte nel paper
+\cite{article1} e le nostre espansioni in linguaggio Python nel
+framework Mesa.
 
 Dal repository del loro progetto, abbiamo estratto i dati su cui si basa il loro modello, in particolare la distribuzione di arrivo dei clienti nel supermercato e la distribuzione della grandezza dei loro carrelli (più avanti chiamata \textit{basket-size}); si parlerà in dettaglio delle distribuzioni estratte nella sezione \ref{model:parameters}.
 
