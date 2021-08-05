@@ -21,6 +21,8 @@ class CashDeskReserved(CashDesk):
     def process_customer_partial(self):
         c = self.customer
 
+        self.processing_speed = self.service_time(c) / self.model.period_in_seconds
+
         if c.basket_size - self.processing_speed <= 0:
             c.basket_size = 0
         else:
@@ -28,6 +30,8 @@ class CashDeskReserved(CashDesk):
 
     def process_customer_total(self):
         c = self.customer
+
+        self.processing_speed = self.service_time(c) / self.model.period_in_seconds
 
         if c.basket_size - self.processing_speed <= 0:
             c.basket_size = 0

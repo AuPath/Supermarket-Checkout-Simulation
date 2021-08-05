@@ -59,7 +59,7 @@ def generate_customers_metadata(n_customers, queue_choice_strategy: QueueChoiceS
 
 
 class Supermarket(Model):
-    """SuperMARCO model: description here"""
+    """Supermarket model: agent based model to simulate the behavior of customers in the supermarket"""
 
     def __init__(self, zones_metadata, customer_distribution, grid_height,
                  queue_choice_strategy: QueueChoiceStrategy, queue_jockey_strategy: QueueJockeyStrategy,
@@ -105,7 +105,7 @@ class Supermarket(Model):
         self.__waiting_times_standard = []
         self.__waiting_times_self_scan = []
 
-        # TODO: definire qui le metriche
+        # TODO: definire qui le metriche per valutare la simulazione
         self.datacollector = DataCollector(
             model_reporters={"Total_customers": self.get_number_of_customers,
                              # grafici fondamentali: densità sull'asse x, flusso sull'asse y
@@ -145,7 +145,6 @@ class Supermarket(Model):
         self.customer_scheduler.step()
         self.cash_desk_scheduler.step()
 
-        # TODO: Questa funzione tiene conto dei clienti che sono temporaneamente in cassa?
         if self.get_number_of_customers() == 0 and self.current_step > 1:
             self.stop_simulation()
 
