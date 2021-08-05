@@ -35,12 +35,10 @@ QUEUED_PERCENTAGE_OPEN_THRESHOLD = 0.6
 QUEUED_PERCENTAGE_CLOSE_THRESHOLD = 0.3
 
 # Basket size exponential distribution parameter
-LAMBA_EXPONENTIAL_DISTRIBUTION = 0.0736184654254411
-
-SELF_SCAN_PERCENTAGE = 0.4
+LAMBDA_EXPONENTIAL_DISTRIBUTION = 0.0736184654254411
 
 
-def generate_basket_size(n, lambda_parameter=LAMBA_EXPONENTIAL_DISTRIBUTION):
+def generate_basket_size(n, lambda_parameter=LAMBDA_EXPONENTIAL_DISTRIBUTION):
     values = map(lambda x: math.ceil(x), random.exponential(scale=1 / lambda_parameter, size=n))
     return list(values)
 
@@ -50,8 +48,8 @@ class Supermarket(Model):
 
     def __init__(self, zones_metadata, customer_distribution, grid_height,
                  queue_choice_strategy: QueueChoiceStrategy, queue_jockey_strategy: QueueJockeyStrategy,
-                 simulation_name, customer_shopping_speed, period_in_seconds,
-                 self_scan_percentage=SELF_SCAN_PERCENTAGE, adj_window_size=ADJ_WINDOW_SIZE):
+                 simulation_name, customer_shopping_speed, customer_standard_deviation_coefficient, period_in_seconds,
+                 self_scan_percentage=0.4, adj_window_size=ADJ_WINDOW_SIZE, ):
         self.__customers = set()
         self.__occupied_cells = set()
         self.__cash_desks: list[CashDesk] = []
@@ -73,6 +71,8 @@ class Supermarket(Model):
         # Time parameters
         self.customer_shopping_speed = customer_shopping_speed
         self.period_in_seconds = period_in_seconds
+        # Customer standard deviation error
+        self.customer_standard_deviation_coefficient = customer_standard_deviation_coefficient
         # Customers distribution
         self.self_scan_percentage = self_scan_percentage
         # Create zones
@@ -171,7 +171,7 @@ class Supermarket(Model):
         logging.info("Init customers")
         for basket_size, self_scan, queue_choice_strategy, queue_jockey_strategy in customers_metadata:
             customer = Customer(self.__num_agent, self, basket_size, self_scan, queue_choice_strategy,
-                                queue_jockey_strategy, shopping_speed=self.customer_shopping_speed)
+                                queue_jockey_strategy, shopping_speed=self.customer_shopping_speed, standard_deviation_coefficient=self.customer_standard_deviation_coefficient)
             self.__num_agent += 1
             self.add_customer(customer)
 
