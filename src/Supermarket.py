@@ -145,7 +145,7 @@ class Supermarket(Model):
         self.customer_scheduler.step()
         self.cash_desk_scheduler.step()
 
-        if self.get_number_of_customers() == 0 and self.current_step > 1:
+        if self.get_number_of_customers() == 0 and self.current_step > len(self.customer_distribution):
             self.stop_simulation()
 
     def stop_simulation(self):
