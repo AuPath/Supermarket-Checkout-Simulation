@@ -27,12 +27,13 @@ charts = init_charts()
 # Zones metadata
 entering_zone_width = 6
 shopping_zone_height = 10
+
 number_cash_desk_self_scan = 4
 number_cash_desk = 10
 
 threshold_items = 15
 threshold_people = 3
-probability_of_jockeying = 1
+probability_of_jockeying = 0.5
 
 number_cash_desk_self_service_groups = 1
 shared_queue = False  # coda unica tipo decathlon
@@ -52,7 +53,7 @@ CUSTOMER_SPEED_PER_STEP = 0.5
 customer_distribution = init_customer_distribution(PERIOD_IN_SECONDS)
 
 # Simulation name
-simulation_name = 'supermercato1'
+simulation_name = 'validazione'
 # Create server
 server = ModularServer(Supermarket,
                        [grid, CustomerLegendElement(), CashDeskLegendElement()] + charts[:N_CHARTS],
