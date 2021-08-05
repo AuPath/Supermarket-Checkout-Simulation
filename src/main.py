@@ -50,6 +50,7 @@ grid = init_grid(height, pixels_width, pixels_height, zones_metadata)
 # Time parameters
 PERIOD_IN_SECONDS = 30
 CUSTOMER_SPEED_PER_STEP = 0.5
+SELF_SCAN_PERCENTAGE = 0.35
 customer_distribution = init_customer_distribution(PERIOD_IN_SECONDS)
 
 # Simulation name
@@ -64,6 +65,7 @@ server = ModularServer(Supermarket,
                         "customer_distribution": customer_distribution,
                         "period_in_seconds": PERIOD_IN_SECONDS,
                         "grid_height": height,
+                        "self_scan_percentage": SELF_SCAN_PERCENTAGE,
                         "queue_choice_strategy": QueueChoiceLeastPeople(),
                         "queue_jockey_strategy": QueueJockeyLeastPeople(threshold_people,
                                                                         probability_of_jockeying)
