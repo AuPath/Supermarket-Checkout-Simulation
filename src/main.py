@@ -3,7 +3,10 @@ from mesa.visualization.modules import CanvasGrid, TextElement
 
 from src.Supermarket import Supermarket
 from src.queuechoicestrategy.QueueChoiceLeastPeople import QueueChoiceLeastPeople
+from src.queuechoicestrategy.QueueChoiceLeastItems import QueueChoiceLeastItems
 from src.queuejockeystrategy.QueueJockeyLeastPeople import QueueJockeyLeastPeople
+from src.queuejockeystrategy.QueueJockeyNoJockeying import QueueJockeyNoJockeying
+
 from src.utility import *
 
 
@@ -28,8 +31,8 @@ charts = init_charts()
 entering_zone_width = 6
 shopping_zone_height = 10
 
-number_cash_desk_self_scan = 4
-number_cash_desk = 10
+number_cash_desk_self_scan = 0
+number_cash_desk = 20
 
 threshold_items = 15
 threshold_people = 3
@@ -50,7 +53,7 @@ grid = init_grid(height, pixels_width, pixels_height, zones_metadata)
 # Time parameters
 PERIOD_IN_SECONDS = 30
 CUSTOMER_SPEED_PER_STEP = 0.5
-SELF_SCAN_PERCENTAGE = 0.35
+SELF_SCAN_PERCENTAGE = 0
 customer_distribution = init_customer_distribution(PERIOD_IN_SECONDS)
 
 # Simulation name
@@ -66,9 +69,8 @@ server = ModularServer(Supermarket,
                         "period_in_seconds": PERIOD_IN_SECONDS,
                         "grid_height": height,
                         "self_scan_percentage": SELF_SCAN_PERCENTAGE,
-                        "queue_choice_strategy": QueueChoiceLeastPeople(),
-                        "queue_jockey_strategy": QueueJockeyLeastPeople(threshold_people,
-                                                                        probability_of_jockeying)
+                        "queue_choice_strategy": QueueChoiceLeastItems(),
+                        "queue_jockey_strategy": QueueJockeyNoJockeying(),
                         })
 server.port = 8521  # The default
 server.settings["template_path"] = STATIC_PAGE_PATH

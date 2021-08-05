@@ -7,7 +7,7 @@ from src.states.State import State
 from src.states.customerstates.CustomerEnteredState import CustomerEnteredState
 
 SHOPPING_SPEED = 1
-STANDARD_DEVIATION_COEFFICIENT = 0.1
+STANDARD_DEVIATION_COEFFICIENT = 0
 
 
 class Customer(Agent):
