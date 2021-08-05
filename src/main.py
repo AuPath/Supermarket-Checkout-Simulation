@@ -57,7 +57,7 @@ SELF_SCAN_PERCENTAGE = 0
 customer_distribution = init_customer_distribution(PERIOD_IN_SECONDS)
 
 # Simulation name
-simulation_name = 'validazione'
+simulation_name = 'validazione2'
 # Create server
 server = ModularServer(Supermarket,
                        [grid, CustomerLegendElement(), CashDeskLegendElement()] + charts[:N_CHARTS],
@@ -69,7 +69,7 @@ server = ModularServer(Supermarket,
                         "period_in_seconds": PERIOD_IN_SECONDS,
                         "grid_height": height,
                         "self_scan_percentage": SELF_SCAN_PERCENTAGE,
-                        "queue_choice_strategy": QueueChoiceLeastItems(),
+                        "queue_choice_strategy": QueueChoiceLeastPeople(),
                         "queue_jockey_strategy": QueueJockeyNoJockeying(),
                         })
 server.port = 8521  # The default
