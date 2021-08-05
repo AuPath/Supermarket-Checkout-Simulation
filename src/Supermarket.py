@@ -29,7 +29,7 @@ from src.zones.stationary.EnteringZone import EnteringZone
 from src.zones.stationary.ShoppingZone import ShoppingZone
 
 ADJ_WINDOW_SIZE = 2
-MAX_CUSTOMER_QUEUED = 6
+MAX_CUSTOMER_QUEUED = 10
 
 QUEUED_PERCENTAGE_OPEN_THRESHOLD = 0.6
 QUEUED_PERCENTAGE_CLOSE_THRESHOLD = 0.3
@@ -43,19 +43,6 @@ SELF_SCAN_PERCENTAGE = 0.4
 def generate_basket_size(n, lambda_parameter=LAMBA_EXPONENTIAL_DISTRIBUTION):
     values = map(lambda x: math.ceil(x), random.exponential(scale=1 / lambda_parameter, size=n))
     return list(values)
-
-
-def generate_customers_metadata(n_customers, queue_choice_strategy: QueueChoiceStrategy,
-                                queue_jockey_strategy: QueueJockeyStrategy):
-    customers_metadata = []
-
-    basket_size_values = generate_basket_size(n_customers)
-
-    for basket_size in basket_size_values:
-        self_scan = random.random() < SELF_SCAN_PERCENTAGE
-        new_tuple = (basket_size, self_scan, queue_choice_strategy, queue_jockey_strategy)
-        customers_metadata.append(new_tuple)
-    return customers_metadata
 
 
 class Supermarket(Model):
@@ -128,8 +115,7 @@ class Supermarket(Model):
     def step(self):
         if self.current_step < len(self.customer_distribution):
             # continuous creation of customers
-            customers_metadata = generate_customers_metadata(self.customer_distribution[self.current_step],
-                                                             self.__queue_choice_strategy, self.__queue_jockey_strategy)
+            customers_metadata = self.generate_customers_metadata()
             self.init_customers(customers_metadata)
             self.current_step += 1
 
@@ -150,6 +136,18 @@ class Supermarket(Model):
 
         if self.get_number_of_customers() == 0 and self.current_step > len(self.customer_distribution):
             self.stop_simulation()
+
+    def generate_customers_metadata(self):
+        n_customers = self.customer_distribution[self.current_step]
+        customers_metadata = []
+
+        basket_size_values = generate_basket_size(n_customers)
+
+        for basket_size in basket_size_values:
+            self_scan = random.random() < self.self_scan_percentage
+            new_tuple = (basket_size, self_scan,  self.__queue_choice_strategy, self.__queue_jockey_strategy)
+            customers_metadata.append(new_tuple)
+        return customers_metadata
 
     def stop_simulation(self):
         self.dump_data_collector()
