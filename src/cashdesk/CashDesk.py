@@ -7,21 +7,19 @@ from src.Customer import Customer
 from src.queue.SupermarketQueue import SupermarketQueue
 from src.states.State import State
 
-PROCESSING_SPEED = 2
-
 
 class CashDesk(ABC, Agent):
 
     @abstractmethod
-    def __init__(self, agent_id, model, supermarket_queue: SupermarketQueue, processing_speed=PROCESSING_SPEED,
+    def __init__(self, agent_id, model, supermarket_queue: SupermarketQueue,
                  estimation_bias=False):
         super().__init__(agent_id, model)
 
         self.type = 2
         self.__queue = supermarket_queue
         self.__customer: Customer = None
-        self.__processing_speed = processing_speed
         # Transaction time and break time parameters
+        self.__processing_speed = 0
         self.a_transaction = 1
         self.b_transaction = 0
         self.a_break = 1
@@ -58,7 +56,8 @@ class CashDesk(ABC, Agent):
     def process_customer(self):
         c = self.customer
 
-        # TODO: Come viene usato questo parametro?
+        self.processing_speed = self.service_time(c) / self.model.period_in_seconds
+
         if c.basket_size - self.__processing_speed <= 0:
             c.basket_size = 0
         else:

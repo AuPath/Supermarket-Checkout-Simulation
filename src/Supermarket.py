@@ -29,7 +29,7 @@ from src.zones.stationary.EnteringZone import EnteringZone
 from src.zones.stationary.ShoppingZone import ShoppingZone
 
 ADJ_WINDOW_SIZE = 2
-MAX_CUSTOMER_QUEUED = 6
+MAX_CUSTOMER_QUEUED = 10
 
 QUEUED_PERCENTAGE_OPEN_THRESHOLD = 0.6
 QUEUED_PERCENTAGE_CLOSE_THRESHOLD = 0.3
@@ -45,25 +45,13 @@ def generate_basket_size(n, lambda_parameter=LAMBA_EXPONENTIAL_DISTRIBUTION):
     return list(values)
 
 
-def generate_customers_metadata(n_customers, queue_choice_strategy: QueueChoiceStrategy,
-                                queue_jockey_strategy: QueueJockeyStrategy):
-    customers_metadata = []
-
-    basket_size_values = generate_basket_size(n_customers)
-
-    for basket_size in basket_size_values:
-        self_scan = random.random() < SELF_SCAN_PERCENTAGE
-        new_tuple = (basket_size, self_scan, queue_choice_strategy, queue_jockey_strategy)
-        customers_metadata.append(new_tuple)
-    return customers_metadata
-
-
 class Supermarket(Model):
-    """SuperMARCO model: description here"""
+    """Supermarket model: agent based model to simulate the behavior of customers in the supermarket"""
 
     def __init__(self, zones_metadata, customer_distribution, grid_height,
                  queue_choice_strategy: QueueChoiceStrategy, queue_jockey_strategy: QueueJockeyStrategy,
-                 simulation_name, customer_shopping_speed, period_in_seconds, adj_window_size=ADJ_WINDOW_SIZE):
+                 simulation_name, customer_shopping_speed, period_in_seconds,
+                 self_scan_percentage=SELF_SCAN_PERCENTAGE, adj_window_size=ADJ_WINDOW_SIZE):
         self.__customers = set()
         self.__occupied_cells = set()
         self.__cash_desks: list[CashDesk] = []
@@ -85,6 +73,8 @@ class Supermarket(Model):
         # Time parameters
         self.customer_shopping_speed = customer_shopping_speed
         self.period_in_seconds = period_in_seconds
+        # Customers distribution
+        self.self_scan_percentage = self_scan_percentage
         # Create zones
         self.entering_zone = None
         self.shopping_zone = None
@@ -105,7 +95,7 @@ class Supermarket(Model):
         self.__waiting_times_standard = []
         self.__waiting_times_self_scan = []
 
-        # TODO: definire qui le metriche
+        # TODO: definire qui le metriche per valutare la simulazione
         self.datacollector = DataCollector(
             model_reporters={"Total_customers": self.get_number_of_customers,
                              # grafici fondamentali: densità sull'asse x, flusso sull'asse y
@@ -125,8 +115,7 @@ class Supermarket(Model):
     def step(self):
         if self.current_step < len(self.customer_distribution):
             # continuous creation of customers
-            customers_metadata = generate_customers_metadata(self.customer_distribution[self.current_step],
-                                                             self.__queue_choice_strategy, self.__queue_jockey_strategy)
+            customers_metadata = self.generate_customers_metadata()
             self.init_customers(customers_metadata)
             self.current_step += 1
 
@@ -145,9 +134,20 @@ class Supermarket(Model):
         self.customer_scheduler.step()
         self.cash_desk_scheduler.step()
 
-        # TODO: Questa funzione tiene conto dei clienti che sono temporaneamente in cassa?
-        if self.get_number_of_customers() == 0 and self.current_step > 1:
+        if self.get_number_of_customers() == 0 and self.current_step > len(self.customer_distribution):
             self.stop_simulation()
+
+    def generate_customers_metadata(self):
+        n_customers = self.customer_distribution[self.current_step]
+        customers_metadata = []
+
+        basket_size_values = generate_basket_size(n_customers)
+
+        for basket_size in basket_size_values:
+            self_scan = random.random() < self.self_scan_percentage
+            new_tuple = (basket_size, self_scan,  self.__queue_choice_strategy, self.__queue_jockey_strategy)
+            customers_metadata.append(new_tuple)
+        return customers_metadata
 
     def stop_simulation(self):
         self.dump_data_collector()
@@ -214,10 +214,6 @@ class Supermarket(Model):
             elif zone_type == 'CASH_DESK_SELF_SERVICE':
                 for i in range(dimension):
                     normal_queue = NormalQueue()
-                    self.add_cash_desk_to_self_service_zone(idx, normal_queue)
-                    idx += 1
-                    self.add_cash_desk_to_self_service_zone(idx, normal_queue)
-                    idx += 1
                     self.add_cash_desk_to_self_service_zone(idx, normal_queue)
                     idx += 1
                     self.add_cash_desk_to_self_service_zone(idx, normal_queue)
