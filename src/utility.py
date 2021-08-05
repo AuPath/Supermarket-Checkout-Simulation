@@ -65,6 +65,12 @@ def init_charts():
                          data_collector_name='datacollector')
     charts.append(chart0)
 
+    chart10 = ChartModule([{"Label": "Number_exiting_customers",
+                            "Color": "Black"}],
+                          data_collector_name='datacollector')
+
+    charts.append(chart10)
+
     chart1 = ChartModule([{"Label": "Density_total",
                            "Color": "Black"}],
                          data_collector_name='datacollector')
