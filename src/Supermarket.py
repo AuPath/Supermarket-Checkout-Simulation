@@ -63,7 +63,7 @@ class Supermarket(Model):
 
     def __init__(self, zones_metadata, customer_distribution, grid_height,
                  queue_choice_strategy: QueueChoiceStrategy, queue_jockey_strategy: QueueJockeyStrategy,
-                 simulation_name, customer_shopping_speed, adj_window_size=ADJ_WINDOW_SIZE):
+                 simulation_name, customer_shopping_speed, period_in_seconds, adj_window_size=ADJ_WINDOW_SIZE):
         self.__customers = set()
         self.__occupied_cells = set()
         self.__cash_desks: list[CashDesk] = []
@@ -84,6 +84,7 @@ class Supermarket(Model):
         self.simulation_name = simulation_name
         # Time parameters
         self.customer_shopping_speed = customer_shopping_speed
+        self.period_in_seconds = period_in_seconds
         # Create zones
         self.entering_zone = None
         self.shopping_zone = None

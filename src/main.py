@@ -47,9 +47,9 @@ pixels_height = 1500
 grid = init_grid(height, pixels_width, pixels_height, zones_metadata)
 
 # Time parameters
-STEP_IN_SECONDS = 30
+PERIOD_IN_SECONDS = 30
 CUSTOMER_SPEED_PER_STEP = 0.5
-customer_distribution = init_customer_distribution(STEP_IN_SECONDS)
+customer_distribution = init_customer_distribution(PERIOD_IN_SECONDS)
 
 # Simulation name
 simulation_name = 'supermercato1'
@@ -61,6 +61,7 @@ server = ModularServer(Supermarket,
                         "simulation_name": simulation_name,
                         "customer_shopping_speed": CUSTOMER_SPEED_PER_STEP,
                         "customer_distribution": customer_distribution,
+                        "period_in_seconds": PERIOD_IN_SECONDS,
                         "grid_height": height,
                         "queue_choice_strategy": QueueChoiceLeastPeople(),
                         "queue_jockey_strategy": QueueJockeyLeastPeople(threshold_people,
