@@ -5,7 +5,7 @@ In questo capitolo vedremo i risultati delle simulazioni eseguite sul nostro mod
 
 \vspace*{1\baselineskip}
 
-\todo{per ognuna di queste simulazioni fare i grafici: grafico fondamentale (flusso asse y, densità asse x), tempo totale di simulazione, tempo medio d'attesa dei clienti (fare grafico con media e deviazione standard, i dati sono nel datacollector), grafico KDE (Kernel density estimates - ovvero densità sull'asse y e waiting time sull'asse x), grafico con tempo sull'asse x e sull'asse y probabilità di stare meno di 5 minuti in coda per ogni strategia (vedi articolo polacchi per questi ultimi due grafici) --> definizione delle metriche usate (densità e flusso)}
+\todo{per ognuna di queste simulazioni fare i grafici: grafico fondamentale (flusso asse y, densità asse x), tempo totale di simulazione, tempo medio d'attesa dei clienti (fare grafico con media e deviazione standard, i dati sono nel datacollector), grafico KDE (Kernel density estimates - ovvero densità sull'asse y e waiting time sull'asse x), grafico con tempo sull'asse x e sull'asse y probabilità di stare meno di 5 minuti in coda per ogni strategia (vedi articolo polacchi per questi ultimi due grafici)}
 
 Al fine di analizzare i risultati sono state introdotte le definizioni di densità e flusso di clienti per ogni step di simulazione; queste misure ci permettono di misurare l'affluenza dei clienti nel supermercato e come questa viene gestita dalle casse che hanno il potere di attivarsi o disattivarsi in base alla quantità di clienti presenti. Densità e flusso permetteranno di disegnare i grafici fondamentali che mostrano per ogni simulazione come le casse smaltiscono l'afflusso di clienti in entrata, soprattutto nei periodi critici (in cui il supermercato raggiunge una quantità di clienti che "mettono alla prova" le casse).
 
@@ -32,19 +32,125 @@ Verranno quindi introdotte nella simulazione le casse self-scan con rilettura ra
 
 \paragraph{Simulazione con gli stessi parametri}
 
-- Simulazione nostra uguale ai polacchi (validazione - con le 4 strategie): 6 casse self-service, 20 casse standard
+Parametri:
+entering zone e shopping zone sempre uguali
+no strategy di jockeying
+20 casse normali
+6 casse self service
+0 self-scan
+0 probabilità cliente self-scan
+0 deviazione standard per stima del basket-size da parte del cliente
+no coda condivisa
+
+Strategie diverse di scelta della coda:
+\begin{enumerate}
+	\item Minimo numero di elementi: dati \textit{validazione1}
+	\item Minimo numero di persone: dati \textit{validazione2}
+	\item Minimo tempo d'attesa in base al tempo di servizio medio: dati \textit{validazione3}
+	\item Minimo tempo d'attesa in base alle power regression: dati \textit{validazione4} 
+\end{enumerate}
 
 \section{Simulazione con strategie \textit{jockey}}
-- Simulazione nostra con parametri dei polacchi, ma aggiungendo il jockeying (con le 4 strategie) -> viene più veloce
+
+Parametri:
+entering zone e shopping zone sempre uguali
+20 casse normali
+6 casse self service
+0 self-scan
+0 probabilità cliente self-scan
+0 deviazione standard per stima del basket-size da parte del cliente
+no coda condivisa
+
+Strategie diverse di scelta della coda:
+\begin{enumerate}
+	\item Minimo numero di elementi:
+	Strategie diverse di jockey:
+	\begin{enumerate}
+		\item Minimo numero di elementi: dati \textit{coda1jockey1}
+		\item Minimo numero di persone: dati \textit{coda1jockey2}
+	\end{enumerate}
+	\item Minimo numero di persone:
+	Strategie diverse di jockey:
+	\begin{enumerate}
+		\item Minimo numero di elementi: dati \textit{coda2jockey1}
+		\item Minimo numero di persone: dati \textit{coda2jockey2}
+	\end{enumerate}
+	\item Minimo tempo d'attesa in base al tempo di servizio medio:
+	Strategie diverse di jockey:
+	\begin{enumerate}
+		\item Minimo numero di elementi: dati \textit{coda3jockey1}
+		\item Minimo numero di persone: dati \textit{coda3jockey2}
+	\end{enumerate}
+	\item Minimo tempo d'attesa in base alle power regression: Strategie diverse di jockey:
+	\begin{enumerate}
+		\item Minimo numero di elementi: dati \textit{coda4jockey1}
+		\item Minimo numero di persone: dati \textit{coda4jockey2}
+	\end{enumerate}
+\end{enumerate}
 
 \section{Simulazione con coda condivisa}
-- Simulazione nostra con parametri dei polacchi, ma con coda condivisa -> viene più veloce come nell'articolo delle fork
+
+Parametri:
+entering zone e shopping zone sempre uguali
+20 casse normali
+6 casse self service
+0 self-scan
+0 probabilità cliente self-scan
+0 deviazione standard per stima del basket-size da parte del cliente
+sì coda condivisa
+\\
+dati \textit{codacondivisa}
 
 \section{Simulazione con casse self-scan}
-- Simulazione con self-scan (con le 4 strategie) -> il tempo medio d'attesa nelle self-scan è più basso
+
+Parametri:
+entering zone e shopping zone sempre uguali
+0 casse normali
+0 casse self service
+n self-scan
+1 probabilità cliente self-scan
+0 deviazione standard per stima del basket-size da parte del cliente
+no coda condivisa
+\\
+dati \textit{self-scan}
 
 \section{Simulazione non deterministica}
-- Simulazione con roba probabilistica (con le 4 strategie + coda condivisa) -> più realistica
+
+Parametri:
+entering zone e shopping zone sempre uguali
+20 casse normali
+6 casse self service
+n self-scan
+0.5 probabilità cliente self-scan
+0.1 deviazione standard per stima del basket-size da parte del cliente
+no coda condivisa
+
+Strategie diverse di scelta della coda:
+\begin{enumerate}
+	\item Minimo numero di elementi:
+	Strategie diverse di jockey:
+	\begin{enumerate}
+		\item Minimo numero di elementi: dati \textit{prob-coda1jockey1}
+		\item Minimo numero di persone: dati \textit{prob-coda1jockey2}
+	\end{enumerate}
+	\item Minimo numero di persone:
+	Strategie diverse di jockey:
+	\begin{enumerate}
+		\item Minimo numero di elementi: dati \textit{prob-coda2jockey1}
+		\item Minimo numero di persone: dati \textit{prob-coda2jockey2}
+	\end{enumerate}
+	\item Minimo tempo d'attesa in base al tempo di servizio medio:
+	Strategie diverse di jockey:
+	\begin{enumerate}
+		\item Minimo numero di elementi: dati \textit{prob-coda3jockey1}
+		\item Minimo numero di persone: dati \textit{prob-coda3jockey2}
+	\end{enumerate}
+	\item Minimo tempo d'attesa in base alle power regression: Strategie diverse di jockey:
+	\begin{enumerate}
+		\item Minimo numero di elementi: dati \textit{prob-coda4jockey1}
+		\item Minimo numero di persone: dati \textit{prob-coda4jockey2}
+	\end{enumerate}
+\end{enumerate}
 
 \vspace*{1\baselineskip}
 
