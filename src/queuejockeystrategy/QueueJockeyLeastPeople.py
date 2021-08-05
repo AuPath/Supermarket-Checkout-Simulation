@@ -29,4 +29,4 @@ class QueueJockeyLeastPeople(QueueJockeyStrategy):
             else:
                 return current_cash_desk.queue
         else:
-            return current_cash_desk
+            return current_cash_desk.queue

@@ -34,8 +34,8 @@ class QueueJockeyLeastItems(QueueJockeyStrategy):
             queue_diff = current_queue_total_items - min_other_cash_desks.total_items()
 
             if queue_diff > self.threshold:
-                return min_other_cash_desks
+                return min_other_cash_desks.queue
             else:
-                return current_cash_desk
+                return current_cash_desk.queue
         else:
-            return current_cash_desk
+            return current_cash_desk.queue
