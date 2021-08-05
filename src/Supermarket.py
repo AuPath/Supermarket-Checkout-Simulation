@@ -225,10 +225,6 @@ class Supermarket(Model):
                     idx += 1
                     self.add_cash_desk_to_self_service_zone(idx, normal_queue)
                     idx += 1
-                    self.add_cash_desk_to_self_service_zone(idx, normal_queue)
-                    idx += 1
-                    self.add_cash_desk_to_self_service_zone(idx, normal_queue)
-                    idx += 1
             elif zone_type == 'CASH_DESK_SELF_SCAN':
                 normal_queue = NormalQueue()
                 for i in range(dimension):
