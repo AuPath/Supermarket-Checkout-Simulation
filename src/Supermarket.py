@@ -119,7 +119,8 @@ class Supermarket(Model):
                              "Flow_self_scan": self.get_flow_self_scan,
                              "Total_steps": self.get_current_step,
                              "Avg_waiting_times_standard": self.get_avg_waiting_times_standard,
-                             "Avg_waiting_times_self_scan": self.get_avg_waiting_times_self_scan
+                             "Avg_waiting_times_self_scan": self.get_avg_waiting_times_self_scan,
+                             "Number_exiting_customers": self.get_number_exiting_customers
                              })
 
     def step(self):
@@ -437,6 +438,18 @@ class Supermarket(Model):
             if type(customer.state).__name__ == 'CustomerEnteredState':
                 if exclude_self_scan:
                     if not customer.self_scan:
+                        n += 1
+                else:
+                    n += 1
+
+        return n
+
+    def get_number_exiting_customers(self, exclude_self_scan=False):
+        n = 0
+        for cashdesk in self.__cash_desks:
+            if type(cashdesk.state).__name__ == 'CashDeskStandardTransactionCompletedState':
+                if exclude_self_scan:
+                    if not type(cashdesk).__name__ == 'CashDeskSelfScan':
                         n += 1
                 else:
                     n += 1
