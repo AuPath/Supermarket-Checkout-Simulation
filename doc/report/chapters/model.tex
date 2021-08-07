@@ -412,19 +412,102 @@ Nella figura \ref{fig:dist_basket_size} viene mostrata la distribuzione reale de
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=14cm]{"images/basket_size_fitted.png"}
+ 	\includegraphics[width=14cm]{"images/basket_size_fitted.png"}
 	\caption{Distribuzione basket size reale a confronto con distribuzione esponenziale teorica.}
 	\label{fig:dist_basket_size}
 \end{figure}
 
 \subsection{Parametri di tempo}
+\label{parameters:time}
+Lo scorrere del tempo all'interno del modello viene simulato per mezzo di step. Per questo motivo è necessario scegliere uno step del modello a quanti secondi corrisponde. Per le simulazioni effettuate nel nostro lavoro è stato scelto che \textbf{uno step corrisponde a 30 secondi}.
+
 Come visto nel workflow dell'agente di tipo cliente, riassunto nell'immagine \ref{fig:workflow_customer}, una volta che egli entra nel supermercato è necessario simulare il processo di spesa del cliente, con questo si intende l'arco di tempo che l'agente impiega all'interno del supermercato per prendere i prodotti e inserirli nel carrello (che in questo lavoro non viene direttamente modellato ma simulato). Il tempo impiegato da parte del cliente per prendere tutti i prodotti desiderati, quantità che corrisponde al suo basket-size, dipende dalla velocità di acquisto del cliente. Questa velocità è un ulteriore parametro del modello, che al momento è pari a \todo{Inserire a quanti prodotti corrisponde la velocità e quindi cosa si vuole simulare (es 2 prodotti al minuto)}
 
 Dopo la fase di spesa iniziale il cliente sceglie una coda per venire successivamente servito in cassa. Una volta in cassa, se questa è di tipo cassa standard o cassa self-service, introdotte nella sezione \ref{sec:tipi_cassa}, allora è necessario processare tutto il basket-size; quindi il cliente esce dal supermercato. \todo{Spiegare la velocità di processamento per le casse normali} Il tempo di elaborazione della spesa e governato dai parametri $a,b,\alpha ,\beta \in \mathbb{R}$  introdotti nell'articolo \cite{article1} e diversi per i due tipi di casse. Come questi parametri influiscono il tempo di processamento del cliente una volta in cassa è spiegato nella sezione \ref{sec:tipi_cassa}.
 
 \subsection{Distibuzione dei clienti in entrata nel supermercato}
+Nel lavoro di Antczak e altri \cite{article1}, oltre ai dati relativi al basket size di ogni cliente, vengono messi a disposizione i dati degli arrivi dei clienti per ogni supermercato analizzato. I dati raccolti fanno riferimento a 13 giorni: dal "1 febbraio 2018" al "14 febbraio 2018" e si considera il supermercato aperto per  14 ore (dalle 8:00 ale 22:00).
 
-\todo{manca}
+La distribuzione dei clienti in ingresso rappresenta l'attività all'interno del supermercato viene mostrata in figura \ref{fig:shop_activity}
+ 
+ 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=14cm]{"images/shop_activity.png"}
+	\caption{Distribuzione dei clienti in ingressi per ogni supermercato.}
+	\label{fig:shop_activity}
+\end{figure}
+
+La distribuzione dei clienti in ingresso dipende dal numero di clienti totali nell'arco dell'intera giornata. Per rendere la distribuzione indipendete da questo fattore, vengono nomalizzate le distribuzioni per il numero totale di clienti. Il risultato viene mostrato in figura \ref{fig:shop_activity_normalized}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=14cm]{"images/shop_activity_normalized.png"}
+	\caption{Distribuzione normalizzata dei clienti in ingressi per ogni supermercato.}
+	\label{fig:shop_activity_normalized}
+\end{figure}
+
+Dalla figura  \ref{fig:shop_activity_normalized} si nota come le distribuzioni nei supermercati, normalizzando per i clienti totali in ingresso nell'arco della giornata, è molto simile e quindi assumiamo che possa valere per un supermercato in generale.
+
+Si procede aggregando gli ingressi al variare delle diverse giorante e calcolando la media. Dopo questa operazione si ottengono le tre distribuzioni dei diversi supermercati, più una ottenuta dalla media di queste tre. Il risultato viene mostrato in figura \ref{fig:shop_activity_aggregated}, dove notiamo come la linea viola corrisponde alla media delle tre distribuzioni, questa distribuzione verrà usata come parametro per specificare gli ingressi durante le simulazioni al variare del tempo.
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=14cm]{"images/shop_activity_aggregated.png"}
+	\caption{Distribuzione dei clienti in ingressi aggregata per diversi giorni.}
+	\label{fig:shop_activity_aggregated}
+\end{figure}
+
+
+Un ulteriore fattore da considerare è che nei dati a nostra dipsosizione gli ingressi dei clienti sono aggregati per ora, tuttavia durante la simulazioni è necessario fare entrare i clienti gradualmente ad ogni ora, ovvero gestire gli ingressi ad ogni step del modello. A questo scopo abbiamo considerato come distribuzione di riferimento quell ottenuta medianto le tre distribuzioni aggregate per i diversi giorni (linea viola nell'immagine \ref{fig:shop_activity_aggregated}). Dal momento che ad uno step del modello corrisponde a 30 secondi reali (spiegato qui \ref{parameters:time}), un'ora è composta da 120 steps. Con questa osservazione è possibile calcolare il valore atteso di clienti in entrata per ogni step al variare delle ore.
+
+Il valore atteso di clienti in ingresso per ogni step al variare delle ore viene mostrato nella figura \ref{fig:per_step_distribution}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=14cm]{"images/per_step_distribution.png"}
+	\caption{Valore attesso di clienti in ingresso per ogni step al variare delle ore.}
+	\label{fig:per_step_distribution}
+\end{figure}
+
+Tuttavia emerge chiaramente come questo valore attesso non sia un valore intero in quanto ottenuto dalla divisione tra numero di clienti totatli in ingresso in un'ora e numero di step per un'ora. Inoltre anche nel caso in cui il valore attesso dei clienti in ingresso per una determinata ora fosse un numero intero, non è realistico che per ogni step di una determinata ora gli ingressi siano identici per ogni step. Per questo motivo si procede aggiungendo del rumore ad ogni step dove il nuovo valore che indica il numero di ingressi per step è frutto della realizzazione della variabile aleatoria $X$ distribuita secondo una normale con media pari al valore atteso del numero di clienti per step e varianza pari a $0.4$. In questo modo si vuole simulare il fatto che ad ogni step possano entrare meno clienti di quelli attessi e viceversa per altri step, pur ottenendo come numero di ingressi totali il valore attesso per quella specifica ora.
+
+Come esempio prendiamo in considerazione le ore 12. In questo orario in media entrano $231$ clieni all'interno del supermercato, vale a dire $1.931$ ingressi per step. Si procede quindi campionando 120 valori (numero di step in un'ora) distribuiti secondo una normale con media $1.931$ e varianza $0.4$. A parire dal valore continuo $x$, si procede discretizzando il numero di clienti in ingresso per ogni step utilizzando la funzione così definita:
+
+\begin{equation}
+	f(x)  =
+	\begin{cases*}
+		0 & se $x\leq0$ \\
+		\floor{x + 0.5}       & se $x > 0$
+	\end{cases*}
+\end{equation}
+
+Nella figura \ref{fig:continuous_vs_discrete_distributions} viene mostrato il risultato dell'operazione di campionamento e discretizzazione.  Alle ore $12$ il numero totale di clienti in ingresso nel supermercato è $231$, si può notare dalla figura che dopo il campionamento e la discretizzazione il numero generato di clienti in ingresso è $232$, che si avvicina molto al valore reale.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=14cm]{"images/continuous_vs_discrete_distributions.png"}
+	\caption{Numero di clienti in ingresso per ogni step (distribuzione continua vs discreta).}
+	\label{fig:continuous_vs_discrete_distributions}
+\end{figure}
+
+Al fine di testare questo metodo che consente di generare il numero di clienti in ingresso per ogni step, vengono eseguiti 30 campionamenti diversi per ogni ora al fine di poter confrontare il risultato con la distribuzione reale. Il confronto tra queste due distribuzioni viene mostrato in figura \ref{fig:real_vs_synthetic_distribution}. Viene inoltre considerato l'errore relativo tra la distribuzione reale e quella generata al variare delle ore. L'errore relativo mostrato in figura \ref{fig:real_vs_synthetic_distribution_error} è ottenuto calcolando: $$Errore = \frac{\abs{X_{reale} - X_{generato}}}{X_{reale}}$$
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=14cm]{"images/real_vs_synthetic_distribution.png"}
+	\caption{Distribuzione reale vs distribuzione generata.}
+	\label{fig:real_vs_synthetic_distribution}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=14cm]{"images/real_vs_synthetic_distribution_error.png"}
+	\caption{Errore tra distribuzione reale e distribuzione generata.}
+	\label{fig:real_vs_synthetic_distribution_error}
+\end{figure}
+
 
 \subsection{Cose da aggiungere}
 
@@ -435,4 +518,6 @@ Inizializzazione della griglia e parametri per creare casse (numero casse, coda 
 
 \vspace*{1\baselineskip}
 
-In questo capitolo è stato descritto abbondantemente il modello di supermercato implementato; in particolare si è parlato della flessibilità del modello (grazie a pattern e parametri) e del workflow e delle capacità degli agenti; nel capitolo successivo vedremo le strategie di scelta della coda e di jockeying, parte importante della simulazione in quanto l'obiettivo finale del progetto è indagare su quale sia la strategia che minimizza il tempo d'attesa alle casse.
+In questo capitolo è stato descritto abbondantemente il modello di supermercato implementato; in particolare si è parlato del workflow e delle capacità degli agenti, oltre che alla flessibilità del modello grazie ai diversi parametri che è necessario specificare per ogni simulazione. Questo ultimo aspetto è un'arma a doppio taglio in quanto molto parametri garantiscono generalizzazione tuttavia portano ad un'esplosione combinatoria delle configurazioni possibili e quindi di difficile tuning in fase di validazione.
+
+Nel capitolo successivo vedremo le strategie di scelta della coda e di jockeying, parte importante della simulazione in quanto l'obiettivo finale del progetto è indagare su quale sia la strategia che minimizza il tempo d'attesa alle casse.
