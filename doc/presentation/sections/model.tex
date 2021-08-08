@@ -1,6 +1,6 @@
 \section{Descrizione del modello}
 
-\subsection{Approccio ad agenti}
+\subsection{Overview}
 \begin{frame}{Approccio ad agenti}
 	\begin{itemize}
 		\item \textbf{Sistema multiagente} sviluppato in python con il framework Mesa
@@ -18,7 +18,25 @@
 \end{frame}
 
 \begin{frame}{Ambiente}
-	Immagine zone supermercato e supermercato in esecuzione.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=9cm]{"../report/images/supermarket-start-zones.png"}
+		\caption{Stuttura del supermercato diviso in zone.}
+		\label{fig:supermarket_zones}
+	\end{figure}
+	
+	
+\end{frame}
+
+
+\begin{frame}{Ambiente}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=9cm]{"../report/images/supermarket-execution.png"}
+		\caption{Interzione tra agenti e abmiente.}
+		\label{fig:supermarket_execution}
+	\end{figure}	
 \end{frame}
 
 
@@ -109,13 +127,13 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Agente Cassa - Tipo 4: Cassa riservata}
+\begin{frame}{Agente Cassa - Tipo 4: Riservata}
 	
 	\begin{itemize}
-		\item Comportamento analogo alla cassa standard 
-		\item Ha una coda dedicata
-		\item Nel caso di rilettura alla cassa "self scan", il cliente viene normalmente processato in questa nuova cassa
-		\item Nessun cliente può venire processato nella cassa riservata a meno di una rilettura
+		\item Comportamento analogo alla cassa standard.
+		\item Ha una coda dedicata.
+		\item Nel caso di rilettura alla cassa "self scan", il cliente viene normalmente processato in questa nuova cassa.
+		\item Nessun cliente può venire processato nella cassa riservata a meno di una rilettura.
 	\end{itemize}
 \end{frame}
 
