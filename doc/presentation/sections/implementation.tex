@@ -35,7 +35,23 @@
 
 
 \begin{frame}{Jockeying}
-	\centering
-	adiacenza - threshold - probabilità di non fare jockeying - 2 strategie e formule per il calcolo del guadagno
-	\#TODO: Lucrezia
+	\begin{itemize}
+		\item Un cliente fa \textbf{jockeying} se calcola che nelle code adiacenti a quella in cui è in attesa c'è un tempo di attesa minore, e quindi si sposta
+		\item Il parametro di adiacenza determina il numero di code adiacenti che il cliente prende in considerazione per il suo calcolo
+		\item Il cliente calcola un \textit{guadagno} di tempo nel cambiare coda, se questo supera un certo threshold, allora fa jockey, altrimenti no perchè per lui "non ne vale la pena"
+		\item Anche se esistono code migliori di altre, può non avvenire il jockey: viene estratto un parametro che rende il jockey aleatorio, in quanto non tutte le persone lo fanno
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Jockeying - strategie}
+	\begin{itemize}
+		\item Sono 2 le strategie per fare jockeying: 
+		\begin{enumerate}
+			\item \textbf{Minimo numero di elementi}: è scelta la coda con il minor numero di elementi nei carrelli di tutti i clienti. Il guadagno è:
+			\[g = \# \text{elementi nei carrelli nella coda pivot} - \min\limits_{q \in Q_{adj}} \# \text{elementi nei carrelli}\]
+			\item \textbf{Minimo numero di persone}: è scelta la coda con il minor numero di persone accodate. Il guadagno è:
+			\[g = i - \min\limits_{q \in Q_{adj}} |q|\]
+			dove $i$ è la posizione del cliente nella coda pivot
+		\end{enumerate}
+	\end{itemize}
 \end{frame}

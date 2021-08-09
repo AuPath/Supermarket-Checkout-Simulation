@@ -87,7 +87,7 @@ Inoltre abbiamo pensato che non tutte le persone al supermercato vogliono fare j
 \begin{enumerate}
 \item \textbf{Minimo numero di elementi}: viene scelta la coda con il minimo numero di elementi nei carrelli di tutte le persone in attesa. Il "guadagno" nel cambiare coda è calcolato come:
 \begin{equation}
-	g = \# \text{elementi nei carrelli} - \min\limits_{q \in Q_{\text{adj}}} \# \text{elementi nei carrelli}
+	g = \# \text{elementi nei carrelli nella coda pivot} - \min\limits_{q \in Q_{\text{adj}}} \# \text{elementi nei carrelli}
 \end{equation}
 dove $Q_{\text{adj}}$ è l'insieme delle code adiacenti alla coda corrente. Se questo valore è più alto del threshold, significa che il guadagno è abbastanza alto e il cliente cambia coda.
 \item \textbf{Minimo numero di persone}: viene scelta la coda con il minimo numero di persone accodate. Il "guadagno" nel cambiare coda è calcolato come:
