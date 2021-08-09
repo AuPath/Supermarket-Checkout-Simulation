@@ -65,7 +65,7 @@
 \begin{frame}{Agente Cliente - workflow}
 	\begin{enumerate}
 		\item Attesa all'entrata del supermercato: l'agente è in attesa fino a che non può mettersi nella zona d'entrata.
-		\item Fase di shopping: si muove nella zona di shopping e inizia a raccogliere elementi fino a raggiungere il \textit{basket-size} desiderato; questa fase dipende dalla velocità di shopping, un parametro del modello.
+		\item Fase di shopping: si muove nella zona di shopping e inizia a raccogliere elementi fino a raggiungere il \textit{basket size} desiderato; questa fase dipende dalla velocità di shopping, un parametro del modello.
 		\item Scelta della coda: finita la spesa, deve scegliere la cassa in base alla utility function; viene scelta la coda $q^*$ tale che
 		\[q^* = \operatorname*{argmin}_{q \in Q} f(q)\]
 		dove $Q$ è l'insieme delle code dedicate e $f$ varia con la strategia.
@@ -175,18 +175,19 @@
 		\item Configurazione del supermercato:
 		\begin{itemize}
 			\item Dimensione delle zone (entering zone, shopping zone)
-			\item Numero di casse (standard, self-service o self-scan + 1 riservata obbligatoria)
+			\item Numero di casse (standard, self-service o self-scan + 1 riservata)
 			\item Code N-fork o parallele per le casse standard
 		\end{itemize}
+		\item Parametro per l'errore di stima del basket size: usato nelle strategie di scelta della coda e jockeying per simulare l'errore commesso dagli umani nello stimare la quantità di oggetti nei carrelli
 		\item Jockeying:
 		\begin{itemize}
 			\item Numero di code adiacenti considerate
 			\item Threshold
 			\item Probabilità di fare jockeying
 		\end{itemize}
-		\item Distribuzione dei clienti in entrata (presa dai dati di Antczak e altri\footnotemark) \# TODO: qui manca la spiegazione come nel caso del basket-size, che però manca anche nella relazione
-		\item Distribuzione dei basket-size (presa dai dati di Antczak e altri\footnotemark[\value{footnote}])
-		\footnotetext{\textit{Data-driven simulation modeling of the checkout process in supermarkets: Insights for decision support in retail operations}, Antczak, Tomasz and Weron, Rafał and Zabawa, Jacek, 2020}
+		\item Distribuzione dei clienti in entrata (presa dai dati di Antczak e altri\footnotemark) \# TODO: qui manca la spiegazione come nel caso del basket size, che però manca anche nella relazione
+		\item Distribuzione dei basket size (presa dai dati di Antczak e altri\footnotemark[\value{footnote}])
+		\footnotetext{Antczak, Tomasz and Weron, Rafał and Zabawa, Jacek, 2020}
 	\end{itemize}
 \end{frame}
 
