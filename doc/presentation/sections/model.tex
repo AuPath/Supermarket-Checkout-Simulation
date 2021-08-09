@@ -171,8 +171,44 @@
 
 
 \begin{frame}{Parametri}
-	\centering
-	Mega elenco puntato dei parametri (non roba matematica qui non serve)
-	
-	\#Todo: LLucrezia
+	\begin{itemize}
+		\item Configurazione del supermercato:
+		\begin{itemize}
+			\item Dimensione delle zone (entering zone, shopping zone)
+			\item Numero di casse (standard, self-service o self-scan + 1 riservata obbligatoria)
+			\item Code N-fork o parallele per le casse standard
+		\end{itemize}
+		\item Jockeying:
+		\begin{itemize}
+			\item Numero di code adiacenti considerate
+			\item Threshold
+			\item Probabilità di fare jockeying
+		\end{itemize}
+		\item Distribuzione dei clienti in entrata (presa dai dati di Antczak e altri\footnotemark) \# TODO: qui manca la spiegazione come nel caso del basket-size, che però manca anche nella relazione
+		\item Distribuzione dei basket-size (presa dai dati di Antczak e altri\footnotemark[\value{footnote}])
+		\footnotetext{\textit{Data-driven simulation modeling of the checkout process in supermarkets: Insights for decision support in retail operations}, Antczak, Tomasz and Weron, Rafał and Zabawa, Jacek, 2020}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Parametri - distribuzione dei clienti}
+\end{frame}
+
+\begin{frame}{Parametri - distribuzione dei basket size}
+	Nella figura viene mostrata la distribuzione reale dei dati e la distribuzione esponenziale derivata aggregandoli, la quale viene usata nel modello per generare il basket size di ogni cliente.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=9cm]{"../report/images/basket_size_fitted.png"}
+		\label{fig:dist_basket_size}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Parametri}
+	\begin{itemize}
+		\item Parametri di tempo:
+		\begin{itemize}
+			\item Durata di uno step (attualmente 30 secondi)
+			\item Velocità di shopping del cliente: numero di articoli messi nel carrello ad ogni step
+			\item Tempo di elaborazione della spesa da parte delle casse: per le self-scan è 1 step, per le standard e le self-service è governato dai parametri $a, b, \alpha, \beta \in \mathbb{R}$, presi dall'articolo di Antczak e altri sopra citato.
+		\end{itemize}
+	\end{itemize}
 \end{frame}
