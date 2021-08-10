@@ -65,7 +65,7 @@ def simulation_run(sim_name, zones_metadata, grid, customer_shop_speed, customer
 # Validazioni 1-4 differiscono per strategia di scelta della coda, NON fanno jockeying
 
 
-def validazione_1():
+def simulazione_1():
     entering_zone_width = 6
     shopping_zone_height = 10
     number_cash_desk_self_scan = 0
@@ -88,7 +88,7 @@ def validazione_1():
                           queue_choice_strategy, queue_jockeying_strategy)
 
 
-def validazione_2():
+def simulazione_2():
     entering_zone_width = 6
     shopping_zone_height = 10
     number_cash_desk_self_scan = 0
@@ -111,7 +111,7 @@ def validazione_2():
                           queue_choice_strategy, queue_jockeying_strategy)
 
 
-def validazione_3():
+def simulazione_3():
     entering_zone_width = 6
     shopping_zone_height = 10
     number_cash_desk_self_scan = 0
@@ -134,7 +134,7 @@ def validazione_3():
                           queue_choice_strategy, queue_jockeying_strategy)
 
 
-def validazione_4():
+def simulazione_4():
     entering_zone_width = 6
     shopping_zone_height = 10
     number_cash_desk_self_scan = 0
@@ -159,7 +159,7 @@ def validazione_4():
 # Validazioni 5-8 per la strategia di Jockeying LeastItems per tutte le possibili scelte di coda
 
 
-def validazione_5():
+def simulazione_5():
     entering_zone_width = 6
     shopping_zone_height = 10
     number_cash_desk_self_scan = 0
@@ -180,12 +180,12 @@ def validazione_5():
     queue_jockeying_strategy = QueueJockeyLeastItems(threshold_items, probability_of_jockeying)
     customer_standard_deviation_coefficient = 0.1
 
-    return simulation_run("validazione_5", zones_metadata, grid, CUSTOMER_SPEED_PER_STEP, CUSTOMER_DISTRIBUTION,
+    return simulation_run("coda1_jockey1", zones_metadata, grid, CUSTOMER_SPEED_PER_STEP, CUSTOMER_DISTRIBUTION,
                           PERIOD_IN_SECONDS, GRID_HEIGHT, SELF_SCAN_PERCENTAGE, customer_standard_deviation_coefficient,
                           queue_choice_strategy, queue_jockeying_strategy)
 
 
-def validazione_6():
+def simulazione_6():
     entering_zone_width = 6
     shopping_zone_height = 10
     number_cash_desk_self_scan = 0
@@ -206,12 +206,12 @@ def validazione_6():
     queue_jockeying_strategy = QueueJockeyLeastItems(threshold_items, probability_of_jockeying)
     customer_standard_deviation_coefficient = 0
 
-    return simulation_run("validazione_6", zones_metadata, grid, CUSTOMER_SPEED_PER_STEP, CUSTOMER_DISTRIBUTION,
+    return simulation_run("coda1_jockey2", zones_metadata, grid, CUSTOMER_SPEED_PER_STEP, CUSTOMER_DISTRIBUTION,
                           PERIOD_IN_SECONDS, GRID_HEIGHT, SELF_SCAN_PERCENTAGE, customer_standard_deviation_coefficient,
                           queue_choice_strategy, queue_jockeying_strategy)
 
 
-def validazione_7():
+def simulazione_7():
     entering_zone_width = 6
     shopping_zone_height = 10
     number_cash_desk_self_scan = 0
@@ -232,12 +232,12 @@ def validazione_7():
     queue_jockeying_strategy = QueueJockeyLeastItems(threshold_items, probability_of_jockeying)
     customer_standard_deviation_coefficient = 0
 
-    return simulation_run("validazione_7", zones_metadata, grid, CUSTOMER_SPEED_PER_STEP, CUSTOMER_DISTRIBUTION,
+    return simulation_run("coda2_jockey1", zones_metadata, grid, CUSTOMER_SPEED_PER_STEP, CUSTOMER_DISTRIBUTION,
                           PERIOD_IN_SECONDS, GRID_HEIGHT, SELF_SCAN_PERCENTAGE, customer_standard_deviation_coefficient,
                           queue_choice_strategy, queue_jockeying_strategy)
 
 
-def validazione_8():
+def simulazione_8():
     entering_zone_width = 6
     shopping_zone_height = 10
     number_cash_desk_self_scan = 0
@@ -258,7 +258,7 @@ def validazione_8():
     queue_jockeying_strategy = QueueJockeyLeastItems(threshold_items, probability_of_jockeying)
     customer_standard_deviation_coefficient = 0
 
-    return simulation_run("validazione_8", zones_metadata, grid, CUSTOMER_SPEED_PER_STEP, CUSTOMER_DISTRIBUTION,
+    return simulation_run("coda2_jockey2", zones_metadata, grid, CUSTOMER_SPEED_PER_STEP, CUSTOMER_DISTRIBUTION,
                           PERIOD_IN_SECONDS, GRID_HEIGHT, SELF_SCAN_PERCENTAGE, customer_standard_deviation_coefficient,
                           queue_choice_strategy, queue_jockeying_strategy)
 
@@ -266,7 +266,7 @@ def validazione_8():
 # Validazioni 9-12 per la strategia di Jockeying LeastPeople per tutte le possibili scelte di coda
 
 
-def validazione_9():
+def simulazione_9():
     entering_zone_width = 6
     shopping_zone_height = 10
     number_cash_desk_self_scan = 0
@@ -287,12 +287,12 @@ def validazione_9():
     queue_jockeying_strategy = QueueJockeyLeastPeople(threshold_people, probability_of_jockeying)
     customer_standard_deviation_coefficient = 0
 
-    return simulation_run("validazione_9", zones_metadata, grid, CUSTOMER_SPEED_PER_STEP, CUSTOMER_DISTRIBUTION,
+    return simulation_run("coda3_jockey1", zones_metadata, grid, CUSTOMER_SPEED_PER_STEP, CUSTOMER_DISTRIBUTION,
                           PERIOD_IN_SECONDS, GRID_HEIGHT, SELF_SCAN_PERCENTAGE, customer_standard_deviation_coefficient,
                           queue_choice_strategy, queue_jockeying_strategy)
 
 
-def validazione_10():
+def simulazione_10():
     entering_zone_width = 6
     shopping_zone_height = 10
     number_cash_desk_self_scan = 0
@@ -313,12 +313,12 @@ def validazione_10():
     queue_jockeying_strategy = QueueJockeyLeastPeople(threshold_people, probability_of_jockeying)
     customer_standard_deviation_coefficient = 0
 
-    return simulation_run("validazione_10", zones_metadata, grid, CUSTOMER_SPEED_PER_STEP, CUSTOMER_DISTRIBUTION,
+    return simulation_run("coda3_jockey2", zones_metadata, grid, CUSTOMER_SPEED_PER_STEP, CUSTOMER_DISTRIBUTION,
                           PERIOD_IN_SECONDS, GRID_HEIGHT, SELF_SCAN_PERCENTAGE, customer_standard_deviation_coefficient,
                           queue_choice_strategy, queue_jockeying_strategy)
 
 
-def validazione_11():
+def simulazione_11():
     entering_zone_width = 6
     shopping_zone_height = 10
     number_cash_desk_self_scan = 0
@@ -339,12 +339,12 @@ def validazione_11():
     queue_jockeying_strategy = QueueJockeyLeastPeople(threshold_people, probability_of_jockeying)
     customer_standard_deviation_coefficient = 0
 
-    return simulation_run("validazione_11", zones_metadata, grid, CUSTOMER_SPEED_PER_STEP, CUSTOMER_DISTRIBUTION,
+    return simulation_run("coda4_jockey1", zones_metadata, grid, CUSTOMER_SPEED_PER_STEP, CUSTOMER_DISTRIBUTION,
                           PERIOD_IN_SECONDS, GRID_HEIGHT, SELF_SCAN_PERCENTAGE, customer_standard_deviation_coefficient,
                           queue_choice_strategy, queue_jockeying_strategy)
 
 
-def validazione_12():
+def simulazione_12():
     entering_zone_width = 6
     shopping_zone_height = 10
     number_cash_desk_self_scan = 0
@@ -365,14 +365,22 @@ def validazione_12():
     queue_jockeying_strategy = QueueJockeyLeastPeople(threshold_people, probability_of_jockeying)
     customer_standard_deviation_coefficient = 0
 
-    return simulation_run("validazione_12", zones_metadata, grid, CUSTOMER_SPEED_PER_STEP, CUSTOMER_DISTRIBUTION,
+    return simulation_run("coda4_jockey2", zones_metadata, grid, CUSTOMER_SPEED_PER_STEP, CUSTOMER_DISTRIBUTION,
                           PERIOD_IN_SECONDS, GRID_HEIGHT, SELF_SCAN_PERCENTAGE, customer_standard_deviation_coefficient,
                           queue_choice_strategy, queue_jockeying_strategy)
 
 
 # todo da qua devo essere in grado di passare i parametri sulle probabilità di errore a chi di dovere
 # Create server
-server = validazione_1()
-server.port = 8521  # The default
+server = simulazione_1()
 server.settings["template_path"] = STATIC_PAGE_PATH
-server.launch()
+
+port = 8521
+while True:
+    try:
+        server.port = port  # The default
+        server.launch()
+        print(f'Server running on port {port}')
+        break
+    except OSError:
+        port += 1

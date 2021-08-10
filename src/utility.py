@@ -3,7 +3,7 @@ from datetime import datetime
 
 from mesa.visualization.modules import ChartModule, CanvasGrid
 
-from config import *
+from src.config import *
 
 SIGMA_CUSTOMER_DISTRIBUTION = 0.4
 

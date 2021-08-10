@@ -2,6 +2,8 @@ import logging
 import math
 from statistics import mean
 import pickle
+from src.config import PICKLE_PATH
+from os.path import join
 
 from mesa import Model
 from mesa.datacollection import DataCollector
@@ -157,7 +159,7 @@ class Supermarket(Model):
     def dump_data_collector(self):
         from datetime import datetime
         timestamp = str(datetime.timestamp(datetime.now())).split('.')[0]
-        f_name = f"../pickle/datacollector_{self.simulation_name}_{timestamp}.pkl"
+        f_name = join(PICKLE_PATH, f"datacollector_{self.simulation_name}_{timestamp}.pkl")
         print("Dump data collector completed")
 
         with open(f_name, "wb") as f:

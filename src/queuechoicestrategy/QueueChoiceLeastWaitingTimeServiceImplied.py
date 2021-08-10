@@ -60,7 +60,7 @@ class QueueChoiceLeastWaitingTimeServiceImplied(QueueChoiceStrategy):
             return self_service_queue_min
 
     # Da una lista di casse (si assume di tipo omogeneo) ritorna una lista di code associate a quel tipo di cassa
-    def get_queues_for_cash_desk_type(self, cash_desks: list[CashDesk]):
+    def get_queues_for_cash_desk_type(self, cash_desks):
         queues = []
         for c in cash_desks:
             queues.append(c.queue)
