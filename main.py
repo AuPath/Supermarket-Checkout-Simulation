@@ -81,6 +81,7 @@ def preprocess_simulation_parameters(input_parameters):
         'number_cash_desk_self_service_groups',
         'shared_queue',
         'threshold_people',
+        'threshold_items',
         'probability_of_jockeying']
 
     for dict_key in keys_to_remove:
