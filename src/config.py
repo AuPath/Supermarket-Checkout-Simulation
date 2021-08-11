@@ -3,6 +3,9 @@ from os.path import join
 # Static html pages
 STATIC_PAGE_PATH = 'src/static/'
 
+# Entrypoint filename
+ENTRYPOINT = 'main.py'
+
 # Log path
 LOG_PATH = 'log/'
 

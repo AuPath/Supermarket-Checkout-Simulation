@@ -34,7 +34,7 @@ def simulation_run(name, zones_metadata, grid, customer_shop_speed, customer_arr
     visualization_elements = [grid, CustomerLegendElement(), CashDeskLegendElement()] + charts[:n_charts]
     out_server = ModularServer(Supermarket,
                                visualization_elements,
-                               "Supermarket",
+                               f"Supermarket - {name}",
                                {
                                    "zones_metadata": zones_metadata,
                                    "simulation_name": name,
