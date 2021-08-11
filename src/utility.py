@@ -32,6 +32,8 @@ def simulation_run(name, zones_metadata, grid, customer_shop_speed, customer_arr
     charts = init_charts()
     n_charts = len(charts) if n_charts is None else n_charts
     visualization_elements = [grid, CustomerLegendElement(), CashDeskLegendElement()] + charts[:n_charts]
+    #TODO: Togliere ma molto utile per le simulazioni
+    visualization_elements = []
     out_server = ModularServer(Supermarket,
                                visualization_elements,
                                f"Supermarket - {name}",
@@ -87,10 +89,9 @@ def parse_simulation_parameters():
         parser.add_argument('--customer_standard_deviation_coefficient', type=float)
         parser.add_argument('--queue_choice_strategy')
         parser.add_argument('--queue_jockeying_strategy')
-        parser.add_argument('--threshold_items')
-        parser.add_argument('--threshold_people')
-        parser.add_argument('--probability_of_jockeying')
-
+        parser.add_argument('--threshold_items', type=int)
+        parser.add_argument('--threshold_people', type=int)
+        parser.add_argument('--probability_of_jockeying', type=float)
         parser.add_argument('--name')
 
         simulation_args = parser.parse_args()

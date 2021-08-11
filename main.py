@@ -35,7 +35,7 @@ def preprocess_jockeying_strategy(parameters):
     if parameters['queue_jockeying_strategy'] == 'no_jockeying':
         jockeying = QueueJockeyNoJockeying()
     elif parameters['queue_jockeying_strategy'] == 'least_items':
-        threshold, prob_jockey = parameters['threshold_people'], parameters['probability_of_jockeying']
+        threshold, prob_jockey = parameters['threshold_items'], parameters['probability_of_jockeying']
         jockeying = QueueJockeyLeastItems(threshold=threshold, prob_jockey=prob_jockey)
     elif parameters['queue_jockeying_strategy'] == 'least_people':
         threshold, prob_jockey = parameters['threshold_people'], parameters['probability_of_jockeying']
