@@ -92,6 +92,7 @@ def parse_simulation_parameters():
         parser.add_argument('--threshold_items', type=int)
         parser.add_argument('--threshold_people', type=int)
         parser.add_argument('--probability_of_jockeying', type=float)
+        parser.add_argument('--self_scan_customer_percentage', type=float)
         parser.add_argument('--name')
 
         simulation_args = parser.parse_args()
