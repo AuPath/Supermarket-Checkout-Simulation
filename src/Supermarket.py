@@ -50,7 +50,8 @@ class Supermarket(Model):
 
     def __init__(self, zones_metadata, customer_distribution, grid_height,
                  queue_choice_strategy: QueueChoiceStrategy, queue_jockey_strategy: QueueJockeyStrategy,
-                 simulation_name, customer_shopping_speed, customer_standard_deviation_coefficient, period_in_seconds,
+                 simulation_name, customer_shopping_speed, period_in_seconds,
+                 customer_standard_deviation_coefficient=0,
                  self_scan_percentage=0.4, adj_window_size=ADJ_WINDOW_SIZE, ):
         self.__customers = set()
         self.__occupied_cells = set()
@@ -200,10 +201,11 @@ class Supermarket(Model):
     def init_cash_desks(self):
         logging.info("Init cash desks")
         idx = 1
+        estimation_bias = True if self.customer_standard_deviation_coefficient > 0 else False
         for zone_type, dimension in self.zones_metadata:
             if zone_type == 'CASH_DESK_STANDARD':
                 for i in range(dimension):
-                    cash_desk = CashDeskStandard(idx, self, NormalQueue())
+                    cash_desk = CashDeskStandard(idx, self, NormalQueue(), estimation_bias=estimation_bias)
                     self.cash_desk_standard_zone.cash_desks.append(cash_desk)
                     self.add_cash_desk(cash_desk)
                     idx += 1

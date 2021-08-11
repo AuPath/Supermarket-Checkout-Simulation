@@ -29,7 +29,7 @@ class QueueJockeyLeastItems(QueueJockeyStrategy):
             for c in customers_before_customer:
                 current_queue_total_items += c.basket_size
 
-            min_other_cash_desks = min(other_cash_desks, key=methodcaller('total_items'))
+            min_other_cash_desks = min(other_cash_desks, key=methodcaller('estimate_total_items'))
 
             queue_diff = current_queue_total_items - min_other_cash_desks.total_items()
 

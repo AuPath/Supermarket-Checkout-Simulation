@@ -8,8 +8,8 @@ from src.states.cashdeskstates.CashDeskStandardStates import CashDeskStandardNew
 
 class CashDeskStandard(CashDesk):
 
-    def __init__(self, agent_id, model, supermarket_queue: SupermarketQueue):
-        super().__init__(agent_id, model, supermarket_queue)
+    def __init__(self, agent_id, model, supermarket_queue: SupermarketQueue, estimation_bias=False):
+        super().__init__(agent_id, model, supermarket_queue, estimation_bias=estimation_bias)
         self.state_change(CashDeskStandardNewCustomerState(self))
         self.__working = False
         self.a_transaction = 0.6984
