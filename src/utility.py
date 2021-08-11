@@ -75,21 +75,26 @@ def init_default_simulation():
     )
 
 
-def parse_simulations_parameters():
+def parse_simulation_parameters():
     if len(sys.argv) == 1:
         simulation_args = init_default_simulation()
-        simulation_args = argparse.Namespace(**simulation_args)
     else:
         parser = argparse.ArgumentParser()
-        parser.add_argument('--number_cash_desk_self_scan')
-        parser.add_argument('--number_cash_desk')
-        parser.add_argument('--number_cash_desk_self_service_groups')
-        parser.add_argument('--shared_queue')
+        parser.add_argument('--number_cash_desk_self_scan', type=int)
+        parser.add_argument('--number_cash_desk', type=int)
+        parser.add_argument('--number_cash_desk_self_service_groups', type=int)
+        parser.add_argument('--shared_queue', type=str)
+        parser.add_argument('--customer_standard_deviation_coefficient', type=float)
         parser.add_argument('--queue_choice_strategy')
         parser.add_argument('--queue_jockeying_strategy')
-        parser.add_argument('--customer_standard_deviation_coefficient')
         parser.add_argument('--name')
+
         simulation_args = parser.parse_args()
+        simulation_args = vars(simulation_args)
+
+        assert simulation_args['shared_queue'] in ['True', 'False']
+        simulation_args['shared_queue'] = False if simulation_args['shared_queue'] == 'False' else True
+
     return simulation_args
 
 
