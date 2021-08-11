@@ -62,7 +62,6 @@ def preprocess_queue_choice_strategy(parameters):
 
 
 def preprocess_simulation_parameters(input_parameters):
-    input_parameters = vars(input_parameters)
     input_parameters = preprocess_jockeying_strategy(input_parameters)
     input_parameters = preprocess_queue_choice_strategy(input_parameters)
 
@@ -101,7 +100,7 @@ def preprocess_simulation_parameters(input_parameters):
 
 
 def get_simulation_parameters():
-    parameters = parse_simulations_parameters()
+    parameters = parse_simulation_parameters()
     parameters = preprocess_simulation_parameters(parameters)
     return parameters
 

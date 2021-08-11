@@ -52,7 +52,7 @@ class Supermarket(Model):
                  queue_choice_strategy: QueueChoiceStrategy, queue_jockey_strategy: QueueJockeyStrategy,
                  simulation_name, customer_shopping_speed, period_in_seconds,
                  customer_standard_deviation_coefficient=0,
-                 self_scan_percentage=0.4, adj_window_size=ADJ_WINDOW_SIZE, ):
+                 self_scan_percentage=0.4, adj_window_size=ADJ_WINDOW_SIZE):
         self.__customers = set()
         self.__occupied_cells = set()
         self.__cash_desks: list[CashDesk] = []
