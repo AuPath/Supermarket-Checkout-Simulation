@@ -25,6 +25,4 @@ for simulation in simulations_list:
     command = f'python {ENTRYPOINT} {parameters} &'
     commands_list.append(command)
 
-ID = 11
-#script_file = '\n'.join(script_file)
-subprocess.Popen(commands_list[ID], shell=True)
+subprocess.Popen('\n'.join(commands_list), shell=True)
