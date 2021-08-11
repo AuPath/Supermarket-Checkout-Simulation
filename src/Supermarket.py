@@ -160,7 +160,7 @@ class Supermarket(Model):
     def dump_data_collector(self):
         from datetime import datetime
         timestamp = str(datetime.timestamp(datetime.now())).split('.')[0]
-        f_name = join(PICKLE_PATH, f"datacollector_{self.simulation_name}_{timestamp}.pkl")
+        f_name = join(PICKLE_PATH, f"datacollector${self.simulation_name}${timestamp}.pkl")
         print("Dump data collector completed")
 
         with open(f_name, "wb") as f:
@@ -174,7 +174,8 @@ class Supermarket(Model):
         logging.info("Init customers")
         for basket_size, self_scan, queue_choice_strategy, queue_jockey_strategy in customers_metadata:
             customer = Customer(self.__num_agent, self, basket_size, self_scan, queue_choice_strategy,
-                                queue_jockey_strategy, shopping_speed=self.customer_shopping_speed, standard_deviation_coefficient=self.customer_standard_deviation_coefficient)
+                                queue_jockey_strategy, shopping_speed=self.customer_shopping_speed,
+                                standard_deviation_coefficient=self.customer_standard_deviation_coefficient)
             self.__num_agent += 1
             self.add_customer(customer)
 

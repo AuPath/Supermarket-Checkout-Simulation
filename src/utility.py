@@ -1,25 +1,96 @@
-import os, logging, pickle, numpy as np
+import argparse
+import logging
+import os
+import pickle
+import sys
 from datetime import datetime
 
+import numpy as np
+from mesa.visualization.ModularVisualization import ModularServer
 from mesa.visualization.modules import ChartModule, CanvasGrid
+from mesa.visualization.modules import TextElement
 
+from src.Supermarket import Supermarket
 from src.config import *
 
 SIGMA_CUSTOMER_DISTRIBUTION = 0.4
+
+
+class CustomerLegendElement(TextElement):
+    def render(self, model):
+        return read_html(STATIC_PAGE_PATH, 'customer_legend.html')
+
+
+class CashDeskLegendElement(TextElement):
+    def render(self, model):
+        return read_html(STATIC_PAGE_PATH, 'cash_desk_legend.html')
+
+
+def simulation_run(name, zones_metadata, grid, customer_shop_speed, customer_arrival_distribution,
+                   period_in_seconds, grid_height, queue_choice_strategy, queue_jockeying_strategy,
+                   self_scan_customer_percentage=0, customer_standard_deviation_coefficient=0, n_charts=None):
+    charts = init_charts()
+    n_charts = len(charts) if n_charts is None else n_charts
+    visualization_elements = [grid, CustomerLegendElement(), CashDeskLegendElement()] + charts[:n_charts]
+    out_server = ModularServer(Supermarket,
+                               visualization_elements,
+                               "Supermarket",
+                               {
+                                   "zones_metadata": zones_metadata,
+                                   "simulation_name": name,
+                                   "customer_shopping_speed": customer_shop_speed,
+                                   "customer_distribution": customer_arrival_distribution,
+                                   "period_in_seconds": period_in_seconds,
+                                   "grid_height": grid_height,
+                                   "self_scan_percentage": self_scan_customer_percentage,
+                                   "customer_standard_deviation_coefficient": customer_standard_deviation_coefficient,
+                                   "queue_choice_strategy": queue_choice_strategy,
+                                   "queue_jockey_strategy": queue_jockeying_strategy,
+                               })
+    return out_server
 
 
 def init_logging(log_path, enable_logging=False):
     if not enable_logging:
         return
     filename = f'{log_path}/{str(datetime.now().strftime("%d-%m-%Y_%H:%M:%S"))}.log'
-    logging.basicConfig(
-        level=logging.INFO,
-        format="%(asctime)s [%(levelname)s] %(message)s",
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s",
         handlers=[
             logging.FileHandler(os.path.join(filename)),
             logging.StreamHandler()
         ]
     )
+
+
+def init_default_simulation():
+    return dict(
+        number_cash_desk_self_scan=0,
+        number_cash_desk=20,
+        number_cash_desk_self_service_groups=1,
+        shared_queue=False,
+        queue_choice_strategy="least_items",
+        queue_jockeying_strategy="no_jockeying",
+        customer_standard_deviation_coefficient=0,
+        name="validazione_1"
+    )
+
+
+def parse_simulations_parameters():
+    if len(sys.argv) == 1:
+        simulation_args = init_default_simulation()
+        simulation_args = argparse.Namespace(**simulation_args)
+    else:
+        parser = argparse.ArgumentParser()
+        parser.add_argument('--number_cash_desk_self_scan')
+        parser.add_argument('--number_cash_desk')
+        parser.add_argument('--number_cash_desk_self_service_groups')
+        parser.add_argument('--shared_queue')
+        parser.add_argument('--queue_choice_strategy')
+        parser.add_argument('--queue_jockeying_strategy')
+        parser.add_argument('--customer_standard_deviation_coefficient')
+        parser.add_argument('--name')
+        simulation_args = parser.parse_args()
+    return simulation_args
 
 
 def read_html(static_path, page):
@@ -176,4 +247,3 @@ def init_customer_distribution(step_in_seconds):
     number_of_steps_in_hour = int(60 * 60 / step_in_seconds)
     customer_distribution = generate_customers_dist(df, number_of_steps_in_hour)
     return customer_distribution
-
