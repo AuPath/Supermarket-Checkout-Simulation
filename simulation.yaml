@@ -1,6 +1,6 @@
 - simulations:
 
-	 - simulation:
+    - simulation:
         number_cash_desk_self_scan: 0
         number_cash_desk: 20
         number_cash_desk_self_service_groups: 1
@@ -10,7 +10,7 @@
         customer_standard_deviation_coefficient: 0
         name: validazione_1
 
-	 - simulation:
+    - simulation:
         number_cash_desk_self_scan: 0
         number_cash_desk: 20
         number_cash_desk_self_service_groups: 1
@@ -20,7 +20,7 @@
         customer_standard_deviation_coefficient: 0
         name: validazione_2
 
-	 - simulation:
+    - simulation:
         number_cash_desk_self_scan: 0
         number_cash_desk: 20
         number_cash_desk_self_service_groups: 1
@@ -30,7 +30,7 @@
         customer_standard_deviation_coefficient: 0
         name: validazione_3
 
-	 - simulation:
+    - simulation:
         number_cash_desk_self_scan: 0
         number_cash_desk: 20
         number_cash_desk_self_service_groups: 1
@@ -39,8 +39,8 @@
         queue_jockeying_strategy: no_jockeying
         customer_standard_deviation_coefficient: 0
         name: validazione_4
-    
-	 - simulation:
+
+    - simulation:
         number_cash_desk_self_scan: 0
         number_cash_desk: 20
         number_cash_desk_self_service_groups: 1
@@ -52,7 +52,7 @@
         customer_standard_deviation_coefficient: 0.1
         name: coda1_jockey1
 
-	 - simulation:
+    - simulation:
         number_cash_desk_self_scan: 0
         number_cash_desk: 20
         number_cash_desk_self_service_groups: 1
@@ -64,7 +64,7 @@
         customer_standard_deviation_coefficient: 0
         name: coda1_jockey2
 
-	 - simulation:
+    - simulation:
         number_cash_desk_self_scan: 0
         number_cash_desk: 20
         number_cash_desk_self_service_groups: 1
@@ -76,7 +76,7 @@
         customer_standard_deviation_coefficient: 0
         name: coda2_jockey1
 
-	 - simulation:
+    - simulation:
         number_cash_desk_self_scan: 0
         number_cash_desk: 20
         number_cash_desk_self_service_groups: 1
@@ -87,9 +87,9 @@
         queue_jockeying_strategy: least_items
         customer_standard_deviation_coefficient: 0
         name: coda2_jockey2
-    
-    
-	 - simulation:
+
+
+    - simulation:
         number_cash_desk_self_scan: 0
         number_cash_desk: 20
         number_cash_desk_self_service_groups: 1
@@ -101,7 +101,7 @@
         customer_standard_deviation_coefficient: 0
         name: coda3_jockey1
 
-	 - simulation:
+    - simulation:
         number_cash_desk_self_scan: 0
         number_cash_desk: 20
         number_cash_desk_self_service_groups: 1
@@ -113,7 +113,7 @@
         customer_standard_deviation_coefficient: 0
         name: coda3_jockey2
 
-	 - simulation:
+    - simulation:
         number_cash_desk_self_scan: 0
         number_cash_desk: 20
         number_cash_desk_self_service_groups: 1
@@ -125,7 +125,7 @@
         customer_standard_deviation_coefficient: 0
         name: coda4_jockey1
 
-	 - simulation:
+    - simulation:
         number_cash_desk_self_scan: 0
         number_cash_desk: 20
         number_cash_desk_self_service_groups: 1
