@@ -5,7 +5,6 @@ import yaml
 from src.config import ENTRYPOINT
 
 SIMULATION_FILE = 'simulation.yaml'
-SIMULATION_FILE = 'simulation_test.yaml'
 
 
 def load_simulation_file(filename):
