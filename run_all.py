@@ -26,5 +26,4 @@ for simulation in simulations_list:
     script_file.append(command)
 
 script_file = '\n'.join(script_file)
-
 subprocess.Popen(script_file, shell=True)

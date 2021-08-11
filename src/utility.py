@@ -87,6 +87,10 @@ def parse_simulation_parameters():
         parser.add_argument('--customer_standard_deviation_coefficient', type=float)
         parser.add_argument('--queue_choice_strategy')
         parser.add_argument('--queue_jockeying_strategy')
+        parser.add_argument('--threshold_items')
+        parser.add_argument('--threshold_people')
+        parser.add_argument('--probability_of_jockeying')
+
         parser.add_argument('--name')
 
         simulation_args = parser.parse_args()
