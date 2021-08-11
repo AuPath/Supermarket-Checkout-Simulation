@@ -6,9 +6,6 @@ from mesa import Agent
 from src.states.State import State
 from src.states.customerstates.CustomerEnteredState import CustomerEnteredState
 
-SHOPPING_SPEED = 1
-STANDARD_DEVIATION_COEFFICIENT = 0
-
 
 class Customer(Agent):
     """This class represents the client agent."""
@@ -16,8 +13,8 @@ class Customer(Agent):
     def __init__(self, agent_id, model,
                  basket_size_target, self_scan, queue_choice_strategy,
                  queue_jockeying_strategy,
-                 shopping_speed=SHOPPING_SPEED,
-                 standard_deviation_coefficient=STANDARD_DEVIATION_COEFFICIENT):
+                 shopping_speed=1,
+                 standard_deviation_coefficient=0):
         """Constructor, the basket_size_target and the boolean self_scan are assigned by the main class."""
         super().__init__(agent_id, model)
 
