@@ -19,19 +19,67 @@
 
 
 %----------------------------------------------------------------------------------------
-
-
-
 \begin{frame}{Scelta della coda}
-	\centering
-	definizione di strategia (con formula argmin) - 4 strategie - formule delle strategie
-	\#TODO: Marco
+  \centering
 
+  \#TODO: Marco
+
+  \begin{itemize}
+  \item Terminata la fase di spesa un cliente decide tra le casse
+    aperte dove accodarsi individuando la coda ottimale per una
+    determinata metrica.
+
+  \item A questo comportamento fanno eccezione i clienti che hanno
+    inizialmente optato per la modalitá di spesa self scan per i quali
+    é obbligatorio recarsi alle casse di tipo self scan.
+
+  \item Un cliente puó accodarsi ad una cassa self-service solo se ha
+    un numero di prodotti inferiore al limite imposto.
+  \end{itemize}
+  
+  definizione di strategia (con formula argmin) - 4 strategie -
+  formule delle strategie
 \end{frame}
 
 
-%----------------------------------------------------------------------------------------
+% ----------------------------------------------------------------------------------------
+\begin{frame}{Strategie scelta coda 1-2}
+  La scelta della coda puó avvenire in base a 4 strategie:
+  \begin{enumerate}
+  \item Minor numero di elementi
 
+    \begin{equation}
+      \argmin_q f(q) = \sum\limits_{i=1}^N \text{estimate-basket-size}(c_i) 
+    \end{equation}
+
+    Per rendere piú realistico il calcolo tramite il parametro
+    \textit{standard deviation coefficient} é possibile ''sbagliare''
+    il conto di articoli per cliente.
+    
+  \item Minor numero di persone
+   \end{enumerate}
+   
+   \begin{equation}
+     \argmin_q f(q) = |q|
+   \end{equation}
+
+   Dove \textit{q} é una coda e c\textsubscript{i} é l'i-esimo
+   cliente.   
+ \end{frame}
+
+
+
+% ----------------------------------------------------------------------------------------
+\begin{frame}{Strategie scelta coda 3-4}
+  \begin{enumerate}
+    \setcounter{enumi}{2}
+  \item Minor tempo di attesa rispetto al tempo di servizio medio
+  \item Minor tempo di attesa rispetto alla \textit{power regression}
+  \end{enumerate}
+\end{frame}
+
+
+% ----------------------------------------------------------------------------------------
 
 
 \begin{frame}{Jockeying}
