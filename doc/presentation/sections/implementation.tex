@@ -22,7 +22,7 @@
 \begin{frame}{Scelta della coda}
   \centering
 
-  \#TODO: Marco
+  \#TODO: Marco spiegare parametri a,b,c,d
 
   \begin{itemize}
   \item Terminata la fase di spesa un cliente decide tra le casse
@@ -70,15 +70,56 @@
 
 
 % ----------------------------------------------------------------------------------------
+\begin{frame}{Formule cassa standard}
+  \begin{itemize}
+  \item Transaction time
+    \begin{equation}
+      \text{transaction-time}_i = e^{a log(\text{estimate-basket-size}(c_i)) + b}
+    \end{equation}
+\item Break Time
+  \begin{equation}
+    \text{break-time}_i = \frac{\beta^{\alpha} \text{estimate-basket-size}(c_i)^{\alpha - 1} e^{- \beta \text{estimate-basket-size}(c_i)}}{\Gamma (\alpha)}
+  \end{equation}  
+\item Total service time
+  \begin{equation}
+    \text{total-service-time}(q_j) = \sum\limits_{i=1}^N \left( \text{transaction-time}_i + \text{break-time}_i \right)
+  \end{equation}
+\end{itemize}  
+\end{frame}
+
+% ----------------------------------------------------------------------------------------
+\begin{frame}{Formule cassa self-service}
+  \begin{itemize}
+  \item Transaction time
+    \begin{equation}
+      \text{transaction-time}_i = e^{a log(\text{estimate-basket-size}(c_i)) + b}
+\end{equation}
+    
+\item Break Time
+  \begin{equation}
+    \text{break-time}_i = e^{c log(\text{estimate-basket-size}(c_i)) + d}
+  \end{equation}
+\item Total service time
+  \begin{equation}
+    \text{total-service-time}(q_j) = \sum\limits_{i=1}^N \left( \text{transaction-time}_i + \text{break-time}_i \right)
+  \end{equation}  
+\end{itemize}  
+\end{frame}
+
+% ----------------------------------------------------------------------------------------
 \begin{frame}{Strategie scelta coda 3-4}
   \begin{enumerate}
     \setcounter{enumi}{2}
   \item Minor tempo di attesa rispetto al tempo di servizio medio
-  \item Minor tempo di attesa rispetto alla \textit{power regression}
-  \end{enumerate}
+    \begin{equation}
+      \argmin_q f(q) = |q| * \frac{1}{M}\sum\limits_{j=1}^M \left( \text{total-service-time}(q_j) \right)
+\end{equation}
+\item Minor tempo di attesa rispetto alla \textit{power regression}
+  \begin{equation}
+    \argmin_q f(q) = |q| * \text{total-service-time}(q)
+  \end{equation}
+\end{enumerate}
 \end{frame}
-
-
 % ----------------------------------------------------------------------------------------
 
 
