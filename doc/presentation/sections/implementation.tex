@@ -22,7 +22,7 @@
 \begin{frame}{Scelta della coda}
   \centering
 
-  \#TODO: Marco spiegare parametri a,b,c,d
+  \#TODO: Marco formula gamma
 
   \begin{itemize}
   \item Terminata la fase di spesa un cliente decide tra le casse
@@ -84,6 +84,11 @@
   \begin{equation}
     \text{total-service-time}(q_j) = \sum\limits_{i=1}^N \left( \text{transaction-time}_i + \text{break-time}_i \right)
   \end{equation}
+
+  \begin{equation}
+    a = 0.6984, \;\; b = 2.1219, \;\; \alpha = 3.074209, \;\; \beta = \frac{1}{4.830613}
+  \end{equation}
+  
 \end{itemize}  
 \end{frame}
 
@@ -102,7 +107,12 @@
 \item Total service time
   \begin{equation}
     \text{total-service-time}(q_j) = \sum\limits_{i=1}^N \left( \text{transaction-time}_i + \text{break-time}_i \right)
-  \end{equation}  
+  \end{equation}
+
+  \begin{equation}
+    a = 0.6725, \;\; b = 3.1223, \;\; c = 0.2251, \;\; d = 3.5167
+  \end{equation}
+  
 \end{itemize}  
 \end{frame}
 
@@ -110,10 +120,14 @@
 \begin{frame}{Strategie scelta coda 3-4}
   \begin{enumerate}
     \setcounter{enumi}{2}
+
   \item Minor tempo di attesa rispetto al tempo di servizio medio
     \begin{equation}
       \argmin_q f(q) = |q| * \frac{1}{M}\sum\limits_{j=1}^M \left( \text{total-service-time}(q_j) \right)
-\end{equation}
+    \end{equation}
+
+    Dove \textit{M} é il numero di code nel supermercato
+    
 \item Minor tempo di attesa rispetto alla \textit{power regression}
   \begin{equation}
     \argmin_q f(q) = |q| * \text{total-service-time}(q)
