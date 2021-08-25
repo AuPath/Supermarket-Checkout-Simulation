@@ -150,9 +150,24 @@
 
 
 \begin{frame}{Considerazioni}
-	\centering
-	Il nostro modello è stra flessibile per le strategie e per gli stati e anche per i parametri che mo descriviamo
-	\#TODO: Marco
+  \begin{itemize}
+  \item Il modello da noi descritto é stato implementato con
+    l'obbiettivo di essere facile da modificare.
+    
+  \item Il comportamento degli agenti viene gestito con una
+    macchina a stati finita implementata tramite il pattern
+    \textbf{State}.  Questo isola logicamente aspetti quali
+    azioni da compiere e rappresentazione grafica da assumere in
+    determinati stati.
+
+  \item Dove esistono diversi approcci ad una scelta, per
+    esempio nella scelta della coda, questi vengono gestiti con
+    il pattern \textbf{Strategy}, dando possibilitá di scelta
+    tra piú opzioni e una facilitazione nel crearne di nuove.
+
+  \item I parametri che regolano il modello descritti a seguire
+    sono configurabili a piacere
+  \end{itemize}
 \end{frame}
 
 
