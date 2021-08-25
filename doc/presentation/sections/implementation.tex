@@ -22,8 +22,6 @@
 \begin{frame}{Scelta della coda}
   \centering
 
-  \#TODO: Marco formula gamma
-
   \begin{itemize}
   \item Terminata la fase di spesa un cliente decide tra le casse
     aperte dove accodarsi individuando la coda ottimale per una
@@ -80,6 +78,12 @@
   \begin{equation}
     \text{break-time}_i = \frac{\beta^{\alpha} \text{estimate-basket-size}(c_i)^{\alpha - 1} e^{- \beta \text{estimate-basket-size}(c_i)}}{\Gamma (\alpha)}
   \end{equation}  
+
+\item Dove $\Gamma$ è la funzione \textbf{gamma}
+  \begin{equation}
+    \Gamma (z) = \int_{0}^{\infty} x^{z-1} e^{-x} dx \;\; \forall z \in \mathbb{C}
+  \end{equation}
+
 \item Total service time
   \begin{equation}
     \text{total-service-time}(q_j) = \sum\limits_{i=1}^N \left( \text{transaction-time}_i + \text{break-time}_i \right)
