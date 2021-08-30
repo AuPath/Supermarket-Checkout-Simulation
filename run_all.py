@@ -25,4 +25,7 @@ for simulation in simulations_list:
     command = f'python {ENTRYPOINT} {parameters} &'
     commands_list.append(command)
 
-subprocess.Popen('\n'.join(commands_list), shell=True)
+command_to_execute = '\n'.join(commands_list)
+
+with open('simulations.sh', 'w') as f:
+    f.writelines(command_to_execute)

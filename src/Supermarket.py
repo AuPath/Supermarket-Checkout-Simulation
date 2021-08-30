@@ -33,7 +33,7 @@ from src.zones.stationary.ShoppingZone import ShoppingZone
 ADJ_WINDOW_SIZE = 2
 MAX_CUSTOMER_QUEUED = 10
 
-QUEUED_PERCENTAGE_OPEN_THRESHOLD = 0.6
+QUEUED_PERCENTAGE_OPEN_THRESHOLD = 0.5
 QUEUED_PERCENTAGE_CLOSE_THRESHOLD = 0.3
 
 # Basket size exponential distribution parameter
@@ -126,9 +126,9 @@ class Supermarket(Model):
 
         # activation / deactivation cash desks
         if self.get_total_customers() > 0:
-            if not self.has_shared_queue \
-                    and self.cash_desk_standard_zone is not None \
-                    and self.cash_desk_standard_shared_zone is not None:
+            if (not self.has_shared_queue
+                    and (self.cash_desk_standard_zone is not None
+                         or self.cash_desk_standard_shared_zone is not None)):
                 while self.need_to_open_cash_desk() and self.get_not_working_queues() != []:
                     self.get_not_working_queues()[0].working = True
                 else:
@@ -153,7 +153,7 @@ class Supermarket(Model):
 
         for basket_size in basket_size_values:
             self_scan = random.random() < self.self_scan_percentage
-            new_tuple = (basket_size, self_scan,  self.__queue_choice_strategy, self.__queue_jockey_strategy)
+            new_tuple = (basket_size, self_scan, self.__queue_choice_strategy, self.__queue_jockey_strategy)
             customers_metadata.append(new_tuple)
         return customers_metadata
 
@@ -500,7 +500,7 @@ class Supermarket(Model):
             return 0
         else:
             return (self.get_number_of_customers() - self.get_number_of_customers(exclude_self_scan=True)) / \
-               len(self.get_cash_desks_by_type("CashDeskSelfScan"))
+                   len(self.get_cash_desks_by_type("CashDeskSelfScan"))
 
     def get_flow_self_scan(self):
         # numero di clienti entranti self scan
@@ -509,7 +509,7 @@ class Supermarket(Model):
             return 0
         else:
             return (self.get_number_entering_customers() - self.get_number_entering_customers(exclude_self_scan=True)) / \
-               len(self.get_cash_desks_by_type("CashDeskSelfScan"))
+                   len(self.get_cash_desks_by_type("CashDeskSelfScan"))
 
     def get_current_step(self):
         return self.current_step
