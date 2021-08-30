@@ -7,8 +7,8 @@ from numpy import cumsum
 
 
 class CashDeskSelfScanNewCustomerState(State):
-    RE_READ_TOTAL_PROBABILITY = 0.025
-    RE_READ_PARTIAL_PROBABILITY = 0.075
+    RE_READ_TOTAL_PROBABILITY = 0.01
+    RE_READ_PARTIAL_PROBABILITY = 0.03
     NO_READ_PROBABILITY = 1 - (RE_READ_TOTAL_PROBABILITY + RE_READ_PARTIAL_PROBABILITY)
 
     def __init__(self, c):

@@ -126,8 +126,9 @@ class Supermarket(Model):
 
         # activation / deactivation cash desks
         if self.get_total_customers() > 0:
-            # Is the queue among cash desks shared?
-            if not self.has_shared_queue:
+            if not self.has_shared_queue \
+                    and self.cash_desk_standard_zone is not None \
+                    and self.cash_desk_standard_shared_zone is not None:
                 while self.need_to_open_cash_desk() and self.get_not_working_queues() != []:
                     self.get_not_working_queues()[0].working = True
                 else:
@@ -423,8 +424,11 @@ class Supermarket(Model):
             return False
 
     def avg_queue_load(self):
-        avg_load = mean(map(lambda x: x.queue.size(), self.get_working_queues(exclude_self_service=True)))
-        return avg_load / MAX_CUSTOMER_QUEUED
+        data_points = list(map(lambda x: x.queue.size(), self.get_working_queues(exclude_self_service=True)))
+        if data_points:
+            return mean(data_points) / MAX_CUSTOMER_QUEUED
+        else:
+            return 0
 
     def get_total_customers(self):
         # questo metodo serve per l'attivazione e la disattivazione delle casse

@@ -18,7 +18,7 @@ class CashDeskReservedZone(CashDeskZone):
                 pass
             else:
                 x = self.model.cash_desk_self_scan_zone.cash_desks_number * 2 - 1
-                y = self.model.grid.GRID_HEIGHT - self.model.shopping_zone.dimension - 2
+                y = self.model.grid.height - self.model.shopping_zone.dimension - 2
                 cash_desk = self.cash_desks[0]
                 self.model.grid.place_agent(cash_desk, (x, y))
 

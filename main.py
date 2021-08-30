@@ -65,6 +65,11 @@ def preprocess_simulation_parameters(input_parameters):
     input_parameters = preprocess_jockeying_strategy(input_parameters)
     input_parameters = preprocess_queue_choice_strategy(input_parameters)
 
+    if input_parameters.get('self_scan_customer_percentage', None) is None:
+        input_parameters.pop('self_scan_customer_percentage', None)
+    if input_parameters.get('grid_height', None) is None:
+        input_parameters.pop('grid_height', None)
+
     zones_metadata = init_zones_metadata(
         entering_zone_width=ENTERING_ZONE_WIDTH,
         shopping_zone_height=SHOPPING_ZONE_HEIGHT,
@@ -73,13 +78,15 @@ def preprocess_simulation_parameters(input_parameters):
         shared_queue=input_parameters['shared_queue'],
         number_cash_desk_self_service_groups=input_parameters['number_cash_desk_self_service_groups'])
 
-    grid = init_grid(GRID_HEIGHT, PIXELS_WIDTH, PIXELS_HEIGHT, zones_metadata)
+    grid_height = input_parameters.get('grid_height', GRID_HEIGHT)
+    grid = init_grid(grid_height, PIXELS_WIDTH, PIXELS_HEIGHT, zones_metadata)
 
     keys_to_remove = [
         'number_cash_desk_self_scan',
         'number_cash_desk',
         'number_cash_desk_self_service_groups',
         'shared_queue',
+        'grid_height',
         'threshold_people',
         'threshold_items',
         'probability_of_jockeying']
@@ -87,16 +94,13 @@ def preprocess_simulation_parameters(input_parameters):
     for dict_key in keys_to_remove:
         input_parameters.pop(dict_key, None)
 
-    if input_parameters.get('self_scan_customer_percentage', None) is None:
-        input_parameters.pop('self_scan_customer_percentage', None)
-
     server_parameters = dict(
         zones_metadata=zones_metadata,
         grid=grid,
         customer_shop_speed=CUSTOMER_SPEED_PER_STEP,
         customer_arrival_distribution=CUSTOMER_DISTRIBUTION,
         period_in_seconds=PERIOD_IN_SECONDS,
-        grid_height=GRID_HEIGHT
+        grid_height=grid_height
     )
 
     parameters = dict(input_parameters, **server_parameters)
