@@ -87,6 +87,9 @@ def preprocess_simulation_parameters(input_parameters):
     for dict_key in keys_to_remove:
         input_parameters.pop(dict_key, None)
 
+    if input_parameters.get('self_scan_customer_percentage', None) is None:
+        input_parameters.pop('self_scan_customer_percentage', None)
+
     server_parameters = dict(
         zones_metadata=zones_metadata,
         grid=grid,

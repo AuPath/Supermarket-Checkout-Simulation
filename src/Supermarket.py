@@ -64,6 +64,7 @@ class Supermarket(Model):
         self.__num_agent = 0
         self.running = True
         self.queues = None
+        self.has_shared_queue = False
         self.customer_distribution = customer_distribution
         self.current_step = 1
         self.__queue_choice_strategy = queue_choice_strategy
@@ -125,11 +126,13 @@ class Supermarket(Model):
 
         # activation / deactivation cash desks
         if self.get_total_customers() > 0:
-            while self.need_to_open_cash_desk() and self.get_not_working_queues() != []:
-                self.get_not_working_queues()[0].working = True
-            else:
-                if self.need_to_close_cash_desk():
-                    self.get_working_queues(exclude_self_service=True)[-1].working = False
+            # Is the queue among cash desks shared?
+            if not self.has_shared_queue:
+                while self.need_to_open_cash_desk() and self.get_not_working_queues() != []:
+                    self.get_not_working_queues()[0].working = True
+                else:
+                    if self.need_to_close_cash_desk():
+                        self.get_working_queues(exclude_self_service=True)[-1].working = False
         else:
             self.close_all_cash_desks()
 
@@ -190,6 +193,7 @@ class Supermarket(Model):
                 self.cash_desk_standard_zone = CashDeskStandardZone(self, dimension)
             elif zone_type == 'CASH_DESK_STANDARD_SHARED_QUEUE':
                 self.cash_desk_standard_shared_zone = CashDeskStandardSharedQueueZone(self, dimension)
+                self.has_shared_queue = True
             elif zone_type == 'CASH_DESK_SELF_SERVICE':
                 self.cash_desk_self_service_zone = CashDeskSelfServiceZone(self, dimension)
             elif zone_type == 'CASH_DESK_SELF_SCAN':
@@ -385,7 +389,13 @@ class Supermarket(Model):
         for cash_desk in self.__cash_desks:
             if cash_desk in self.cash_desk_self_service_zone.cash_desks and not exclude_self_service:
                 filtered_cash_desk.append(cash_desk)
-            elif cash_desk in self.cash_desk_standard_zone.cash_desks and cash_desk.working:
+            elif self.cash_desk_standard_zone is not None \
+                    and cash_desk in self.cash_desk_standard_zone.cash_desks \
+                    and cash_desk.working:
+                filtered_cash_desk.append(cash_desk)
+            elif self.cash_desk_standard_shared_zone is not None \
+                    and cash_desk in self.cash_desk_standard_shared_zone.cash_desks \
+                    and cash_desk.working:
                 filtered_cash_desk.append(cash_desk)
         return filtered_cash_desk
 

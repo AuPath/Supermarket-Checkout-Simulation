@@ -17,6 +17,8 @@ class CashDeskStandardSharedQueueZone(CashDeskStandardZone):
              if self.model.cash_desk_self_scan_zone is not None else 0) + 3
         y = 3
         self.model.grid.place_agent(cell, (x, y))
+        for cash_desk in self.model.get_cash_desks():
+            cash_desk.working = True
 
     def move_to_queue(self, customer: Customer, cash_desk: CashDesk):
         if customer.target_queue in self.queues:

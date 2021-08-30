@@ -205,7 +205,10 @@ def init_grid(height, pixels_width, pixels_height, zones_metadata):
     # Unzip metadata
     zones_metadata_dict = dict(zones_metadata)
     number_cash_desk_self_scan = zones_metadata_dict['CASH_DESK_SELF_SCAN']
-    number_cash_desk = zones_metadata_dict['CASH_DESK_STANDARD']
+    try:
+        number_cash_desk = zones_metadata_dict['CASH_DESK_STANDARD']
+    except KeyError:
+        number_cash_desk = zones_metadata_dict['CASH_DESK_STANDARD_SHARED_QUEUE']
     number_cash_desk_self_service_groups = zones_metadata_dict['CASH_DESK_SELF_SERVICE']
     entering_zone_width = zones_metadata_dict['ENTERING']
 

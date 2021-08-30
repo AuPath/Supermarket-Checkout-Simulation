@@ -122,13 +122,14 @@ class Customer(Agent):
         if self.self_scan:
             self.model.cash_desk_self_scan_zone.move_to_queue(self, cash_desk)
         else:
-            if cash_desk in self.model.cash_desk_standard_zone.cash_desks:
-                if self.model.cash_desk_standard_zone is not None:
-                    self.model.cash_desk_standard_zone.move_to_queue(self, cash_desk)
-                else:
-                    self.model.cash_desk_standard_shared_zone.move_to_queue(self, cash_desk)
-            elif cash_desk in self.model.cash_desk_self_service_zone.cash_desks:
+            if cash_desk in self.model.cash_desk_self_service_zone.cash_desks:
                 self.model.cash_desk_self_service_zone.move_to_queue(self, cash_desk)
+            elif self.model.cash_desk_standard_zone is not None \
+                    and cash_desk in self.model.cash_desk_standard_zone.cash_desks:
+                self.model.cash_desk_standard_zone.move_to_queue(self, cash_desk)
+            elif self.model.cash_desk_standard_shared_zone is not None \
+                    and cash_desk in self.model.cash_desk_standard_shared_zone.cash_desks:
+                self.model.cash_desk_standard_shared_zone.move_to_queue(self, cash_desk)
 
     def estimate_basket_size(self):
         return math.ceil(random.normalvariate(self.basket_size, self.basket_size * self.standard_deviation_coefficient))
