@@ -288,9 +288,11 @@ class Supermarket(Model):
         # Shopping zone
         self.shopping_zone.build()
         # Self-scan zone
-        self.cash_desk_self_scan_zone.build()
+        if self.cash_desk_self_scan_zone is not None:
+            self.cash_desk_self_scan_zone.build()
         # Reserved zone
-        self.cash_desk_reserved_zone.build()
+        if self.cash_desk_reserved_zone is not None:
+            self.cash_desk_reserved_zone.build()
         # Cash-desk standard zone
         if self.cash_desk_standard_zone is not None:
             self.cash_desk_standard_zone.build()
@@ -493,12 +495,19 @@ class Supermarket(Model):
 
     def get_density_standard(self):
         # numero di clienti non self scan / numero di casse non self scan
-        return self.get_number_of_customers(exclude_self_scan=True) / len(self.get_cash_desks(exclude_self_scan=True))
+        n_cash_desks = len(self.get_cash_desks(exclude_self_scan=True))
+        if n_cash_desks == 0:
+            return 0
+        else:
+            return self.get_number_of_customers(exclude_self_scan=True) / n_cash_desks
 
     def get_flow_standard(self):
         # numero di clienti entranti non self scan
-        return self.get_number_entering_customers(exclude_self_scan=True) / \
-               len(self.get_cash_desks(exclude_self_scan=True))
+        n_cash_desks = len(self.get_cash_desks(exclude_self_scan=True))
+        if n_cash_desks == 0:
+            return 0
+        else:
+            return self.get_number_entering_customers(exclude_self_scan=True) / n_cash_desks
 
     def get_density_self_scan(self):
         # numero di clienti self scan / numero di casse self scan
@@ -563,6 +572,7 @@ class Supermarket(Model):
         else:
             filtered_cash_desk = []
             for cash_desk in self.__cash_desks:
-                if cash_desk not in self.cash_desk_self_scan_zone.cash_desks:
+                if (self.cash_desk_self_scan_zone is not None
+                        and cash_desk not in self.cash_desk_self_scan_zone.cash_desks):
                     filtered_cash_desk.append(cash_desk)
             return filtered_cash_desk
