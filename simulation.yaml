@@ -46,7 +46,7 @@
 
     - simulation:
         number_cash_desk_self_scan: 0
-        number_cash_desk: 20
+        number_cash_desk: 10
         number_cash_desk_self_service_groups: 1
         shared_queue: False
         threshold_items: 15
@@ -58,7 +58,7 @@
 
     - simulation:
         number_cash_desk_self_scan: 0
-        number_cash_desk: 20
+        number_cash_desk: 10
         number_cash_desk_self_service_groups: 1
         shared_queue: False
         threshold_items: 15
@@ -70,7 +70,7 @@
 
     - simulation:
         number_cash_desk_self_scan: 0
-        number_cash_desk: 20
+        number_cash_desk: 10
         number_cash_desk_self_service_groups: 1
         shared_queue: False
         threshold_items: 15
@@ -82,7 +82,7 @@
 
     - simulation:
         number_cash_desk_self_scan: 0
-        number_cash_desk: 20
+        number_cash_desk: 10
         number_cash_desk_self_service_groups: 1
         shared_queue: False
         threshold_items: 15
@@ -95,7 +95,7 @@
 
     - simulation:
         number_cash_desk_self_scan: 0
-        number_cash_desk: 20
+        number_cash_desk: 10
         number_cash_desk_self_service_groups: 1
         shared_queue: False
         threshold_people: 3
@@ -107,7 +107,7 @@
 
     - simulation:
         number_cash_desk_self_scan: 0
-        number_cash_desk: 20
+        number_cash_desk: 10
         number_cash_desk_self_service_groups: 1
         shared_queue: False
         threshold_people: 3
@@ -119,7 +119,7 @@
 
     - simulation:
         number_cash_desk_self_scan: 0
-        number_cash_desk: 20
+        number_cash_desk: 10
         number_cash_desk_self_service_groups: 1
         shared_queue: False
         threshold_people: 3
@@ -131,7 +131,7 @@
 
     - simulation:
         number_cash_desk_self_scan: 0
-        number_cash_desk: 20
+        number_cash_desk: 10
         number_cash_desk_self_service_groups: 1
         shared_queue: False
         threshold_people: 3
@@ -145,7 +145,7 @@
 
     - simulation:
         number_cash_desk_self_scan: 0
-        number_cash_desk: 20
+        number_cash_desk: 10
         number_cash_desk_self_service_groups: 1
         shared_queue: True
         queue_choice_strategy: least_items
@@ -156,7 +156,7 @@
 # 5.4 Simulazione con casse self-scan
 
     - simulation:
-          number_cash_desk_self_scan: 10 # todo: ricontrollare, va bene 10?
+          number_cash_desk_self_scan: 7
           number_cash_desk: 0
           number_cash_desk_self_service_groups: 0
           shared_queue: False
@@ -164,26 +164,27 @@
           queue_jockeying_strategy: no_jockeying
           customer_standard_deviation_coefficient: 0
           self_scan_customer_percentage: 1
+          grid_height: 70
           name: self_scan
 
 # 5.5 Simulazione non deterministica
 
     - simulation:
-          number_cash_desk_self_scan: 10
-          number_cash_desk: 20
+          number_cash_desk_self_scan: 5
+          number_cash_desk: 10
           number_cash_desk_self_service_groups: 1
           shared_queue: False
-          threshold_people: 3
+          threshold_items: 15
           probability_of_jockeying: 0.5
           queue_choice_strategy: least_items
           queue_jockeying_strategy: least_items
           customer_standard_deviation_coefficient: 0.1
-          self_scan_customer_percentage: 1
+          self_scan_customer_percentage: 0.1
           name: prob_coda1_jockey1
 
     - simulation:
-          number_cash_desk_self_scan: 10
-          number_cash_desk: 20
+          number_cash_desk_self_scan: 5
+          number_cash_desk: 10
           number_cash_desk_self_service_groups: 1
           shared_queue: False
           threshold_people: 3
@@ -191,25 +192,25 @@
           queue_choice_strategy: least_items
           queue_jockeying_strategy: least_people
           customer_standard_deviation_coefficient: 0.1
-          self_scan_customer_percentage: 1
+          self_scan_customer_percentage: 0.1
           name: prob_coda1_jockey2
 
     - simulation:
-          number_cash_desk_self_scan: 10
-          number_cash_desk: 20
+          number_cash_desk_self_scan: 5
+          number_cash_desk: 10
           number_cash_desk_self_service_groups: 1
           shared_queue: False
-          threshold_people: 3
+          threshold_items: 15
           probability_of_jockeying: 0.5
           queue_choice_strategy: least_people
           queue_jockeying_strategy: least_items
           customer_standard_deviation_coefficient: 0.1
-          self_scan_customer_percentage: 1
+          self_scan_customer_percentage: 0.1
           name: prob_coda2_jockey1
 
     - simulation:
-          number_cash_desk_self_scan: 10
-          number_cash_desk: 20
+          number_cash_desk_self_scan: 5
+          number_cash_desk: 10
           number_cash_desk_self_service_groups: 1
           shared_queue: False
           threshold_people: 3
@@ -217,25 +218,25 @@
           queue_choice_strategy: least_people
           queue_jockeying_strategy: least_people
           customer_standard_deviation_coefficient: 0.1
-          self_scan_customer_percentage: 1
+          self_scan_customer_percentage: 0.1
           name: prob_coda2_jockey2
 
     - simulation:
-          number_cash_desk_self_scan: 10
-          number_cash_desk: 20
+          number_cash_desk_self_scan: 5
+          number_cash_desk: 10
           number_cash_desk_self_service_groups: 1
           shared_queue: False
-          threshold_people: 3
+          threshold_items: 15
           probability_of_jockeying: 0.5
           queue_choice_strategy: least_waiting_time_service_implied
           queue_jockeying_strategy: least_items
           customer_standard_deviation_coefficient: 0.1
-          self_scan_customer_percentage: 1
+          self_scan_customer_percentage: 0.1
           name: prob_coda3_jockey1
 
     - simulation:
-          number_cash_desk_self_scan: 10
-          number_cash_desk: 20
+          number_cash_desk_self_scan: 5
+          number_cash_desk: 10
           number_cash_desk_self_service_groups: 1
           shared_queue: False
           threshold_people: 3
@@ -243,25 +244,25 @@
           queue_choice_strategy: least_waiting_time_service_implied
           queue_jockeying_strategy: least_people
           customer_standard_deviation_coefficient: 0.1
-          self_scan_customer_percentage: 1
+          self_scan_customer_percentage: 0.1
           name: prob_coda3_jockey2
 
     - simulation:
-          number_cash_desk_self_scan: 10
-          number_cash_desk: 20
+          number_cash_desk_self_scan: 5
+          number_cash_desk: 10
           number_cash_desk_self_service_groups: 1
           shared_queue: False
-          threshold_people: 3
+          threshold_items: 15
           probability_of_jockeying: 0.5
           queue_choice_strategy: least_waiting_power_implied
           queue_jockeying_strategy: least_items
           customer_standard_deviation_coefficient: 0.1
-          self_scan_customer_percentage: 1
+          self_scan_customer_percentage: 0.1
           name: prob_coda4_jockey1
 
     - simulation:
-          number_cash_desk_self_scan: 10
-          number_cash_desk: 20
+          number_cash_desk_self_scan: 5
+          number_cash_desk: 10
           number_cash_desk_self_service_groups: 1
           shared_queue: False
           threshold_people: 3
@@ -269,5 +270,5 @@
           queue_choice_strategy: least_waiting_power_implied
           queue_jockeying_strategy: least_people
           customer_standard_deviation_coefficient: 0.1
-          self_scan_customer_percentage: 1
+          self_scan_customer_percentage: 0.1
           name: prob_coda4_jockey2
