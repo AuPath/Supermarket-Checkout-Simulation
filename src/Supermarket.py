@@ -1,9 +1,8 @@
 import logging
 import math
-from statistics import mean
 import pickle
-from src.config import PICKLE_PATH
 from os.path import join
+from statistics import mean
 
 from mesa import Model
 from mesa.datacollection import DataCollector
@@ -18,6 +17,7 @@ from src.cashdesk.CashDeskReserved import CashDeskReserved
 from src.cashdesk.CashDeskSelfScan import CashDeskSelfScan
 from src.cashdesk.CashDeskSelfService import CashDeskSelfService
 from src.cashdesk.CashDeskStandard import CashDeskStandard
+from src.config import PICKLE_PATH
 from src.queue.NormalQueue import NormalQueue
 from src.queue.SupermarketQueue import SupermarketQueue
 from src.queuechoicestrategy.QueueChoiceStrategy import QueueChoiceStrategy
@@ -186,7 +186,9 @@ class Supermarket(Model):
     def init_zones(self):
         logging.info("Init zones")
         for zone_type, dimension in self.zones_metadata:
-            if zone_type == 'ENTERING':
+            if dimension == 0:
+                pass
+            elif zone_type == 'ENTERING':
                 self.entering_zone = EnteringZone(self, dimension)
             elif zone_type == 'SHOPPING':
                 self.shopping_zone = ShoppingZone(self, dimension)
@@ -209,7 +211,9 @@ class Supermarket(Model):
         idx = 1
         estimation_bias = True if self.customer_standard_deviation_coefficient > 0 else False
         for zone_type, dimension in self.zones_metadata:
-            if zone_type == 'CASH_DESK_STANDARD':
+            if dimension == 0:
+                pass
+            elif zone_type == 'CASH_DESK_STANDARD':
                 for i in range(dimension):
                     cash_desk = CashDeskStandard(idx, self, NormalQueue(), estimation_bias=estimation_bias)
                     self.cash_desk_standard_zone.cash_desks.append(cash_desk)
@@ -294,7 +298,8 @@ class Supermarket(Model):
         if self.cash_desk_standard_shared_zone is not None:
             self.cash_desk_standard_shared_zone.build()
         # Self-service zone
-        self.cash_desk_self_service_zone.build()
+        if self.cash_desk_self_service_zone is not None:
+            self.cash_desk_self_service_zone.build()
 
     def add_cash_desk(self, cash_desks):
         self.__cash_desks.append(cash_desks)
@@ -388,15 +393,17 @@ class Supermarket(Model):
     def get_working_queues(self, exclude_self_service=False):
         filtered_cash_desk = []
         for cash_desk in self.__cash_desks:
-            if cash_desk in self.cash_desk_self_service_zone.cash_desks and not exclude_self_service:
+            if (self.cash_desk_self_service_zone is not None
+                    and cash_desk in self.cash_desk_self_service_zone.cash_desks
+                    and not exclude_self_service):
                 filtered_cash_desk.append(cash_desk)
-            elif self.cash_desk_standard_zone is not None \
-                    and cash_desk in self.cash_desk_standard_zone.cash_desks \
-                    and cash_desk.working:
+            elif (self.cash_desk_standard_zone is not None
+                  and cash_desk in self.cash_desk_standard_zone.cash_desks
+                  and cash_desk.working):
                 filtered_cash_desk.append(cash_desk)
-            elif self.cash_desk_standard_shared_zone is not None \
-                    and cash_desk in self.cash_desk_standard_shared_zone.cash_desks \
-                    and cash_desk.working:
+            elif (self.cash_desk_standard_shared_zone is not None
+                  and cash_desk in self.cash_desk_standard_shared_zone.cash_desks
+                  and cash_desk.working):
                 filtered_cash_desk.append(cash_desk)
         return filtered_cash_desk
 
