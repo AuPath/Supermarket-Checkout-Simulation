@@ -42,7 +42,15 @@ I macro-step che l'agente deve seguire per il raggiungimento del goal, che coinc
 
 \begin{enumerate}
 	\item \textbf{Attesa all'entrata del supermercato}: in questo stato il cliente si mette in attesa finchè non è possibile entrare nel supermercato.
-	\item \textbf{Fase di shopping}: il cliente è entrato e può iniziare a "fare la spesa", con questo si intende raggiungere il numero di prodotti desiderato, infatti nella simulazione viene considerato il \textit{basket size}, un'astrazione del carrello modellato attraverso un numero interno. Il basket size è il target da raggiungere nella fase di shopping, a ogni step il numero di prodotti aumenta di una certa quantità (la velocità di shopping è un parametro del modello descritto nella sezione \ref{model:parameters}). 
+	\item \textbf{Fase di shopping}: il cliente è entrato e può
+          iniziare a "fare la spesa", con questo si intende
+          raggiungere il numero di prodotti desiderato, infatti nella
+          simulazione viene considerato il \textit{basket size},
+          un'astrazione del carrello modellato attraverso un numero
+          intero. Il basket size è il target da raggiungere nella fase
+          di shopping, a ogni step il numero di prodotti aumenta di
+          una certa quantità (la velocità di shopping è un parametro
+          del modello descritto nella sezione \ref{model:parameters}).
 	
 	La basket size viene generata stocasticamente secondo una distribuzione esponenziale di parametro $\lambda = 0.07361$. La scelta di questo parametro viene giustificata nella sezione \ref{model:parameters}. 
 	
@@ -53,7 +61,7 @@ I macro-step che l'agente deve seguire per il raggiungimento del goal, che coinc
 	\begin{equation}
 		q^* = \operatorname*{argmin}_{q \in Q} f(q) \label{eq:strategy}
 	\end{equation}
-	dove $Q$ è l'insieme delle code dedicate e $f$ varia a seconda del tipo di strategia che il cliente può utilizzare per la scelta della coda.
+	dove $Q$ è l'insieme delle code e $f$ varia a seconda del tipo di strategia che il cliente può utilizzare per la scelta della coda.
 
 	\item \textbf{Attesa in coda e jockeying}: una volta che il cliente ha scelto la coda deve aspettare il proprio turno per essere servito. Nel lavoro di Tomasz Antczak e altri \cite{article1} viene suggerito come sviluppo futuro lo studio del fenomeno di \textit{jockeying}: con questa espressione si intende cambiare la coda che è stata scelta inizialmente in quanto un'altra risulta essere più conveniente, ad esempio perchè più scorrevole.
 	
@@ -137,8 +145,19 @@ a = 0.6725, \;\; b = 3.1223, \;\; c = 0.2251, \;\; d = 3.5167
 \item \textbf{Cassa self-scan}: la cassa self-scan si differenzia totalmente dalle prime due descritte, il cliente che voglia utilizzarla infatti, deve deciderlo già al momento dell'entrata nel supermercato, in quanto deve scannerizzare i prodotti man mano che fa la spesa e necessita dunque di una macchinetta scanner; una volta arrivato alla cassa self-scan, egli deve semplicemente effettuare il pagamento, saltando quindi le fasi di scanner e insacchettamento che caratterizzano le casse standard e self-service. La velocità di elaborazione della spesa in questo caso è praticamente nulla, in particolare un cliente che inizia il pagamento a una cassa self-scan, lo termina allo step successivo; il tempo di pausa per questa cassa è ugualmente nullo, dato che un cliente paga ed entra immediatamente nella fase di uscita dal negozio.
 
 Chiaramente per evitare che vengano rubati prodotti, i supermercati decidono di effettuare dei controlli random sui clienti che scelgono di usare le casse self-scan. A questo scopo è stata implementata la cassa di tipo riservato.
-\item \textbf{Cassa riservata}: questa cassa è identica nel funzionamento a una cassa standard, ciò che cambia è che è riservata alla rilettura della spesa dei clienti self-scan, che avviene in maniera random. Nel momento in cui un cliente si approccia ad una cassa self-scan, viene estratto un numero che determina la \textbf{rilettura parziale} o la \textbf{rilettura totale} della sua spesa;
-la rilettura parziale consiste nell'estrazione di 10 prodotti dal carrello e nella verifica che essi appartengano alla lista contenuta nello scanner del cliente, invece la rilettura totale consiste appunto nella rilettura completa della spesa di esso. Le probabilità di rilettura sono parametri del modello ed attualmente corrispondono allo $7.5 \%$ per la rilettura parziale e allo $2.5 \%$ per la rilettura totale.
+\item \textbf{Cassa riservata}: questa cassa è identica nel
+  funzionamento a una cassa standard, ciò che cambia è che è riservata
+  alla rilettura della spesa dei clienti self-scan, che avviene in
+  maniera random. Nel momento in cui un cliente si approccia ad una
+  cassa self-scan, viene estratto un numero che determina la
+  \textbf{rilettura parziale} o la \textbf{rilettura totale} della sua
+  spesa; la rilettura parziale consiste nell'estrazione di 10 prodotti
+  dal carrello e nella verifica che essi appartengano alla lista
+  contenuta nello scanner del cliente, invece la rilettura totale
+  consiste appunto nella rilettura completa della spesa di esso. Le
+  probabilità di rilettura sono parametri del modello ed attualmente
+  corrispondono allo $2 \%$ per la rilettura parziale e allo $1 \%$
+  per la rilettura totale.
 
 Il funzionamento e i tempi di servizio sono esattamente gli stessi della cassa standard, considerando un basket size completo per la rilettura totale e un basket size di soli 10 elementi per la rilettura parziale.
 \end{enumerate}
@@ -205,7 +224,18 @@ Il workflow della cassa self-service è uguale in tutto a quello della cassa sta
 
 \paragraph{Cassa self-scan}
 
-Le casse self-scan hanno sempre una coda condivisa, come si può notare in tutti i negozi che hanno adottato questo tipo di cassa. Nella \textbf{fase di attesa di un nuovo cliente}, se ci sono clienti nella coda condivisa, la cassa self-scan prende il primo cliente della coda; estrae quindi un numero e, con il $7.5 \%$ di probabilità lo manda alla cassa riservata per una \textbf{rilettura parziale}, con il $2.5 \%$ di probabilità lo manda alla cassa riservata per una \textbf{rilettura totale} e invece con il $90 \%$ di probabilità gli fa fare il pagamento normale. Nel caso di rilettura parziale o totale, la cassa sposta il cliente alla cassa riservata, fa avanzare i clienti in coda e rimane nella fase di attesa di un nuovo cliente, pronta per prendere il nuovo cliente della coda.
+Le casse self-scan hanno sempre una coda condivisa, come si può notare
+in tutti i negozi che hanno adottato questo tipo di cassa. Nella
+\textbf{fase di attesa di un nuovo cliente}, se ci sono clienti nella
+coda condivisa, la cassa self-scan prende il primo cliente della coda;
+estrae quindi un numero e, con il $2 \%$ di probabilità lo manda alla
+cassa riservata per una \textbf{rilettura parziale}, con il $1 \%$ di
+probabilità lo manda alla cassa riservata per una \textbf{rilettura
+  totale} e invece con il $90 \%$ di probabilità gli fa fare il
+pagamento normale. Nel caso di rilettura parziale o totale, la cassa
+sposta il cliente alla cassa riservata, fa avanzare i clienti in coda
+e rimane nella fase di attesa di un nuovo cliente, pronta per prendere
+il nuovo cliente della coda.
 
 Nel caso non debba avvenire una rilettura la cassa compie queste 4 azioni:
 

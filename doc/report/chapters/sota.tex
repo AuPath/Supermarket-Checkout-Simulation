@@ -37,7 +37,20 @@ In questo articolo l'autore considera la strategia di \textit{jockeying} nelle c
 
 Uno studio che abbiamo voluto includere nel nostro progetto è la differenza dei tempi di attesa al variare della disposizione delle code rispetto alle casse: nell'articolo \cite{yanagisawa2011methods} i ricercatori prendono in considerazione due tipi di disposizioni delle code: \textbf{parallela}, che si trova quando ogni cassa ha una coda dedicata, e \textbf{N-Fork}, che si trova quando c'è un'unica coda condivisa tra più casse. Essi hanno l'obiettivo di estendere la \textit{queuing theory} considerando la distanza da percorrere per arrivare a una coda, allo scopo di rendere più efficiente il sistema di code. Nel nostro progetto, noi non abbiamo incluso nelle strategie di scelta della coda la distanza da essa, e di fatti questa potrebbe essere un'estensione, abbiamo però considerato le due disposizioni di casse studiate. 
 
-Un'ulteriore estensione che abbiamo apportato a questi modelli è stata l'introduzione delle casse \textit{self-scan}: nell'articolo \cite{article1} vengono considerate le casse standard, con il cassiere, e le casse self-service, in cui il cliente passa in autonomia i prodotti allo scanner; nell'articolo \cite{yanagisawa2011methods}, invece, viene considerata solamente la cassa standard. Negli ultimi anni molti supermercati hanno adottato le casse self-scan, che permettono al cliente di scannerizzare i prodotti durante la spesa e, arrivati alla cassa, semplicemente pagare, senza passare i prodotti su un nastro; questo tipo di cassa sembra essere molto efficiente, in quanto richiede soltanto il pagamento, che diventa ancora più veloce se fatto in forma telematica. Per evitare furti, i supermercati decidono di effettuare in maniera randomica delle riletture della spesa, e questo dovrebbe diminuire la velocità media di attesa per le casse self-scan; per questi motivi abbiamo trovato utile simulare anche la presenza di queste casse.
+Un'ulteriore estensione che abbiamo apportato a questi modelli è stata
+l'introduzione delle casse \textit{self-scan}: nell'articolo
+\cite{article1} vengono considerate le casse standard, con il
+cassiere, e le casse self-service, in cui il cliente passa in
+autonomia i prodotti allo scanner; nell'articolo
+\cite{yanagisawa2011methods}, invece, viene considerata solamente la
+cassa standard. Negli ultimi anni molti supermercati hanno adottato le
+casse self-scan, che permettono al cliente di scannerizzare i prodotti
+durante la spesa e, arrivati alla cassa, semplicemente pagare, senza
+passare i prodotti su un nastro; questo tipo di cassa sembra essere
+molto efficiente, in quanto richiede soltanto il pagamento, che
+diventa ancora più veloce se fatto in forma telematica. Per evitare
+furti, i supermercati decidono di effettuare in maniera randomica
+delle riletture della spesa.
 
 Infine, per rendere la simulazione non deterministica e più realistica, abbiamo voluto inserire delle variabili probabilistiche: l'entrata dei clienti e la loro \textit{basket size} sono basate su distribuzioni di probabilità estratte dai dati di \cite{article1}; l'estrazione dei clienti delle casse self-scan per la rilettura della spesa è randomica; il \textit{jockeying} da parte di un cliente è random, in quanto non tutte le persone in fila guardano le altre code allo scopo di minimizzare il tempo di attesa; la stima del \textit{basket size} degli altri clienti da parte di un cliente, nel momento in cui utilizza la sua strategia per calcolare qual è la coda da scegliere, segue una distribuzione normale, rispecchiando così l'errore di stima che compie un umano quando deve quantificare una misura. Tutte queste distribuzioni di probabilità sono governate da parametri che, a parte per i dati estratti dal primo articolo, non sono giustificati da alcuno studio, per questo lo studio di essi rappresenta un'ulteriore estensione del nostro modello.
 
