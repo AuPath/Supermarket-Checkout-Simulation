@@ -34,119 +34,115 @@
   \item Un cliente puó accodarsi ad una cassa self-service solo se ha
     un numero di prodotti inferiore al limite imposto.
   \end{itemize}
-  
-  definizione di strategia (con formula argmin) - 4 strategie -
-  formule delle strategie
 \end{frame}
 
 
 % ----------------------------------------------------------------------------------------
-\begin{frame}{Strategie scelta coda 1-2}
+\begin{frame}{Strategie di scelta della coda 1-2}
   La scelta della coda puó avvenire in base a 4 strategie:
   \begin{enumerate}
   \item Minor numero di elementi
 
     \begin{equation}
-      \argmin_q f(q) = \sum\limits_{i=1}^N \text{estimate-basket-size}(c_i) 
+      \argmin_q \sum\limits_{i=1}^N \text{estimate-basket-size}(c_i) 
     \end{equation}
 
-    Per rendere piú realistico il calcolo tramite il parametro
-    \textit{standard deviation coefficient} é possibile ''sbagliare''
-    il conto di articoli per cliente.
+    Per rendere piú realistico il calcolo é possibile "sbagliare"
+    il conto di articoli per cliente tramite il parametro
+    \textit{standard deviation coefficient}.
     
   \item Minor numero di persone
    \end{enumerate}
    
    \begin{equation}
-     \argmin_q f(q) = |q|
+     \argmin_q |q|
    \end{equation}
 
    Dove \textit{q} é una coda e c\textsubscript{i} é l'i-esimo
    cliente.   
  \end{frame}
 
-
-
 % ----------------------------------------------------------------------------------------
-\begin{frame}{Formule cassa standard}
-  \begin{itemize}
-  \item Transaction time
-    \begin{equation}
-      \text{transaction-time}_i = e^{a log(\text{estimate-basket-size}(c_i)) + b}
-    \end{equation}
-\item Break Time
-  \begin{equation}
-    \text{break-time}_i = \frac{\beta^{\alpha} \text{estimate-basket-size}(c_i)^{\alpha - 1} e^{- \beta \text{estimate-basket-size}(c_i)}}{\Gamma (\alpha)}
-  \end{equation}  
-
-\item Dove $\Gamma$ è la funzione \textbf{gamma}
-  \begin{equation}
-    \Gamma (z) = \int_{0}^{\infty} x^{z-1} e^{-x} dx \;\; \forall z \in \mathbb{C}
-  \end{equation}
-
-\item Total service time
-  \begin{equation}
-    \text{total-service-time}(q_j) = \sum\limits_{i=1}^N \left( \text{transaction-time}_i + \text{break-time}_i \right)
-  \end{equation}
-
-  \begin{equation}
-    a = 0.6984, \;\; b = 2.1219, \;\; \alpha = 3.074209, \;\; \beta = \frac{1}{4.830613}
-  \end{equation}
-  
-\end{itemize}  
-\end{frame}
-
-% ----------------------------------------------------------------------------------------
-\begin{frame}{Formule cassa self-service}
-  \begin{itemize}
-  \item Transaction time
-    \begin{equation}
-      \text{transaction-time}_i = e^{a log(\text{estimate-basket-size}(c_i)) + b}
-\end{equation}
-    
-\item Break Time
-  \begin{equation}
-    \text{break-time}_i = e^{c log(\text{estimate-basket-size}(c_i)) + d}
-  \end{equation}
-\item Total service time
-  \begin{equation}
-    \text{total-service-time}(q_j) = \sum\limits_{i=1}^N \left( \text{transaction-time}_i + \text{break-time}_i \right)
-  \end{equation}
-
-  \begin{equation}
-    a = 0.6725, \;\; b = 3.1223, \;\; c = 0.2251, \;\; d = 3.5167
-  \end{equation}
-  
-\end{itemize}  
-\end{frame}
-
-% ----------------------------------------------------------------------------------------
-\begin{frame}{Strategie scelta coda 3-4}
+\begin{frame}{Strategie di scelta della coda 3-4}
   \begin{enumerate}
     \setcounter{enumi}{2}
 
   \item Minor tempo di attesa rispetto al tempo di servizio medio
     \begin{equation}
-      \argmin_q f(q) = |q| * \frac{1}{M}\sum\limits_{j=1}^M \left( \text{total-service-time}(q_j) \right)
+      \argmin_q |q| * \frac{1}{M}\sum\limits_{j=1}^M \left( \text{total-service-time}(q_j) \right)
     \end{equation}
 
     Dove \textit{M} é il numero di code nel supermercato
     
 \item Minor tempo di attesa rispetto alla \textit{power regression}
   \begin{equation}
-    \argmin_q f(q) = |q| * \text{total-service-time}(q)
+    \argmin_q |q| * \text{total-service-time}(q)
   \end{equation}
 \end{enumerate}
 \end{frame}
+
+% ----------------------------------------------------------------------------------------
+\begin{frame}{Formule cassa standard}
+	\begin{itemize}
+		\item Transaction time
+		\begin{equation}
+			\text{transaction-time}_i = e^{a log(\text{estimate-basket-size}(c_i)) + b}
+		\end{equation}
+		\item Break Time
+		\begin{equation}
+			\text{break-time}_i = \frac{\beta^{\alpha} \text{estimate-basket-size}(c_i)^{\alpha - 1} e^{- \beta \text{estimate-basket-size}(c_i)}}{\Gamma (\alpha)}
+		\end{equation}  
+		
+		\item Dove $\Gamma$ è la funzione \textbf{gamma}
+		\begin{equation}
+			\Gamma (z) = \int_{0}^{\infty} x^{z-1} e^{-x} dx \;\; \forall z \in \mathbb{C}
+		\end{equation}
+		
+		\item Total service time
+		\begin{equation}
+			\text{total-service-time}(q_j) = \sum\limits_{i=1}^N \left( \text{transaction-time}_i + \text{break-time}_i \right)
+		\end{equation}
+		
+		\begin{equation}
+			a = 0.6984, \;\; b = 2.1219, \;\; \alpha = 3.074209, \;\; \beta = \frac{1}{4.830613}
+		\end{equation}
+		
+	\end{itemize}  
+\end{frame}
+
+% ----------------------------------------------------------------------------------------
+\begin{frame}{Formule cassa self-service}
+	\begin{itemize}
+		\item Transaction time
+		\begin{equation}
+			\text{transaction-time}_i = e^{a log(\text{estimate-basket-size}(c_i)) + b}
+		\end{equation}
+		
+		\item Break Time
+		\begin{equation}
+			\text{break-time}_i = e^{c log(\text{estimate-basket-size}(c_i)) + d}
+		\end{equation}
+		\item Total service time
+		\begin{equation}
+			\text{total-service-time}(q_j) = \sum\limits_{i=1}^N \left( \text{transaction-time}_i + \text{break-time}_i \right)
+		\end{equation}
+		
+		\begin{equation}
+			a = 0.6725, \;\; b = 3.1223, \;\; c = 0.2251, \;\; d = 3.5167
+		\end{equation}
+		
+	\end{itemize}  
+\end{frame}
+
 % ----------------------------------------------------------------------------------------
 
 
 \begin{frame}{Jockeying}
 	\begin{itemize}
-		\item Un cliente fa \textbf{jockeying} se calcola che nelle code adiacenti a quella in cui è in attesa c'è un tempo di attesa minore, e quindi si sposta
-		\item Il parametro di adiacenza determina il numero di code adiacenti che il cliente prende in considerazione per il suo calcolo
-		\item Il cliente calcola un \textit{guadagno} di tempo nel cambiare coda, se questo supera un certo threshold, allora fa jockey, altrimenti no perchè per lui "non ne vale la pena"
-		\item Anche se esistono code migliori di altre, può non avvenire il jockey: viene estratto un parametro che rende il jockey aleatorio, in quanto non tutte le persone lo fanno
+		\item Un cliente fa \textbf{jockeying} se calcola che nelle code adiacenti a quella in cui è in attesa c'è un tempo di attesa minore, e quindi si sposta.
+		\item Il \textit{parametro di adiacenza} determina il numero di code adiacenti che il cliente prende in considerazione per il suo calcolo.
+		\item Il cliente calcola un \textit{guadagno} di tempo nel cambiare coda, se questo supera un certo threshold, allora fa jockey, altrimenti no perchè per lui "non ne vale la pena".
+		\item Anche se esistono code migliori di altre, può non avvenire il jockey: viene estratto un parametro che rende il jockey aleatorio, in quanto non tutte le persone lo fanno.
 	\end{itemize}
 \end{frame}
 
