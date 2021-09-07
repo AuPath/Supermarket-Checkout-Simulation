@@ -45,25 +45,25 @@
 
 \begin{frame}{Agente Cliente}
 	\begin{itemize}
-		\item I clienti sono gli agenti principali, si muovono nel supermercato con hanno l'obiettivo di fare la spesa e attendere il minimo tempo possibile in coda.
+		\item I clienti sono gli agenti principali, si muovono nel supermercato con l'obiettivo di fare la spesa e attendere il minimo tempo possibile in coda
 		\item Per minimizzare il tempo in coda il cliente usa strategie di \textbf{scelta della coda} e di \textbf{jockeying}, quindi ha bisogno di una pianificazione
-		\item Il cliente è un agente di tipo \textit{utility-based} perchè per la pianificazione e la valutazione dei tempi d'attesa utilizza una utility function. 
+		\item Il cliente è un agente di tipo \textit{utility-based} perchè per la pianificazione e la valutazione dei tempi d'attesa utilizza una utility function
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{Agente Cliente - workflow}
 	\begin{enumerate}
-		\item Attesa all'entrata del supermercato: l'agente è in attesa fino a che non può mettersi nella zona d'entrata.
-		\item Fase di shopping: si muove nella zona di shopping e inizia a raccogliere elementi fino a raggiungere il \textit{basket size} desiderato; questa fase dipende dalla velocità di shopping, un parametro del modello.
-		\item Scelta della coda: finita la spesa, deve scegliere la cassa in base alla utility function; viene scelta la coda $q^*$ tale che
+		\item \textbf{Attesa all'entrata del supermercato}: l'agente è in attesa fino a che non può mettersi nella zona d'entrata.
+		\item \textbf{Fase di shopping}: si muove nella zona di shopping e inizia a raccogliere elementi fino a raggiungere il \textit{basket size} desiderato; questa fase dipende dalla velocità di shopping, un parametro del modello.
+		\item \textbf{Scelta della coda}: finita la spesa, deve scegliere la cassa in base alla utility function; viene scelta la coda $q^*$ tale che
 		\[q^* = \operatorname*{argmin}_{q \in Q} f(q)\]
 		dove $Q$ è l'insieme delle code dedicate e $f$ varia con la strategia.
 	\end{enumerate}
 \end{frame}
 \begin{frame}{Agente Cliente - workflow}
 	\begin{enumerate}
-		\item Attesa in coda e jockeying: mentre il cliente è in coda può decidere di lasciarla per una coda migliore. Considera le 2 code adiacenti (parametro del modello) alla propria e per ognuna calcola la coda migliore secondo la sua strategia di jockeying. Se il "guadagno" risulta maggiore di un certo \textbf{threshold}, allora il cliente può decidere di cambiare coda. Si estrae quindi un numero casuale che determina se cambiare coda o no (perchè non tutte le persone fanno jockeying).
-		\item Attesa alla cassa: il cliente viene servito dalla cassa e deve attendere la fine del pagamento per uscire dal supermercato.
+		\item \textbf{Attesa in coda e jockeying}: mentre il cliente è in coda può decidere di lasciarla per una coda migliore. Considera le 2 code adiacenti (parametro del modello) alla propria e per ognuna calcola la coda migliore secondo la sua strategia di jockeying. Se il "guadagno" risulta maggiore di un certo \textbf{threshold}, allora il cliente può decidere di cambiare coda. Si estrae quindi un numero casuale che determina se cambiare coda o no (perchè non tutte le persone fanno jockeying).
+		\item \textbf{Attesa alla cassa}: il cliente viene servito dalla cassa e deve attendere la fine del pagamento per uscire dal supermercato.
 	\end{enumerate}
 \end{frame}
 
@@ -122,9 +122,9 @@
 \begin{frame}{Agente Cassa - Tipo 3: Self-scan}
 	
 	\begin{itemize}
-		\item Il cliente scannerizza gli articoli durante la spesa mediante un dispositivo fornito dal supermercato
-		\item Avendo già scanerizzato gli articoli a priori non è necessario farlo in cassa
-		\item Vengono effettuati controlli a campione per verificare il corretto comportamento dei clienti (tutti gli articoli devono essere stati effettivamente scannerizzati durante la spesa)
+		\item Il cliente scannerizza gli articoli durante la spesa mediante un dispositivo fornito dal supermercato.
+		\item Avendo già scanerizzato gli articoli a priori non è necessario farlo in cassa.
+		\item Vengono effettuati controlli a campione per verificare il corretto comportamento dei clienti (tutti gli articoli devono essere stati effettivamente scannerizzati durante la spesa).
 		\item Tutte le casse hanno una coda condivisa
 		\begin{enumerate}
 			\item Il cliente si accoda alla coda condivisa
@@ -138,10 +138,10 @@
 	
 	\begin{itemize}
 		\item Comportamento analogo alla cassa standard.
-		\item Ha una coda dedicata
-		\item Nel caso di rilettura alla cassa "self-scan", il cliente viene normalmente processato in questa nuova cassa
-		\item La rilettura può essere \textbf{parziale} (vengono controllati solo 10 elementi), o \textbf{totale} (viene controllata tutta la spesa)
-		\item Nessun cliente può venire processato nella cassa riservata a meno di una rilettura
+		\item Ha una coda dedicata.
+		\item Nel caso di rilettura alla cassa "self-scan", il cliente viene normalmente processato in questa nuova cassa.
+		\item La rilettura può essere \textbf{parziale} (vengono controllati solo 10 elementi), o \textbf{totale} (viene controllata tutta la spesa).
+		\item Nessun cliente può venire processato nella cassa riservata a meno di una rilettura.
 	\end{itemize}
 \end{frame}
 
@@ -166,7 +166,7 @@
     tra piú opzioni e una facilitazione nel crearne di nuove.
 
   \item I parametri che regolano il modello descritti a seguire
-    sono configurabili a piacere
+    sono configurabili a piacere.
   \end{itemize}
 \end{frame}
 
@@ -189,13 +189,19 @@
 			\item Threshold
 			\item Probabilità di fare jockeying
 		\end{itemize}
-		\item Distribuzione dei clienti in entrata (presa dai dati di Antczak e altri\footnotemark) \# TODO: qui manca la spiegazione come nel caso del basket size, che però manca anche nella relazione
+		\item Distribuzione dei clienti in entrata (presa dai dati di Antczak e altri\footnotemark)
 		\item Distribuzione dei basket size (presa dai dati di Antczak e altri\footnotemark[\value{footnote}])
 		\footnotetext{Antczak, Tomasz and Weron, Rafał and Zabawa, Jacek, 2020}
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{Parametri - distribuzione dei clienti}
+	Nella figura si riporta la distribuzione di entrata dei clienti reale e la distribuzione generata effettuando normalizzazione, media e divisione per step.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=9cm]{"../report/images/real_vs_synthetic_distribution.png"}
+		\label{fig:dist_basket_size}
+	\end{figure}
 \end{frame}
 
 \begin{frame}{Parametri - distribuzione dei basket size}
