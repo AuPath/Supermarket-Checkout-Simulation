@@ -25,137 +25,102 @@ Si terrà conto del flusso totale, del flusso per le casse standard o self-servi
 
 \paragraph{Stato dell'arte}
 
-Al fine di validare il modello, come primo esperimento è stata condotta una simulazione con gli stessi parametri usati nell'articolo \cite{article1}. In quella simulazione il supermercato contiene 20 casse standard e 6 casse self-service; si noti che nel lavoro citato, le casse si attivano o disattivano in base ai dati raccolti dai ricercatori nei supermercati, nel nostro modello invece le casse si attivano in base al numero di clienti presenti nel supermercato, in base a un parametro che è possibile cambiare nel momento in cui si raccolgono i dati. Vengono messe a confronto le strategie diverse di scelta della coda da parte dei clienti, arrivando alla conclusione che la strategia che porta al minor tempo d'attesa è quella chiamata "minimo tempo d'attesa in base alla \textit{power regression}" nel capitolo \ref{implementation:intro}; tuttavia i risultati portano a dire che questo scenario non è quello ottimale per tutti i supermercati negli orari di punta.
+Al fine di validare il modello, come primo esperimento è stata condotta una simulazione con gli stessi parametri usati nell'articolo \cite{article1}. Nella loro simulazione il supermercato contiene 20 casse standard e 6 casse self-service; si noti che nel lavoro citato, le casse si attivano o disattivano in base ai dati raccolti dai ricercatori nei supermercati, nel nostro modello invece le casse si attivano in base al numero di clienti presenti nel supermercato, in base a un parametro che è possibile cambiare nel momento in cui si raccolgono i dati. Vengono messe a confronto le strategie diverse di scelta della coda da parte dei clienti, arrivando alla conclusione che la strategia che porta al minor tempo d'attesa è quella chiamata "minimo tempo d'attesa in base alla \textit{power regression}" nel capitolo \ref{implementation:intro}; tuttavia i risultati portano a dire che questo scenario non è quello ottimale per tutti i supermercati negli orari di punta.
 
 Nelle prossime simulazioni verrà testato il jockeying, in particolare si metteranno a confronto le diverse strategie di scelta della coda e di jockeying per stabilire se questo porti a un miglioramento dell'esperienza del cliente nel supermercato. Questi esperimenti verranno poi messi a confronto con una simulazione in cui c'è soltanto la coda condivisa per le casse standard, pertanto i clienti non avranno bisogno di scegliere la coda nè di fare jockeying: in base a quanto detto nell'articolo \cite{yanagisawa2011methods}, questo tipo di coda dovrebbe portare a tempi di attesa minori. 
 Verranno quindi introdotte nella simulazione le casse self-scan con rilettura randomica, si prevede che queste portino a una diminuzione considerevole dei tempi d'attesa in coda, in quanto viene a mancare la fase di scanner da parte dei cassieri. Infine verrà effettuata una simulazione con gli elementi probabilistici già descritti nel corso dei capitoli \ref{chapter:model} e \ref{implementation:intro}, che rendono l'esperimento non deterministico e a nostro riguardo più realistico.
 
 \paragraph{Simulazione con gli stessi parametri}
 
-Parametri:
-entering zone e shopping zone sempre uguali
-no strategy di jockeying
-20 casse normali
-6 casse self service
-0 self-scan
-0 probabilità cliente self-scan
-0 deviazione standard per stima del basket size da parte del cliente
-no coda condivisa
+Come validazione sono state effettuate delle simulazioni con gli stessi parametri usati nell'articolo \cite{article1}: 20 casse standard con code parallele, 6 casse self-service, no jockeying; è stata ripetuta la stessa simulazione 4 volte però con le 4 strategie diverse di scelta della coda.
 
-Strategie diverse di scelta della coda:
-\begin{enumerate}
-	\item Minimo numero di elementi: dati \textit{validazione1}
-	\item Minimo numero di persone: dati \textit{validazione2}
-	\item Minimo tempo d'attesa in base al tempo di servizio medio: dati \textit{validazione3}
-	\item Minimo tempo d'attesa in base alle power regression: dati \textit{validazione4} 
-\end{enumerate}
+\todo{aggiungere grafico total customers - real data vs simulation normalized}
+
+Il grafico REF IMG funge da validazione: mettiamo a confronto il numero totale di clienti (normalizzati) presenti nel negozio ad ogni ora per ogni simulazione e per la simulazione dell'articolo. Si nota come, a parità di parametri, il nostro modello e il modello di \cite{article1} sopportino allo stesso modo il numero di clienti presenti nel negozio, facendoli defluire in modo paragonabile.
+
+\todo{aggiungere grafico con confronto validazione 1,2,3,4}
+
+Nell'immagine REF IMG si può vedere la variazione del tempo medio di attesa in coda dei clienti nel corso della giornata lavorativa che va dalle 8:00 alle 22:00. Le simulazioni variano per strategia di scelta della coda da parte dei clienti, si nota quindi che, in assenza di jockeying, la strategia 3 risulta quella che durante l'arco della giornata mantiene il tempo medio più basso, anche se a fine giornata tutte e 4 le strategie raggiungono una media paragonabile.
+
+\todo{aggiungere grafico fondamentale e altri grafici}
+
+osservazioni su quanto le varie strategie reggono il flusso
+
+Nelle prossime simulazioni verranno aggiunte delle caratteristiche che pensiamo possano migliorare il tempo medio d'attesa dei clienti, che metteremo a confronto con questa simulazione che rappresenta il punto di partenza.
 
 \section{Simulazione con strategie \textit{jockey}}
 
-Parametri:
-entering zone e shopping zone sempre uguali
-20 casse normali
-6 casse self service
-0 self-scan
-0 probabilità cliente self-scan
-0 deviazione standard per stima del basket size da parte del cliente
-no coda condivisa
+Introduciamo dunque le 2 strategie di jockey descritte nel capitolo \ref{implementation:intro}. In queste simulazioni sono presenti 20 casse normali con code parallele, 6 casse self-service, 4 strategie di scelta della coda e 2 strategie di jockeying, per un totale di 8 simulazioni.
 
-Strategie diverse di scelta della coda:
-\begin{enumerate}
-	\item Minimo numero di elementi:
-	Strategie diverse di jockey:
-	\begin{enumerate}
-		\item Minimo numero di elementi: dati \textit{coda1jockey1}
-		\item Minimo numero di persone: dati \textit{coda1jockey2}
-	\end{enumerate}
-	\item Minimo numero di persone:
-	Strategie diverse di jockey:
-	\begin{enumerate}
-		\item Minimo numero di elementi: dati \textit{coda2jockey1}
-		\item Minimo numero di persone: dati \textit{coda2jockey2}
-	\end{enumerate}
-	\item Minimo tempo d'attesa in base al tempo di servizio medio:
-	Strategie diverse di jockey:
-	\begin{enumerate}
-		\item Minimo numero di elementi: dati \textit{coda3jockey1}
-		\item Minimo numero di persone: dati \textit{coda3jockey2}
-	\end{enumerate}
-	\item Minimo tempo d'attesa in base alle power regression: Strategie diverse di jockey:
-	\begin{enumerate}
-		\item Minimo numero di elementi: dati \textit{coda4jockey1}
-		\item Minimo numero di persone: dati \textit{coda4jockey2}
-	\end{enumerate}
-\end{enumerate}
+\todo{aggiungere grafico validazione1, validazione2, coda1jockey1, coda1jockey2, coda2jockey1, coda2jockey2}
+
+Nell'immagine REF IMG si mettono a confronto 2 strategie di scelta della coda: minimo numero di elementi, minimo numero di persone in coda. Le due strategie sono affiancate da nessun jockeying, jockey per minimo numero di elementi e jockey per minimo numero di persone in coda. \\ 
+Si osserva che i risultati migliori si raggiungono quando la strategia di scelta della coda è la stessa del jockey, con una diminuzione massima del tempo medio di attesa di circa 2 timestamp (1 minuto) e della media finale di 1 timestamp (30 secondi) rispetto alle simulazioni senza jockey. Si può dire pertanto che mischiare le strategie, ad esempio scegliendo la coda per numero di persone e facendo jockey per numero di elementi nei carrelli, peggiori le prestazioni del sistema rispetto al tempo di attesa dei clienti.
+
+\todo{aggiungere grafico fondamentale e altri grafici}
+
+osservazioni su quanto le varie strategie reggono il flusso
+
+\todo{aggiungere grafico validazione3, validazione4, coda3jockey1, coda3jockey2, coda4jockey1, coda4jockey2}
+
+Nell'immagine REF IMG vengono messe a confronto 2 strategie di scelta della coda: minimo tempo d'attesa in base al tempo di servizio medio, minimo tempo d'attesa in base alla power regression. Le due strategie sono affiancate da nessun jockeying, jockey per minimo numero di elementi e jockey per minimo numero di persone in coda. \\
+In questo caso non vale quanto detto sopra, le strategie di scelta della coda e di jockey non possono essere le stesse e non si può dire che affiancandole si ottengono risultati migliori; questo potrebbe rappresentare un ulteriore studio da fare per allargare il nostro modello.
+
+Si nota come la strategia di scelta della coda che mantiene il tempo d'attesa medio minore durante tutta la giornata sia la power regression affiancata da jockey per minimo numero di persone in coda; questa simulazione raggiunge un tempo medio d'attesa minore finale di circa 1.5 timestamp rispetto alla simulazione peggiore. Questa però è comunque molto vicina al tempo medio della strategia di scelta della coda per minimo tempo di servizio medio e senza jockeying, anche se quest'ultima tende a peggiorare nell'ora finale.
+
+\todo{aggiungere grafico fondamentale e altri grafici}
+
+osservazioni su quanto le varie strategie reggono il flusso
+
+\todo{aggiungere grafico tempo medio d'attesa di coda1jockey1, coda2jockey2, coda4jockey2}
+
+Nel grafico REF IMG mettiamo a confronto il tempo medio d'attesa delle migliori strategie viste fin ora: il tempo medio finale è circa lo stesso per tutte e tre, ma si nota che il grafico della prima strategia rimane sotto gli altri nell'arco di tutta la giornata.
+
+\todo{aggiungere grafico fondamentale e altri grafici}
+
+osservazioni su quanto le varie strategie reggono il flusso
 
 \section{Simulazione con coda condivisa}
 
-Parametri:
-entering zone e shopping zone sempre uguali
-20 casse normali
-6 casse self service
-0 self-scan
-0 probabilità cliente self-scan
-0 deviazione standard per stima del basket size da parte del cliente
-sì coda condivisa
-\\
-dati \textit{codacondivisa}
+Con le prossime simulazioni indagheremo sulla diminuzione del tempo medio d'attesa nel caso di coda condivisa (N-fork): metteremo a confronto la strategia migliore trovata fin ora (scelta della coda e jockey per minimo numero di elementi) con il caso di una coda condivisa per tutte le casse. \\
+Come già specificato, nei casi esaminati fin ora le casse si aprivano e chiudevano in maniera automatica in base al numero di clienti presenti nel negozio e che necessitano di essere serviti; nel caso di coda condivisa questa funzione non è stata implementata, e potrebbe rappresentare un'estensione del nostro modello. Per questo motivo abbiamo deciso di diminuire il numero di casse nella simulazione: in base a osservazioni fatte in fase sperimentale abbiamo notato che il numero di casse aperte massimo in un dato momento è 8, chiaramente rispetto alla distribuzione dei clienti in entrata utilizzata; per questo motivo abbiamo voluto indagare i casi di 5, 6, 7 e 8 casse standard presenti nel negozio (e 6 casse self-service come fatto in precedenza).
+
+\todo{aggiungere grafico coda1jockey1 5,6,7,8 e codacondivisa 5,6,7,8}
+
+Nel grafico REF IMG riportiamo i tempi medi d'attesa delle simulazioni con code parallele e jockey rappresentandoli con delle linee, e i tempi medi d'attesa delle simulazioni con coda condivisa rappresentandoli con dei trattini. Si nota immediatamente che nel caso di 5 casse il tempo medio d'attesa sale vertiginosamente a circa 30 minuti sia per le code parallele che per la coda condivisa: questo è imputabile alla distribuzione dei clienti in entrata, il supermercato con 5 casse è troppo piccolo per gestire questa quantità. \\
+Una cosa interessante da notare invece è la divisione netta nel grafico tra le simulazioni con code parallele e quelle con coda condivisa: l'utilizzo della coda condivisa abbassa i tempi medi d'attesa durante tutta la giornata, anche rispetto al caso in cui i clienti fanno jockey. CITARE ARTICOLO CHE LO DICEVA
+
+\todo{aggiungere grafico fondamentale e altri grafici}
+
+osservazioni su quanto le varie strategie reggono il flusso
 
 \section{Simulazione con casse self-scan}
 
-Parametri:
-entering zone e shopping zone sempre uguali
-0 casse normali
-0 casse self service
-7 self-scan
-1 probabilità cliente self-scan
-0 deviazione standard per stima del basket size da parte del cliente
-no coda condivisa
-\\
-Probabilità di rilettura totale = 1\%
-Probabilità di rilettura parziale = 2\%
+In questa simulazione vedremo il caso in cui nel supermercato sono presenti solamente casse self-scan, in particolare 7; in questa simulazione chiaramente tutti i clienti si recheranno alla cassa self-scan, la probabilità di una rilettura parziale è del $2\%$ e una rilettura totale è dell'$1\%$.
 
-Si nota come la cassa della rilettura diventa collo di bottiglia. Con probabilità di rilettura troppo alta la simulazone fallisce in quanto la coda della cassa diventa troppo lunga.
+\todo{aggiungere grafico coda1jockey1 e self-scan}
 
-dati \textit{self-scan}
+Si nota immediatamente dal grafico REF IMG che il tempo medio d'attesa della simulazione con self-scan va ad aumentare sempre più; questo accade a causa delle riletture, infatti i clienti che non ricevono una rilettura escono immediatamente dal negozio, mentre gli altri restano in coda ad una sola cassa, che funge da collo di bottiglia. Aumentando la probabilità di rilettura, infatti, la simulazione fallisce perchè la coda alla cassa riservata diventa troppo lunga. \\
+Rispetto a questa simulazione bisognerebbe avere dati più completi, ad esempio sapere con che probabilità vengono fatte le riletture nei supermercati o con che distribuzione entrano in negozio i clienti self-scan; questo è una possibile estensione del nostro lavoro.
+
+\todo{aggiungere grafico fondamentale e altri grafici}
+
+osservazioni su quanto le varie strategie reggono il flusso
 
 \section{Simulazione non deterministica}
 
-Parametri:
-entering zone e shopping zone sempre uguali
-20 casse normali
-6 casse self service
-n self-scan
-0.5 probabilità cliente self-scan
-0.1 deviazione standard per stima del basket size da parte del cliente
-no coda condivisa
+L'introduzione di parametri randomici rappresenta la nostra volontà di rendere più verosimile il modello e non un tentativo di miglioramento dei tempi medi d'attesa dei clienti. \\
+Abbiamo voluto testare il modello completo, considerando 20 casse standard con code parallele, 6 casse self-service, 5 casse self-scan; la probabilità che un cliente sia self-scan (nel momento in cui entra nel negozio) è del $50\%$. Introduciamo anche l'errore di stima del basket-size da parte di un cliente: nel momento in cui un cliente deve calcolare il numero di elementi nel carrello di altri clienti commette un errore con 0.1 di deviazione standard. \\
+Le simulazioni sono 8, combiniamo le strategie di scelta della coda (4) con quelle di jockey (2).
 
-Strategie diverse di scelta della coda:
-\begin{enumerate}
-	\item Minimo numero di elementi:
-	Strategie diverse di jockey:
-	\begin{enumerate}
-		\item Minimo numero di elementi: dati \textit{prob-coda1jockey1}
-		\item Minimo numero di persone: dati \textit{prob-coda1jockey2}
-	\end{enumerate}
-	\item Minimo numero di persone:
-	Strategie diverse di jockey:
-	\begin{enumerate}
-		\item Minimo numero di elementi: dati \textit{prob-coda2jockey1}
-		\item Minimo numero di persone: dati \textit{prob-coda2jockey2}
-	\end{enumerate}
-	\item Minimo tempo d'attesa in base al tempo di servizio medio:
-	Strategie diverse di jockey:
-	\begin{enumerate}
-		\item Minimo numero di elementi: dati \textit{prob-coda3jockey1}
-		\item Minimo numero di persone: dati \textit{prob-coda3jockey2}
-	\end{enumerate}
-	\item Minimo tempo d'attesa in base alle power regression: Strategie diverse di jockey:
-	\begin{enumerate}
-		\item Minimo numero di elementi: dati \textit{prob-coda4jockey1}
-		\item Minimo numero di persone: dati \textit{prob-coda4jockey2}
-	\end{enumerate}
-\end{enumerate}
+\todo{aggiungere grafico con prob di avg waiting time}
+
+Notiamo dal grafico che il tempo medio d'attesa delle simulazioni con e senza elementi randomici (raggruppati a coppie per colore, una tratteggiata e una no) è assolutamente paragonabile e questo ci mostra che gli elementi che abbiamo aggiunto, giustificati dal buon senso, non scombinano totalmente il modello ma lo rendono semplicemente più imprevedibile, riuscendo a simulare più scenari possibili.
+
+\todo{aggiungere grafico fondamentale e altri grafici}
+
+osservazioni su quanto le varie strategie reggono il flusso
+
 
 \vspace*{1\baselineskip}
 
