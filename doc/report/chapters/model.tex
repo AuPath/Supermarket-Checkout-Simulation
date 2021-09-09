@@ -231,7 +231,7 @@ coda condivisa, la cassa self-scan prende il primo cliente della coda;
 estrae quindi un numero e, con il $2 \%$ di probabilità lo manda alla
 cassa riservata per una \textbf{rilettura parziale}, con il $1 \%$ di
 probabilità lo manda alla cassa riservata per una \textbf{rilettura
-  totale} e invece con il $90 \%$ di probabilità gli fa fare il
+  totale} e invece con il $97 \%$ di probabilità gli fa fare il
 pagamento normale. Nel caso di rilettura parziale o totale, la cassa
 sposta il cliente alla cassa riservata, fa avanzare i clienti in coda
 e rimane nella fase di attesa di un nuovo cliente, pronta per prendere
@@ -488,7 +488,7 @@ Si procede aggregando gli ingressi al variare delle diverse giorante e calcoland
 \end{figure}
 
 
-Un ulteriore fattore da considerare è che nei dati a nostra dipsosizione gli ingressi dei clienti sono aggregati per ora, tuttavia durante la simulazioni è necessario fare entrare i clienti gradualmente ad ogni ora, ovvero gestire gli ingressi ad ogni step del modello. A questo scopo abbiamo considerato come distribuzione di riferimento quella ottenuta medianto le tre distribuzioni aggregate per i diversi giorni (linea viola nell'immagine \ref{fig:shop_activity_aggregated}). Dal momento che ad uno step del modello corrisponde a 30 secondi reali (spiegato qui \ref{parameters:time}), un'ora è composta da 120 steps. Con questa osservazione è possibile calcolare il valore atteso di clienti in entrata per ogni step al variare delle ore.
+Un ulteriore fattore da considerare è che nei dati a nostra disposizione gli ingressi dei clienti sono aggregati per ora, tuttavia durante la simulazioni è necessario fare entrare i clienti gradualmente ad ogni ora, ovvero gestire gli ingressi ad ogni step del modello. A questo scopo abbiamo considerato come distribuzione di riferimento quella ottenuta medianto le tre distribuzioni aggregate per i diversi giorni (linea viola nell'immagine \ref{fig:shop_activity_aggregated}). Dal momento che ad uno step del modello corrisponde a 30 secondi reali (spiegato qui \ref{parameters:time}), un'ora è composta da 120 steps. Con questa osservazione è possibile calcolare il valore atteso di clienti in entrata per ogni step al variare delle ore.
 
 Il valore atteso di clienti in ingresso per ogni step al variare delle ore viene mostrato nella figura \ref{fig:per_step_distribution}.
 
@@ -499,9 +499,28 @@ Il valore atteso di clienti in ingresso per ogni step al variare delle ore viene
 	\label{fig:per_step_distribution}
 \end{figure}
 
-Tuttavia emerge chiaramente come questo valore atteso non sia un valore intero in quanto ottenuto dalla divisione tra numero di clienti totatli in ingresso in un'ora e numero di step per un'ora. Inoltre anche nel caso in cui il valore atteso dei clienti in ingresso per una determinata ora fosse un numero intero, non è realistico che per ogni step di una determinata ora gli ingressi siano identici. Per questo motivo si procede aggiungendo del rumore ad ogni step dove il nuovo valore che indica il numero di ingressi per step è frutto della realizzazione della variabile aleatoria $X$ distribuita secondo una normale con media pari al valore atteso del numero di clienti per step e varianza pari a $0.4$. In questo modo si vuole simulare il fatto che ad ogni step possano entrare meno clienti di quelli attessi e viceversa per altri step, pur ottenendo come numero di ingressi totali il valore atteso per quella specifica ora.
+Tuttavia emerge chiaramente come questo valore atteso non sia un
+valore intero in quanto ottenuto dalla divisione tra numero di clienti
+totali in ingresso in un'ora e numero di step per un'ora. Inoltre
+anche nel caso in cui il valore atteso dei clienti in ingresso per una
+determinata ora fosse un numero intero, non è realistico che per ogni
+step di una determinata ora gli ingressi siano identici. Per questo
+motivo si procede aggiungendo del rumore ad ogni step dove il nuovo
+valore che indica il numero di ingressi per step è frutto della
+realizzazione della variabile aleatoria $X$ distribuita secondo una
+normale con media pari al valore atteso del numero di clienti per step
+e varianza pari a $0.4$. In questo modo si vuole simulare il fatto che
+ad ogni step possano entrare meno clienti di quelli attessi e
+viceversa per altri step, pur ottenendo come numero di ingressi totali
+il valore atteso per quella specifica ora.
 
-Come esempio prendiamo in considerazione le ore 12. In questo orario in media entrano $231$ clieni all'interno del supermercato, vale a dire $1.931$ ingressi per step. Si procede quindi campionando 120 valori (numero di step in un'ora) distribuiti secondo una normale con media $1.931$ e varianza $0.4$. A parire dal valore continuo $x$, si procede discretizzando il numero di clienti in ingresso per ogni step utilizzando la funzione così definita:
+Come esempio prendiamo in considerazione le ore 12. In questo orario
+in media entrano $231$ clienti all'interno del supermercato, vale a
+dire $1.931$ ingressi per step. Si procede quindi campionando 120
+valori (numero di step in un'ora) distribuiti secondo una normale con
+media $1.931$ e varianza $0.4$. A parire dal valore continuo $x$, si
+procede discretizzando il numero di clienti in ingresso per ogni step
+utilizzando la funzione così definita:
 
 \begin{equation}
 	f(x)  =
