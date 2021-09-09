@@ -33,7 +33,7 @@ def simulation_run(name, zones_metadata, grid, customer_shop_speed, customer_arr
     n_charts = len(charts) if n_charts is None else n_charts
     visualization_elements = [grid, CustomerLegendElement(), CashDeskLegendElement()] + charts[:n_charts]
     #TODO: Togliere ma molto utile per le simulazioni
-    #visualization_elements = []
+    visualization_elements = []
     out_server = ModularServer(Supermarket,
                                visualization_elements,
                                f"Supermarket - {name}",

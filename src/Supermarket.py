@@ -487,15 +487,15 @@ class Supermarket(Model):
 
     def get_density_total(self):
         # numero di clienti totale / numero di casse totali
-        return self.get_number_of_customers() / len(self.get_cash_desks())
+        return self.get_number_of_customers() / len(self.get_number_working_cash_desks(exclude_self_scan=False))
 
     def get_flow_total(self):
         # numero di clienti entranti totali
-        return self.get_number_entering_customers() / len(self.get_cash_desks())
+        return self.get_number_entering_customers() / len(self.get_number_working_cash_desks(exclude_self_scan=False))
 
     def get_density_standard(self):
         # numero di clienti non self scan / numero di casse non self scan
-        n_cash_desks = len(self.get_cash_desks(exclude_self_scan=True))
+        n_cash_desks = len(self.get_number_working_cash_desks(exclude_self_scan=True))
         if n_cash_desks == 0:
             return 0
         else:
@@ -503,7 +503,7 @@ class Supermarket(Model):
 
     def get_flow_standard(self):
         # numero di clienti entranti non self scan
-        n_cash_desks = len(self.get_cash_desks(exclude_self_scan=True))
+        n_cash_desks = len(self.get_number_working_cash_desks(exclude_self_scan=False))
         if n_cash_desks == 0:
             return 0
         else:
@@ -567,12 +567,28 @@ class Supermarket(Model):
         return cell
 
     def get_cash_desks(self, exclude_self_scan=False):
-        if not exclude_self_scan:
+        if not exclude_self_scan or self.cash_desk_self_scan_zone is None:
             return self.__cash_desks
         else:
             filtered_cash_desk = []
             for cash_desk in self.__cash_desks:
-                if (self.cash_desk_self_scan_zone is not None
-                        and cash_desk not in self.cash_desk_self_scan_zone.cash_desks):
+                if cash_desk not in self.cash_desk_self_scan_zone.cash_desks:
                     filtered_cash_desk.append(cash_desk)
             return filtered_cash_desk
+
+    def get_number_working_cash_desks(self, exclude_self_scan=False):
+        if not exclude_self_scan or self.cash_desk_self_scan_zone is None:
+            filtered_cash_desks = []
+            for cash_desk in self.__cash_desks:
+                if ((self.cash_desk_standard_zone is not None and cash_desk in self.cash_desk_standard_zone.cash_desks and cash_desk.working) or
+                    (self.cash_desk_self_service_zone is not None and cash_desk in self.cash_desk_standard_zone.cash_desks) or
+                    (self.cash_desk_self_scan_zone is not None and cash_desk in self.cash_desk_self_scan_zone.cash_desks)):
+                    filtered_cash_desks.append(cash_desk)
+            return filtered_cash_desks
+        else:
+            filtered_cash_desks = []
+            for cash_desk in self.__cash_desks:
+                if ((self.cash_desk_standard_zone is not None and cash_desk in self.cash_desk_standard_zone.cash_desks and cash_desk.working) or
+                        (self.cash_desk_self_service_zone is not None and cash_desk in self.cash_desk_standard_zone.cash_desks)):
+                    filtered_cash_desks.append(cash_desk)
+            return filtered_cash_desks
