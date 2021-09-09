@@ -581,7 +581,7 @@ class Supermarket(Model):
             filtered_cash_desks = []
             for cash_desk in self.__cash_desks:
                 if ((self.cash_desk_standard_zone is not None and cash_desk in self.cash_desk_standard_zone.cash_desks and cash_desk.working) or
-                    (self.cash_desk_self_service_zone is not None and cash_desk in self.cash_desk_standard_zone.cash_desks) or
+                    (self.cash_desk_self_service_zone is not None and cash_desk in self.cash_desk_self_service_zone.cash_desks) or
                     (self.cash_desk_self_scan_zone is not None and cash_desk in self.cash_desk_self_scan_zone.cash_desks)):
                     filtered_cash_desks.append(cash_desk)
             return filtered_cash_desks
@@ -589,6 +589,6 @@ class Supermarket(Model):
             filtered_cash_desks = []
             for cash_desk in self.__cash_desks:
                 if ((self.cash_desk_standard_zone is not None and cash_desk in self.cash_desk_standard_zone.cash_desks and cash_desk.working) or
-                        (self.cash_desk_self_service_zone is not None and cash_desk in self.cash_desk_standard_zone.cash_desks)):
+                        (self.cash_desk_self_service_zone is not None and cash_desk in self.cash_desk_self_service_zone.cash_desks)):
                     filtered_cash_desks.append(cash_desk)
             return filtered_cash_desks
