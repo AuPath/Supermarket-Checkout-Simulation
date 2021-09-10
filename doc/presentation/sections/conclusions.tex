@@ -1,5 +1,24 @@
 \section{Conclusioni}
 \begin{frame}{Conclusioni}
-	\centering
-	DAJE RAGA
+	\begin{itemize}
+		\item Il modello di supermercato che abbiamo illustrato è basato su agenti ed ha lo scopo di simulare il comportamento dei clienti in fase di scelta della coda.
+		\item Un supermercato è un sistema complesso composto da diversi attori che hanno obiettivi diversi. Simularlo con un modello ad agenti permette di indagare sulle configurazioni di casse e le strategie migliori che portano a una diminuzione del tempo d'attesa medio.
+		\item A causa dell'emergenza di COVID-19 è necessario analizzare i flussi di persone, le distanze interpersonali e i tempi medi passati nei luoghi chiusi la cui frequentazione è necessaria nella vita di tutti i giorni.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Conclusioni - sviluppi futuri}
+	\begin{itemize}
+		\item \textbf{Introduzione dell'elemento spaziale}: nel nostro modello i clienti non hanno la concezione di distanza, si muovono in maniera istantanea da una cella all'altra. \\
+		Si può considerare una configurazione di casse a D-fork, in cui si calcola la distanza per trovare anche la coda più vicina. \\
+		Questo aiuterebbe a condurre uno studio sul distanziamento sociale nei supermercati.
+		\item \textbf{Introduzione di diverse strategie}: avendo adottato il pattern Strategy è molto semplice definire e utilizzare nuove strategie di scelta della coda e jockey.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Conclusioni - sviluppi futuri}
+	\begin{itemize}
+		\item \textbf{Dati sui supermercati italiani}: è possibile utilizzare il modello con dati diversi; ad esempio per le casse self-scan si potrebbe fare uno studio più approfondito con dei dati a disposizione.
+		\item \textbf{Criticità}: in caso di densità alta le code si riempiono al massimo, causando un'attesa prolungata dei clienti. \'E giusto prevedere una capienza massima ma si potrebbe introdurre una nuova zona di attesa soprattutto quando si utilizza una coda condivisa.
+	\end{itemize}
 \end{frame}
