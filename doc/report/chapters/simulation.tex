@@ -13,6 +13,8 @@ La \textbf{densità} di clienti per step corrisponde al numero di clienti medio 
 \end{equation}
 Si terrà conto della densità totale, della densità per le casse standard o self-service e della densità per le casse self-scan.
 
+\todo{definizione di flusso non serve più suppongo}
+
 Il \textbf{flusso in entrata} di clienti per step corrisponde al numero di clienti che entrano ad ogni step per ogni cassa in media; il flusso allo step $i$ è:
 \begin{equation}
 	\text{flow}_i = \frac{\# \text{ customers entering in the supermarket}}{\# \text{ cashdesks}}
@@ -149,7 +151,7 @@ Rispetto a questa simulazione bisognerebbe avere dati più completi, ad esempio 
 	\caption{KDE - densità al variare del tempo medio d'attesa}
 \end{figure}
 
-L'immagine \ref{fig:kde_self_scan} mostra il grafico KDE della simulazione con sole casse self-scan messa a confronto con la simulazione con sole casse standard e jockey. Si nota che c'è nella simulazione con self-scan c'è un momento di massima densità che viene gestita molto bene dal negozio, infatti il tempo medio d'attesa è molto basso, però poi, a causa del collo di bottiglia della cassa riservata, la densità di clienti crolla ma il tempo d'attesa sale di molto.
+L'immagine \ref{fig:kde_self_scan} mostra il grafico KDE della simulazione con sole casse self-scan messa a confronto con la simulazione con sole casse standard e jockey. Si nota che nella simulazione con casse standard c'è un momento di massima densità che viene gestito dal sistema portando a una diminuzione dei tempi medi d'attesa; nella simulazione con casse self-scan questa gestione della densità non avviene altrettanto bene, infatti dopo il punto critico di densità maggiore, questa diminuisce ma il tempo medio aumenta e questo è imputabile ancora una volta alle troppe persone che attendono di ricevere una rilettura della spesa.
 
 \section{Simulazione non deterministica}
 
@@ -168,4 +170,4 @@ Notiamo dal grafico \ref{fig:avg_wt_prob} che il tempo medio d'attesa delle simu
 
 \vspace*{1\baselineskip}
 
-Abbiamo visto che ... nel prossimo capitolo tiriamo le conclusioni.
+Dopo aver condotto queste analisi possiamo concludere che il jockey da parte dei clienti porta a una diminuzione dei tempi d'attesa in coda e inoltre la configurazione delle casse a N-fork è in grado di gestire meglio il punto critico di densità di clienti rispetto alla configurazione a code parallele; nel prossimo capitolo verranno fatte le conclusioni e illustrati i possibili sviluppi futuri.
