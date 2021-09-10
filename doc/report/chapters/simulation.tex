@@ -1,25 +1,17 @@
 \chapter{Simulazione e analisi dei risultati}
 \label{chapter:simulation}
 
-In questo capitolo vedremo i risultati delle simulazioni eseguite sul nostro modello. Introdurremo due misure che ci aiuteranno a disegnare dei grafici per mettere a confronto simulazioni fatte con strategie di scelta della coda diverse e anche con parametri diversi.
+In questo capitolo vedremo i risultati delle simulazioni eseguite sul nostro modello. Introdurremo una misura che ci aiuterà a disegnare dei grafici per mettere a confronto simulazioni fatte con strategie di scelta della coda diverse e anche con parametri diversi.
 
 \vspace*{1\baselineskip}
 
-Al fine di analizzare i risultati sono state introdotte le definizioni di densità e flusso di clienti per ogni step di simulazione; queste misure ci permettono di misurare l'affluenza dei clienti nel supermercato e come questa viene gestita dalle casse che hanno il potere di attivarsi o disattivarsi in base alla quantità di clienti presenti. Densità e flusso permetteranno di disegnare i grafici fondamentali che mostrano per ogni simulazione come le casse smaltiscono l'afflusso di clienti in entrata, soprattutto nei periodi critici (in cui il supermercato raggiunge una quantità di clienti che "mettono alla prova" le casse).
+Al fine di analizzare i risultati è stata introdotta la definizione di densità di clienti per ogni step di simulazione; questa misura ci permette di misurare l'affluenza dei clienti nel supermercato e come questa viene gestita dalle casse che hanno il potere di attivarsi o disattivarsi in base alla quantità di clienti presenti. La densità ci permetterà di disegnare i grafici fondamentali che mostrano per ogni simulazione come le casse smaltiscono l'afflusso di clienti in entrata, soprattutto nei periodi critici (in cui il supermercato raggiunge una quantità di clienti che "mettono alla prova" le casse).
 
 La \textbf{densità} di clienti per step corrisponde al numero di clienti medio per ogni cassa; la densità allo step $i$ è:
 \begin{equation}
 	\text{density}_i = \frac{\# \text{ customers in the supermarket}}{\# \text{ cashdesks}}
 \end{equation}
 Si terrà conto della densità totale, della densità per le casse standard o self-service e della densità per le casse self-scan.
-
-\todo{definizione di flusso non serve più suppongo}
-
-Il \textbf{flusso in entrata} di clienti per step corrisponde al numero di clienti che entrano ad ogni step per ogni cassa in media; il flusso allo step $i$ è:
-\begin{equation}
-	\text{flow}_i = \frac{\# \text{ customers entering in the supermarket}}{\# \text{ cashdesks}}
-\end{equation}
-Si terrà conto del flusso totale, del flusso per le casse standard o self-service e del flusso per le casse self-scan.
 
 \section{Simulazione con scopo di validazione}
 
