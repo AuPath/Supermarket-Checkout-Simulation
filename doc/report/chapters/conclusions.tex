@@ -1,12 +1,14 @@
 \chapter{Conclusioni}
 
+In questa relazione è stato illustrato un modello di supermercato basato su agenti, che ha lo scopo di simulare il comportamento dei clienti nel negozio in fase di scelta della coda e attesa di pagamento. Un supermercato è un sistema complesso composto da diversi attori che hanno ognuno un obiettivo, per questo abbiamo deciso di simularlo con un modello ad agenti ed analizzare diverse metriche allo scopo di indagare sulle configurazioni di casse e le strategie migliori che portano a una diminuzione del tempo di attesa dei clienti. \\
+A seguito dell'emergenza pandemica di COVID-19 si è dimostrato necessario uno studio sui flussi di persone negli spazi pubblici e nei luoghi di affollamento la cui frequentazione è necessaria per tutte le persone, per questo uno studio sulla diminuzione del tempo d'attesa in coda può servire per minimizzare i contatti tra le persone e quindi il diffondersi di virus e malattie.
+
 \section{Sviluppi futuri}
 
-Il modello potrebbe essere ampliato considerando lo spazio occupato
-dagli agenti nel supermercato introducendo per esempio una D-fork
-\cite{yanagisawa2011methods} piuttosto che la N-fork da noi
-considerata. Ulteriori considerazioni potrebbero riguardare la
-posizione delle casse e dei prodotti nel supermercato. La dimensione
-spaziale renderebbe possibile considerazioni sulle norme di
-distanziamento da rispettare in caso di situazioni di pandemie
-sanitare come il Covid.
+Un primo sviluppo futuro naturale che può estendere il modello è l'introduzione dell'elemento spaziale: i clienti nel nostro supermercato si muovono istantaneamente da una cella a un'altra della griglia che rappresenta il negozio e nel calcolo dei tempi d'attesa in coda non tengono conto della distanza dalle casse. Come fatto nell'articolo \cite{yanagisawa2011methods}, si potrebbe considerare una configurazione di casse a D-fork, anzichè a N-fork, in cui appunto i clienti tengono conto della distanza dalla coda scelta. La considerazione dello spazio e delle distanze porterebbe anche a una modellazione più precisa dei tempi di movimento di tutti i clienti che, se integrata con una zona shopping più verosimile, potrebbe simulare il supermercato in maniera completa (anche adottando vere piantine dei negozi per fare le simulazioni). In ottica di crisi pandemica, questa estensione aiuterebbe a condurre uno studio sul distanziamento obbligatorio in tempi di virus e influenze, oltre che sulla diminuzione dei tempi passati all'interno del negozio.
+
+Un'altra estensione che è stata prevista sin dal primo momento di programmazione del modello è l'introduzione di nuove strategie di scelta della coda e di jockey: avendo adottato il pattern Strategy è molto semplice definire e utilizzare nuove strategie nelle simulazioni. Come detto nel capitolo \ref{chapter:simulation} l'aggiunta delle strategie di jockey basate sul tempo di servizio medio e sulla power regression porterebbero a considerazioni più approfondite sulla miglior coppia di strategie di scelta della coda e di jockey.
+
+Avendo parametrizzato molti valori delle simulazioni, sarebbe utile avere a disposizione più dati sui supermercati italiani, ad esempio per quanto riguarda le casse self-scan: in fase di analisi dei risultati abbiamo osservato come i dati a nostra disposizione non fossero adatti per la simulazione con sole casse self-scan; sarebbe quindi opportuno avere dati sulla percentuale di persone che utilizzano questo tipo di casse e sull'algoritmo usato dai supermercati per estrarre le riletture della spesa parziali o totali.
+
+Una criticità del nostro modello è emersa durante la simulazione con casse standard e coda condivisa: in caso di densità alta di clienti le code tendono a riempirsi al massimo e i clienti che vogliono mettersi in coda sono costretti ad attendere in zona shopping (per evitare che una coda sia talmente lunga da sfondare il muro del supermercato). Questa criticità ha portato a un aumento della densità di clienti nella simulazione in oggetto, ma potenzialmente potrebbe accadere per tutte le simulazioni se fatte con una distribuzione di clienti in entrata molto alta. Sicuramente è bene prevedere una capienza massima del supermercato, superata la quale non devono più entrare clienti altrimenti si rischiano tempi d'attesa enormi, però se la coda è condivisa tra le casse è necessaria un'area molto più grande per accodarsi, come avviene in molti negozi al giorno d'oggi.
