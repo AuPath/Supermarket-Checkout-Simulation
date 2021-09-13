@@ -62,9 +62,13 @@ Nell'immagine \ref{fig:avg_wt_validation} si può vedere la variazione del tempo
 
 Nelle prossime simulazioni verranno aggiunte delle caratteristiche che pensiamo possano migliorare il tempo medio d'attesa dei clienti, che metteremo a confronto con questa simulazione la quale rappresenta il nostro punto di partenza.
 
-\section{Simulazione con strategie \textit{jockey}}
+\section{Simulazione con strategie \textit{jockeying}}
 
-Introduciamo dunque le 2 strategie di jockey descritte nel capitolo \ref{implementation:intro}. In queste simulazioni sono presenti 20 casse normali con code parallele, 6 casse self-service, 4 strategie di scelta della coda e 2 strategie di jockeying, per un totale di 8 simulazioni.
+Introduciamo dunque le 2 strategie di jockeying descritte nel capitolo
+\ref{implementation:intro}. In queste simulazioni sono presenti 20
+casse normali con code parallele, 6 casse self-service, 4 strategie di
+scelta della coda e 2 strategie di jockeying, per un totale di 8
+simulazioni.
 
 \begin{figure}[H]
 	\centering
@@ -74,8 +78,13 @@ Introduciamo dunque le 2 strategie di jockey descritte nel capitolo \ref{impleme
 	\label{fig:avg_wt_jockey_a}
 \end{figure}
 
-Nell'immagine \ref{fig:avg_wt_jockey_a} si mettono a confronto 2 strategie di scelta della coda: minimo numero di elementi, minimo numero di persone in coda. Le due strategie sono affiancate da nessun jockeying, jockey per minimo numero di elementi e jockey per minimo numero di persone in coda. \\ 
-Si osserva ancora una volta che i risultati peggiori si raggiungono con la strategia 2, per le stesse motivazioni descritte in precedenza. Il tempo medio finale è paragonabile per la simulazione con strategia 1 (minimo numero di elementi) sia con jockey con strategia 1 che senza, e la simulazione con strategia 1 e jockey con strategia 2.
+Nell'immagine \ref{fig:avg_wt_jockey_a} si mettono a confronto 2 strategie di scelta della coda: minimo numero di elementi, minimo numero di persone in coda. Le due strategie sono affiancate da nessun jockeying, jockeying per minimo numero di elementi e jockeying per minimo numero di persone in coda. \\
+Si osserva ancora una volta che i risultati peggiori si raggiungono
+con la strategia 2, per le stesse motivazioni descritte in
+precedenza. Il tempo medio finale è paragonabile per la simulazione
+con strategia 1 (minimo numero di elementi) sia con jockey con
+strategia 1 che senza, e la simulazione con strategia 1 e jockey con
+strategia 2.
 
 \begin{figure}[H]
 	\centering
@@ -94,8 +103,10 @@ Nell'immagine \ref{fig:kde_jockey_a} è riportato un grafico KDE (Kernel Density
 	\label{fig:avg_wt_jockey_b}
 \end{figure}
 
-Nell'immagine \ref{fig:avg_wt_jockey_b} vengono messe a confronto 2 strategie di scelta della coda: minimo tempo d'attesa in base al tempo di servizio medio, minimo tempo d'attesa in base alla power regression. Le due strategie sono affiancate da nessun jockeying, jockey per minimo numero di elementi e jockey per minimo numero di persone in coda. \\
-Ancora una volta si nota che utilizzando la strategia 2 (minimo numero di persone in coda), in questo caso nel jockey, i risultati peggiorino.
+Nell'immagine \ref{fig:avg_wt_jockey_b} vengono messe a confronto 2 strategie di scelta della coda: minimo tempo d'attesa in base al tempo di servizio medio, minimo tempo d'attesa in base alla power regression. Le due strategie sono affiancate da nessun jockeying, jockeying per minimo numero di elementi e jockeying per minimo numero di persone in coda. \\
+Ancora una volta si nota che utilizzando la strategia 2 (minimo numero
+di persone in coda), in questo caso nel jockey, i risultati
+peggiorino.
 
 \begin{figure}[H]
 	\centering
@@ -108,8 +119,19 @@ Nel grafico \ref{fig:avg_wt_jockey_best} mettiamo a confronto il tempo medio d'a
 
 \section{Simulazione con coda condivisa}
 
-Con le prossime simulazioni indagheremo sulla diminuzione del tempo medio d'attesa nel caso di coda condivisa (N-fork): metteremo a confronto la strategia migliore trovata fin ora (scelta della coda e jockey per minimo numero di elementi) con il caso di una coda condivisa per tutte le casse. \\
-Come già specificato, nei casi esaminati fin ora le casse si aprivano e chiudevano in maniera automatica in base al numero di clienti presenti nel negozio che necessitano di essere serviti; nel caso di coda condivisa questa funzione non è stata implementata, e potrebbe rappresentare un'estensione del nostro modello. Per questo motivo abbiamo deciso di diminuire il numero di casse nella simulazione: in base a osservazioni fatte in fase sperimentale abbiamo notato che il numero di casse aperte massimo in un dato momento è 8, chiaramente rispetto alla distribuzione dei clienti in entrata utilizzata; per questo motivo abbiamo voluto indagare i casi di 5, 6, 7 e 8 casse standard presenti nel negozio (e 6 casse self-service come fatto in precedenza).
+Con le prossime simulazioni indagheremo sulla diminuzione del tempo medio d'attesa nel caso di coda condivisa (N-fork): metteremo a confronto la strategia migliore trovata fin ora (scelta della coda e jockeying per minimo numero di elementi) con il caso di una coda condivisa per tutte le casse. \\
+Come già specificato, nei casi esaminati fin ora le casse si aprivano
+e chiudevano in maniera automatica in base al numero di clienti
+presenti nel negozio che necessitano di essere serviti; nel caso di
+coda condivisa questa funzione non è stata implementata, e potrebbe
+rappresentare un'estensione del nostro modello. Per questo motivo
+abbiamo deciso di diminuire il numero di casse nella simulazione: in
+base a osservazioni fatte in fase sperimentale abbiamo notato che il
+numero di casse aperte massimo in un dato momento è 8, chiaramente
+rispetto alla distribuzione dei clienti in entrata utilizzata; per
+questo motivo abbiamo voluto indagare i casi di 5, 6, 7 e 8 casse
+standard presenti nel negozio (e 6 casse self-service come fatto in
+precedenza).
 
 \begin{figure}[H]
 	\centering
@@ -119,8 +141,14 @@ Come già specificato, nei casi esaminati fin ora le casse si aprivano e chiudev
 	\label{fig:avg_wt_codacondivisa}
 \end{figure}
 
-Nel grafico \ref{fig:avg_wt_codacondivisa} riportiamo i tempi medi d'attesa delle simulazioni con code parallele e jockey rappresentandoli con delle linee, e i tempi medi d'attesa delle simulazioni con coda condivisa rappresentandoli con dei trattini. Si nota immediatamente che nel caso di 5 casse il tempo medio d'attesa sale vertiginosamente a circa 20 minuti sia per le code parallele che per la coda condivisa: questo è imputabile alla distribuzione dei clienti in entrata, il supermercato con 5 casse è troppo piccolo per gestire questa quantità. \\
-Una cosa interessante da notare invece è la divisione netta nel grafico tra le simulazioni con code parallele e quelle con coda condivisa: l'utilizzo della coda condivisa abbassa i tempi medi d'attesa durante tutta la giornata, anche rispetto al caso in cui i clienti fanno jockey. Questi risultati sono in linea con l'articolo \cite{yanagisawa2011methods}, in cui si mette in luce il fatto che l'utilizzo di una coda condivisa migliori le prestazioni del negozio.
+Nel grafico \ref{fig:avg_wt_codacondivisa} riportiamo i tempi medi d'attesa delle simulazioni con code parallele e jockeying rappresentandoli con delle linee, e i tempi medi d'attesa delle simulazioni con coda condivisa rappresentandoli con dei trattini. Si nota immediatamente che nel caso di 5 casse il tempo medio d'attesa sale vertiginosamente a circa 20 minuti sia per le code parallele che per la coda condivisa: questo è imputabile alla distribuzione dei clienti in entrata, il supermercato con 5 casse è troppo piccolo per gestire questa quantità. \\
+Una cosa interessante da notare invece è la divisione netta nel
+grafico tra le simulazioni con code parallele e quelle con coda
+condivisa: l'utilizzo della coda condivisa abbassa i tempi medi
+d'attesa durante tutta la giornata, anche rispetto al caso in cui i
+clienti fanno jockeying. Questi risultati sono in linea con l'articolo
+\cite{yanagisawa2011methods}, in cui si mette in luce il fatto che
+l'utilizzo di una coda condivisa migliori le prestazioni del negozio.
 
 \begin{figure}[H]
 	\centering
@@ -163,13 +191,23 @@ Rispetto a questa simulazione bisognerebbe avere dati più completi, ad esempio 
 	\label{fig:kde_self_scan}
 \end{figure}
 
-L'immagine \ref{fig:kde_self_scan} mostra il grafico KDE della simulazione con sole casse self-scan messa a confronto con la simulazione con sole casse standard e jockey. Si nota che nella simulazione con casse standard c'è un momento di massima densità che viene gestito dal sistema portando a una diminuzione dei tempi medi d'attesa; nella simulazione con casse self-scan questa gestione della densità non avviene altrettanto bene, infatti dopo il punto critico di densità maggiore, questa diminuisce ma il tempo medio aumenta e questo è imputabile ancora una volta alle troppe persone che attendono di ricevere una rilettura della spesa.
+L'immagine \ref{fig:kde_self_scan} mostra il grafico KDE della
+simulazione con sole casse self-scan messa a confronto con la
+simulazione con sole casse standard e jockeying. Si nota che nella
+simulazione con casse standard c'è un momento di massima densità che
+viene gestito dal sistema portando a una diminuzione dei tempi medi
+d'attesa; nella simulazione con casse self-scan questa gestione della
+densità non avviene altrettanto bene, infatti dopo il punto critico di
+densità maggiore, questa diminuisce ma il tempo medio aumenta e questo
+è imputabile ancora una volta alle troppe persone che attendono di
+ricevere una rilettura della spesa.
 
 \section{Simulazione non deterministica}
 
 L'introduzione di parametri randomici rappresenta la nostra volontà di rendere più verosimile il modello e non un tentativo di miglioramento dei tempi medi d'attesa dei clienti. \\
 Abbiamo voluto testare il modello completo, considerando 20 casse standard con code parallele, 6 casse self-service, 5 casse self-scan; la probabilità che un cliente sia self-scan (nel momento in cui entra nel negozio) è del $50\%$. Introduciamo anche l'errore di stima del basket-size da parte di un cliente: nel momento in cui un cliente deve calcolare il numero di elementi nel carrello di altri clienti commette un errore con 0.1 di deviazione standard. \\
-Le simulazioni sono 8, combiniamo le strategie di scelta della coda (4) con quelle di jockey (2).
+Le simulazioni sono 8, combiniamo le strategie di scelta della coda
+(4) con quelle di jockeying (2).
 
 \begin{figure}[H]
 	\centering
@@ -183,4 +221,9 @@ Notiamo dal grafico \ref{fig:avg_wt_prob} che il tempo medio d'attesa delle simu
 
 \vspace*{1\baselineskip}
 
-Dopo aver condotto queste analisi possiamo concludere che il jockey da parte dei clienti porta a una diminuzione dei tempi d'attesa in coda e inoltre la configurazione delle casse a N-fork è in grado di gestire meglio il punto critico di densità di clienti rispetto alla configurazione a code parallele; nel prossimo capitolo verranno fatte le conclusioni e illustrati i possibili sviluppi futuri.
+Dopo aver condotto queste analisi possiamo concludere che il jockeying
+da parte dei clienti porta a una diminuzione dei tempi d'attesa in
+coda e inoltre la configurazione delle casse a N-fork è in grado di
+gestire meglio il punto critico di densità di clienti rispetto alla
+configurazione a code parallele; nel prossimo capitolo verranno fatte
+le conclusioni e illustrati i possibili sviluppi futuri.
