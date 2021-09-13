@@ -10,15 +10,15 @@ Questo progetto prende spunto principalmente dal lavoro di Tomasz Antczak, Rafal
 L'articolo sopracitato prende in considerazione 5 strategie diverse di scelta della coda:
 
 \begin{enumerate}
-	\item La coda è scelta in modo random
-	\item \'E scelta la coda con il numero minore di clienti
-	\item \'E scelta la coda con il numero minore di prodotti in tutti i carrelli
-	\item \'E scelta la coda con il minor tempo d'attesa previsto calcolato come il prodotto del numero di clienti in coda e il tempo di servizio medio per tutte le casse
-	\item \'E scelta la coda con il minor tempo d'attesa previsto calcolato come il prodotto del numero di clienti in coda e la somma dei tempi di transazione e di pausa attesi
+	\item La coda è scelta in modo \textbf{random}
+	\item \'E scelta la coda con il\textbf{ numero minimo di clienti}
+	\item \'E scelta la coda con il\textbf{ numero minimo di prodotti in tutti i carrelli}
+	\item \'E scelta la coda con il\textbf{ minor tempo d'attesa previsto }calcolato come il \textbf{prodotto del numero di clienti in coda e il tempo di servizio medio }per tutte le casse
+	\item \'E scelta la coda con il \textbf{minor tempo d'attesa previsto calcolato }come il \textbf{prodotto del numero di clienti in coda e la somma dei tempi di transazione e di pausa }attesi
 \end{enumerate}
 
 Nel nostro progetto in particolare, non abbiamo considerato la prima
-strategia di scelta random, ma soltanto le strategie 2-5.
+strategia di scelta random, ma soltanto le strategie dalla 2 alla 5.
 
 Il modello di riferimento \cite{article1} implementato in NetLogo non
 corrisponde esattamente al modello reso disponibile nella repository\footnote{\protect\url{https://github.com/tant2002/NetLogo-Supermarket-Queue-Model}} in
@@ -47,7 +47,7 @@ casse self-scan, che permettono al cliente di scannerizzare i prodotti
 durante la spesa e, arrivati alla cassa, semplicemente pagare, senza
 passare i prodotti su un nastro; questo tipo di cassa sembra essere
 molto efficiente, in quanto richiede soltanto il pagamento, che
-diventa ancora più veloce se fatto in forma telematica. Per evitare
+diventa ancora più veloce se fatto in forma elettronica. Per evitare
 furti, i supermercati decidono di effettuare in maniera randomica
 delle riletture della spesa.
 
