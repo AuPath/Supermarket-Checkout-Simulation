@@ -58,7 +58,7 @@ Il grafico \ref{fig:total_customers_validation} funge da validazione: mettiamo a
 \end{figure}
 
 
-Nell'immagine \ref{fig:avg_wt_validation} si può vedere la variazione del tempo medio di attesa in coda dei clienti nel corso della giornata lavorativa che va dalle 8:00 alle 22:00. Le simulazioni variano per strategia di scelta della coda da parte dei clienti, si nota quindi che, in assenza di jockeying, la strategia 3 risulta quella che durante l'arco della giornata mantiene il tempo medio più basso, anche se a fine giornata tutte e 4 le strategie raggiungono una media paragonabile.
+Nell'immagine \ref{fig:avg_wt_validation} si può vedere la variazione del tempo medio di attesa in coda dei clienti nel corso della giornata lavorativa che va dalle 8:00 alle 22:00. Le simulazioni variano per strategia di scelta della coda da parte dei clienti, si nota quindi che, in assenza di jockeying, la strategia 2 risulta quella che durante l'arco della giornata mantiene il tempo medio più alto, invece per le altre 3 strategie è paragonabile. Il fatto che la strategia 2 (numero minimo di persone in coda) sia la peggiore è facilmente spiegabile, infatti scegliendo la coda per numero di persone si rischia di incontrare clienti con carrelli molto pieni, e questo allunga di molto l'attesa.
 
 Nelle prossime simulazioni verranno aggiunte delle caratteristiche che pensiamo possano migliorare il tempo medio d'attesa dei clienti, che metteremo a confronto con questa simulazione la quale rappresenta il nostro punto di partenza.
 
@@ -74,7 +74,7 @@ Introduciamo dunque le 2 strategie di jockey descritte nel capitolo \ref{impleme
 \end{figure}
 
 Nell'immagine \ref{fig:avg_wt_jockey_a} si mettono a confronto 2 strategie di scelta della coda: minimo numero di elementi, minimo numero di persone in coda. Le due strategie sono affiancate da nessun jockeying, jockey per minimo numero di elementi e jockey per minimo numero di persone in coda. \\ 
-Si osserva che i risultati migliori si raggiungono quando si fa jockey e inoltre la strategia di scelta della coda è la stessa del jockey, con una diminuzione massima del tempo medio di attesa di circa 2 timestamp (1 minuto) e della media finale di 1 timestamp (30 secondi) rispetto alle simulazioni senza jockey. Si può dire pertanto che mischiare le strategie, ad esempio scegliendo la coda per numero di persone e facendo jockey per numero di elementi nei carrelli, peggiori le prestazioni del sistema rispetto al tempo di attesa dei clienti. Questo è in linea con quanto si osserva nell'articolo \cite{xu1996dynamic}, che afferma	che a parità di parametri un sistema con jockeying è più efficiente di uno senza.
+Si osserva ancora una volta che i risultati peggiori si raggiungono con la strategia 2, per le stesse motivazioni descritte in precedenza. Il tempo medio finale è paragonabile per la simulazione con strategia 1 (minimo numero di elementi) sia con jockey con strategia 1 che senza, e la simulazione con strategia 1 e jockey con strategia 2.
 
 \begin{figure}[H]
 	\centering
@@ -93,16 +93,7 @@ Nell'immagine \ref{fig:kde_jockey_a} è riportato un grafico KDE (Kernel Density
 \end{figure}
 
 Nell'immagine \ref{fig:avg_wt_jockey_b} vengono messe a confronto 2 strategie di scelta della coda: minimo tempo d'attesa in base al tempo di servizio medio, minimo tempo d'attesa in base alla power regression. Le due strategie sono affiancate da nessun jockeying, jockey per minimo numero di elementi e jockey per minimo numero di persone in coda. \\
-In questo caso non vale quanto detto sopra, le strategie di scelta della coda e di jockey non possono essere le stesse e non si può dire che affiancandole si ottengono risultati migliori; questo potrebbe rappresentare un ulteriore studio da fare per allargare il nostro modello.
-
-Si nota come la strategia di scelta della coda che mantiene il tempo
-d'attesa medio minore durante tutta la giornata sia la power
-regression affiancata da jockey per minimo numero di persone in coda;
-questa simulazione raggiunge un tempo medio d'attesa finale minore di
-circa 1.5 timestamp rispetto alla simulazione peggiore. Questa però è
-comunque molto vicina al tempo medio della strategia di scelta della
-coda per minimo tempo di servizio medio e senza jockeying, anche se
-quest'ultima tende a peggiorare nell'ora finale.
+Ancora una volta si nota che utilizzando la strategia 2 (minimo numero di persone in coda), in questo caso nel jockey, i risultati peggiorino.
 
 \begin{figure}[H]
 	\centering
@@ -111,7 +102,7 @@ quest'ultima tende a peggiorare nell'ora finale.
 	\caption{Tempo medio d'attesa al variare dell'ora}
 \end{figure}
 
-Nel grafico \ref{fig:avg_wt_jockey_best} mettiamo a confronto il tempo medio d'attesa delle migliori strategie viste fin ora: il tempo medio finale è circa lo stesso per tutte e tre, ma si nota che il grafico della prima strategia rimane sotto gli altri nell'arco di tutta la giornata.
+Nel grafico \ref{fig:avg_wt_jockey_best} mettiamo a confronto il tempo medio d'attesa delle migliori strategie viste fin ora: il tempo medio finale è circa lo stesso per tutte e cinque.
 
 \section{Simulazione con coda condivisa}
 
