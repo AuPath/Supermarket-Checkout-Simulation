@@ -73,7 +73,7 @@
 
 \begin{frame}{Agente Cassa}
 	\begin{itemize}
-		\item I clienti, una volta conclusa la fase si di spesa, scelgono una coda in attesa di essere serviti in cassa per il pagamento.
+		\item I clienti, una volta conclusa la fase di spesa, scelgono una coda in attesa di essere serviti in cassa per il pagamento.
 		\item Ogni cassa ha al più una coda associata.
 		\item La cassa è un'agente di tipo \textit{model-based reflex}, in cui lo stato è il cliente che si sta processando in un determinato momento.
 		\item Il comportamento di una cassa è piuttosto semplice:
@@ -87,7 +87,7 @@
 			\item Coda dedicata: ogni cassa ha una coda dedicata
 			\item Coda condivisa: una coda è associata a più casse, tutte le casse serviranno i clienti che si sono accodati alla coda condivisa
 		\end{enumerate}
-		\item Nel modello sono state modellate 4 tipi di casse diverse.
+		\item Nel modello sono stati modellati 4 tipi di casse diverse.
 		
 	\end{itemize}
 \end{frame}
@@ -152,10 +152,10 @@
 \begin{frame}{Considerazioni}
   \begin{itemize}
   \item Il modello da noi descritto é stato implementato con
-    l'obbiettivo di essere facile da modificare.
+    l'obiettivo di essere facile da modificare.
     
   \item Il comportamento degli agenti viene gestito con una
-    macchina a stati finita implementata tramite il pattern
+    macchina a stati finiti implementata tramite il pattern
     \textbf{State}.  Questo isola logicamente aspetti quali
     azioni da compiere e rappresentazione grafica da assumere in
     determinati stati.
@@ -219,7 +219,7 @@
 		\begin{itemize}
 			\item Durata di uno step (attualmente 30 secondi)
 			\item Velocità di shopping del cliente: numero di articoli messi nel carrello ad ogni step
-			\item Tempo di elaborazione della spesa da parte delle casse: per le self-scan è 1 step, per le standard e le self-service è governato dai parametri $a, b, \alpha, \beta \in \mathbb{R}$, presi dall'articolo di Antczak e altri sopra citato.
+			\item Tempo di elaborazione della spesa da parte delle casse: per le self-scan è 1 step, per le standard e le self-service è governato dai parametri $a, b, \alpha, \beta \in \mathbb{R}$, presi dall'articolo di Antczak e altri sopra citato
 		\end{itemize}
 	\end{itemize}
 \end{frame}
