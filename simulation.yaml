@@ -62,6 +62,7 @@
         number_cash_desk_self_service_groups: 1
         shared_queue: False
         threshold_items: 15
+        threshold_people: 3
         probability_of_jockeying: 0.5
         queue_choice_strategy: least_items
         queue_jockeying_strategy: least_people
