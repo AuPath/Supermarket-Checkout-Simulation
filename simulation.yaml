@@ -50,10 +50,10 @@
         number_cash_desk_self_service_groups: 1
         shared_queue: False
         threshold_items: 15
-        probability_of_jockeying: 0.5
+        probability_of_jockeying: 1
         queue_choice_strategy: least_items
         queue_jockeying_strategy: least_items
-        customer_standard_deviation_coefficient: 0.1
+        customer_standard_deviation_coefficient: 0
         name: coda1_jockey1
 
     - simulation:
@@ -62,7 +62,7 @@
         number_cash_desk_self_service_groups: 1
         shared_queue: False
         threshold_items: 15
-        probability_of_jockeying: 0.5
+        probability_of_jockeying: 1
         queue_choice_strategy: least_people
         queue_jockeying_strategy: least_items
         customer_standard_deviation_coefficient: 0
@@ -74,7 +74,7 @@
         number_cash_desk_self_service_groups: 1
         shared_queue: False
         threshold_items: 15
-        probability_of_jockeying: 0.5
+        probability_of_jockeying: 1
         queue_choice_strategy: least_waiting_time_service_implied
         queue_jockeying_strategy: least_items
         customer_standard_deviation_coefficient: 0
@@ -86,7 +86,7 @@
         number_cash_desk_self_service_groups: 1
         shared_queue: False
         threshold_items: 15
-        probability_of_jockeying: 0.5
+        probability_of_jockeying: 1
         queue_choice_strategy: least_waiting_power_implied
         queue_jockeying_strategy: least_items
         customer_standard_deviation_coefficient: 0
@@ -99,7 +99,7 @@
         number_cash_desk_self_service_groups: 1
         shared_queue: False
         threshold_people: 3
-        probability_of_jockeying: 0.5
+        probability_of_jockeying: 1
         queue_choice_strategy: least_items
         queue_jockeying_strategy: least_people
         customer_standard_deviation_coefficient: 0
@@ -111,7 +111,7 @@
         number_cash_desk_self_service_groups: 1
         shared_queue: False
         threshold_people: 3
-        probability_of_jockeying: 0.5
+        probability_of_jockeying: 1
         queue_choice_strategy: least_people
         queue_jockeying_strategy: least_people
         customer_standard_deviation_coefficient: 0
@@ -123,7 +123,7 @@
         number_cash_desk_self_service_groups: 1
         shared_queue: False
         threshold_people: 3
-        probability_of_jockeying: 0.5
+        probability_of_jockeying: 1
         queue_choice_strategy: least_waiting_time_service_implied
         queue_jockeying_strategy: least_people
         customer_standard_deviation_coefficient: 0
@@ -135,7 +135,7 @@
         number_cash_desk_self_service_groups: 1
         shared_queue: False
         threshold_people: 3
-        probability_of_jockeying: 0.5
+        probability_of_jockeying: 1
         queue_choice_strategy: least_waiting_power_implied
         queue_jockeying_strategy: least_people
         customer_standard_deviation_coefficient: 0
