@@ -21,8 +21,7 @@ Nel nostro progetto in particolare, non abbiamo considerato la prima
 strategia di scelta random, ma soltanto le strategie 2-5.
 
 Il modello di riferimento \cite{article1} implementato in NetLogo non
-corrisponde esattamente al modello reso disponibile nella repository
-\footnote{\protect\url{https://github.com/tant2002/NetLogo-Supermarket-Queue-Model}}in
+corrisponde esattamente al modello reso disponibile nella repository\footnote{\protect\url{https://github.com/tant2002/NetLogo-Supermarket-Queue-Model}} in
 quanto questo presenta aspetti non considerati nel paper. Questo
 fattore accompagnato dalla nostra inesperienza con NetLogo e la
 relativamente scarna documentazione del modello ha portato alla
@@ -30,7 +29,7 @@ decisione di reimplementare le parti del modello descritte nel paper
 \cite{article1} e le nostre espansioni in linguaggio Python nel
 framework Mesa.
 
-Dal repository del loro progetto, abbiamo estratto i dati su cui si basa il loro modello, in particolare la distribuzione di arrivo dei clienti nel supermercato e la distribuzione della grandezza dei loro carrelli (più avanti chiamata \textit{basket size}); si parlerà in dettaglio delle distribuzioni estratte nella sezione \ref{model:parameters}.
+Dal repository del loro progetto abbiamo estratto i dati su cui si basa il modello, in particolare la distribuzione di arrivo dei clienti nel supermercato e la distribuzione della grandezza dei loro carrelli (più avanti chiamata \textit{basket size}); si parlerà in dettaglio delle distribuzioni estratte nella sezione \ref{model:parameters}.
 
 L'articolo \cite{article1} non modella il \textit{jockeying}, ovvero il fatto che un cliente possa cambiare coda prima di essere servito, se calcola che in un'altra cassa ci sia un tempo d'attesa minore; abbiamo deciso di estendere il loro lavoro includendo la possibilità per i clienti di fare \textit{jockeying}, per valutare se questo portasse a una riduzione ulteriore dei tempi d'attesa. Per implementare questa estensione, abbiamo preso spunto dall'articolo \cite{koenigsberg1966jockeying}.
 In questo articolo l'autore considera la strategia di \textit{jockeying} nelle code, perchè in molte situazioni reali si utilizza per ridurre il tempo totale speso in coda. L'autore prende in considerazione tre situazioni di coda diverse, in particolare nella terza (\textit{Tellers' Windows with Jockeying}) definisce una strategia di jockey probabilistico con un \textit{threshold} $k$, che rappresenta la verosimiglianza di un cliente di lasciare la propria coda per un'altra. Nel nostro modello è stata implementata questa strategia, includendo anche una randomicità, che esprime il fatto che non tutte le persone fanno jockeying.
