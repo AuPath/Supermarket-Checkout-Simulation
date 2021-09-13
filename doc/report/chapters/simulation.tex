@@ -95,7 +95,14 @@ Nell'immagine \ref{fig:kde_jockey_a} è riportato un grafico KDE (Kernel Density
 Nell'immagine \ref{fig:avg_wt_jockey_b} vengono messe a confronto 2 strategie di scelta della coda: minimo tempo d'attesa in base al tempo di servizio medio, minimo tempo d'attesa in base alla power regression. Le due strategie sono affiancate da nessun jockeying, jockey per minimo numero di elementi e jockey per minimo numero di persone in coda. \\
 In questo caso non vale quanto detto sopra, le strategie di scelta della coda e di jockey non possono essere le stesse e non si può dire che affiancandole si ottengono risultati migliori; questo potrebbe rappresentare un ulteriore studio da fare per allargare il nostro modello.
 
-Si nota come la strategia di scelta della coda che mantiene il tempo d'attesa medio minore durante tutta la giornata sia la power regression affiancata da jockey per minimo numero di persone in coda; questa simulazione raggiunge un tempo medio d'attesa minore finale di circa 1.5 timestamp rispetto alla simulazione peggiore. Questa però è comunque molto vicina al tempo medio della strategia di scelta della coda per minimo tempo di servizio medio e senza jockeying, anche se quest'ultima tende a peggiorare nell'ora finale.
+Si nota come la strategia di scelta della coda che mantiene il tempo
+d'attesa medio minore durante tutta la giornata sia la power
+regression affiancata da jockey per minimo numero di persone in coda;
+questa simulazione raggiunge un tempo medio d'attesa finale minore di
+circa 1.5 timestamp rispetto alla simulazione peggiore. Questa però è
+comunque molto vicina al tempo medio della strategia di scelta della
+coda per minimo tempo di servizio medio e senza jockeying, anche se
+quest'ultima tende a peggiorare nell'ora finale.
 
 \begin{figure}[H]
 	\centering
@@ -109,7 +116,7 @@ Nel grafico \ref{fig:avg_wt_jockey_best} mettiamo a confronto il tempo medio d'a
 \section{Simulazione con coda condivisa}
 
 Con le prossime simulazioni indagheremo sulla diminuzione del tempo medio d'attesa nel caso di coda condivisa (N-fork): metteremo a confronto la strategia migliore trovata fin ora (scelta della coda e jockey per minimo numero di elementi) con il caso di una coda condivisa per tutte le casse. \\
-Come già specificato, nei casi esaminati fin ora le casse si aprivano e chiudevano in maniera automatica in base al numero di clienti presenti nel negozio e che necessitano di essere serviti; nel caso di coda condivisa questa funzione non è stata implementata, e potrebbe rappresentare un'estensione del nostro modello. Per questo motivo abbiamo deciso di diminuire il numero di casse nella simulazione: in base a osservazioni fatte in fase sperimentale abbiamo notato che il numero di casse aperte massimo in un dato momento è 8, chiaramente rispetto alla distribuzione dei clienti in entrata utilizzata; per questo motivo abbiamo voluto indagare i casi di 5, 6, 7 e 8 casse standard presenti nel negozio (e 6 casse self-service come fatto in precedenza).
+Come già specificato, nei casi esaminati fin ora le casse si aprivano e chiudevano in maniera automatica in base al numero di clienti presenti nel negozio che necessitano di essere serviti; nel caso di coda condivisa questa funzione non è stata implementata, e potrebbe rappresentare un'estensione del nostro modello. Per questo motivo abbiamo deciso di diminuire il numero di casse nella simulazione: in base a osservazioni fatte in fase sperimentale abbiamo notato che il numero di casse aperte massimo in un dato momento è 8, chiaramente rispetto alla distribuzione dei clienti in entrata utilizzata; per questo motivo abbiamo voluto indagare i casi di 5, 6, 7 e 8 casse standard presenti nel negozio (e 6 casse self-service come fatto in precedenza).
 
 \begin{figure}[H]
 	\centering
