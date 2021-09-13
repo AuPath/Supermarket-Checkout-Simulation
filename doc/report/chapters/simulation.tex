@@ -9,7 +9,7 @@ Al fine di analizzare i risultati è stata introdotta la definizione di densità
 
 La \textbf{densità} di clienti per step corrisponde al numero di clienti medio per ogni cassa; la densità allo step $i$ è:
 \begin{equation}
-	\text{density}_i = \frac{\# \text{ customers in the supermarket}}{\# \text{ cashdesks}}
+	\text{density}_i = \frac{\# \text{ customers in the supermarket}}{\# \text{ open cashdesks}}
 \end{equation}
 Si terrà conto della densità totale, della densità per le casse standard o self-service e della densità per le casse self-scan.
 
@@ -19,8 +19,23 @@ Si terrà conto della densità totale, della densità per le casse standard o se
 
 Al fine di validare il modello, come primo esperimento è stata condotta una simulazione con gli stessi parametri usati nell'articolo \cite{article1}. Nella loro simulazione il supermercato contiene 20 casse standard e 6 casse self-service; si noti che nel lavoro citato, le casse si attivano o disattivano in base ai dati raccolti dai ricercatori nei supermercati, nel nostro modello invece le casse si attivano in base al numero di clienti presenti nel supermercato, in base a un parametro che è possibile cambiare nel momento in cui si raccolgono i dati. Vengono messe a confronto le strategie diverse di scelta della coda da parte dei clienti, arrivando alla conclusione che la strategia che porta al minor tempo d'attesa è quella chiamata "minimo tempo d'attesa in base alla \textit{power regression}" nel capitolo \ref{implementation:intro}; tuttavia i risultati portano a dire che questo scenario non è quello ottimale per tutti i supermercati negli orari di punta.
 
-Nelle prossime simulazioni verrà testato il jockeying, in particolare si metteranno a confronto le diverse strategie di scelta della coda e di jockeying per stabilire se questo porti a un miglioramento dell'esperienza del cliente nel supermercato. Questi esperimenti verranno poi messi a confronto con una simulazione in cui c'è soltanto la coda condivisa per le casse standard, pertanto i clienti non avranno bisogno di scegliere la coda nè di fare jockeying: in base a quanto detto nell'articolo \cite{yanagisawa2011methods}, questo tipo di coda dovrebbe portare a tempi di attesa minori. 
-Verranno quindi introdotte nella simulazione le casse self-scan con rilettura randomica, si prevede che queste portino a una diminuzione considerevole dei tempi d'attesa in coda, in quanto viene a mancare la fase di scanner da parte dei cassieri. Infine verrà effettuata una simulazione con gli elementi probabilistici già descritti nel corso dei capitoli \ref{chapter:model} e \ref{implementation:intro}, che rendono l'esperimento non deterministico e a nostro riguardo più realistico.
+Nelle prossime simulazioni verrà testato il jockeying, in particolare
+si metteranno a confronto le diverse strategie di scelta della coda e
+di jockeying per stabilire se questo porti a un miglioramento
+dell'esperienza del cliente nel supermercato. Questi esperimenti
+verranno poi messi a confronto con una simulazione in cui c'è soltanto
+la coda condivisa per le casse standard, pertanto i clienti non
+avranno bisogno di scegliere la coda nè di fare jockeying: in base a
+quanto detto nell'articolo \cite{yanagisawa2011methods}, questo tipo
+di coda dovrebbe portare a tempi di attesa minori.  Verranno quindi
+introdotte nella simulazione le casse self-scan con rilettura
+randomica, si prevede che queste portino a una diminuzione
+considerevole dei tempi d'attesa in coda, in quanto viene a mancare la
+fase di scanning da parte dei cassieri. Infine verrà effettuata una
+simulazione con gli elementi probabilistici già descritti nel corso
+dei capitoli \ref{chapter:model} e \ref{implementation:intro}, che
+rendono l'esperimento non deterministico e a nostro riguardo più
+realistico.
 
 \paragraph{Simulazione con gli stessi parametri}
 
