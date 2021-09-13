@@ -1,5 +1,3 @@
-import subprocess
-
 import yaml
 
 from src.config import ENTRYPOINT
