@@ -1,3 +1,6 @@
+# Mac extension
+**/.DS_Store
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -146,3 +149,7 @@ dmypy.json
 *.cb2
 .*.lb
 /doc/RispostaUmoroleNelSistemaImmunitario_LucreziaPatruno795291_FedericoPozzi794281.pdf
+
+# Vscode 
+.vscode/
+
