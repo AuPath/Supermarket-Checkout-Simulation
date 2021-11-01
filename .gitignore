@@ -139,6 +139,11 @@ dmypy.json
 *.aux
 *.lof
 *.log
+*.bbl
+doc/**/**.gz
+*.nav
+*.snm
+*.blg
 *.lot
 *.fls
 *.out
