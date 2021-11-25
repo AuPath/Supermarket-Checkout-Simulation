@@ -99,7 +99,6 @@ class Supermarket(Model):
         self.__waiting_times_standard = []
         self.__waiting_times_self_scan = []
 
-        # TODO: definire qui le metriche per valutare la simulazione
         self.datacollector = DataCollector(
             model_reporters={"Total_customers": self.get_number_of_customers,
                              # grafici fondamentali: densità sull'asse x, flusso sull'asse y
